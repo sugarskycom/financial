@@ -1,0 +1,48 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    
+    <div class="container">
+        <!-- 面包屑导航栏 -->
+        <ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a></li>
+            <li><a href="{:U('Help/feedback')}">投诉建议</a></li>
+        </ul>
+        <div class="mb20">
+        <label for="">一、投诉类型</label>
+            <select name="type" id="type" class="form-control" style="width:40%;">
+                <option value="1">信息披露</option>
+                <option value="1">投诉客服</option>
+                <option value="1">回款问题</option>
+                <option value="1">出借问题</option>
+                <option value="1">意见建议</option>
+                <option value="1">其他投诉（手动输入）</option>
+            </select>
+        </div>
+        <div class="mb20">
+            <label for="" style="vertical-align: top;">二、投诉内容描述:</label><textarea name="Remarks" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="mb20">
+            <label for="">三、您的姓名:</label><input type="text" />
+        </div>
+        <div class="mb20">
+            <label for="">四、联系方式:</label><input type="text" />
+        </div>
+        <p class="">以上投诉只限于注册用户，含未充值用户。</p>
+    </div>       
+</div>
+
+</block>
+<block name="css">
+    <style>
+        .other-complaint {
+
+        }
+        .mt20 {
+            margin-top:20px;
+        }
+        .mb20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</block>

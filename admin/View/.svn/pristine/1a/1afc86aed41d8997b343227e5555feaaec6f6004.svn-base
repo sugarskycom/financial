@@ -1,0 +1,58 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <form class="form-inline" method="get" action="javascript:;" id="toolbar">
+                <input type="text" class="form-control" name="keyword" id="keyword" placeholder="活动名称">
+                <button type="submit" class="btn btn-primary">查询</button>
+                <button type="button" class="btn btn-default" onclick="openwin()">新增活动</button>
+            </form>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped" data-url="__ACTION__" data-toggle="table" id="table" data-method="get" data-query-params="params" data-side-pagination="server" data-show-pagination-switch="false" data-classes="table table-striped table-hover" data-page-list="[10,50,100,ALL]" data-page-size="10" data-pagination="true" data-sort-order="desc">
+                <thead>
+                    <tr>
+                        <th data-field="aid">活动编号</th>
+                        <th data-field="title">活动名称</th>
+                        <th data-field="short_name">渠道简称</th>
+                        <th data-field="aid" data-formatter="startEndTime">活动时间</th>
+                        <th data-field="create_time" data-formatter="formatTime">创建时间</th>
+                        <th data-field="linkman">活动负责人</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+    <include file="Public:bootstrap-table" />
+    <include file="Public:datejs" />
+    <script type="text/javascript">
+    var table = $('#table').bootstrapTable();
+    $('#toolbar').submit(function(event) {
+    	table.bootstrapTable('refresh');
+    });
+    function params(params) {
+        params.keyword = $.trim($("#keyword").val());
+        params.flag = 'load';
+        return params;
+    }
+    function startEndTime(v, r, i) {
+    	return formatTime(r.start_time)+' / '+formatTime(r.end_time);
+    }
+    function openwin() {
+        BootstrapDialog.show({
+            title: '新增活动',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            size: BootstrapDialog.SIZE_WIDE,
+            message: function() {
+                return $('<div></div>').load("__URL__/addact");
+            }
+        })
+    }
+    </script>
+</block>

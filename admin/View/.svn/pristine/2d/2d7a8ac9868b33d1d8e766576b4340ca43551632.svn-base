@@ -1,0 +1,149 @@
+<form id="form" method="post" class="form-horizontal" action="javascript:;">
+    <!--/current username-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*活动名称：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="title" name="title" value="" placeholder="活动名称">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*渠道简称：</label>
+        <div class="col-sm-5">
+            <select name="vid" id="vid" class="form-control">
+                <option value="">选择一个渠道</option>
+                <volist name="list" id="i">
+                <option value="{$i.vid}">{$i.full_name}</option>
+                </volist>
+            </select>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*活动时间：</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <input name="start_time" id="start_time" class="form-control" type="text" readonly>
+                <span class="input-group-addon">至</span>
+                <input name="end_time" id="end_time" class="form-control" type="text" readonly>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+        <div id="time-error" class="col-sm-offset-3"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*活动负责人：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="linkman" name="linkman" value="" placeholder="">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*活动链接：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="url" name="url" value="" placeholder="">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-4">
+            <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+    </div>
+    <!--/save button-->
+</form>
+<script type="text/javascript">
+$(function() {
+    $("#form").validate({
+        rules: {
+            title: {
+                required: true,
+            },
+            vid: {
+                required: true,
+            },
+            start_time: {
+                required: true,
+                checkStartTime: true,
+            },
+            end_time: {
+                required: true,
+                checkEndTime: true,
+            },
+            linkman: {
+                required: true,
+            },
+            url: {
+                required: true,
+            }
+        },
+        errorClass: "error",
+        errorPlacement: function(error, element) {
+            if ($(element).attr('name') == 'start_time' || $(element).attr('name') == 'end_time') {
+                error.appendTo($("#time-error"))
+            } else {
+                error.appendTo(element.parent('div').next('div'));
+            }
+
+        },
+        messages: {
+            title: {
+                required: '活动名称不能为空',
+            },
+            vid: {
+                required: '必须选择一个渠道',
+            },
+            start_time: {
+                required: '活动开始时间不能为空',
+                checkStartTime: '开始时间必须大于当前时间',
+            },
+            end_time: {
+                required: '活动结束时间不能为空',
+                checkEndTime: '结束时间必须大于开始时间',
+            },
+            linkman: {
+                required: '活动负责人不能为空',
+            },
+            url: {
+                required: '活动链接不能为空',
+            }
+        },
+        submitHandler: function(form) {
+            $.post('__ACTION__/add', $(form).serializeArray(), function(data, textStatus, xhr) {
+                if (data.status == 0) {
+                    alert(data.error);
+                } else if (data.status == 1) {
+                    table.bootstrapTable('refresh');
+                    closeDialog();
+                }
+            });
+        }
+    });
+
+    $("#start_time,#end_time").datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language: 'zh-CN',
+    });
+
+});
+$.validator.addMethod("checkStartTime", function(value, element, params) {
+    var ct = moment().format('X');
+    var st = moment(value).format('X');
+    if (st > ct)
+        return true;
+    else
+        return false;
+});
+$.validator.addMethod("checkEndTime", function(value, element, params) {
+    var et = moment(value).format('X');
+    var st = moment($("#start_time").val()).format('X');
+    if (et > st)
+        return true;
+    else
+        return false;
+});
+</script>

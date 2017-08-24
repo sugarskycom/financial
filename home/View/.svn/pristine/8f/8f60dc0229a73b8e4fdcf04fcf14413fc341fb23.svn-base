@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row">
+        <div class="quote">
+            <div class="col-md-2 title">标的标题</div>
+            <div class="col-md-10 detail dtitle">U计划-新1月-20180801期</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">预计年利率</div>
+            <div class="col-md-10 detail drate">7.8%</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">预计收益金额</div>
+            <div class="col-md-10 detail dincome">8.00元</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">投资期限</div>
+            <div class="col-md-10 detail dtime">12个月</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">收益方式</div>
+            <div class="col-md-10 detail">按月付息，到期还本</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">投资额度</div>
+            <div class="col-md-10 detail dmore">10000.00元</div>
+            <div class="col-md-10 detail dless" style="display: none;color: #ff0000;"><i class="dmoney"></i>&nbsp;&nbsp;&nbsp;您的余额不足&nbsp;&nbsp;&nbsp;<a href="{:U('My/recharge')}">去充值</a></div>
+        </div>
+    </div>
+    <div type="button" class="btn btn-warning rightnow dright">立即投资</div>
+</div>
+<style>
+    .title{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #999999;
+    }
+    .detail{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #333333;
+        font-weight: 500;
+    }
+    .rightnow{
+        width: 290px;
+        height: 40px;
+        font-size: 18px;
+        color: #ffffff;
+        background-color: #fdc230;
+        margin-left: 100px;
+        margin-bottom: 10px;
+    }
+    /*Bootstrap-dialog更改样式*/
+    .modal-content {width: 600px;margin-left:-8px;}
+    .modal-header{
+        background-color: #fdc230;
+        padding: 15px 30px;
+        padding-left:20px;
+    }
+    .bootstrap-dialog-header{
+        color: #ffffff;
+        font-size: 18px;
+    }
+    .modal-body {height: 400px;}
+    .close{
+        color: #ffffff;
+        opacity: 1;
+    }
+
+</style>
+<script>
+    $(function () {
+        $(".dtitle").text($(".pro-intro-l th").text());
+        $(".drate").text($(".f52").text()+"%");
+        $(".dincome").text($("#income").text());
+        $(".dtime").text($(".f38").text()+"天");
+        $(".dmore").text($(".form-control").val());
+        $(".dmoney").text($(".form-control").val());
+        if(parseFloat($(".form-control").val()) >parseFloat( $(".available-sum .sum").text())){
+            $(".dmore").hide();
+            $(".dless").show();
+            $(".dright").attr("disabled",true);
+        }
+    });
+    /*投资提交*/
+    $(".dright").click(function () {
+        //$(".dright").attr("disabled", true).text("提交中···");
+            $.ajax({
+                    url: "/project/Investment",
+                    data: {
+                        amount: $(".form-control").val(),
+                        hid:$("#details").attr("value")
+                    },
+                    type: "post",
+                    success: function (ret) {
+                        if (ret.status == 1) {
+                            $.get("/project/shb",{token:ret.token});
+                        }
+                        else {
+                            
+                        }
+                    }
+            })
+    });
+</script>

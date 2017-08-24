@@ -1,0 +1,413 @@
+<extend name="Public:base" />
+<block name="content">
+<if condition="$step eq 'first'">
+<div class="ibox">
+<div class="ibox-title clearfix">
+     <form action="javascript:;" method="post" id="form" class="form-horizontal">
+         <div class="form-group">
+             <label class="col-md-2 col-sm-3 control-label">借款标唯一号：</label>
+             <div class="col-md-3 col-sm-5">
+                 <input type="text" class="form-control" name="bno" id="bno">
+             </div>
+         </div>
+         <div class="form-group">
+             <label class="col-md-2 col-sm-3 control-label">绑定客户：</label>
+             <div class="col-md-3 col-sm-5">
+                 <select id="customer_id" name="customer_id" class="form-control">
+                     <option value="">请选择</option>
+                     <volist name="customers" id="r">
+                         <option value="{$r.user_id}">{$r.company}</option>
+                     </volist>
+                 </select>
+             </div>
+         </div>
+         <div class="form-group">
+             <label class="col-md-2 col-sm-3 control-label">押品仓：</label>
+             <div class="col-md-3 col-sm-5">
+                 <select id="order_sn" name="order_sn" class="form-control" data-placeholder="请选择">
+                 <option value="">请选择</option>
+                 </select>
+             </div>
+         </div>
+          <div class="form-group">
+             <label class="col-md-2 col-sm-3 control-label">备注：</label>
+             <div class="col-md-3 col-sm-5">
+                 <textarea class="form-control" name="remark" id="remark"></textarea>
+             </div>
+         </div>
+         <div class="form-group">
+             <div class="col-md-offset-2 col-sm-offset-3 col-sm-5">
+                 <button type="button" class="btn btn-success" id="btnStep">下一步、绑定押品</button>
+             </div>
+         </div>
+     </form>
+</div>     
+</div>     
+</if>
+<if condition="$step eq 'second'">
+<div class="ibox">
+	<div class="ibox-title">
+    <h5>押品清单</h5>
+    <div class="ibox-tools"><a class="collapse-link" title="展开/关闭"><i class="fa fa-chevron-up"></i></a></div>
+	</div>
+	<div class="ibox-content">
+        <table class="table table-striped table-hover" id="productList">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>仓库名</th>
+                    <th>商品名称</th>
+                    <th>型号</th>
+                    <th>数量</th>
+                    <th>评估价(元)</th>
+                    <th>小计</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"></td>
+                    <td class="text-right">评估总价：</td>
+                    <td colspan="2"><strong>￥<span id="totalAmount">0</span>元</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        <if condition="$data.check_status eq 0 or $data.check_status eq 2">
+        <button type="button" class="btn btn-primary" id="btnCheck">提交审核</button>
+        </if>
+	</div>
+</div>
+<if condition="$data.check_status eq 0 or $data.check_status eq 2">
+<!--待加入的商品-->
+<div class="ibox">
+    <div class="ibox-title"><h5>待加入的商品</h5>
+<div class="ibox-tools"><a class="collapse-link" title="展开/关闭"><i class="fa fa-chevron-up"></i></a></div>
+    </div>
+    <div class="ibox-content">
+        <form action="javascript:;" method="post" class="form-inline form-bottom-border">
+            <select name="order_sn" id="order_sn" class="form-control">
+                <option value="">选择仓库</option>
+                <volist name="depots" id="r">
+                    <option value="{$r.order_sn}" data-depot-id="{$r.depot_id}">{$r.depot_name}</option>
+                </volist>
+            </select>
+            <input id="customer_id" type="hidden" value="{$data.customer_id}">
+            <input id="keyword" type="text" class="form-control" placeholder="商品关键词">
+            <button class="btn btn-primary" id="btnSearch">搜索</button>
+        </form>
+       <table class="table table-striped table-hover" id="searchList">
+            <thead>
+                <tr>
+                    <th style="width:80px;">
+                        <label class="checkbox-control">
+                        <input type="checkbox" name="allselect" value="all">全选</label>
+                    </th>
+                    <th>编号</th>
+                    <th>仓库名</th>
+                    <th>商品名称</th>
+                    <th>型号</th>
+                    <th>可押数量</th>
+                    <th>质押数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <label class="checkbox-control">
+                            <input type="checkbox" name="allselect" value="all">全选</label>
+                    </td>
+                    <td colspan="7">
+                        <button type="button" class="btn btn-info" id="add">加入押品单</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>    
+    </div>
+</div>
+</if>
+</if>
+</block>
+<block name="css">
+<style>
+.form-top-border{
+    text-align: right;
+    border-top: 1px solid #e7eaec;
+    padding-top: 10px;
+}
+.form-bottom-border{
+    border-bottom: 3px solid #e7eaec;
+    padding-bottom: 10px;
+}
+</style>
+</block>
+<block name="js">
+<if condition="$step eq 'first'">
+<script type="text/javascript">
+$("#btnStep").click(function(){
+    var bno = $.trim($("#bno").val());
+    var customer_id = $("#customer_id").val();
+    var remark = $("#remark").val();
+    var order_sn = $("#order_sn");
+    if(bno==''){
+        error($("#bno"),'借款标唯一号不能为空');
+        $("#bno").focus();
+        return false;
+    }
+    else if(customer_id==''){
+        error($("#customer_id"),'请选择一个客户');
+        $("#customer_id").focus();
+        return false;
+    }
+    else if(order_sn.val()==''){
+        error(order_sn,'必须绑定一个押品仓');
+        order_sn.focus();
+        return false;
+    }
+    else{
+        var res = $.ajax({url:"__ACTION__/?step=checkbno",data:{bno:bno},async:false,type:'get'}).responseText;
+        if(res=='1'){
+            error($("#bno"),'该借款标唯一号不存在');
+            $("#bno").focus();
+            return false;
+        }
+        else{
+            $(this).attr('disabled',true).text('保存中...');
+            $.post("__ACTION__",{bno:bno,remark:remark,customer_id:customer_id,step:'add',order_sn:order_sn.val()},function(ret){
+                if(ret.status==1){
+                    window.location.href="__ACTION__?step=second&osn="+ret.data;
+                }
+                else{
+                    error($("#btnStep"),ret.error);
+                }
+            });
+        }
+    }
+});
+//选择客户联动仓库
+$("#customer_id").change(function(){
+    var v = $(this).val();
+    if(v!=''){
+        $.get("__ACTION__",{customer_id:v,step:'loadDepot'},function(ret){
+            if(ret.status==1){
+                $("#order_sn").html('<option value="">请选择</option>');
+                $.each(ret.data,function(){
+                    $("#order_sn").append('<option value="'+this.depot_id+'" data-depot-id="'+this.depot_id+'" data-depot-name="'+this.depot_name+'">'+this.depot_name+'</option>');
+                })
+                
+            }
+        });
+    }
+});
+</script>
+</if>
+<if condition="$step eq 'second'">
+<script type="text/javascript">
+var flag = false;
+var lid = '{$data.lid}';
+var osn = '{$Think.get.osn}';
+var depot_id = 0;
+var depot_name = '';
+loadData();//加载初始化数据
+//全选
+$("input[name=allselect]").click(function(){
+    if(!flag){
+        $("input[name=productId]").prop("checked",true);
+        flag = true;
+    }
+    else{
+        $("input[name=productId]").prop("checked",false);
+        flag=false;
+    }
+});
+$("#btnCheck").click(function(){
+    cfm("您确定提交审核吗？",function(res){
+        if(res){
+            $.post("__URL__/submitCheck",{osn:osn,flag:'apply'},function(ret){
+                if(ret.status==1){
+                    window.location.href='__URL__/index';
+                }
+                else{
+                    error($("#btnCheck"),ret.error);
+                }
+            });
+        }
+        else{
+            return false;
+        }
+    })
+});
+//开始搜索
+$("#btnSearch").click(function() {
+    order_sn = $("#order_sn").val();
+    var keyword = $.trim($("#keyword").val());
+    var customer_id = $('#customer_id').val();
+    if (order_sn == '') {
+        $("#searchList tbody").empty();
+        return false;
+    } else {
+        var opt = $("#order_sn option:checked");
+        depot_id = opt.attr('data-depot-id');
+        depot_name = opt.attr('data-depot-name');
+        $.post('__URL__/searchStock', {'order_sn': order_sn,'lid': lid, 'keyword': keyword, 'customer_id': customer_id}, function(ret) {
+            var table = $('#searchList');
+            var tbody = $('#searchList > tbody');
+            tbody.empty();
+            if (ret.data.length > 0) {
+                $.each(ret.data, function(index, val) {
+                    var domStr = '';
+                    domStr += '<tr>';
+                    domStr +=     '<td>';
+                    if (val.quantity > 0) {
+                        domStr +=         '<input type="checkbox" value="'+ val.product_id +'" name="productId" data-id="'+val.product_id+'" data-pn="'+ val.product_name +'" data-pno="'+ val.product_no +'" data-dn="'+ val.depot_name +'">';
+                    }
+                    domStr +=     '</td>';
+                    domStr +=     '<td>'+ val.product_id +'</td>';
+                    domStr +=     '<td>'+ val.depot_name +'</td>';
+                    domStr +=     '<td>'+ val.product_name +'</td>';
+                    domStr +=     '<td>'+ val.product_no +'</td>';
+                    domStr +=     '<td>'+ val.quantity +'</td>';
+                    domStr +=     '<td>';
+                    domStr +=         '<input type="number" class="form-control" name="quantity" min="0" max="'+ val.quantity +'" id="p_'+val.product_id+'" value="'+val.quantity+'" onkeyup="checkData(this)" onchange="checkData(this)">';
+                    domStr +=     '</td>';
+                    domStr +=     '<td>';
+                    domStr +=         '<button type="button" class="btn btn-warning remove">移除</button>';
+                    domStr +=     '</td>';
+                    domStr += '</tr>';
+                    tbody.append($(domStr));
+                });
+                table.on('click', 'tbody .remove', function(event) {
+                    $(this).parents('tr').remove();
+                });
+
+            } else {
+                tbody.append('<tr><td colspan="8" class="text-danger">暂无可押商品！</td></tr>');
+            }
+            
+        });
+    }
+});
+
+//加载数据
+function loadData(){
+    $.post("__URL__/loadproduct",{osn:osn},function(ret){
+        if(ret.status==1){
+            var tr = '';
+            $.each(ret.data.list,function(){
+                tr += '<tr>';
+                tr += '<td>'+this.product_id+'</td>';
+                tr += '<td>'+this.depot_name+'</td>';
+                tr += '<td>'+this.product_name+'</td>';
+                tr += '<td>'+this.product_no+'</td>';
+                tr += '<td>'+this.quantity+'</td>';
+                tr += '<td><input type="number" value="'+this.assess_price+'" name="price" class="form-control" onchange="updatePrice(this,'+this.id+')" id="p_'+this.id+'" title="价格更新成功" data-placement="left" data-count="'+this.quantity+'"></td>';
+                tr += '<td><span id="t_'+this.id+'" name="total">'+this.total+'</span></td>';
+                tr += '<td><a href="javascript:;" onclick="removeTr(this,'+this.id+')" class="btn btn-warning">移除</a></td>';
+                tr += '</tr>';
+            });
+            //if(parseFloat(ret.data.total)>=10000) $x
+            $("#totalAmount").text(ret.data.total);
+            $("#productList tbody").html(tr);
+        }
+    });
+}
+//添加到押品单
+$('#add').click(function(event) {
+    var inputs = $("input[name=productId]:checked");
+    var o = $("#add");
+    if(inputs.size()==0){
+        error(o,"未选择商品");
+        return false;
+    }
+    var arr = [];
+    $.each(inputs,function(){
+        var id = $(this).attr("data-id");
+        var q = $("#p_"+id).val();
+        if(q<=0){
+            alt("请删除质押数量为0的行");
+            return false;
+        }
+    });
+    $.each(inputs,function(){
+        var id = $(this).attr("data-id");
+        var pn = $(this).attr('data-pn');
+        var pno = $(this).attr('data-pno');
+        var dn = $(this).attr('data-dn');
+        var q = $("#p_"+id).val();
+        var item = {};
+        item.product_id = id;
+        item.quantity = q;
+        item.product_name = pn;
+        item.product_no = pno;
+        item.depot_name = dn;
+        arr.push(item);
+    });
+    var str = JSON.stringify(arr); var order_sn = $('#order_sn option:checked').val(); var depot_id = $('#order_sn option:checked').attr('data-depot-id');
+    $("#add").attr("disabled",true);
+    $.post("__URL__/addproduct",{data:str,lid:lid,order_sn:order_sn,osn:osn,depot_id:depot_id,depot_name:depot_name},function(ret){
+        if(ret.status==0){
+            $("#add").attr("disabled",false);
+            error(o,ret.error);
+        }
+        else if(ret.status==1){
+            $("#searchList tbody").empty();
+            loadData();
+            $("#add").attr("disabled",false);
+        }
+    });
+});
+
+
+function checkData(obj){
+    var max = parseInt($(obj).attr("max"));
+    var v = parseInt($(obj).val());
+    if(v > max){
+        $(obj).val(max);
+    }
+    else if(v < 0){
+        $(obj).val(0);
+    }
+}
+
+function removeTr(o,id){
+    $.post("__URL__/delproduct",{id:id},function(ret){
+        if(ret.status==1){
+            $(o).parent("td").parent("tr").remove();
+            total();
+        }
+    })
+}
+
+function updatePrice(o,id){
+    var price = $(o).val();
+    if (price < 0 || price == '') {
+        $(o).val(0);
+    } else {
+        $.post("__URL__/updateprice",{id:id,price:price,osn:osn},function(ret){
+            if(ret.status==1){
+                $("#p_"+id).tooltip('show');
+                setTimeout(function(){
+                    $("#p_"+id).tooltip('destroy');
+                },1000);
+                var q = $(o).attr('data-count');
+                var t = parseInt(q)*parseFloat($(o).val());
+                $("#t_"+id).text(t);
+                total();
+            }
+        })
+    }
+}
+
+function total(){
+    var x = 0;
+    $.each($("span[name=total]"),function(){
+        x += parseFloat($(this).text());
+    });
+    $("#totalAmount").text(x);
+}
+</script>
+</if>
+</block>

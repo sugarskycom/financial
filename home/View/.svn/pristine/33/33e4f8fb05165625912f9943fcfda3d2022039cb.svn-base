@@ -1,0 +1,109 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="font-size: 18px;">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li><a href="">仓单融资</a></li>
+                    <li class="active"><strong>项目名称</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!--公告列表-->
+    <div class="container">
+        <div class="project-detail" style="margin-bottom: 20px;">
+            <div class="row"></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="project-id row">
+                        <span class="col-md-4"><strong>ID：</strong></span>
+                        <span class="col-md-4">类型：</span>
+                        <span class="col-md-4"><i class="fa fa-file-pdf-o fa-fw"></i><a href="/Project/contractTemp?hid=" target="_black">查看合同范本</a></span>
+                    </div>
+                    <h2 class="project-title"></h2>
+                    <div class="row project-num">
+                        <div class="col-md-4"><span>出让额度：</span>
+                            <p class="text-success">￥0</p>
+                        </div>
+                        <div class="col-md-5">
+                            <span>预期年化收益：</span>
+                            <p class="text-red">%+%</p>
+                        </div>
+                        <div class="col-md-3">
+                            <span>出让期限：</span>
+                            <p class="text-success">
+                                天							</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"><strong>还款方式：一次性还本付息</strong></div>
+                        <div class="col-md-8">
+                            <span>进度：0%</span>
+                            <div class="progress progress-mini">
+                                <div style="width: 0%;" class="progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person-count">受让人数：<span class="text-red">0</span></div>
+                </div>
+                <div class="col-md-4">
+                    <!-- <-if condition="$data.status eq 1"> -->
+                    <!--开发投标-->
+                    <div class="amount-time">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h5>剩余受让额度</h5>
+                                <p class="text-success">0元</p>
+                            </div>
+                            <div class="col-sm-7 time">
+                                <h5>剩余时间</h5>
+                                <p><span class="day"></span>天<span class="hour"></span>时<span class="minute"></span>分<span class="second"></span>秒</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-amount">
+                        账户余额：<strong class="text-red">￥0</strong>
+                    </div>
+                    <div class="input-control">
+                        <div class="input-group">
+                            <input type="text" value="" class="form-control" placeholder="元起投" onkeyup="calculateIncome(this)" onchange="calculateIncome(this)" id="invest_amount">
+                            <span class="input-group-addon">元</span>
+                        </div>
+                        <div class="income">
+                            预计收益：<span id="income">0.00</span>元
+                        </div>
+                    </div>
+
+                    <div class="project-btn">
+                        <button type="button" class="btn btn-success" id="btnSure">确认受让</button>
+                        <button type="button" class="btn btn-primary" id="btnCalculator">收益计算器</button>
+                    </div>
+                    <!-- </-if> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center type">
+            <div class="col-md-4">项目详情</div>
+            <div class="col-md-4">还款计划</div>
+            <div class="col-md-4">出借达人榜</div>
+        </div>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .type{
+            font-size: 18px;
+            border-top: 2px solid #fdc230;
+        }
+    </style>
+</block>
+<block name="js">
+
+</block>

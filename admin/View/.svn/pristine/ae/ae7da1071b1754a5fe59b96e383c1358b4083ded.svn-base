@@ -1,0 +1,109 @@
+<script type="text/javascript">
+function loadDepot(o){
+	$(o).append('<option value="">选择仓库</option>');
+	$.post("__URL__/getDepotList",{},function(ret){
+		if(ret.status==1){
+			$.each(ret.data,function(){
+				var opt = '<option value="'+this.depot_id+'">'+this.depot_name+'</option>';
+				$(o).append(opt);
+			})
+		}
+	});
+}
+//加载客户信息
+function loadCustomer(o,id){
+	var obj = $("#"+id);
+    var depot_id = $(o).val();
+    if(depot_id!=''){
+        $.post("__URL__/loadCustomer",{depot_id:depot_id},function(ret){
+            if(ret.status==1){
+            	obj.html('<option value="">请选择</option>');
+                $.each(ret.data,function(){
+                    var opt = $('<option value="'+this.order_sn+'">'+this.company+'</option>');
+                    obj.append(opt);
+                })  
+            }
+            else{
+               error(ret.error)
+            }
+
+        });
+    }
+    else{
+        obj.html('<option value="">请选择</option>');
+    }
+}
+
+//库存查询
+function stockSearch(){
+    var depot_id = $("#depot_id_1").val();
+    var order_sn = $("#order_sn_1").val();
+    var zero_stock = $("#zero_stock").val();
+    if(depot_id==''){
+        error("depot_id_1","请选择一个仓库");
+        return false;
+    }
+    else if(order_sn==''){
+        error('order_sn_1',"请选择一个客户")
+        return false;
+    }
+    else{
+        var keyword = $("#keyword").val().trim();
+        var obj = {
+            depot_id:depot_id,
+            order_sn:order_sn,
+            keyword:keyword,
+            zero_stock:zero_stock
+        };
+        $.post("__URL__/stockSearch",obj,function(ret){
+            if(ret.status==1){
+                var str = '';
+                var t1=0;
+                var t2=0;
+                var t3=0;
+                $.each(ret.data,function(){
+                    var n = parseInt(this.quantity)-parseInt(this.feeze_count);
+                    str += '<tr><td>'+this.product_id+'</td><td>'+this.cname+'</td><td>'+this.brand+'</td><td>'+this.product_name+'</td><td>'+this.product_no+'</td><td>'+this.quantity+'</td><td>'+this.feeze_count+'</td><td>'+n+'</td></tr>';
+                    t1 += parseInt(this.quantity);
+                    t2 += parseInt(this.feeze_count);
+                    t3 += n;
+                });
+                if(str!="")
+                    $("#resList tbody").html(str);
+                else
+                    $("#resList tbody").html('<tr><td colspan="11" class="text-center text-color-red">暂无信息</td></tr>');
+                $("#t1").text(t1);
+                $("#t2").text(t2);
+                $("#t3").text(t3);
+            }
+        });
+    }
+}
+//单据查询
+function docSearch(){
+  var obj = {
+        depot_id:$("#depot_id_2").val(),
+        order_sn:$("#order_sn_2").val(),
+        inout_time:$("#inout_time").val(),
+        type:$("#type").val(),
+        flag:'loaddoc',
+    }
+    $.post("__URL__/stock",obj,function(ret){
+        if(ret.status==1){
+            var tr = '';
+            $.each(ret.data,function(){
+                var time = this.inout_time;
+                time = formatTime(time);
+                var type = this.action_type==1?'入库':'出库';
+                tr += '<tr><td>'+this.osn+'</td><td>'+type+'</td><td>'+this.depot_name+'</td><td>'+this.company+'</td><td>'+time+'</td></tr>';
+            });  
+            if(tr==""){
+                $("#dList tbody").html("<tr><td colspan='10' class='text-center text-color-red'>没有找到数据</td></tr>")
+            }   
+            else{
+                 $("#dList tbody").html(tr);
+            } 
+        }
+    });
+}
+</script>

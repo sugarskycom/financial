@@ -1,0 +1,238 @@
+.relative{
+	position: relative;
+}
+.user-info{
+	width:260px;
+	margin:0 auto;
+	position:absolute;
+	top:0;
+	left:0;
+	background-color: #fff;
+	padding: 15px;
+	border:1px solid #ddd;
+	border-top-width: 3px;
+}
+.user-info h1{
+	text-align: left;
+	font-size: 16px;
+	padding: 10px 0;
+	margin:0;
+}
+.user-info h1 span{
+	border-left:2px solid #1c84c6;
+	line-height: 100%;
+	padding-left: 5px;
+}
+.user-avatar{
+	text-align: center;
+	color: #ccc;
+}
+.user-avatar i{
+	width:80px;
+	height: 80px;
+	line-height: 80px;
+	border:1px solid #ddd;
+	display: inline-block;
+}
+.user-name{
+	text-align: center;
+	line-height: 150%;
+	padding: 7px 0;
+}
+.user-status,.user-action-count{
+	text-align: center;
+	line-height: 180%;
+	padding: 7px 0;
+}
+.user-status i{
+	font-size: 16px;
+}
+.user-status span{
+	color: #1c84c6;
+}
+.user-action-count span{
+	display: block;
+	color: #1c84c6;
+}
+.user-account,.user-amount,.user-credit{
+	line-height: 180%;
+}
+.user-amount span,.user-credit span{
+	color: #1c84c6;
+}
+.user-box{
+	margin-left: 290px;
+}
+.user-box h5{
+	font-weight: 500;
+	font-size: 15px;
+	border-bottom: 2px solid #ddd;
+	display: inline-block;
+	padding: 7px 10px;
+}
+.info{
+	margin-bottom: 0;
+}
+
+
+
+.card-list{
+}
+.card-list .item{
+	float:left;
+	margin-right: 20px;
+	width:300px;
+	background-color: rgb(198,82,85);
+	border-radius: 5px;
+	color: #fff;
+	padding:0;
+	/*cursor: pointer;*/
+	position: relative;
+}
+
+.card-list .item:hover{
+	/*background-color: rgba(198,82,85,0.8);*/
+}
+
+.card-list .item span{
+	display: block;
+}
+.card-list .item span.name{
+	text-align: left;
+	padding-left: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+.card-list .item span.no{
+	background-color: #333;
+	line-height: 36px;
+	font-size: 20px;
+	font-family: arial;
+	font-weight: 600;
+	text-align: right;
+	padding-right: 15px;
+}
+.card-list .item span.full-name{
+	padding: 10px 15px 10px 0;
+	text-align: center;
+	font-size: 14px;
+}
+.card-list .item span.time{
+	text-align: right;
+	line-height: 180%;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+/*
+.card-list .item span.icon{
+	position: absolute;
+	left:10px;
+	bottom: 10px;
+}
+*/
+.card-list .add-item{
+	float:left;
+	margin-right: 20px;
+	width:296px;
+	background-color: #fff;
+	border-radius: 5px;
+	border:2px dashed #ccc;
+	height: 151px;
+	position: relative;
+	cursor: pointer;
+}
+.card-list .add-item div{
+	position: absolute;
+	left:80px;
+	top:50px;
+}
+.card-list .add-item div i{
+	color: #ccc;
+}
+.card-list .add-item span{
+	color: #ccc;
+	position: absolute;
+	left:125px;
+	top:60px;
+}
+.company-form h5{
+	font-size: 16px;
+	font-weight: 500;
+	
+}
+#table tbody td{
+	/*text-align:center;*/
+	padding-left: 10px;
+}
+table#table thead > tr > th {
+    /*text-align: center;*/
+    padding-left: 10px;
+}
+
+.text-red{
+	color:red;
+}
+
+.selected-user{
+	border:1px solid #e5e6e7;
+	padding: 10px;
+	min-height: 34px;
+}
+.selected-user span{
+	display: inline-block;
+	padding: 5px 5px 5px 10px;
+	font-size: 12px;
+	border:1px solid #ccc;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.selected-user span:hover{
+	background-color: #e5e6e7;
+}
+.selected-user span i{
+	cursor: pointer;
+}
+.list-group-user-result{
+	position: absolute;
+	left:15px;
+	z-index: 1000;
+	background-color: #fff;
+}
+.list-group-user-result .list-group-item{
+	border-radius: 0;
+}
+.fixed-table-container {
+    border: 0;
+}
+.bootstrap-table .table {
+   border-bottom: 0;
+}
+.bootstrap-table .table.table-no-bordered > thead > tr > th,
+.bootstrap-table .table.table-no-bordered > tbody > tr > td {
+    border-right:0;
+}
+.fixed-table-container thead th {
+    border-left: 0;
+}
+.fixed-table-container tbody td {
+    border-left: 0;
+}
+.fixed-table-container tbody td .th-inner, .fixed-table-container thead th .th-inner {
+	padding-left: 0;
+}
+#toolbar .dropdown-menu{
+	text-align: left;
+    max-height: 300px;
+    overflow: auto;
+}
+#toolbar .dropdown label{
+	padding: 3px 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin:0;
+}
+input[type="number"]{-moz-appearance:textfield;}

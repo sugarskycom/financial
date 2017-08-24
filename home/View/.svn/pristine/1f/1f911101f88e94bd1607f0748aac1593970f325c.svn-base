@@ -1,0 +1,17 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+
+    <!--评估问卷-->
+    <div class="container">
+
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</block>

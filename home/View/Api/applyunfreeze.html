@@ -1,0 +1,320 @@
+<extend name="base"/>
+<block name="content">
+	<div class="ibox">
+		<div class="ibox-title">
+			<h3>
+			<if condition="$step eq 'second'">
+			押品清单
+			<else/>
+			解冻申请
+			</if>
+			</h3>
+		</div>
+		<div class="ibox-content">
+		<if condition="$step eq 'first'">
+		<form action="javascript:;" method="post" id="form" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label">借款唯一号：</label>
+					<div class="col-sm-4 col-md-3">
+					<input type="text" class="form-control" name="bno" id="bno" value="">
+					</div>
+					<div class="col-sm-5 col-md-7"></div>
+				</div>
+				<!--/form-->
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label">备注：</label>
+					<div class="col-sm-4 col-md-3">
+						<textarea class="form-control" name="remark" id="remark"></textarea>
+					</div>
+					<div class="col-sm-5 col-md-7"></div>
+				</div>
+				<!--/form-->
+				<div class="form-group">
+		             <div class="col-sm-offset-3  col-md-offset-2  col-sm-5">
+		                 <button type="button" class="btn btn-success" id="btnStep">下一步、解冻商品</button>
+		             </div>
+	         	</div>
+			</form>
+			</if>
+			<if condition="$step eq 'second'">
+	<table class="table table-hover table-striped"
+        data-toggle="table"
+        data-url="__ACTION__"
+        data-pagination="true"
+        data-query-params="params"
+        data-side-pagination="server"
+        data-page-list="[10,20,30,50]"
+        data-method="get"
+        data-page-size="10"
+        data-cache="false"
+        data-sort-order="desc"
+        data-sort-name="id"
+>
+        <thead>
+            <tr>
+                <th data-field="product_id">商品编号</th>
+                <th data-field="depot_name">所在仓库</th>
+                <th data-field="product_name">商品名称</th>
+                <th data-field="product_no">型号</th>
+                <th data-field="quantity">可解冻数</th>
+                <th data-field="freeze_count">原质押数量</th>
+                <th data-field="assess_price" data-formatter="formatCny">评估价</th>
+                <th data-field="id" data-formatter="formatAction">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+      </tbody>
+    </table>
+			</if>
+		</div>
+	</div>
+<if condition="$step eq 'second'">
+<!--解冻清单-->
+<div class="unfreeze-list clearfix">
+    <div class="ibox">
+        <div class="ibox-title clearfix">
+            <h5 style="position: relative;">解冻清单
+            <span class="badge badge-info" id="count"></span><label class="total-label">总估值：</label>
+            <span class="total-price">{$data.total_price|default=0|number_format=0}</span>
+            <button type="button" class="btn btn-primary" onclick="submitClick(this)">提交审核</button>
+            </h5>
+            <div class="ibox-tools pull-right">
+    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    <a class="close-link"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="ibox-content">
+<table class="table table-hover table-striped"
+        id="unfreezeList"
+        data-toggle="table"
+        data-url="__ACTION__"
+        data-pagination="true"
+        data-query-params="paramsb"
+        data-side-pagination="server"
+        data-page-list="[10,20,30,50]"
+        data-method="get"
+        data-page-size="10"
+        data-cache="false"
+        data-sort-order="desc"
+        data-sort-name="id"
+>
+        <thead>
+            <tr>
+                <th data-field="product_id">商品编号</th>
+                <th data-field="depot_name">所在仓库</th>
+                <th data-field="product_name">商品名称</th>
+                <th data-field="product_no">型号</th>
+                <th data-field="max">最大解冻数量</th>
+                <th data-field="quantity" data-formatter="formatNum">解冻数量</th>
+                <th data-field="assess_price" data-formatter="formatCny">评估价</th>
+                <th data-field="assess_price" data-formatter="formatCny">小计</th>
+                <th data-field="id" data-formatter="formatRemove">移除</th>
+            </tr>
+        </thead>
+        <tbody>
+      </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+</if>
+
+</block>
+<block name="js">
+<if condition="$step eq 'first'">
+<script type="text/javascript">
+$("#btnStep").click(function(){
+    var bno = $.trim($("#bno").val());
+    var remark = $("#remark").val();
+    if(bno==''){
+        alt($("#bno"),'借款标唯一号不能为空');
+        $("#bno").focus();
+        return false;
+    }
+    else{
+        var res = $.ajax({url:"__URL__/checkbno",data:{bno:bno},async:false,type:'post'}).responseText;
+        if(res!='1'){
+            alt($("#bno"),'该借款标唯一号不存在');
+            $("#bno").focus();
+            return false;
+        }
+        else{
+            $(this).attr('disabled',true).text('保存中...');
+            $.post("__ACTION__?step=add",{bno:bno,remark:remark,step:'save'},function(ret){
+                if(ret.status==1){
+                    window.location.href="__ACTION__?step=second&osn="+ret.data;
+                }
+                else{
+                    alt($("#btnStep"),ret.error);
+                    setTimeout(function(){
+                    	$("#btnStep").attr('disabled',false).text('下一步、解冻商品');
+                    },2000);
+                }
+            });
+        }
+    }
+});
+</script>
+</if>
+<if condition="$step eq 'second'">
+<include file="table"/>
+<script type="text/javascript">
+function params(params){
+	params.osn='{$Think.get.osn}';
+	params.step='load';
+	return params;
+}
+function formatAction(v,r,i){
+    return '<button type="button" class="btn btn-info" onclick="addList(this,'+v+','+r.product_id+')">加入解冻清单</button>';
+}
+function addList(o,id,pid){
+    $.post("__ACTION__",{step:'addProduct',lid:'{$lid}',id:id,osn:'{$osn}',product_id:pid},function(ret){
+        if(ret.status==1){
+            alt($(o),'加入成功');
+            $("#unfreezeList").bootstrapTable('refresh');
+            count();
+            updateTotalPrice(ret.data);
+        }
+        else if(ret.status==0){
+            alt($(o),ret.error);
+        }
+    });
+}
+function formatRemove(v,r,i){
+    return '<button type="button" class="btn btn-success" onclick="removeProduct(this,'+v+')">移除</button>';
+}
+function count(){
+    $.get("__ACTION__",{step:'count',osn:'{$osn}'},function(res){
+        $("#count").text(res);
+    });
+}
+function removeProduct(o,id){
+    $.post("__ACTION__",{step:'removeProduct',id:id,osn:'{$osn}'},function(ret){
+        if(ret.status==1){
+            count();
+            updateTotalPrice(ret.data);
+            $("#unfreezeList").bootstrapTable('refresh');
+        }
+    });
+}
+function formatNum(v,r,i){
+    return '<input type="number" min="1" max="'+r.max+'" value="'+r.quantity+'" class="form-control" onchange="updateNum(this,'+r.id+','+i+','+r.assess_price+')">'
+}
+function updateNum(o,id,i,p){
+    var n = $(o).val();
+    var max = $(o).attr('max');
+    var min = $(o).attr('min');
+    if(parseInt(n)>parseInt(max)){
+        $(o).val(max);
+        n = max;
+    }
+    if(parseInt(n)<=0){
+        $(o).val(1);
+        n = 1;
+    }
+    $.post("__ACTION__",{step:'updateNum',id:id,count:n,osn:'{$osn}'},function(ret){
+        if(ret.status==1){
+            alt($(o),'更新成功');
+            //更新统计
+            updateTotal(n,p,i);
+            updateTotalPrice(ret.data);
+        }
+    });
+}
+function updateTotal(n,p,i){
+    var t = n*p;
+    $("#unfreezeList tbody").find("tr:eq("+i+")").find("td:eq(7)").text(t.toLocaleString())
+}
+function updateTotalPrice(t){
+    $(".total-price").text(parseFloat(t).toLocaleString());
+}
+function submitClick(o){
+    $.post("__ACTION__",{step:'submitClick',osn:'{$osn}'},function(ret){
+        if(ret.status==1){
+            BootstrapDialog.alert({
+                type:BootstrapDialog.TYPE_DEFAULT,
+                title:"提示",
+                message:ret.data,
+                callback:function(){
+                    window.location.href="__URL__/myunfreeze";
+                },
+                buttonLabel:'确定'
+            });
+        }
+        else{
+            alt($(o),ret.error);
+        }
+    });
+}
+function paramsb(params){
+    params.step = 'loadUnfreeze';
+    params.lid = '{$lid}';
+    params.osn = '{$osn}';
+    return params;
+}
+count();
+$('.collapse-link').click(function () {
+    var ibox = $(this).closest('div.ibox');
+    var button = $(this).find('i');
+    var content = ibox.find('div.ibox-content');
+    content.slideToggle(200);
+    button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+    ibox.toggleClass('').toggleClass('border-bottom');
+    setTimeout(function () {
+        ibox.resize();
+        ibox.find('[id^=map-]').resize();
+    }, 50);
+});
+// Close ibox function
+$('.close-link').click(function () {
+    var content = $(this).closest('div.ibox');
+    content.remove();
+});
+
+// Fullscreen ibox function
+$('.fullscreen-link').click(function () {
+    var ibox = $(this).closest('div.ibox');
+    var button = $(this).find('i');
+    $('body').toggleClass('fullscreen-ibox-mode');
+    button.toggleClass('fa-expand').toggleClass('fa-compress');
+    ibox.toggleClass('fullscreen');
+    setTimeout(function () {
+        $(window).trigger('resize');
+    }, 100);
+});
+</script>
+</if>
+</block>
+<block name="css">
+<style type="text/css">
+.unfreeze-list{
+    position: fixed;
+    bottom: 0;
+    right:30px;
+    left:30px;
+    z-index: 1049;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #1a7bb9;
+}
+
+.unfreeze-list .ibox-title{
+    border-color: #1a7bb9;
+}
+#count{
+    position: absolute;
+    left:60px;
+    top:-10px;
+}
+.total-price{
+    display: inline-block;
+    color:red;
+    margin-right: 30px;
+}
+.total-label{
+    display: inline-block;
+    margin-left:100px;
+}
+
+</style>
+</block>		

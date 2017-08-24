@@ -1,0 +1,24 @@
+<!-- DataTables CSS -->
+<link href="{$Think.config.RESOURCE_URL}/components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+<!-- DataTables Responsive CSS -->
+<link href="{$Think.config.RESOURCE_URL}/components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+<!-- DataTables JavaScript -->
+<script src="{$Think.config.RESOURCE_URL}/components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+$.extend($.fn.dataTable.defaults, {
+    language: {
+        "url": "{$Think.config.RESOURCE_URL}/components/datatables-plugins/i18n/datatables-chinese.json",
+        "sSearchPlaceholder": "关键词..."
+    },
+    lengthMenu: [5, 10, 25, 50, 100],
+    searching: true,
+    ordering: true,
+    responsive: true,
+    pageLength: 10,
+    processing: true,
+    serverSide: true,
+    autoWidth: false,
+    paging: true //禁止表格分页
+});
+</script>

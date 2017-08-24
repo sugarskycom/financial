@@ -1,0 +1,79 @@
+<form action="" method="post" id="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><span class="text-red">*</span>FMS用户：</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                	<input type="text" class="form-control" name="fms" id="fms" value="" placeholder="用户名关键词">
+                	<div class="input-group-btn"><button class="btn btn-default" type="button" id="search">检索</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><span class="text-red">*</span>ERP用户名：</label>
+            <div class="col-sm-9">
+            <input type="text" class="form-control" name="erp_username" id="erp_username" value="" placeholder="ERP用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><span class="text-red">*</span>ERP用户ID：</label>
+            <div class="col-sm-9">
+            <input type="text" class="form-control" name="erp_user_id" id="erp_user_id" value="" placeholder="ERP用户ID">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+            	<input type="hidden" name="fmsuser" id="fmsuser" value="">
+            	<button class="btn btn-primary" type="button" id="savebtn">保存绑定</button>
+            </div>
+        </div>
+</form>
+<script type="text/javascript">
+$("#search").click(function(){
+	checkUser();
+});
+$("#fms").change(function(){
+	checkUser();
+});
+function checkUser(){
+	var fms = $.trim($("#fms").val());
+	if(fms=='')return false;
+	$.post("__URL__/builduser",{flag:'search',fms:fms},function(ret){
+		if(ret.status==1){
+			$("#fms").val(ret.data.username);
+			$("#fmsuser").val(ret.data.username+"/"+ret.data.uid);
+		}
+		else{
+			$("#fmsuser").val('');
+			error($("#fms"),ret.error);
+		}
+	});
+}
+
+$("#savebtn").click(function(){
+	var erp_user_id = $.trim($("#erp_user_id").val());
+	var erp_username = $.trim($("#erp_username").val());
+	var fmsuser = $.trim($("#fmsuser").val());
+	if(fmsuser==''){
+		error($("#fms"),'fms用户不能为空');
+	}
+	else if(erp_username==''){
+		error($("#erp_username"),'erp用户名不能为空');
+	}
+	else if(erp_user_id==''){
+		error($("#erp_user_id"),'erp用户ID不能为空');
+	}
+	else{
+		$(this).attr('disabled',true);
+		$.post("__URL__/builduser",{flag:'save',fmsuser:fmsuser,erp_user_id:erp_user_id,erp_username:erp_username},function(ret){
+			if(ret.status==1){
+				$("#table").bootstrapTable('refresh');
+				closeDialog();
+			}
+			else{
+				$("#savebtn").attr('disabled',false);
+				error($("#savebtn"),ret.error);
+			}
+		});
+	}
+})
+</script>

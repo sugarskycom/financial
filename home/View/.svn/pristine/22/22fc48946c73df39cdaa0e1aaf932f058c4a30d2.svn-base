@@ -1,0 +1,424 @@
+<extend name="Public:theme"/>
+<block name="content">
+    <include file="Public:top"/>
+    <div class="register-bg">
+        <div class="container">
+            <div class="middle-box loginscreen animated fadeInDown">
+                <h3 class="reg-title">注册账号<span>已有账号？<a href="{:U('Login/index')}">立即登录</a></span></h3>
+                <form role="form" action="javascript:;" method="post" id="form" name="form">
+                    <div class="form-group username">
+                        <input type="text" class="form-control" placeholder="请输入您的用户名" required="" name="username" id="username">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="form-group mobile">
+                        <input type="text" class="form-control mobile" placeholder="请输入您的手机号" required="" name="mobile" id="mobile">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="form-group password">
+                        <input type="password" class="form-control password" placeholder="请您输入密码" required="" name="password" id="password">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="form-group repassword">
+                        <input type="password" class="form-control repassword" placeholder="确认密码" required="" id="repassword" name="repassword">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="form-group smscode">
+                        <input type="text" class="form-control smscode" placeholder="短信验证码" required="" id="smscode" name="smscode" style="width: 270px;">
+                        <a type="submit" class="btn btn-white" id="getCode">发送验证码</a>
+                        <input type="hidden" value="60" name="mz" id="mz">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="agreement" name="accept">
+                            <span>同意<b id="agreement"><a href="{:U('Index/agreement')}">《用户服务协议》</a></b></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success btn-block m-b" id="register">注册</button>
+                    <div class="main-msg"></div>
+                    <input type="hidden" name="backurl" value="{$backurl}" id="backurl">
+                </form>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="css">
+<link rel="stylesheet" type="text/css" href="{$Think.config.RESOURCE_URL}/components/dialog/css/bootstrap-dialog.min.css">
+    <style>
+        .error {
+            text-align: left;
+            display: block;
+            color:red;
+        }
+
+        .register-bg {
+            background: url(/Public/images/login/bg.png) no-repeat;
+            height: 380px;
+        }
+        .register-bg .container {padding-left:0;padding-right: 0;}
+        .register-bg .middle-box {
+            max-width: 760px;
+            width: 760px;
+            margin-top: 110px;
+            padding: 50px 170px;
+            background-color: #fff;
+        }
+
+        .middle-box .reg-title {
+            position: relative;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .middle-box .reg-title > span {
+            position: absolute;
+            right: 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .middle-box .reg-title > span > a {
+            color: #337ab7;
+        }
+
+        .form-group {
+            height: 40px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .form-group input {
+            position: absolute;
+            border: 0;
+            left: 8%;
+            width: 90%;
+        }
+
+        .form-group .divider {
+            position: absolute;
+            height: 15px;
+            width: 1px;
+            background-color: #e5e5e5;
+            left: 8%;
+            top: 32%;
+        }
+
+        ::-moz-placeholder {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        :-ms-input-placeholder {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .btn-white {
+            position: absolute;
+            border: 0;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: #337ab7;
+            right: 0;
+        }
+
+        .btn-white:hover,
+        .btn-white:focus,
+        .btn-white.focus,
+        .btn-white:active,
+        .btn-white.active,
+        .open > .dropdown-toggle.white {
+            background-color: #fff !important;
+            border: 0 !important;
+        }
+
+        .form-group.username {
+            background: url(/Public/images/login/user.png) no-repeat 2% 50%;
+        }
+
+        .form-group.mobile {
+            background: url(/Public/images/login/phone.png) no-repeat 2% 50%;
+        }
+
+        .form-group.password {
+            background: url(/Public/images/login/password.png) no-repeat 2% 50%;
+        }
+
+        .form-group.repassword {
+            background: url(/Public/images/login/password.png) no-repeat 2% 50%;
+        }
+
+        .form-group.smscode {
+            background: url(/Public/images/login/yanzhengma.png) no-repeat 2% 50%;
+        }
+
+        .checkbox {
+            margin-top: -8px;
+        }
+
+        .checkbox span {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .checkbox span > b {
+            font-weight: normal;
+            color: #fdc230;
+            cursor: pointer;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #fdc230;
+            border-color: #fdc230;
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+        .btn-success[disabled]{
+            background-color: #fdc230;
+            border-color: #fdc230;
+        }
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.success {
+            color: #fff;
+            background-color: #fdc230 !important;
+            border-color: #fdc230 !important;
+        }
+        .form-control.error{
+            border: none;
+        }
+        label.error {
+            margin-top: 40px;
+            font-weight: 500;
+        }
+
+    </style>
+</block>
+<block name="js">
+    <!-- iCheck -->
+<!--     <script src="{$Think.config.RESOURCE_URL}/components/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+    <script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+            var token = '{$token}';
+            $("#form").validate({
+                //onfocusout:true,
+                onkeyup:false,
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 5,
+                        isValidUser: true,
+                        isExistsUser: true
+                    },
+                    mobile:{
+                        required: true,
+                        isValidMobile: true,
+                        isExistsMobile: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    repassword: {
+                        required: true,
+                        equalTo: "#password"
+                    },
+                    smscode: {
+                        required: true,
+                        checkSmsCode: true
+                    }
+                },
+                messages: {
+                    username: {
+                        required: "用户名不能为空",
+                        minlength: "用户名至少5个字符",
+                        isValidUser: "用户名只能以字母开头，字母、数字或下划线组成",
+                        isExistsUser: "该用户名已存在不可注册"
+                    },
+                    mobile: {
+                        required: "手机号不能为空",
+                        isValidMobile: "手机号格式无效",
+                        isExistsMobile: "该手机号已存在不可注册"
+                    },
+                    password: {
+                        required: "密码不能为空",
+                        minlength: "密码至少6个字符"
+                    },
+                    repassword: {
+                        required: "再次输入密码",
+                        equalTo: "两次密码不一致"
+                    },
+                    smscode: {
+                        required: "短信验证码不能为空",
+                        checkSmsCode: "验证码不正确或已过期"
+                    }
+                },
+                errorPlacement: function (error, element, params) {
+                    if (element.attr('name') == "accept") {
+                        error.appendTo($(".main-msg"));
+                    }
+                    else if (element.attr('name') == 'mobile') {
+                        error.appendTo(element.parent('div'));
+                    }
+                    else {
+                        error.appendTo(element.parent("div"));
+                    }
+
+                },
+                submitHandler: function (form) {
+                    var v = $("input[name=accept]:checked").size();
+                    if (v == 0) {
+                        BootstrapDialog.alert({
+                            type: BootstrapDialog.TYPE_DEFAULT,
+                            title: "温馨提示",
+                            message: "您是否阅读并同意汇通资产平台用户服务协议?",
+                            buttonLabel: "确定"
+                        });
+                        return false;
+                    }
+                    else {
+                        var obj = new Object();
+                        obj.username = $.trim($("#username").val());
+                        obj.password = $.trim($("#password").val());
+                        obj.repassword = $.trim($("#repassword").val());
+                        obj.mobile = $.trim($("#mobile").val());
+                        obj.smscode = $.trim($("#smscode").val());
+                        $.ajax({
+                            url: "__ACTION__",
+                            data: obj,
+                            type: "post",
+                            success: function (ret) {
+                                if (ret.status == 1) {
+                                    alt(ret.data, function () {
+                                        window.location.href = $("#backurl").val();
+                                    })
+                                }
+                                else {
+                                    BootstrapDialog.alert({
+                                        type: BootstrapDialog.TYPE_DEFAULT,
+                                        title: "温馨提示",
+                                        message: ret.error,
+                                        buttonLabel: "确定"
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    return false;
+                }
+            });
+            $.validator.addMethod("isValidMobile", function (value, element, params) {
+                var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+                if (!reg.test(value)) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            });
+            $.validator.addMethod("isValidUser", function (value, element, params) {
+                var reg = /^[a-zA-Z][a-zA-Z0-9_]{4,12}$/;
+                if (reg.test(value))
+                    return true;
+                else
+                    return false;
+            });
+            $.validator.addMethod("isExistsUser", function (value, element, params) {
+                var v = $.ajax({
+                    url: "__URL__/account",
+                    type: "post",
+                    data: {flag: "user", value: value},
+                    async: false
+                }).responseText;
+                if (v == '1')
+                    return true;
+                else
+                    return false;
+            });
+            $.validator.addMethod("isExistsMobile", function (value, element, params) {
+                var v = $.ajax({
+                    url: "__URL__/account",
+                    type: "post",
+                    data: {flag: "mobile", value: value},
+                    async: false
+                }).responseText;
+                if (v == "1")
+                    return true;
+                else
+                    return false;
+            });
+            $.validator.addMethod("checkSmsCode", function (value, element, params) {
+                var v = $.ajax({
+                    url: "__URL__/captcha",
+                    type: "post",
+                    data: {code: value},
+                    async: false
+                }).responseText;
+                if (v == "1")
+                    return true;
+                else
+                    return false;
+            });
+
+            $("#getCode").click(function () {
+                var v = $.trim($("#mobile").val());
+                var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+                if (v == "") {
+                    return false;
+                }
+                else if (!reg.test(v)) {
+                    BootstrapDialog.alert({
+                        type: BootstrapDialog.TYPE_DEFAULT,
+                        title: "温馨提示",
+                        message: "请检查手机号是否有问题",
+                        buttonLabel: "确定"
+                    });
+                }
+                else {
+                    $("#getCode").attr('disabled', true);
+                    $.ajax({
+                        url: "__URL__/sendsms",
+                        data: {flag: '{$token}', mobile: $("#mobile").val().trim()},
+                        type: "post",
+                        success: function (ret) {
+                            if (ret == '1') {
+                                setJs();
+                            }
+                        }
+                    });
+                }
+            });
+            /*用户注册协议弹窗（待金融同事整理好内容再发布）*/
+/*            $("#agreement").click(function () {
+                BootstrapDialog.show({
+                    title: '用户服务协议',
+                    message: $('<div></div>').load('/Index/agreement.html')
+                });
+            });*/
+        });
+        $(function () {
+            $(".one-menu:eq(4)").addClass("active");
+            $(".top-right .register").addClass("on");
+            $(".top-right .login").removeClass("on");
+        })
+    </script>
+</block>

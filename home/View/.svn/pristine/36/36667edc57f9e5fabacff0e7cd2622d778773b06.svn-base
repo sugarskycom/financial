@@ -1,0 +1,669 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<include file="Public:banner" />
+	<!--业务特色####-->
+	<div class="container icon-list">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon1"></div>
+					<div class="icon-text">
+						<h3>资金银行存管</h3>
+						<p>平台资金全部由富滇银行存管</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon2"></div>
+					<div class="icon-text">
+						<h3>专注电子产业链</h3>
+						<p>贯穿电子产业供应链，绑定上下游</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon3"></div>
+					<div class="icon-text">
+						<h3>多重风控体系</h3>
+						<p>8个维度的风控体系保证项目安全运营</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon4"></div>
+					<div class="icon-text">
+						<h3>完全的信息披露</h3>
+						<p>根据现有法律法规充分披露项目信息</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- 产品种类 -->
+	<div class="container content-box">
+		<div class="row">
+			<div class="col-md-3 left-bg left-bg1">
+				<h1 style="text-shadow: 2px 2px #d36607">仓单融资</h1>
+				<p>货物在抵押状态时，融资企业可用同价值的货物进行置换，解决货物周转问题。</p>
+			</div>
+			<div class="col-md-8 project">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('Project/detail')}">项目名称项目名称（DDC201930909090）</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num">
+									<span class="progress my-progress">
+										<span class="progress-bar" style="width:60%;background-color: #fdc230;">&nbsp;</span>
+									</span>
+									<span class="per">60%</span>
+								</td>
+								<td class="p-num"><a href="{:U('Project/detail')}" class="btn btn-success">立即投资</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">募集进度</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('Project/detail')}">项目名称项目名称（DDC201930909090）</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num">
+									<span class="progress my-progress">
+										<span class="progress-bar" style="width:60%;background-color: #fdc230;">&nbsp;</span>
+									</span>
+									<span class="per">60%</span>
+								</td>
+								<td class="p-num"><a href="{:U('Project/detail')}" class="btn btn-success">立即投资</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">募集进度</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+			</div>	
+		</div>
+	</div>
+
+	<div class="container content-box">
+		<div class="row">
+			<div class="col-md-3 left-bg left-bg2">
+				<h1  style="text-shadow: 2px 2px #136ada">资产抵押</h1>
+				<p>资产抵押融资是指融资企业将名下的固定资产、金融资产等动产或不动产进行出质融资的行为。</p>
+			</div>
+			<div class="col-md-8 project">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('Project/detail')}">项目名称项目名称（DDC201930909090）</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num">
+									<span class="progress my-progress">
+										<span class="progress-bar" style="width:60%;background-color: #fdc230;">&nbsp;</span>
+									</span>
+									<span class="per">60%</span>
+								</td>
+								<td class="p-num"><a href="{:U('Project/detail')}" class="btn btn-success">立即投资</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">募集进度</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('Project/detail')}">项目名称项目名称（DDC201930909090）</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num">
+									<span class="progress my-progress">
+										<span class="progress-bar" style="width:60%;background-color: #fdc230;">&nbsp;</span>
+									</span>
+									<span class="per">60%</span>
+								</td>
+								<td class="p-num"><a href="{:U('Project/detail')}" class="btn btn-success">立即投资</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">募集进度</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+			</div>	
+		</div>
+	</div>
+
+	<div class="container content-box">
+		<div class="row">
+			<div class="col-md-3 left-bg left-bg3">
+				<h1 style="text-shadow: 2px 2px #e12829">应收账款</h1>
+				<p>应收账款质押融资是指企业将未来的债券进行出质而进行的融资行为。</p>
+			</div>
+			<div class="col-md-8 project">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('Project/detail')}">项目名称项目名称（DDC201930909090）</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num">
+									<span class="progress my-progress">
+										<span class="progress-bar" style="width:60%;background-color: #fdc230;">&nbsp;</span>
+									</span>
+									<span class="per">60%</span>
+								</td>
+								<td class="p-num"><a href="{:U('Project/detail')}" class="btn btn-success">立即投资</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">募集进度</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('Project/detail')}">项目名称项目名称（DDC201930909090）</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num">
+									<span class="progress my-progress">
+										<span class="progress-bar" style="width:60%;background-color: #fdc230;">&nbsp;</span>
+									</span>
+									<span class="per">60%</span>
+								</td>
+								<td class="p-num"><a href="{:U('Project/detail')}" class="btn btn-success">立即投资</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">募集进度</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>		
+			</div>	
+		</div>
+	</div>
+	<!--信息公开-->
+	<div class="container info-public">
+		<div class="row">
+			<div class="info-list clearfix">
+				<!--平台公告-->
+				<div class="info-list-notice info-item">
+					<h1>平台公告<a class="more" href="{:U('Help/noticelist')}">更多</a></h1>
+					<ul class="list-notice-group">
+						<li><a href="{:U('Help/noticedetail')}">【公告】3月18日货融贷平台正式上线，平台懒人计划上线</a><span>2017-07-29</span></li>
+						<li><a href="{:U('Help/noticedetail')}">【通知】3月18日货融贷平台正式上线，平台懒人计划上线</a><span>2017-07-21</span></li>
+						<li><a href="{:U('Help/noticedetail')}">【活动】3月18日货融贷平台正式上线，平台懒人计划上线</a><span>2017-07-21</span></li>
+						<li><a href="{:U('Help/noticedetail')}">【通知】3月18日货融贷平台正式上线，平台懒人计划上线</a><span>2017-07-21</span></li>
+						<li><a href="{:U('Help/noticedetail')}">【活动】3月18日货融贷平台正式上线，平台懒人计划上线</a><span>2017-07-21</span></li>
+					</ul>
+				</div>
+				<!--投资达人排行榜-->
+				<div class="info-list-top info-item">
+					<h1>投资达人排行榜</h1>
+					<ul class="list-top-group">
+						<li><span class="name">☆*sun*</span><span class="sum">￥2,000,000</span></li>
+						<li><span class="name">☆*sun*</span><span class="sum">￥2,000,000</span></li>
+						<li><span class="name">☆*sun*</span><span class="sum">￥2,000,000</span></li>
+						<li><span class="name">☆*sun*</span><span class="sum">￥2,000,000</span></li>
+						<li><span class="name">☆*sun*</span><span class="sum">￥2,000,000</span></li>
+					</ul>
+				</div>		
+				<!--员工风采-->
+				<div class="info-list-team info-item">
+					<h1>员工风采</h1>
+					<div class="info-list-img">
+						<div id="listTeam" class="carousel slide">
+							<ol class="carousel-indicators">
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel" data-slide-to="1"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="item active b1"></div>
+								<div class="item b2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<include file="Public:footer"/>
+</block>
+<block name="css">
+	<style>
+	    .my-progress {
+	    	display: inline-block;
+	    	width: 116px;
+	    	height: 10px;
+	    	margin-bottom: 0;
+	    }
+	    .p-num .per {font-size: 14px;color: #999;}
+		.container.icon-list {
+			margin-top: 0; /*重置样式*/
+			background-color: #fff;
+			height: 140px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}	
+
+		.container.icon-list .bus-des {
+			border:0;  /*重置样式*/
+			padding-top: 35px;
+			/*margin-bottom: 35px;*/
+		}
+
+		.container.icon-list .bus-des .icon {
+			display: inline-block;
+			margin-right: 10px;
+			background-size: contain;
+			height: 70px;
+			width: 70px;
+		}
+		.container.icon-list .bus-des .icon1 {
+			background: url(/Public/images/index/icon.png) no-repeat center center;
+		}
+		.container.icon-list .bus-des .icon2 {
+			background: url(/Public/images/index/icon2.png) no-repeat center center;
+		}
+		.container.icon-list .bus-des .icon3 {
+			background: url(/Public/images/index/icon3.png) no-repeat center center;
+		}
+		.container.icon-list .bus-des .icon4 {
+			background: url(/Public/images/index/icon4.png) no-repeat center center;
+		}
+
+
+		.container.content-box {
+			margin-top: 10px;
+		}
+
+		.container.content-box .left-bg {
+			padding-left: 40px;
+			padding-right: 40px;
+			padding-top:60px;
+			width: 248px;
+			height: 376px;
+		}
+		.container.content-box .left-bg1 {
+			background: url(/Public/images/index/bg1.png) no-repeat;
+		}
+		.container.content-box .left-bg2 {
+			background: url(/Public/images/index/bg2.png) no-repeat;
+		}
+		.container.content-box .left-bg3 {
+			background: url(/Public/images/index/bg3.png) no-repeat;
+		}
+
+		.container.content-box .left-bg h1 {
+			font-size: 32px;
+			color: #fff;
+		}
+		.container.content-box .left-bg p {
+			font-size: 14px;
+			color: #fff;
+			margin-top: 14px;
+			line-height: 1.5;
+			letter-spacing: 1.5px;
+		}
+		.container.content-box .project {
+			padding-left: 0;
+			padding-right: 0;
+			height: 376px;
+		}
+		.container.content-box .project .project-border {
+			background-color: #fff;
+			border:0; /*重置样式*/
+			margin-bottom: 6px;
+			margin-right: -143px;
+			margin-left: 10px;
+			padding:40px 34px;
+			height: 185px;
+			border:1px solid #fff;
+		}
+		.info-public {margin-top: 20px;}
+		.info-public .info-list {
+			border:0; /*重置样式*/
+			padding:0;
+		}
+
+		.info-public .info-list .info-item {
+			background-color: #fff;
+			height: 314px;
+		}
+
+		.info-public .info-list .info-list-notice {
+			width: 34%;
+		}
+		.info-public .info-list>div:nth-child(2) {
+			border-right: 0;
+			border-left: 0;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.info-public .info-list .info-list-top {
+			width: 30%;
+		}
+		.info-public .info-list .info-list-team {
+			width: 34%;
+		}
+		.info-item h1 {
+			font-size: 18px;
+			font-weight: 500;
+			color: #666;
+			height: 58px;
+			line-height: 58px;
+			padding-left: 20px;
+			margin-top: 0;
+			margin-bottom: 0;
+			position: relative;
+			border-bottom: 1px solid #e5e5e5;
+		}
+		.info-item h1 > .more {
+			font-size: 14px;
+			color:#666;
+			position: absolute;
+			right: 20px;
+		}
+		.info-list .info-list-notice .list-notice-group {
+			padding:20px 0 20px 20px;
+			font-size: 14px;
+		}
+		.info-list .info-list-notice .list-notice-group li {
+			padding-bottom: 18px;
+			padding-left: 0;
+			padding-top:0;  /*清除样式*/
+		}
+		.info-list .info-list-notice .list-notice-group li > a {
+			color: #999;
+			padding-right: 20px;
+			display: inline-block;
+			width:75%;
+			overflow:hidden;
+			-o-text-overflow:ellipsis;
+			-webkit-text-overflow:ellipsis;
+			-moz-text-overflow:ellipsis;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		}
+		.info-list .info-list-notice .list-notice-group li > span {
+			font-weight: normal;
+			color: #ccc;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.info-list-top .list-top-group {padding:20px;}
+		.info-list-top .list-top-group li {
+			width: 100%;
+			line-height: 20px;
+			padding-left: 0;
+			padding-bottom: 24px;
+		}
+		.info-list-top .list-top-group li span {
+			font-size: 14px;
+			color: #666;
+			display: inline-block;
+		}
+		.info-list-top .list-top-group li > .name {
+			width: 50%;
+		}
+		.info-list-top .list-top-group li > .sum {
+			width: 50%;
+		}
+		.info-list-img {padding:18px;}
+
+		#listTeam .b1{
+			background-image: url(__PUBLIC__/images/banner.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 344px;
+			height: 220px;
+			overflow:hidden;
+		}
+		#listTeam .b2{
+			background-image: url(__PUBLIC__/images/b2.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 344px;
+			height: 220px;
+			overflow:hidden;
+		}
+
+		.project-border table tbody:last-child{
+			position: relative;
+		}
+		td.p-title:last-child {
+			position: absolute;
+			left: 60%;
+		}
+
+
+
+		.bg {
+			background-color: #1b85ee;
+			height: 200px;
+			overflow:hidden;
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+		/*与detail相同的样式*/
+		.pro-box {
+			background-color: #fff;
+			cursor: pointer;
+			border-left: 1px solid #e5e5e5;
+			border-right: 1px solid #e5e5e5;			
+			margin-top:-3px;
+		}
+		.pro-type{
+			font-size: 18px;
+			height: 50px;
+			line-height: 50px;
+			background-color: #fafafa;
+			border-top:1px solid #e5e5e5;			
+			margin-top:-3px;
+		}
+		.pro-type .pro-type-title {height: 47px;border-bottom: 1px solid #e5e5e5;}
+		.pro-active{
+			color: #fdc230;
+			background-color: #fff;
+			border-top: 2px solid #fdc230;
+			border-left:1px solid #e5e5e5;
+			border-right:1px solid #e5e5e5;
+			border-bottom: 0 !important;
+		}
+		.content-box > .project {
+			background-color: #fff;
+			/*border: 1px solid #e5e5e5;*/
+			border-top:0;
+			margin-top:-3px;
+		}
+		.pro-box .notice {
+			font-size: 14px;
+			color: #ccc;
+			background-color: #fff;
+			height: 50px;
+			line-height: 50px;
+		}
+		.content-box .project .project-border {
+			margin-bottom: 0;
+			border:1px solid #e5e5e5;
+			padding:40px 50px;
+		}
+		.content-box .project .project-border:hover {
+			background-color: #fffefa;
+			box-shadow: 0 0 10px #e5e5e5;
+		}          
+		.content-box .project .project-border table th {text-align: left;}
+		.content-box .project .project-border thead tr th > a {font-size: 16px;color: #333;}
+		.content-box .project .project-border thead tr th> a:hover {color: #fdc230;}
+		.content-box .project .project-border tbody tr td a {font-size: 16px;padding:4px 10px;}
+		.project-border i {font-style: normal;}
+		.project-border i.f34 {
+			font-size: 34px;
+			color: #fdc230;
+			padding-right: 2px;
+		}
+		.project-border i.per {
+			font-size: 14px;
+			color: #fdc230;
+		}        
+		.project-border i.f18 {
+			font-size: 18px;
+			color: #666;
+			padding-right: 2px;
+		}  
+		.project-border i.f14 {
+			font-size: 14px;
+			color: #999;
+		} 
+		.project-border table tbody td.p-title {
+			font-size: 14px;
+			color: #b2b2b2;
+		}
+		.project-border td.p-countdown {color: #fbc230;}
+
+		.btn-success {
+			color: #fdc230;
+			background-color: #fff;
+			border-color: #fdc230;
+			border-radius: 4px;
+			width: 112px;
+			height: 32px;
+		}
+		.btn-success:hover,
+		.btn-success:focus,
+		.btn-success.focus,
+		.btn-success:active,
+		.btn-success.active,
+		.open > .dropdown-toggle.btn-success {
+			color: #fff;
+			background-color: #fdc230 !important;
+			border-color: #fdc230 !important;
+		}    
+		.btn-success.disabled,
+		.btn-success[disabled],
+		fieldset[disabled] .btn-success,
+		.btn-success.disabled:hover,
+		.btn-success[disabled]:hover,
+		fieldset[disabled] .btn-success:hover,
+		.btn-success.disabled:focus,
+		.btn-success[disabled]:focus,
+		fieldset[disabled] .btn-success:focus,
+		.btn-success.disabled.focus,
+		.btn-success[disabled].focus,
+		fieldset[disabled] .btn-success.focus,
+		.btn-success.disabled:active,
+		.btn-success[disabled]:active,
+		fieldset[disabled] .btn-success:active,
+		.btn-success.disabled.active,
+		.btn-success[disabled].active,
+		fieldset[disabled] .btn-success.active {
+			background-color: #fff;
+			border-color: #b2b2b2;
+		}
+		a.btn-sellout,
+		a.btn-done {
+			color:#b2b2b2;
+			border-color: #b2b2b2;
+		} 
+		.p-percent {
+			color: #b2b2b2;
+		}
+
+	</style>
+
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+	<script type="text/javascript">
+		$('#myCarousel').carousel({
+			interval: 3000
+		});
+		$('#listTeam').carousel({
+			interval: 3000
+		});
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</block>

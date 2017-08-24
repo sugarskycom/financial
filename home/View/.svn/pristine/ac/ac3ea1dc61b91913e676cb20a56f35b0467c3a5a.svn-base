@@ -1,0 +1,41 @@
+<div class="float-bg">
+    <div class="feedback-bg"><a class="feedback" id="feedback" href="#" alt="投诉建议"></a></div>
+    <div class="totop-bg"><a class="totop" href="#" alt="返回顶部"></a></div>
+</div>
+<style>
+    .bootstrap-dialog.type-primary .modal-header {
+        background-color: #fdc230;
+    }
+    .float-bg {
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+        height: 140px;
+    }
+    .feedback-bg,.totop-bg {
+        height: 70px;
+        width: 70px;
+        border:1px solid #efefef;
+        background-color: #fff;
+    }
+    .totop-bg {border-top: 0;display: none;}
+    .feedback {
+        background-image: url(/Public/images/feedback.png);
+        background-repeat: no-repeat;
+        width: 28px;
+        height: 29px;
+        position: absolute;
+        top: 15%;
+        left: 35%;
+    }
+    .totop {
+        background-image : url(/Public/images/top.png);
+        background-repeat: no-repeat;
+        width: 26px;
+        height: 18px;  
+        position: absolute;
+        top: 65%;
+        left: 35%;  
+    }
+
+</style>

@@ -1,0 +1,257 @@
+<extend name="Public:base" />
+<block name="content">
+	<div class="ibox">
+		<div class="ibox-title clearfix">
+		<h3 class="pull-left">平台子账户</h3>
+		<div class="pull-right">
+			<button type="button" class="btn btn-primary" id="btnAtoA">子账户转账</button>
+			<a href="__URL__/atoalist" class="btn btn-default"><i class="fa fa-history fa-fw"></i>子账户转账记录</a>
+		</div>
+		</div>
+		<div class="ibox-content">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading"><i class="fa fa-credit-card fa-fw"></i> 往来账户&nbsp;&nbsp;<button type="button" class="btn btn-success btn-xs" id="btnAdd">充值</button>
+						<button type="button" class="btn btn-info btn-xs" id="btnLess">提现</button>
+						<a href="__URL__/rechargerecord" class="btn btn-primary btn-xs">充值提现记录</a>
+							<span class="pull-right"><strong>HTF001</strong></span>
+						</div>
+						<div class="panel-body">
+							<p>账户余额：<span class="text-red"><strong>￥{$data[0]['total_balance']|number_format=2}</strong></span></p>
+							<p>冻结余额：<span class="text-red"><strong>￥{$data[0]['freeze_balance']|number_format=2}</strong></span></p>
+						</div>
+					</div>
+					<!--/account-->
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading"><i class="fa fa-credit-card fa-fw"></i> 服务费账户
+						<span class="pull-right"><strong>HTF002</strong></span>
+						</div>
+						<div class="panel-body">
+							<p>账户余额：<span class="text-red"><strong>￥{$data[1]['total_balance']|number_format=2}</strong></span></p>
+							<p>冻结余额：<span class="text-red"><strong>￥{$data[1]['freeze_balance']|number_format=2}</strong></span></p>
+						</div>
+					</div>
+					<!--/account-->
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading"><i class="fa fa-credit-card fa-fw"></i> 风险金账户
+						<span class="pull-right"><strong>HTF003</strong></span>
+						</div>
+						<div class="panel-body">
+							<p>账户余额：<span class="text-red"><strong>￥{$data[2]['total_balance']|number_format=2}</strong></span></p>
+							<p>冻结余额：<span class="text-red"><strong>￥{$data[2]['freeze_balance']|number_format=2}</strong></span></p>
+						</div>
+					</div>
+					<!--/account-->
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading"><i class="fa fa-credit-card fa-fw"></i> 保证金及罚息账户
+						<span class="pull-right"><strong>HTF004</strong></span>
+						</div>
+						<div class="panel-body">
+							<p>账户余额：<span class="text-red"><strong>￥{$data[3]['total_balance']|number_format=2}</strong></span></p>
+							<p>冻结余额：<span class="text-red"><strong>￥{$data[3]['freeze_balance']|number_format=2}</strong></span></p>
+						</div>
+					</div>
+					<!--/account-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--平台资金记录-->
+	<div class="ibox">
+		<div class="ibox-title clearfix">
+			<div class="pull-left"><h3>平台资金记录</h3></div>
+			<div class="pull-right" id="toolbar">
+				<form class="form-inline" method="post">
+					账号类型：
+					<select class="form-control" id="account">
+						<option value="0">全部</option>
+						<option value="HTF001">往来账户(HTF001)</option>
+						<option value="HTF002">服务费账户(HTF002)</option>
+						<option value="HTF003">风险金账户(HTF003)</option>
+						<option value="HTF004">保证金及罚息账户(HTF004)</option>
+					</select>
+					资金类型：
+					<select class="form-control" id="type">
+						<volist name="fundType" id="r">
+						<option value="{$key}">{$r}</option>
+						</volist>
+					</select>
+					日期范围：
+					<input type="text" class="form-control" name="daterange" value="" data-start="" data-end="" style="min-width: 200px;">
+					<input type="text" class="form-control" name="keyword" id="keyword" placeholder="用户名/姓名/订单号">
+					<button type="submit" class="btn btn-success" id="btnSearchRecord">查询</button>
+					<input type="hidden" value="{:strtotime('-3 month')}" id="s_time">
+					<input type="hidden" value="{:time()}" id="e_time">
+					<!-- <button type="button" class="btn btn-white"><i class="fa fa-download fa-fw"></i>下载</button> -->
+
+				</form>
+			</div>
+		</div>
+		<div class="ibox-content">
+			<table id="table" class="table table-hover table-striped"
+				data-toggle="table"
+				data-url="__ACTION__"
+				data-method="post"
+				data-page-size="5"
+				data-pagination="true"
+				data-side-pagination="server"
+				data-page-list="[5,10,20,30,50]"
+				data-sort-order="desc"
+				data-query-params="params"
+				data-show-pagination-switch="false"
+				data-search="false"
+				data-search-on-enter-key="true"
+				data-trim-on-search="false"
+				data-show-columns="true"
+				data-toolbar="#toolbar"
+				data-show-export="true"
+				data-export-types="['excel']"
+				data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+				<thead>
+					<tr>
+						<th data-field="id"
+							data-formatter="formatNo"
+						>序号</th>
+						<th data-field="order_sn">订单号</th>
+						<th data-field="trade_no">交易号</th>
+						<th data-field="a_type">转出账号</th>
+						<th data-field="checker">操作员工</th>
+						<th data-field="username">用户</th>
+						<th data-field="realname">用户姓名</th>
+						<th data-field="f_type"
+							data-formatter="formatType"
+						>类型</th>
+						<th data-field="action_type"
+							data-formatter="formatAction"
+						>操作</th>
+						<th data-field="amount" data-formatter="formatCny">金额</th>
+						<th data-field="status"
+							data-formatter="formatStatus"
+							data-sortable="true"
+						>状态</th>
+						<th data-field="remark">备注</th>
+						<th data-field="check_time"
+							data-formatter="formatTime"
+						>日期</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/export/bootstrap-table-export.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/export/table-export.js">
+</script>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript">
+var fundType = {$tstr};
+$(function(){
+	$("#btnAdd").click(function(){
+		BootstrapDialog.show({
+			type:BootstrapDialog.TYPE_DEFAULT,
+			title:'给往来账户(HTF001)充值',
+			message:$("<div></div>").load('__URL__/recharge'),
+			cssClass:'bounceInDown animated',
+	        onshown:vertical
+		})
+	});
+	$("#btnLess").click(function(){
+		BootstrapDialog.show({
+			type:BootstrapDialog.TYPE_DEFAULT,
+			title:'从往来账户(HTF001)提现',
+			message:$("<div></div>").load('__URL__/withdraw'),
+			cssClass:'bounceInDown animated',
+	        onshown:vertical
+		})
+	});
+	
+	$("#btnAtoA").click(function(){
+		BootstrapDialog.show({
+			type:BootstrapDialog.TYPE_DEFAULT,
+			title:'子账户转账',
+			message:$("<div></div>").load('__URL__/atoa'),
+			cssClass:'bounceInDown animated',
+	        onshown:vertical
+		})
+	});
+	//查询记录
+	$("#btnSearchRecord").click(function(){
+		var keyword = $.trim($("#keyword").val());
+		var a_type = $("#account").val();
+		var f_type = $("#type").val();
+		var s_time = $("#s_time").val();
+		var e_time = $("#e_time").val();
+		$("#table").bootstrapTable("refresh",{
+			url:"__ACTION__",
+			query:{keyword:keyword,a_type:a_type,f_type:f_type,s_time:s_time,e_time:e_time}
+		});
+		return false;
+	});
+})
+function params(params){
+	return params;
+}
+function formatTime(v,r,i){
+	return moment.unix(v).format('YYYY-MM-DD HH:mm');
+}
+function formatAction(v,r,i){
+	if(v==1)
+		return '转入';
+	else
+		return '转出';
+}
+function formatType(v,r,i){
+	return fundType[v];
+}
+function formatStatus(v,r,i){
+	if(v==1){
+		return '<span class="badge badge-success">成功</span>'
+	}
+	else if(v==2){
+		return '<span class="badge badge-warning">拒绝</span>'
+	}
+	else if(v==0){
+		return '<span class="badge badge-default">待审</span>'
+	}
+}
+function formatNo(v,r,i){
+	return i+1;
+}
+
+$('input[name="daterange"]').daterangepicker({
+        locale : {  
+            applyLabel : '确定',  
+            cancelLabel : '取消',  
+            fromLabel : '起始时间',  
+            toLabel : '结束时间',  
+            customRangeLabel : '选择范围',  
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],  
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',  
+                    '七月', '八月', '九月', '十月', '十一月', '十二月' ],  
+            firstDay : 1,
+            format:'YYYY-MM-DD',
+        },
+        opens:'left',
+        startDate: "{:date('Y-m-d',strtotime('-3 month'))}",
+        endDate: "{:date('Y-m-d')}"
+    }, function(start, end, label) {
+    	$("#s_time").val(moment(start).format('X'));
+    	$("#e_time").val(moment(end).format('X'));
+    });
+</script>
+</block>
+<block name="css">
+<link href="{$Think.config.RESOURCE_URL}/components/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+</block>

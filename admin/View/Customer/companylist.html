@@ -1,0 +1,86 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <form action="javascript:;" class="form-inline" method="get">
+                <input type="text" class="form-control" id="keyword" name="keyword"  placeholder="公司名称/企业法人关键词" style="width: 300px;">
+                <button type="submit" class="btn btn-success" id="btnSearch">查询</button>
+            </form>
+        </div>
+        <div class="ibox-content">
+			<table id="table" class="table table-hover table-striped"
+				data-toggle="table"
+				data-url="__ACTION__"
+				data-method="get"
+				data-page-size="5"
+				data-pagination="true"
+				data-side-pagination="server"
+				data-page-list="[5,10,20,30,50]"
+				data-sort-order="desc"
+				data-query-params="params"
+				data-show-pagination-switch="false"
+				data-search="false"
+				data-search-on-enter-key="true"
+				data-trim-on-search="false"
+				data-show-columns="false"
+				>
+				<thead>
+					<tr>
+						<th data-field="uid">ID</th>
+						<th data-field="username">登录名</th>
+						<th data-field="shortname">企业简称</th>
+						<th data-field="realname">公司法人</th>
+						<th data-field="fullname">企业全称</th>
+						<th data-field="industry" data-formatter="formatType">企业类型</th>
+						<th data-field="company_cat" data-formatter="formatCat">类别</th>
+						<th data-field="organization_code">组织机构代码</th>
+						<th data-field="business_no">营业执照号</th>
+						<th data-field="tax_no">税务登记号</th>
+						<th data-field="credit_code">统一社会信用代码</th>
+						<th data-field="com_type" data-formatter="formatCat">存管企业类型</th>
+						<th data-field="check_status" data-formatter="formatStatus">状态</th>
+						<th data-field="uid" data-formatter="formatAction">操作</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>		
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+var ctype = {:json_encode(industryList())};
+var cats = {:json_encode(companyTypeList())};
+$("#btnSearch").click(function(){
+	$("#table").bootstrapTable('refresh');
+});
+function params(params){
+	params.flag = 'load';
+	params.keyword = $.trim($("#keyword").val());
+	return params;
+}
+function formatType(v,r,i){
+	return ctype[v];
+}
+function formatCat(v,r,i){
+	return cats[v];
+}
+function formatStatus(v,r,i){
+	var status = {"1":"新建","2":"审核中","3":"审核通过","4":"审核不通过"};
+	return status[v];
+}
+function formatAction(v,r,i){
+	if(r.check_status=='1' || r.check_status=='4'){
+		return '<a href="__URL__/editb?uid='+v+'" class="btn btn-default btn-xs">编辑</a> <a href="__URL__/corpreg?uid='+v+'" class="btn btn-success btn-xs">存管开户</a>';
+	}
+	else if(r.check_status=='3' || r.check_status=='2'){
+		return '-';
+	}
+}
+</script>
+</block>
+<block name="buttons">
+	<a href="__URL__/addb" class="btn btn-primary">增加用户</a>
+	<!-- <a href="#" class="btn btn-success">导出列表</a> -->
+</block>

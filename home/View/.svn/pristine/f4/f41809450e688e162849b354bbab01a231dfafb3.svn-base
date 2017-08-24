@@ -1,0 +1,257 @@
+<extend name="Public:base"/>
+<block name="content">
+<include file="Public:nav"/>
+<div id="wrapper" style="margin-top:30px;">
+	<div class="ibox">
+	<div class="ibox-title">
+		<h2>特定资产收益权转让签订</h2>
+		<div class="project-detail" style="margin-bottom: 20px;">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="project-id row">
+						<span class="col-md-4"><strong>ID：</strong>{$data.bno}</span>
+						<span class="col-md-4">类型：{$data.ltype}</span>
+						<span class="col-md-4"><i class="fa fa-file-pdf-o fa-fw"></i><a href="__URL__/contractTemp?hid={$data.hid}" target="_black">查看合同范本</a></span>
+					</div>
+					<h2 class="project-title">{$data.title}</h2>
+					<div class="row project-num">
+						<div class="col-md-4"><span>出让额度：</span>
+							<p class="text-success">￥{$data.amount|number_format}</p>
+						</div>
+						<div class="col-md-5">
+							<span>预期年化收益：</span>
+							<p class="text-red">{$data.year_rate}%<neq name="data[award_rate]" value="0">+{$data.award_rate}%</neq></p>
+						</div>
+						<div class="col-md-3">
+							<span>出让期限：</span>
+							<p class="text-success">
+							{$data.duration}<if condition="$data[duration_type] eq 1 or $data[duration_type] eq 2">个月<else/>天</if>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><strong>还款方式：<eq name="data.pay_type" value="1">按月付息到期还本<else/>一次性还本付息</eq></strong></div>
+						<div class="col-md-8">
+						<span>进度：{$data.percentage}%</span>
+						<div class="progress progress-mini">
+                                <div style="width: {$data.percentage}%;" class="progress-bar"></div>
+                        </div>
+						</div>
+					</div>
+					<div class="person-count">受让人数：<span class="text-red">{$data.person_count}</span></div>
+				</div>
+				<div class="col-md-4">
+					<if condition="$data.status eq 2 or $data.status eq 5 or $data.status eq 6 or $data.status eq 7 or $data.status eq 11">
+					<!--满标-->
+					<div class="alert alert-warning full-bid">
+						<h3>已满标</h3>
+						<p class="text-primary">请看别的项目</p>
+					</div>
+					</if>
+					<!-- <-if condition="$data.status eq 1"> -->
+					<!--开发投标-->
+					<div class="amount-time">
+						<div class="row">
+							<div class="col-sm-5">
+								<h5>剩余受让额度</h5>
+								<p class="text-success">{$data.residue_amount|number_format}元</p>
+							</div>
+							<div class="col-sm-7 time">
+								<h5>剩余时间</h5>
+								<p><span class="day"></span>天<span class="hour"></span>时<span class="minute"></span>分<span class="second"></span>秒</p>
+							</div>
+						</div>
+					</div>
+					<div class="my-amount">
+						账户余额：<strong class="text-red">￥{$data.useable_amount|number_format}</strong>
+					</div>
+					<div class="input-control">
+						<div class="input-group">
+							<input type="text" value="" class="form-control" placeholder="{$data.min_amount}元起投" onkeyup="calculateIncome(this)" onchange="calculateIncome(this)" id="invest_amount">
+							<span class="input-group-addon">元</span>
+						</div>
+						<div class="income">
+							预计收益：<span id="income">0.00</span>元
+						</div>
+					</div>
+
+					<div class="project-btn">
+						<button type="button" class="btn btn-success" id="btnSure">确认受让</button>
+						<button type="button" class="btn btn-primary" id="btnCalculator">收益计算器</button>
+					</div>
+					<!-- </-if> -->
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<div class="ibox">
+		<div class="ibox-title">
+		<!--/项目主要信息-->
+		<h2>项目信息</h2>
+		<table class="table table-bordered project-table">
+			<thead>
+				<tr>
+					<th colspan="8"><h3>出让信息</h3></th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td class="text-right">资产收益权出让公司名称：</td>
+				<td>北京名顺达物流有限公司</td>
+				<td class="text-right">公司类型：</td>
+				<td>民营企业</td>
+				<td class="text-right">资产类型：</td>
+				<td>仓单质押</td>
+			</tr>
+			<tr>
+				<td class="text-right">出让人：</td>
+				<td>赵东林</td>
+				<td class="text-right">所属行业：</td>
+				<td>金融</td>
+				<td class="text-right">货物类型：</td>
+				<td>海尔冰箱</td>
+			</tr>
+			<tr>
+				<td class="text-right">所在城市：</td>
+				<td>北京</td>
+				<td class="text-right">公司规模：</td>
+				<td>50人以上</td>
+				<td class="text-right">货物数量：</td>
+				<td>100件</td>
+			</tr>
+			</tbody>
+		</table>
+		<table class="table table-bordered project-table">
+			<thead>
+				<tr>
+					<th colspan="8"><h3>出让收益权类别</h3></th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td class="text-center"><strong>费用项目</strong></td>
+				<td class="text-center"><strong>项目</strong></td>
+				<td class="text-center"><strong>单位</strong></td>
+			</tr>
+			<tr>
+				<td colspan="3" class="text-center">进出库操作及仓储费用</td>
+			</tr>
+			<tr>
+				<td rowspan="4" class="text-center text-middle">仓储费</td>
+				<td>进仓操作费.包括订单处理、入库查收、上架、理货、库内管理、系统管理等操作费</td>
+				<td class="text-center">立方米</td>
+			</tr>
+			<tr>
+				<td>出仓操作费.包括出库信息接收、出库订单处理、系统拣货、系统出库、库内货物下架、搬运、理货、分货等操作费</td>
+				<td class="text-center">立方米</td>
+			</tr>
+			<tr>
+				<td rowspan="2" class="text-middle">储存保管费.小货位规格：170CM×60CM×50CM；大货位规格：120CM×110CM×140CM</td>
+				<td class="text-center">小货位</td>
+			</tr>
+			<tr>
+				<td class="text-center">大货位</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="text-center"><strong>增值服务</strong></td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">装卸费</td>
+				<td>对到库的货物进行卸车或对要发的货物进行装车</td>
+				<td class="text-center">立方米</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">包装费</td>
+				<td>对需要出仓的货物进行包装或拼箱完后进行封箱和再包装，必要时缠膜和打包带。</td>
+				<td class="text-center">箱</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">盘点费</td>
+				<td>核对库存货物实物数量于库存数据的一致性，提供盘点盈亏报表。</td>
+				<td class="text-center">次</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">更换包装<br>箱力资费</td>
+				<td class="text-middle">更换包装箱、数量确认、封箱。包装材料由供货商提供。</td>
+				<td class="text-center text-middle">箱</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">拆托操作费</td>
+				<td class="text-middle">指拆开整托并从中取出指定类别和数量整箱货物的操作</td>
+				<td class="text-center text-middle">箱</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">拆箱出库<br>拣料费</td>
+				<td class="text-middle">对外包装箱进行拆箱，需要按内包装盒整盒出库的货物（包括开箱、数量确认、封箱）。</td>
+				<td class="text-center text-middle">盒</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">拆盒出库<br>拣料费</td>
+				<td class="text-middle">对内包装盒进行拆盒，需要按最小包装出库的货物（包括开盒、数量确认、封盒）。</td>
+				<td class="text-center text-middle">最小包装</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">条码管理费</td>
+				<td>条码的进出库扫描、库内管理、流向管理</td>
+				<td class="text-center">标签</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">标签制作费</td>
+				<td>A标签&nbsp;|&nbsp;30MM×50MM</td>
+				<td class="text-center">标签</td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">包装材料费</td>
+				<td>具体依照货物要求产生</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="text-center text-middle">其它服务</td>
+				<td>期间产生的其他费用</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td rowspan="3" class="text-center text-middle">人员加班费</td>
+				<td>超出正常工作时间</td>
+				<td rowspan="3" class="text-center text-middle">小时<br>人</td>
+			</tr>
+			<tr>
+				<td>周六、日</td>
+			</tr>
+			<tr>
+				<td>法定节日</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="text-center text-middle"><strong>保险费：仓储保险费率为保额的0.3%</strong></td>
+			</tr>
+
+			</tbody>
+		</table>		
+		<table class="table table-bordered project-table">
+			<thead>
+				<tr>
+					<th colspan="8"><h3>项目信息</h3></th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td colspan="8">
+					公司相关介绍
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+	</div>
+</div>
+<include file="Public:copyright"/>
+</block>
+<block name="css">
+<include file="style"/>
+</block>
+<block name="js">
+<if condition="$data.status eq 1">
+<include file="js"/>
+</if>
+</block>

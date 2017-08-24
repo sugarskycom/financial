@@ -1,0 +1,152 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="tabs-container">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#tab-1" data-toggle="tab">押品申请表单审批<span class="badge badge-success">{$data.apply}</span></a></li>
+		<li><a href="#tab-2" data-toggle="tab">
+		置换商品审批
+		<span class="badge badge-success">{$data.exchange}</span>
+		</a></li>
+		<li>
+		<a href="#tab-3" data-toggle="tab">解冻押品审批
+		<span class="badge badge-success">{$data.unfeeze}</span>
+		</a></li>
+	</ul>
+	<div class="tab-content">
+		<!--tab-1-->
+		<div class="tab-pane active" id="tab-1">
+			<div class="panel-body">
+				<table class="table table-hover"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="paramsa"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="id"
+				>
+					<thead>
+						<tr>
+							<th data-field="osn">申请单号</th>
+							<th data-field="bno">借款标单号</th>
+							<th data-field="company">客户名称</th>
+							<th data-field="amount" data-formatter="formatCny">贷款金额</th>
+							<th data-field="total_price" data-formatter="formatCny">评估总价</th>
+							<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+							<th data-field="applier">申请人</th>
+							<th data-field="osn" data-formatter="checkApply">操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		<!--tab-2-->
+		<div class="tab-pane" id="tab-2">
+			<div class="panel-body">
+				<table class="table table-hover"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="paramsb"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="id"
+				>
+					<thead>
+						<tr>
+							<th data-field="osn">申请单号</th>
+							<th data-field="bno">借款标单号</th>
+							<th data-field="company">客户名称</th>
+							<th data-field="before_amount" data-formatter="formatCny">置换前评估值</th>
+							<th data-field="after_amount" data-formatter="formatCny">置换后评估值</th>
+							<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+							<th data-field="applier">申请人</th>
+							<th data-field="osn" data-formatter="checkExchange">操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		<!--tab-3-->
+		<div class="tab-pane" id="tab-3">
+			<div class="panel-body">
+				<table class="table table-hover"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="paramsc"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="id"
+				>
+					<thead>
+						<tr>
+							<th data-field="osn">申请单号</th>
+							<th data-field="bno">借款标单号</th>
+							<th data-field="company">客户名称</th>
+							<th data-field="total_price" data-formatter="formatCny">解冻商品估值</th>
+							<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+							<th data-field="applier">申请人</th>
+							<th data-field="osn" data-formatter="checkUnfeeze">操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+function paramsa(params){
+	params.flag='apply';
+	return params;
+}
+function paramsb(params){
+	params.flag='exchange';
+	return params;
+}
+function paramsc(params){
+	params.flag='unfeeze';
+	return params;
+}
+function checkApply(v,r,i){
+	return '<a href="__URL__/applydetail?osn='+r.osn+'" class="btn btn-success">审批</a>'
+}
+function checkExchange(v,r,i){
+	return '<a href="__URL__/exchangedetail?osn='+r.osn+'" class="btn btn-success">审批</a>'
+}
+function checkUnfeeze(v,r,i){
+	return '<a href="__URL__/unfeezedetail?osn='+r.osn+'" class="btn btn-success">审批</a>'
+}
+</script>
+</block>
+<block name="css">
+<style>
+.nav-tabs a{
+	position: relative;
+}
+.nav-tabs a span.badge{
+	position: absolute;
+	right:5px;
+	top:-7px;
+}
+.nav-tabs a span.badge{
+	background-color: red;
+}
+</style>
+</block>

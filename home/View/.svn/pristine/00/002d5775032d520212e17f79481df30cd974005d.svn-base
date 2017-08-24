@@ -1,0 +1,42 @@
+<div class="foot">
+	<div class="container clearfix help">
+		<div class="foot-help">
+			<h3>帮助中心</h3>
+			<ul>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">新手指引</a></li>
+				<li><a href="#">安全保障</a></li>
+				<li><a href="#">信息披露</a></li>
+			</ul>
+		</div>
+		<div class="foot-partner">
+			<h3>合作伙伴</h3>
+			<dl>
+				<dd><img src="__PUBLIC__/images/u0.png"></dd>
+				<dd></dd>
+			</dl>
+		</div>
+		<div class="foot-qrcode">
+			<h3>关注我们</h3>
+			<dl class="clearfix">
+				<dd>
+					微信<br>
+					<img src="__PUBLIC__/images/qr.jpg">
+				</dd>
+				<dd>
+					微博<br>
+					<img src="__PUBLIC__/images/qr.jpg">
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div  class="container">
+	<div class="link-icon">
+		<img src="__PUBLIC__/images/trust.png"><img src="__PUBLIC__/images/safe360.png"><img src="__PUBLIC__/images/trust.png">
+	</div>
+	<div class="copyright">
+                Copyright 大视野汇通（北京）资产管理有限公司  备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备17001665号-1</a>
+	</div>
+	</div>
+</div>

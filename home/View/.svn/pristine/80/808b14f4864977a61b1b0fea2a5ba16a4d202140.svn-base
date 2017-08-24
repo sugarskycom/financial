@@ -1,0 +1,141 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<div class="container white-bg">
+		<!-- 面包屑导航栏 -->
+		<ol class="breadcrumb">
+			<li><a href="#">汇通资产</a></li>
+			<li><a href="#">我的账户</a></li>
+			<li style="color: #666;">实名认证</li>
+		</ol>
+		<div class="ibox">
+			<div class="ibox-title">
+				<h1>请开通富滇银行存管账户以便您正常理财</h1>
+				<form action="" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">手机号</label>
+						<div class="col-sm-4">
+							<span class="origin-mobile">158****1234</span>
+							<span class="new-mobile"><a href="#">更换手机号&gt;&gt;</a></span>
+						</div>						
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">真实姓名</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="realname" id="realname" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">身份证号</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="idcard" id="idcard" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label"></label>
+						<div class="col-sm-4">
+							<button type="submit" class="btn btn-success btn-post" id="btnPost">开通银行存管账户</button>
+							<p style="text-align: center;margin-bottom: 50px;">将进入富滇银行存管界面操作</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="reminder">
+			<ol class="list-unstyled">温馨提示：
+				<li>1、需要提交真实身份信息，将为你开通银行存管账户。</li>
+				<li>2、本账户开通后，所有投资金额将直接由银行管理。</li>
+				<li>3、本操作需要在富滇银行平台完成。</li>
+			</ol>
+		</div>
+	</div>		
+	<include file="Public:footer"/>
+</block>
+<block name="css">
+	<style>
+		.white-bg {
+			background-color: #fff;
+			margin-top:70px;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.white-bg .breadcrumb {
+			padding-left:50px;
+			border-bottom: 1px solid #e5e5e5;
+			font-size: 16px;
+			color: #999;
+			height: 60px;
+			line-height: 60px;
+		}
+		.ibox .ibox-title {
+			padding:0;
+			border:0;
+		}
+		.ibox-title h1 {
+			height: 50px;
+			line-height: 50px;
+			background-color: #fffcf5;
+			color: #d38129;
+			font-size: 18px;
+			margin:0 auto;
+			text-align: center;
+		}
+		.ibox .ibox-title form {
+			margin-top: 50px;
+		}
+		.ibox .ibox-title form .form-group {margin-bottom: 40px;}
+		.ibox .ibox-title .form-group > .control-label {
+			font-size: 14px;
+			color: #999;
+			padding-right: 20px;
+			letter-spacing: 1.5px;
+		}
+		.ibox .ibox-title .form-group .origin-mobile {
+			font-size: 16px;
+			color: #666;
+			padding-right: 10px;
+		}
+		.ibox .ibox-title .form-group .new-mobile a {
+			font-size: 14px;
+			color: #3090fd;
+		}
+		.ibox .ibox-title .form-control {
+			width:346px;
+			height: 44px;
+		}
+		.ibox .ibox-title .form-control:focus {
+			border:#fdc230 !important;
+			box-shadow: 0 0 10px #ffdb81;
+		}
+       .btn-success {
+        	color: #fff;
+        	background-color: #fdc230;
+        	border-color: #fdc230;
+        	border-radius: 4px;
+        	width: 346px;
+        	height: 50px;
+        	margin-top:30px;
+        	margin-bottom: 14px;
+        }
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.btn-success {
+        	color: #fff;
+        	background-color: #ffce55;
+        	border-color: #fdc230;
+        }  
+
+		.reminder {
+			padding-top:30px;
+			padding-bottom: 30px;
+			padding-left: 50px;
+			font-size: 12px;
+			border-top:1px solid #e5e5e5;
+		}
+		.reminder ol {color:#666;}
+		.reminder ol li {color:#b2b2b2;padding-top:20px;}
+	</style>
+</block>

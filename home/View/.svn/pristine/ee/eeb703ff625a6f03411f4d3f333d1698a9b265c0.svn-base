@@ -1,0 +1,297 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<include file="Public:banner" />
+	<!--业务特色####-->
+	<div class="container icon-list">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon1"></div>
+					<div class="icon-text">
+						<h3>资金银行存管</h3>
+						<p>平台资金全部由富滇银行存管</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon2"></div>
+					<div class="icon-text">
+						<h3>专注电子产业链</h3>
+						<p>贯穿电子产业供应链，绑定上下游</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon3"></div>
+					<div class="icon-text">
+						<h3>多重风控体系</h3>
+						<p>8个维度的风控体系保证项目安全运营</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-3">
+				<div class="bus-des">
+					<div class="icon icon4"></div>
+					<div class="icon-text">
+						<h3>完全的信息披露</h3>
+						<p>根据现有法律法规充分披露项目信息</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- 产品种类 -->
+	<div class="container content-box">
+		<div class="row">
+			<div class="col-md-4 left-pic"><img src="" style="width: 248px;height: 376px;" alt="cangdanrongzi" /></div>
+			<div class="col-md-8 project">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+								<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+								<td class="p-num"><a href="#" class="btn btn-success">即将开标</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">收益方式</td>
+								<td class="p-title">剩余可购金额</td>
+								<td class="p-title p-countdown">1天12时9分12秒</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+								<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+								<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+								<td class="p-num"><a href="#" class="btn btn-success">即将开标</a></td>
+
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">收益方式</td>
+								<td class="p-title">剩余可购金额</td>
+								<td class="p-title p-countdown">1天12时9分12秒</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>		
+			</div>	
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<include file="Public:footer"/>
+</block>
+<block name="css">
+	<style>
+		.container.icon-list {
+			margin-top: 0; /*重置样式*/
+			background-color: #fff;
+			/*height: 140px;*/
+			padding-left: 20px;
+			padding-right: 20px;
+		}	
+
+		.container.icon-list .bus-des {
+			border:0;  /*重置样式*/
+			margin-top: 35px;
+			margin-bottom: 35px;
+		}
+
+		.container.icon-list .bus-des .icon {
+			display: inline-block;
+			margin-right: 10px;
+			background: url(/Public/images/loan/shenqingrongzi.png) no-repeat center center;
+			background-size: contain;
+			height: 70px;
+			width: 70px;
+		}
+		.container.content-box {
+			margin-top: 10px;
+		}
+		.container.content-box .project .project-border {
+			background-color: #fff;
+			border:0; /*重置样式*/
+			margin-bottom: 6px;
+			padding:40px 34px;
+		}
+
+
+
+		.bg {
+			background-color: #1b85ee;
+			height: 200px;
+			overflow:hidden;
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+		/*与detail相同的样式*/
+		.pro-box {
+			background-color: #fff;
+			cursor: pointer;
+			border-left: 1px solid #e5e5e5;
+			border-right: 1px solid #e5e5e5;			
+			margin-top:-3px;
+		}
+		.pro-type{
+			font-size: 18px;
+			height: 50px;
+			line-height: 50px;
+			background-color: #fafafa;
+			border-top:1px solid #e5e5e5;			
+			margin-top:-3px;
+		}
+		.pro-type .pro-type-title {height: 47px;border-bottom: 1px solid #e5e5e5;}
+		.pro-active{
+			color: #fdc230;
+			background-color: #fff;
+			border-top: 2px solid #fdc230;
+			border-left:1px solid #e5e5e5;
+			border-right:1px solid #e5e5e5;
+			border-bottom: 0 !important;
+		}
+		.content-box > .project {
+			background-color: #fff;
+			/*border: 1px solid #e5e5e5;*/
+			border-top:0;
+			margin-top:-3px;
+		}
+		.pro-box .notice {
+			font-size: 14px;
+			color: #ccc;
+			background-color: #fff;
+			height: 50px;
+			line-height: 50px;
+		}
+		.content-box > .project .project-border {
+			margin-bottom: 0;
+			border:1px solid #e5e5e5;
+			padding:40px 50px;
+		}
+		.content-box > .project .project-border:hover {
+			background-color: #fffefa;
+			border-color: #fdc230;
+		}          
+		.content-box > .project .project-border table th {text-align: left;}
+		.content-box > .project .project-border thead tr th {font-size: 16px;color: #333;}
+		.content-box > .project .project-border tbody tr td a {font-size: 16px;padding:4px 10px;}
+		.project-border i {font-style: normal;}
+		.project-border i.f34 {
+			font-size: 34px;
+			color: #fdc230;
+		}
+		.project-border i.per {
+			font-size: 14px;
+			color: #fdc230;
+		}        
+		.project-border i.f18 {
+			font-size: 18px;
+			color: #666;
+		}  
+		.project-border i.f14 {
+			font-size: 14px;
+			color: #999;
+		} 
+		.project-border table tbody td.p-title {
+			font-size: 14px;
+			color: #b2b2b2;
+		}
+		.project-border td.p-countdown {color: #fbc230;}
+
+		.btn-success {
+			color: #fdc230;
+			background-color: #fff;
+			border-color: #fdc230;
+			border-radius: 4px;
+			width: 112px;
+			height: 32px;
+		}
+		.btn-success:hover,
+		.btn-success:focus,
+		.btn-success.focus,
+		.btn-success:active,
+		.btn-success.active,
+		.open > .dropdown-toggle.btn-success {
+			color: #fff;
+			background-color: #fdc230 !important;
+			border-color: #fdc230 !important;
+		}    
+		.btn-success.disabled,
+		.btn-success[disabled],
+		fieldset[disabled] .btn-success,
+		.btn-success.disabled:hover,
+		.btn-success[disabled]:hover,
+		fieldset[disabled] .btn-success:hover,
+		.btn-success.disabled:focus,
+		.btn-success[disabled]:focus,
+		fieldset[disabled] .btn-success:focus,
+		.btn-success.disabled.focus,
+		.btn-success[disabled].focus,
+		fieldset[disabled] .btn-success.focus,
+		.btn-success.disabled:active,
+		.btn-success[disabled]:active,
+		fieldset[disabled] .btn-success:active,
+		.btn-success.disabled.active,
+		.btn-success[disabled].active,
+		fieldset[disabled] .btn-success.active {
+			background-color: #fff;
+			border-color: #b2b2b2;
+		}
+		a.btn-sellout,
+		a.btn-done {
+			color:#b2b2b2;
+			border-color: #b2b2b2;
+		} 
+		.p-percent {
+			color: #b2b2b2;
+		}
+
+	</style>
+
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+	<script type="text/javascript">
+		$('#myCarousel').carousel({
+			interval: 3000
+		});
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</block>

@@ -1,0 +1,205 @@
+<!--修改密码-->
+<div class="" id="mobileHtml">
+<if condition="$flag eq false">
+<form method="post" action="#" class="mobile-wraper">
+	<div class="form-group">
+		<label class="label-control">当前手机号：</label>
+		{$mobile}
+		<button type="button" class="btn btn-success btn-xs" id="getCode">发送验证码</button>
+		<input type="hidden" value="60" id="mz" name="mz">
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<label class="input-group-addon">短信验证码：</label>
+			<input type="number" name="code" id="code" class="form-control">
+		</div>		
+	</div>
+	<div class="form-group text-right">
+		<button type="submit" class="btn btn-success" id="btnSend">下一步</button>
+	</div>
+</form>
+<else/>
+	<form method="post" action="javascript:;" class="mobile-wraper">
+		<div class="form-group">
+			<label class="label-control">新手机号：</label>
+			<div class="input-group">
+			<input type="text" name="mobile" id="mobile" class="form-control" onkeyup="this.value=this.value.replace(/^[\D]/g,'')" />
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-success" id="getCode1">发送验证码</button>
+				<input type="hidden" value="60" id="mz" name="mz">
+			</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="label-control">短信验证码：</label>
+			<input type="text" name="code" id="code" class="form-control" placeholder="6位数字"/>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary" id="btnSavePassword">提交</button>
+			<span class="" id="msgMobile"></span>
+		</div>
+	</form>
+</if>	
+</div>
+<if condition="$flag eq true">
+<script type="text/javascript">
+$(function() {
+		$("#btnSavePassword").click(function(){
+			var mobile = $.trim($("#mobile").val());
+			var code = $.trim($("#code").val());
+			var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+			if(!reg.test(mobile)){
+				$("#mobile").tooltip({
+					title:'无效手机号',
+				}).tooltip('show');
+				setTimeout(function(){
+					$("#mobile").tooltip('destroy');
+				},2000);
+				return false;
+			}
+
+			if(code=='' || code.length!=6){
+				$("#code").tooltip({
+					title:'验证码不能为空或无效验证码'
+				}).tooltip('show');
+				setTimeout(function(){
+					$("#code").tooltip('destroy');
+				},2000);
+				return false;
+			}
+			//手机号是否存在
+			var v = $.ajax({
+					type:"post",
+					url:"__URL__/bmobile",
+					data:{flag:'checkExists',mobile:mobile},
+					async:false
+				}).responseText;
+			if(v!='1'){
+				$("#mobile").tooltip({
+					title:'此手机号已存在不可以绑定',
+				}).tooltip('show');
+				setTimeout(function(){
+					$("#mobile").tooltip('destroy');
+				},2000);
+				return false;
+			}
+			//验证码是否正确
+			var v = $.ajax({
+					type:"post",
+					url:"__URL__/checkSmsCode",
+					data:{code:code,mobile:mobile},
+					async:false
+				}).responseText;
+			if(v!='1'){
+				$("#code").tooltip({
+					title:'验证码错误或已过期'
+				}).tooltip('show');
+				setTimeout(function(){
+					$("#code").tooltip('destroy');
+				},2000);
+				return false;
+			}
+
+			//无错误
+			$.ajax({
+				type:"post",
+				data:{mobile:mobile,flag:'save',code:code},
+				url:"__URL__/bmobile",
+				success:function(ret){
+					if(ret.status==1){
+						$("#msgMobile").text(ret.data).addClass('text-success');
+						setTimeout(function(){
+							$("#msgMobile").text('');
+							closeDialog();
+							window.location.href=document.URL;
+						},1000);
+					}
+					else
+					{
+						$("#msgMobile").text(ret.error).addClass('text-warning');
+						setTimeout(function(){
+							$("#msgMobile").text('');
+						},1000);
+					}
+				}
+			});
+
+		});
+	$("#getCode1").click(function(){
+		var v = $.trim($("#mobile").val());
+		var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		if(reg.test(v)){
+			$.ajax({
+				type:"post",
+				url:"__URL__/sendSms",
+				data:{mobile:v},
+				success:function(ret){
+					if(ret=='1'){
+						$("#getCode1").attr("disabled",true);
+						setJs("getCode1","mz");
+					}
+				}
+			});
+		}
+	});
+})
+</script>
+<else/>
+<script type="text/javascript">
+$(function() {
+	$(".mobile-wraper").validate({
+		rules:{
+			code:{required:true,minlength:6,checkCode:true},
+		},
+		messages:{
+			code:{
+				required:"短信验证不能为空",
+				minlength:"短信验证至少6位",
+				checkCode:"验证码错误或已过期",
+			}
+		},
+		errorPlacement:function(error,element,params){
+			error.appendTo($(element).parent('div').parent('div'))
+		},
+		submitHandler:function(form){
+			closeDialog();
+			BootstrapDialog.show({
+				type:BootstrapDialog.TYPE_DEFAULT,
+				title:'更换手机号',
+				message:$("<div></div>").load("__URL__/bmobile?code="+$("#code").val()),
+				cssClass:'bounceInDown animated',
+				onshown:vertical,
+			});
+		}
+
+	});
+	$("#getCode").click(function(){
+			$.ajax({
+				type:"post",
+				url:"__URL__/sendSms",
+				data:{mobile:'{$m}'},
+				success:function(ret){
+					if(ret=='1'){
+						$("#getCode").attr("disabled",true);
+						setJs();
+					}
+				}
+			});
+	});
+});
+$.validator.addMethod('checkCode',function(value,element,params){
+	var v = $.ajax({
+		type:"post",
+		url:"__URL__/checkSmsCode",
+		data:{code:value,mobile:'{$m}'},
+		async:false
+	}).responseText;
+	if(v=='1'){
+		return true;
+	}
+	else{
+		return false;
+	}
+})
+</script>
+</if>

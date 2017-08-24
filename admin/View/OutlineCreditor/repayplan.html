@@ -1,0 +1,35 @@
+<table class="table table-striped">
+<thead>
+<tr>
+	<th>期数</th>
+	<th>本金</th>
+	<th>利息</th>
+	<th>借款管理费</th>
+	<th>逾期罚息</th>
+	<th>逾期管理费</th>
+	<th>应还日期</th>
+	<th>状态</th>
+</tr>
+</thead>
+<volist name="list" id="r">
+	<tr>
+		<td>{$r.issue}</td>
+		<td>{$r.principal|number_format=2}</td>
+		<td>{$r.interest|number_format=2}</td>
+		<td>{$r.manage_amount|number_format=2}</td>
+		<td>{$r.overdue_penalty|number_format=2}</td>
+		<td>{$r.overdue_fees|number_format=2}</td>
+		<td>{$r.repay_date|date='Y-m-d',###}</td>
+		<td>
+			<switch name="r.status">
+				<case value="0">未到期</case>
+				<case value="1">已还清</case>
+				<case value="2">逾期</case>
+			</switch>
+		</td>
+	</tr>
+</volist>
+<if condition="count($list) eq 0">
+	<tr><td colspan="8" class="text-center">暂无信息</td></tr>
+</if>
+</table>

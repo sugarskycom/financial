@@ -1,0 +1,112 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+	<div class="ibox-title">
+    <form class="form-inline" method="get" action="javascript:;" id="toolbar">
+        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="借款唯一号、标题">
+        <button type="submit" class="btn btn-primary" id="btnSearch">查询</button>
+    </form>
+    </div>
+	<div class="ibox-content">
+        <table 
+            class="table table-striped"
+                data-url="__ACTION__"
+                data-toggle="table" 
+                id="table" 
+                data-method="get" 
+                data-query-params="params"
+                data-side-pagination="server" 
+                data-show-pagination-switch="false" 
+                data-classes="table table-striped table-hover" 
+                data-page-list="[10,50,100,ALL]" 
+                data-page-size="10" 
+                data-pagination="true"
+                data-sort-order="desc"
+>
+                <thead>
+                    <tr>
+                        <th data-field="id">系统编号</th>
+                        <th data-field="bno">唯一号</th>
+                        <th data-field="title">借款标题</th>
+                        <th data-field="product_type" data-formatter="formatType">产品大纲</th>
+                        <th data-field="open_time" data-formatter="formatTime">开始时间</th>
+                        <th data-field="open_time" data-formatter="formatTime1">截止时间</th>
+                        <th data-field="operator">发布人</th>
+                        <th data-field="status" data-formatter="formatStatus">标的状态</th>
+                        <th data-field="task_status" data-formatter="formatTaskStatus">任务状态</th>
+                        <th data-field="reason">失败原因</th>
+                        <th data-field="id" data-formatter="formatAction">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+	</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<include file="Public:datejs" />
+<script type="text/javascript">
+var type = {$type};
+$("#btnSearch").click(function(){
+	var keyword = $.trim($("#keyword").val());
+	if(keyword!=''){
+		$("#table").bootstrapTable("refresh");
+	}
+});
+function params(params){
+    params.flag = 'load';
+    params.keyword = $.trim($("#keyword").val());
+    return params;
+}
+function formatType(v,r,i){
+    return type[v];
+}
+function formatStatus(v,r,i){
+    switch(parseInt(v)){
+        case 0:
+        return '<span class="text-warning">审核中(被打回)</span>';
+        case 9:
+        return '已安排';
+        case 10:
+        return '初始';
+    }
+}
+function formatTaskStatus(v,r,i){
+    switch(parseInt(v)){
+        case 0:
+        return '待发布';
+        case 1:
+        return '已发布';
+        case 2:
+        return '已失败';
+    }
+}
+
+function formatTime1(v,r,i){
+    console.info(v);
+    if(typeof v == 'undefined' || v==null) return '-';
+	var t = parseInt(v)+parseInt(r.day)*24*60*60;
+	return formatTime(t);
+}
+function formatAction(v,r,i){
+    if(r.status==10){
+        return '<a href="javascript:;" class="btn btn-primary" onclick="openwin('+v+')">发布</a>'
+    }
+    else{
+        return '-';
+    }
+}
+function openwin(v){
+    BootstrapDialog.show({
+        type:BootstrapDialog.TYPE_DEFAULT,
+        title:'发布项目',
+        draggable:true,
+        message:function(){
+        	return $("<div></div>").load('__URL__/setloan?lid='+v);
+        }
+    })
+}
+</script>
+</block>

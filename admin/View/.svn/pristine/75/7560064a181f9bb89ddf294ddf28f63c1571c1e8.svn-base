@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="易电联(E电联)云金融,云仓储,云物流,现货抵押,仓单质押,现货贷款">
+    <meta name="description" content="易电联(E电联)是一家集物流,仓储,金融于一体的新型产业创业公司">
+    <meta name="author" content="edianlian">
+    <link rel="shortcut icon" href="__PUBLIC__/images/f_32X32.ico"/>
+    <title>{$title}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{$Think.config.RESOURCE_URL}/components/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+</head>
+<style type="text/css">
+body{
+    margin:0;
+    padding: 0;
+    background-color: #333;
+    font-family: "Microsoft YaHei";
+}
+.wraper{
+    width:980px;
+    height: 500px;
+    background-image: url("{$Think.config.RESOURCE_URL}/components/zoomImg/transparent.png");
+    background-repeat: repeat;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    overflow:hidden;
+    position: relative;
+}
+#imgContainer {width: 980px;height: 500px;}
+#positionButtonDiv {background: rgb(58, 56, 63);background: rgba(58, 56, 63, 0.8);border: solid 1px #100000;color: #fff;padding: 8px;text-align: left;position: absolute;right:35px;top:35px;}
+#positionButtonDiv .positionButtonSpan img {float: right;border: 0;}
+.positionMapClass area {cursor: pointer;}
+.zoomButton {border: 0; cursor: pointer;}
+.zoomableContainer {background-image: url("{$Think.config.RESOURCE_URL}/components/zoomImg/transparent.png");}
+h1{
+    padding: 0;
+    margin: 0;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+img{
+    outline:none;
+}
+</style>
+<body>
+<h1>{$title}</h1>
+<div class="wraper">
+    <div id="imgContainer"><img id="imageFullScreen" src="{$path}"/>
+    </div>
+    <div id="positionButtonDiv">
+        <p>
+            <span>
+            <img id="zoomInButton" class="zoomButton" src="{$Think.config.RESOURCE_URL}/components/zoomImg/zoomIn.png" title="放大" alt="zoom in">
+            <img id="zoomOutButton" class="zoomButton" src="{$Think.config.RESOURCE_URL}/components/zoomImg/zoomOut.png" title="缩小" alt="zoom out">
+             </span>
+        </p>
+        <p>
+            <span class="positionButtonSpan">
+                <map name="positionMap" class="positionMapClass">
+                    <area id="topPositionMap" shape="rect" coords="20,0,40,20" title="上移" alt="move up">
+                    <area id="leftPositionMap" shape="rect" coords="0,20,20,40" title="左移" alt="move left">
+                    <area id="rightPositionMap" shape="rect" coords="40,20,60,40" title="右移" alt="move right">
+                    <area id="bottomPositionMap" shape="rect" coords="20,40,40,60" title="下移" alt="move bottom">
+                </map>
+                <img src="{$Think.config.RESOURCE_URL}/components/zoomImg/position.png" usemap="#positionMap" >
+            </span>
+        </p>
+    </div>
+</div>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/zoomImg/e-smart-zoom-jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+ $('#imageFullScreen').smartZoom({'containerClass':'zoomableContainer'});        
+
+        $('#topPositionMap,#leftPositionMap,#rightPositionMap,#bottomPositionMap').bind("click", moveButtonClickHandler);
+        $('#zoomInButton,#zoomOutButton').bind("click", zoomButtonClickHandler);  
+        function zoomButtonClickHandler(e){
+            var scaleToAdd = 0.8;
+            if(e.target.id == 'zoomOutButton')
+                scaleToAdd = -scaleToAdd;
+            $('#imageFullScreen').smartZoom('zoom', scaleToAdd);
+        }        
+        function moveButtonClickHandler(e){
+            var pixelsToMoveOnX = 0;
+            var pixelsToMoveOnY = 0;
+            switch(e.target.id){
+                case "leftPositionMap":
+                    pixelsToMoveOnX = 50;   
+                break;
+                case "rightPositionMap":
+                    pixelsToMoveOnX = -50;
+                break;
+                case "topPositionMap":
+                    pixelsToMoveOnY = 50;   
+                break;
+                case "bottomPositionMap":
+                    pixelsToMoveOnY = -50;  
+                break;
+            }
+            $('#imageFullScreen').smartZoom('pan', pixelsToMoveOnX, pixelsToMoveOnY);
+        } 
+});
+</script>
+</body>
+</html>

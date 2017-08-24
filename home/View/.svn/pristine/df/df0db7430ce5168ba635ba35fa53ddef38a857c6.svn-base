@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{$title}</title>
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{$Think.config.RESOURCE_URL}/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/animate/animatecss/animate.v2013.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/skin/main.min.css" rel="stylesheet" type="text/css">
+    <!--dialog css-->
+    <link href="{$Think.config.RESOURCE_URL}/components/dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/icheck/custom.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css">
+    <block name="css"></block>
+
+</head>
+<body class="gray-bg">
+<block name="content"></block>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<!--bootstrap-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--dialog-->
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<!--validation-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+<block name="js"></block>
+</body>
+</html>

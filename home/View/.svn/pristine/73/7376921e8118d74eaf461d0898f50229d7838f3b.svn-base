@@ -1,0 +1,275 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:nav" />
+    <div id="wrapper">
+        <ol class="breadcrumb">
+            <li>汇通资产</li>
+            <li>借款管理</li>
+            <li class="active">我的借款</li>
+        </ol>
+        <!--/nav-->
+        <div class="ibox">
+            <!--内容-->
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab-1">我的借款</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-2">借款申请进度</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-3">今日到期</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-4">尚未到期</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-5">已还清</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-6">逾期及违约</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!--详细信息-->
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="panel-body">
+                            <table class="table table-striped  table-hover" data-toggle="table" data-url="__ACTION__" data-method="post" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50]" data-sort-order="desc" data-query-params="queryAction" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                                <thead>
+                                    <tr>
+                                        <th data-field="title">借款标题</th>
+                                        <th data-field="bno">借款唯一号</th>
+                                        <th data-field="loan_type" data-formatter="loantypeFormat">借款类型</th>
+                                        <th data-field="amount">借款金额(元)</th>
+                                        <th data-field="amount" data-formatter="lendFormat">放款金额(元)</th>
+                                        <th data-field="year_rate">年利率</th>
+                                        <th data-field="duration" data-formatter="durationFormat">借款期限</th>
+                                        <th data-field="open_time" data-formatter="timeFormat">发标时间</th>
+                                        <th data-field="end_time" data-formatter="timeFormat">放款时间</th>
+                                        <th data-field="pay_type" data-formatter="paytypeFormat">还款方式</th>
+                                        <th data-field="pledage_type" data-formatter="pledageFormat">抵押品</th>
+                                        <th data-field="status" data-formatter="statusFormat">借款状态</th>
+                                        <th data-formatter="actionFormat">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tab-1-->
+                    <div id="tab-2" class="tab-pane">
+                        <div class="panel-body">
+                            <table class="table table-striped  table-hover" data-toggle="table" data-url="__ACTION__" data-method="post" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50]" data-sort-order="desc" data-query-params="queryAction" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                                <thead>
+                                    <tr>
+                                        <th data-field="title">借款标题</th>
+                                        <th data-field="bno">借款唯一号</th>
+                                        <th data-field="loan_type" data-formatter="loantypeFormat">借款类型</th>
+                                        <th data-field="amount">借款金额(元)</th>
+                                        <th data-field="duration" data-formatter="durationFormat">借款期限</th>
+                                        <th data-field="year_rate">年利率</th>
+                                        <th data-field="pledage_type" data-formatter="pledageFormat">抵押品</th>
+                                        <th data-field="pay_type" data-formatter="paytypeFormat">还款方式</th>
+                                        <th data-field="add_time" data-formatter="timeFormat">申请时间</th>
+                                        <th data-field="status" data-formatter="statusFormat">借款状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tab-2-->
+                    <div id="tab-3" class="tab-pane">
+                        <div class="panel-body">
+                            <table class="table table-striped  table-hover" data-toggle="table" data-url="__ACTION__" data-method="post" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50]" data-sort-order="desc" data-query-params="queryAction" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                                <thead>
+                                    <tr>
+                                        <th data-field="title">借款标题</th>
+                                        <th data-field="bno">借款唯一号</th>
+                                        <th data-field="name1">借款人</th>
+                                        <th data-field="issue" data-formatter="issueFormat">期数</th>
+                                        <th data-formatter="totalFormat">应还总额(元)</th>
+                                        <th data-field="repay_time" data-formatter="timeFormat">到期时间</th>
+                                        <th data-field="had_amount">实还总额</th>
+                                        <th data-field="pay_time" data-formatter="timeFormat">还款时间</th>
+                                        <th data-formatter="detailFormat">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tab-3-->
+                    <div id="tab-4" class="tab-pane">
+                        <div class="panel-body">
+                            <table class="table table-striped  table-hover" data-toggle="table" data-url="__ACTION__" data-method="post" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50]" data-sort-order="desc" data-query-params="queryAction" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                                <thead>
+                                    <tr>
+                                        <th data-field="title">借款标题</th>
+                                        <th data-field="bno">借款唯一号</th>
+                                        <th data-field="name1">借款人</th>
+                                        <th data-field="issue" data-formatter="issueFormat">期数</th>
+                                        <th data-formatter="totalFormat">应还总额(元)</th>
+                                        <th data-field="repay_time" data-formatter="timeFormat">到期时间</th>
+                                        <th data-field="had_amount">实还总额</th>
+                                        <th data-field="pay_time" data-formatter="timeFormat">还款时间</th>
+                                        <th data-formatter="detailFormat">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tab-4-->
+                    <div id="tab-5" class="tab-pane">
+                        <div class="panel-body">
+                            <table class="table table-striped table-hover" data-toggle="table" data-url="__ACTION__" data-method="post" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50]" data-sort-order="desc" data-query-params="queryAction" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                                <thead>
+                                    <tr>
+                                        <th data-field="title">借款标题</th>
+                                        <th data-field="bno">借款唯一号</th>
+                                        <th data-field="name1">借款人</th>
+                                        <th data-field="issue" data-formatter="issueFormat">期数</th>
+                                        <th data-formatter="totalFormat">应还总额(元)</th>
+                                        <th data-field="repay_time" data-formatter="timeFormat">到期时间</th>
+                                        <th data-field="had_amount">实还总额</th>
+                                        <th data-field="pay_time" data-formatter="timeFormat">还款时间</th>
+                                        <th data-formatter="detailFormat">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tab-5-->
+                    <div id="tab-6" class="tab-pane">
+                        <div class="panel-body">
+                            <table class="table table-striped  table-hover" data-toggle="table" data-url="__ACTION__" data-method="post" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50]" data-sort-order="desc" data-query-params="queryAction" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                                <thead>
+                                    <tr>
+                                        <th data-field="title">借款标题</th>
+                                        <th data-field="bno">借款唯一号</th>
+                                        <th data-field="name1">借款人</th>
+                                        <th data-field="issue" data-formatter="issueFormat">期数</th>
+                                        <th data-formatter="totalFormat">应还总额(元)</th>
+                                        <th data-field="repay_time" data-formatter="timeFormat">到期时间</th>
+                                        <th data-field="had_amount">实还总额</th>
+                                        <th data-field="pay_time" data-formatter="timeFormat">还款时间</th>
+                                        <th data-formatter="detailFormat">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tab-6-->
+                </div>
+            </div>
+            <!--/ibox-->
+        </div>
+        <!--/wrapper-->
+    </div>
+    <include file="Public:copyright" />
+</block>
+<block name="js">
+    <include file="Public:bootstrap-table" />
+    <script type="text/javascript">
+    var pledage_type = {$pledage_type};
+    function queryAction(params) {
+        return false;
+    }
+    function loantypeFormat(value,row,index) {
+        var str = '-';
+        switch (value) {
+            case '1': str = '个人借款'; break;
+            case '2': str = '企业借款'; break;
+            case '3': str = '理财计划'; break;
+        }
+        return str;
+    }
+    function lendFormat(value,row,index) {
+        return value - row.manage_fees - row.risk_fees;
+    }
+    function durationFormat(value,row,index) {
+        var duration_type = {1:'年',2:'月',3:'天'};
+        return value+duration_type[row.duration_type];
+    }
+    function paytypeFormat(value,row,index) {
+        return value == '1' ? '按月付息到期还本' : '一次性还本付息' ;
+    }
+    function statusFormat(value,row,index) {
+        var status = {0:'待审核',1:'开放投标',2:'已结算',3:'流标',4:'已存档',5:'逾期',6:'违约',7:'已还清',8:'已取消',9:'已安排',10:'初始',11:'已满标'};
+        return status[value];
+    }
+    function actionFormat(value,row,index) {
+        return '<button type="button" class="btn btn-success btn-xs" onclick="pact(\''+row.hid+'\')">下载合同</button><br><button type="button" class="btn btn-primary btn-xs" data-toggle="popover" data-placement="left" data-content="" data-id="'+row.id+'" onclick="showPayPlan(this)">还款计划</button>';
+    }
+    // 下载借款合同
+    function pact(hid) {
+        window.open('__URL__/downloadPact?hid='+hid);
+    }
+    function pledageFormat(value,row,index) {
+        return value == '0' ? '无抵押' : pledage_type[value];
+    }
+    function timeFormat(value,row,index) {
+        if (value == '0' || value == null) {
+            return '-';
+        } else {
+            return moment.unix(value).format('YYYY-MM-DD HH:mm');
+        }
+    }
+    function issueFormat(value,row,index) {
+        return value+'期';
+    }
+    function totalFormat(value,row,index) {
+        return parseFloat(row.repay_principal) + parseFloat(row.repay_interest) + parseFloat(row.manage_fees) + parseFloat(row.overdue_penalty) + parseFloat(row.overdue_fees) + parseFloat(row.prepayment);
+
+    }
+    function detailFormat(value,row,index) {
+        return '<button type="button" class="btn btn-success btn-xs" data-toggle="popover" data-placement="left" data-content="" data-id="'+row.lid+'" data-issue="'+row.issue+'" onclick="showPayInfo(this)">还款明细</button>';
+    }
+
+    function showPayInfo(o){
+        $(o).popover({
+            html: true,
+            title: '还款明细',
+            trigger: 'focus',
+        }).on('show.bs.popover', function() {
+            if($(this).attr('data-content')==''){
+                $(this).attr('data-content', $.ajax({
+                    url: "__URL__/detail",
+                    data: {id:$(o).attr('data-id'), issue:$(o).attr('data-issue')},
+                    async: false
+                }).responseText);
+            }
+        }).on('hidden.bs.popover', function() {
+            //$(this).attr('data-content', '');
+        }).popover('show');
+    }
+    function showPayPlan(o){
+        BootstrapDialog.show({
+            title: "还款计划",
+            message: $('<div></div>').load("__URL__/payplan?id="+$(o).attr('data-id')),
+            size: BootstrapDialog.SIZE_WIDE,
+            type: BootstrapDialog.TYPE_DEFAULT,
+            draggable: true,
+        });
+    }
+    $(function() {
+        $.extend({
+            loadData: function(tab) {
+                var tb = $(tab).find('table[data-toggle]');
+                tb.bootstrapTable(
+                    'refreshOptions',
+                    {
+                        queryParams: function(params){
+                            params.tab = tab;
+                            return params;
+                        }
+                    }
+                );
+            }
+        });
+        $.loadData('#tab-1');
+        $('a[data-toggle=tab]').click(function(){
+            var tab = $(this).attr('href');
+            $.loadData(tab);
+        });
+    });
+    </script>
+</block>

@@ -1,0 +1,52 @@
+<form action="" method="post" id="form" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <input type="text" class="form-control" name="bno" id="bno" value="" placeholder="项目唯一号">
+        </div>
+    </div>
+    <!---/form-group-->
+    <div class="form-group">
+        <div class="col-sm-12">
+            <input type="number" class="form-control" name="amount" id="amount" value="" placeholder="金额">
+        </div>
+    </div>
+    <!---/form-group-->
+    <div class="form-group">
+        <div class="col-sm-12">
+            <textarea class="form-control" name="remark" id="remark"  placeholder="备注"></textarea>
+        </div>
+    </div>
+    <!---/form-group-->
+    <button type="button" class="btn btn-primary btn-block" id="btnAdd">保存</button>
+</form>
+<script type="text/javascript">
+	$("#btnAdd").click(function(){
+		var remark = $.trim($("#remark").val());
+		var bno = $.trim($("#bno").val());
+		var amount = $.trim($("#amount").val());
+		if(bno==''){
+			error("#bno",'项目唯一号不能为空');
+			$("#bno").focus();
+			return false;
+		}
+		else if(amount=='' || amount<0){
+			error("#amount",'金额必须大于0');
+			$("#amount").focus();
+			return false;
+		}
+		else{
+			$(this).attr('disabled',true).text('提交中...');
+			$.post("__URL__/addrepay",{remark:remark,bno:bno,amount:amount},function(ret){
+				if(ret.status==1)
+				{
+					$("#btnAdd").text(ret.data);
+					setTimeout(function(){
+						closeDialog();
+						$("#table").bootstrapTable('refresh');
+					},1000);
+					
+				}
+			});
+		}
+	})
+</script>

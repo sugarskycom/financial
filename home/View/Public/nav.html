@@ -1,0 +1,40 @@
+<div class="header">
+	<div id="wrapper">
+		<div class="col-lg-5 logo">
+			<a href="/"><img src="__PUBLIC__/images/logo60.png"></a>
+		</div>
+		<div class="col-lg-7 main-nav">
+			<ul class="nav nav-pills" role="tablist">
+			  <li  role="presentation" <eq name="c" value="dashboard">class="active"</eq> >
+			  	<a href="{:U('Dashboard/index')}">账号总览</a>
+			  </li>
+			  <eq name="c" value="account">
+			  <li role="presentation" class="dropdown active">
+			  <else/>
+			  <li role="presentation" class="dropdown">
+			  </eq>
+			    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			      安全中心 <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu" role="menu">
+			    	<li><a href="{:U('Account/index')}">账户安全</a></li>
+			    	<li><a href="javascript:;" class="btnPassword">修改密码</a></li>
+			    	<li><a href="{:U('Index/logout')}">安全退出</a></li>
+			    </ul>
+			  </li>
+			  <li <eq name="c" value="my">class="active"</eq>>
+			  	<a href="{:U('My/withdraw')}">资金管理</a>
+			  </li>
+			  <li <eq name="c" value="invest">class="active"</eq>>
+			  	<a href="{:U('Invest/index')}">出借管理</a>
+			  </li>
+			  <li <eq name="c" value="loan">class="active"</eq>>
+			  	<a href="{:U('Loan/index')}">借款管理</a>
+			  </li>
+			  <li <eq name="c" value="invite">class="active"</eq>>
+			  	<a href="{:U('Invite/index')}">我的邀请</a>
+			  </li>
+			</ul>
+		</div>
+	</div>
+</div>

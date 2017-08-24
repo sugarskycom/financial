@@ -1,0 +1,45 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container text-center">
+        <div class="background"></div>
+        <div class="msg">很遗憾，投资失败！</div>
+        <div class="info">打印接口错误提示</div>
+        <a href="{:U('Index/index')}" class="backindex">返回首页</a>
+    </div>
+    <include file="Index:float"/>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .container{
+            width: 870px;
+            height: 416px;
+            background-color: #ffffff;
+            margin-top: 20px;
+        }
+        .background{
+            background: url("/Public/images/failure.png") no-repeat 100% 100%;
+            width: 54px;
+            height: 54px;
+            margin-top: 110px;
+            margin-bottom: 20px;
+        }
+        .msg{
+            font-size: 20px;
+            color: #333333;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .info{
+            color: #b2b2b2;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .backindex{
+            color: #4f9aff;
+            font-size: 16px;
+        }
+    </style>
+</block>

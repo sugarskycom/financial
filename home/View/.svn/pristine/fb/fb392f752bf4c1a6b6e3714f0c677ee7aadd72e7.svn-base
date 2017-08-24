@@ -1,0 +1,261 @@
+<div class="calculator">
+<div class="calculator-header">
+	<h2 class="text-success">
+	<strong>收益计算器</strong>
+	<span>Income Calculator</span>
+	</h2>
+</div>
+<div class="row">
+	<div class="col-xs-5">
+		<form class="form-horizontal" method="post">
+			<div class="form-group">
+				<label class="col-xs-4 control-label">金额：</label>
+				<div class="col-xs-8">
+				<input type="number" class="form-control" id="amount" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" placeholder="您的出借金额">
+				</div>
+				<span>元</span>
+			</div>
+			<!--/form-group-->
+			<div class="form-group">
+				<label class="col-xs-4 control-label">期限：</label>
+				<div class="col-xs-8"><input type="number" class="form-control" id="month" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" placeholder="期望时间长度"></div>
+				<span>月</span>
+			</div>
+			<!--/form-group-->
+			<div class="form-group">
+				<label class="col-xs-4 control-label">预期年化收益：</label>
+				<div class="col-xs-8"><input type="number" class="form-control" id="rate" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" placeholder="年化利率"></div>
+				<span>%</span>
+			</div>
+			<!--/form-group-->
+			<div class="form-group">
+				<label class="col-xs-4 control-label">还款方式：</label>
+				<div class="col-xs-8">
+					<select class="form-control" id="payType">
+						<option value="1">按月付息到期还本</option>
+						<option value="2">一次性还本付息</option>
+					</select>
+				</div>
+			</div>
+			<!--/form-group-->
+			<div class="form-group">
+				<div class="col-xs-offset-4 col-xs-8">
+				<button type="button" class="btn btn-primary" id="btnIncome">计算收益</button>
+				<button type="reset" class="btn btn-white">重置</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<div class="col-xs-7">
+		<table class="table table-bordered" id="calculator">
+			<thead>
+				<tr>
+					<td style="width:75px;">期数</td>
+					<td style="width:120px;">应收本金</td>
+					<td style="width:120px;">应收利息</td>
+					<td style="width:97px;">服务费</td>
+					<td>应收金额</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="5" style="height: 160px;padding:0;">
+					<div class="result">
+						<table class="table">
+							<tbody>
+							</tbody>
+						</table>
+					</div>	
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>总计</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="total-info text-center">
+			实际收益：<span class="text-success" id="incomeTotal">-</span>
+			实际年化收益率：<span class="text-red" id="incomeRate">-</span>
+		</div>
+	</div>
+</div>
+</div>
+<style type="text/css">
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+input[type="number"]{
+	-moz-appearance:textfield;
+}
+.form-group{
+	position: relative;
+	z-index: 90;
+	margin-bottom: 25px;
+}
+.form-group span{
+	position: absolute;
+	right: 25px;
+	font-size: 12px;
+	color:#999;
+	top:10px;
+}
+.form-group label{
+	padding-right: 0;
+}
+input[type="number"]{
+	padding-right: 25px;
+}
+@media (min-width: 992px){
+.modal-lg {
+    width: 1000px;
+}
+}
+.calculator-header h2{
+	margin:0;
+	margin-bottom: 15px;
+	font-size: 16px;
+	position: relative;
+	z-index: 100;
+	overflow:hidden;
+}
+.calculator-header h2 strong
+{
+	word-spacing:8px; letter-spacing: 4px;
+	font-weight: 100;
+}
+.calculator-header h2 span{
+	font-size: 12px;
+	display: block;
+}
+.calculator-header h2:before{
+	content: '';
+	display: block;
+	width: 100%;
+	border-top:2px solid #e5e5e5;
+	position: absolute;
+	z-index: 99;
+	top:15px;
+	left:110px;
+}
+.calculator .table{
+	margin-bottom: 0;
+}
+.calculator .table>tbody>tr>td,
+.calculator .table>tbody>tr>th,
+.calculator .table>tfoot>tr>td,
+.calculator .table>tfoot>tr>th,
+.calculator .table>thead>tr>td,
+.calculator .table>thead>tr>th{
+	border:0
+}
+.calculator .table>thead>tr>td{
+	border-bottom: 1px solid #ddd;
+}
+.calculator .table>tfoot>tr>td{
+	border-top:1px solid #ddd;
+	background-color: #f5f5f6;
+}
+.total-info{
+	border:1px solid #e5e5e5;
+	border-top:0;
+	padding: 8px;
+}
+.total-info span{
+	display: inline-block;
+}
+.total-info span:first-child{
+		margin-right: 15px;
+}
+.result{
+	height: 160px;
+	overflow-y:scroll;
+}
+.result table td{
+	text-align: left;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	$("#btnIncome").click(function(){
+		var amount = f($("#amount").val());
+		var month = f($("#month").val());
+		var rate = f($("#rate").val());
+		var result = $(".result table tbody");
+		if(amount ==0 || month==0 || rate==0){
+			
+			result.html('');
+			$("#calculator tfoot td:eq(1)").html('-');
+			$("#calculator tfoot td:eq(2)").html('-');
+			$("#calculator tfoot td:eq(3)").html('-');
+			$("#calculator tfoot td:eq(4)").html('-');
+			$("#incomeTotal").html('-');
+			$("#incomeRate").html("-");
+			return false;
+		}
+		var total_1 = amount;//总本金
+		var total_2 = 0;//总利息
+		var total_3 = 0;//总服务费
+		var total_4 = 0;//总应收金额
+		result.html('');
+		for(var i=1;i<(month+1);i++){
+			var t1 = (rate*amount)/1200;//每月利息
+			var n = new Number(t1);
+			t1 = parseFloat(n.toFixed(2));//每月利息,保留2未小数
+			total_2 += t1;
+			var tr = '<tr>'
+			if(i==month){
+				var t = t1+amount;
+				//t = new Number(t);
+				tr += '<td style="width:75px;">'+i+'</td>';
+				tr += '<td style="width:120px;">'+amount+'</td>';
+				tr += '<td style="width:120px;">'+t1+'</td>';
+				tr += '<td style="width:97px;">0</td>';
+				tr += '<td>'+t+'</td>';
+			}
+			else{
+				tr += '<td style="width:75px;">'+i+'</td>';
+				tr += '<td style="width:120px;">0</td>';
+				tr += '<td style="width:120px;">'+t1+'</td>';
+				tr += '<td style="width:97px;">0</td>';
+				tr += '<td>'+t1+'</td>';
+			}
+			tr += '</tr>';
+			result.append(tr)
+		}
+		total_4 = total_2+amount;
+		total_2 = new Number(total_2);
+		total_2 = total_2.toFixed(2);
+		$("#calculator tfoot td:eq(1)").html(total_1);
+		$("#calculator tfoot td:eq(2)").html(total_2);
+		$("#calculator tfoot td:eq(3)").html(total_3);
+		$("#calculator tfoot td:eq(4)").html(total_4);
+		$("#incomeTotal").html(total_2+'元');
+		$("#incomeRate").html(rate+"%");
+	});
+
+	$("#month").on('keyup',function(){
+		var v = f($(this).val());
+		if(v>1) $("#payType").find('option:eq(0)').prop('selected',true);
+	})
+
+	$("#payType").on('change',function(){
+		var v = f($("#month").val());
+		if(v>1) $(this).find('option:eq(0)').prop('selected',true);
+	})
+});
+
+function f(str){
+	if(isNaN(str) || str=='') str = 0;
+	return parseFloat(str);
+}
+</script>

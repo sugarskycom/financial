@@ -1,0 +1,55 @@
+<extend name="Public:base"/>
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <form action="javascript:;" class="form-inline" method="get">
+                <input type="text" class="form-control" id="keyword" name="keyword"  placeholder="中电金服平台用户名/手机号/姓名" style="width: 350px;">
+                <button type="submit" class="btn btn-success" id="btnSearch">查询</button>
+            </form>
+        </div>
+        <div class="ibox-content">
+        <dl class="dl-horizontal" id="result">
+        </dl>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:datejs"/>
+<script type="text/javascript">
+var lang = {$lang};
+$("#orderDate").datetimepicker({
+	language:'zh-CN',
+	format:'yyyy-mm-dd',
+	minView:'month',
+});
+$("#btnSearch").click(function(){
+	var obj = {};
+	obj.keyword = $.trim($("#keyword").val());
+	if(obj.keyword==''){
+		toastr.error('用户名/手机号/姓名不能为空');
+		return false;
+	}
+	$(this).attr('disabled',true);
+	$.post("__ACTION__",obj,function(ret){
+		$("#btnSearch").attr('disabled',false);
+		if(ret.status==1){
+			$("#result").html('');
+			$.each(ret.data,function(k,v){
+				$("#result").append('<dt>'+lang[k]+'</dt>');
+				$("#result").append('<dd>'+v+'</dd>');
+			});
+		}
+		else{
+			toastr.error(ret.error);
+		}
+	});
+});
+</script>
+</block>
+<block name="css">
+<style>
+#result dt,#result dd{
+	padding: 5px 0;
+}
+</style>
+</block>

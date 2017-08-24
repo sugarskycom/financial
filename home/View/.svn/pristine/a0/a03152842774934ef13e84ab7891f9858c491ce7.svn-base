@@ -1,0 +1,60 @@
+<extend name="Public:base" />
+<block name="content">
+<include file="Public:nav"/>
+<div id="wrapper">
+<ol class="breadcrumb">
+  <li>汇通资产</li>
+  <li>资金管理</li>
+  <li class="active">我的银行卡</li>
+</ol>
+<div class="ibox">
+<!--内容-->
+<div class="tabs-container">
+    <ul class="nav nav-tabs">
+        <li><a href="__URL__/withdraw">提现</a></li>
+        <li><a href="__URL__/transfer">转账</a></li>
+        <li class="active"><a href="__URL__/bankcard">我的银行卡</a></li>
+        <li><a href="__URL__/funds">资金记录</a></li>
+    </ul>
+    <div class="tab-content">
+        <!--详细信息-->
+        <div class="tab-pane active">
+            <div class="panel-body">
+                    <div class="card-list clearfix">
+                        <volist name="bkc_list" id="bkc">
+                        <div class="item">
+                            <span class="name">{$bkc.bank}</span>
+                            <span class="no">{$bkc.number}</span>
+                            <span class="full-name">{$bkc.bank_name}</span>
+                            <span class="time">{$bkc.add_time|date="Y/m/d H:i",###}</span>
+                        </div>
+                        </volist>
+                        <div class="add-item" id="btnBank">
+                            <div><i class="fa fa-plus fa-3x"></i></div>
+                            <span>添加银行卡</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>     
+<!--/主要内容-->
+</div>
+</div>
+<include file="Public:copyright"/>
+</block>
+<block name="js">
+<script type="text/javascript">
+    //添加银行卡窗口
+    $("#btnBank").on("click", function() {
+        BootstrapDialog.show({
+            title: "添加银行卡",
+            message: $("<div></div>").load("__URL__/addbank"),
+            type: BootstrapDialog.TYPE_DEFAULT,
+            draggable: false,
+            cssClass:'bounceInDown animated',
+            onshown:vertical,
+        });
+    });
+</script>
+</block>

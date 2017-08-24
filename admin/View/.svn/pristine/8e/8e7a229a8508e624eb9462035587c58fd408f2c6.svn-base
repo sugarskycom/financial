@@ -1,0 +1,95 @@
+<form action="" method="post" id="form" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 提现金额：
+		</label>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" name="amount" id="amount">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 备注信息：
+		</label>
+		<div class="col-sm-9">
+			<textarea name="remark" id="remark" class="form-control"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 验证码：
+		</label>
+		<div class="col-sm-5">
+			<input type="text" id="code" name="code" class="form-control">
+		</div>
+		<div class="col-sm-4">
+			<a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src='{:U(\'Verify/load\')}/?rnd='+Math.random()"></a>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-success" id="btnWithdraw">确定提现</button>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+//充值
+$("#form").validate({
+	rules:{
+		amount:{
+			required:true,
+			min:1,
+		},
+		remark:{
+			required:true,
+		},
+		code:{
+			required:true,
+			check:true,
+		}
+	},
+	messages:{
+		amount:{
+			required:'提现金额不能为空或0',
+			min:'提现金额应大于0',
+		},
+		remark:{
+			required:'备注必须填写',
+		},
+		code:{
+			required:'验证码不能为空',
+			check:'验证码错误'
+		}
+	},
+	submitHandler:function(form){
+		$("#btnWithdraw").attr('disabled',true);
+		$.post('__URL__/withdraw',{amount:$("#amount").val(),remark:$("#remark").val(),code:$("#code").val()},function(ret){
+			if(ret.status==1){
+				$("#btnWithdraw").text(ret.data);
+				setTimeout(function(){
+					window.location.href=document.URL;
+				},500)
+			}
+			else{
+				alt(ret.error);
+			}
+		});
+	}
+
+});
+$.validator.addMethod("check", function(value, element, params) {
+    if (value.length != 4) {
+        return false;
+    } else {
+        var ret = $.ajax({
+            url: "{:U('Verify/check')}",
+            type: "get",
+            data: {
+                code: $("#code").val()
+            },
+            async: false
+        }).responseText;
+        return ret == "yes" ? true : false
+    }
+});
+</script>

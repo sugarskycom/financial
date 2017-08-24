@@ -1,0 +1,178 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <div class="project-info ">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h3>{$loan.title}&nbsp;&nbsp;<span class="text-red">{$loan.sub_title}</span></h3>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="detail" style="padding:30px;line-height: 180%;">
+                                        唯一号：<strong>{$loan.bno}</strong> | {$pledage|default='-'} | 最小投资额：<strong>￥{$loan.min_amount|number_format=0}元</strong> | 最大投资额：<strong>￥{$loan.max_amount|number_format=0}元</strong> | 投资增量：<strong>￥{$loan.step_amount|number_format=0}元</strong> | 金额：<strong>￥{$loan.amount|number_format=0}元</strong> | 年化利率：<strong>{$loan.year_rate}%</strong> |
+                                        <if condition="$loan[pay_type] eq 1">按月付息到期还本
+                                            <else/> 一次性还本付息
+                                        </if> | 期限：<strong>{$loan.duration}</strong>
+                                        <if condition="$loan[duration_type] eq 1">年
+                                        <elseif condition='$loan[duration_type] eq 2' /> 个月
+                                        <elseif condition='$loan[duration_type] eq 3' /> 天
+                                        </if> | 总利息：<strong>￥
+                                        <switch name="loan[duration_type]">
+                                            <case value="1">{$loan[amount] * $loan[year_rate] * $loan[duration]|number_format=0}</case>
+                                            <case value="2">{$loan[amount] * $loan[year_rate] / 1200 * $loan[duration]|number_format=0}</case>
+                                            <case value="3">{$loan[amount] * $loan[year_rate] / 36500 * $loan[duration]|number_format=0}</case>
+                                        </switch>
+                                        元</strong> | 申请日期： <strong>{$loan.add_time|date='Y-m-d H:i',###}</strong> | 借款管理费率：<strong>{$loan.manage_rate}%</strong> | 借款服务费率：<strong>{$loan.service_rate}%</strong> | 风险管理费率：<strong>{$loan.risk_rate}%</strong> | 逾期罚息费率：<strong>{$loan.overdue_penalty_rate}%</strong> | 逾期管理费率：<strong>{$loan.overdue_manage_rate}%</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h3>审批操作流程</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="vertical-timeline" class="vertical-container light-timeline">
+                <volist name="actionlog" id="l">
+                	<div class="vertical-timeline-block">
+	                    <div class="vertical-timeline-icon navy-bg">
+	                        <i class="fa fa-clock-o"></i>
+	                    </div>
+	                    <div class="vertical-timeline-content">
+	                        <h2>{$l.action}</h2>
+	                        <p>操作人：{$l.operator}</p>
+	                        <span class="vertical-date">{$l.check_time|date="Y/m/d H:i",###}</span>
+	                    </div>
+	                </div>
+                </volist>
+            </div>
+        </div>
+        <div class="col-lg-8 btns">
+            <notin name="loan.status" value="2,3,4,5,6,7,8">
+	    		<eq name="loan.status" value="0">
+	            	<button type="button" class="btn btn-primary btn-lg btn-action" data-index='1'>调度发布</button>
+		        </eq>
+		        <eq name="loan.status" value="1">
+	            	<button type="button" class="btn btn-success btn-lg btn-action" data-index='2'>立即批准</button>
+	            </eq>
+                <eq name="loan.status" value="0">
+    	            <button type="button" class="btn btn-danger btn-lg btn-action" data-index='3'>拒绝</button>
+                </eq>
+            </notin>
+        </div>
+    </div>
+</block>
+<block name="css">
+    <style>
+    .detail {
+        font-size: 15px;
+    }
+    
+    .detail strong {
+        color: red;
+    }
+    
+    .btns {
+        padding-top: 30px;
+    }
+    </style>
+</block>
+<block name="js">
+    <script type="text/javascript">
+    var hid = '{$loan.hid}';
+    $(function() {
+        $(".btn-action").click(function() {
+            var i = $(this).attr('data-index');
+            if (i == '1') {
+                $.post("__URL__/publish?hid={$loan.hid}", {
+                    hid: hid
+                }, function(ret) {
+                    if (ret.status == 1) {
+                        alt(ret.data, function() {
+                            window.location.href = document.URL;
+                        })
+                    } else {
+                        alt(ret.error);
+                    }
+                });
+            } else if (i == '2') {
+                BootstrapDialog.show({
+                    title: "确定立即批准",
+                    type: BootstrapDialog.TYPE_DEFAULT,
+                    message: function() {
+                        return '<div class="form-group"><a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src=\'{:U(\'Verify/load\')}/?rnd=\'+Math.random()" style=""></a></div><div class="form-group"><input type="text" class="form-control" name="code" id="code" placeholder="请输入验证码"></div><div class="form-group"><button class="btn btn-primary" onclick="confirmAgree()">确定</button></div>'
+                    }
+                });
+                return false;
+            } else if (i == '3') {
+                BootstrapDialog.show({
+                    title: "确定拒绝",
+                    type: BootstrapDialog.TYPE_DEFAULT,
+                    message: function() {
+                        return '<div class="form-group"><a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src=\'{:U(\'Verify/load\')}/?rnd=\'+Math.random()" style=""></a></div><div class="form-group"><input type="text" class="form-control" name="code" id="code" placeholder="请输入验证码"></div><div class="form-group"><button class="btn btn-primary" onclick="confirmRefuse()">确定</button></div>'
+                    }
+                });
+                return false;
+            }
+        });
+    });
+
+    function confirmAgree() {
+        var code = $("#code").val().trim();
+        if (code == '' || code.length != 4) {
+            alt('验证码不能为空或无效');
+            return false;
+        }
+        $.post("__URL__/agree?hid={$loan.hid}", {
+            hid: hid,
+            code: code
+        }, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data, function() {
+                    window.location.href = document.URL;
+                })
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+
+    function confirmRefuse() {
+        var code = $("#code").val().trim();
+        if (code == '' || code.length != 4) {
+            alt('验证码不能为空或无效');
+            return false;
+        }
+        $.post("__URL__/refuse?hid={$loan.hid}", {
+            hid: hid,
+            code: code
+        }, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data, function() {
+                    window.location.href = document.URL;
+                })
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+    </script>
+</block>

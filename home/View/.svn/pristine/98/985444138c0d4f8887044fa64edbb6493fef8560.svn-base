@@ -1,0 +1,231 @@
+<extend name="Public:base" />
+<block name="content">
+<include file="Public:nav"/>
+<div id="wrapper">
+<ol class="breadcrumb">
+  <li>{:C('WEB_NAME')}</li>
+  <li>我的邀请</li>
+  <li class="active">我的邀请</li>
+</ol>
+<div class="ibox">
+<div class="ibox-title">
+<h5>我的邀请</h5>
+</div>
+<div class="ibox-content">
+<div class="invite_nav_box">
+<ul class="invite_nav clearfix">
+	<li><a href="#div-1">邀请攻略</a></li>
+	<li><a href="#div-2">邀请列表</a></li>
+	<li><a href="#div-3">奖励明细</a></li>
+</ul>
+<em class="activebg" style="width: 110px; left: 0px;"></em>
+</div>
+<div class="invite-box">
+<include file="box-1" />
+<include file="box-2" />
+<include file="box-3" />
+</div>
+<!---3-4-/end-->
+</div>
+</div>
+</div>
+<include file="Public:copyright"/>
+</block>
+<block name="css">
+<style type="text/css">
+ul,li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.invite_nav_box {
+    border-bottom: 2px solid #e7e7e7;
+    margin-bottom: 7px;
+    height: 26px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.invite_nav li{
+    float: left;
+    width: 110px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: -2px;
+}
+.activebg {
+    position: absolute;
+    bottom: -2px;
+    width: 110px;
+    height: 2px;
+    overflow: hidden;
+    background: #168ce8;
+}
+.invite_nav li a {
+    width: 110px;
+    display: inline-block;
+    border-right: 1px solid #e7e7e7;
+    margin-bottom: 10px;
+    outline: 0;
+}
+.invite-title{
+	border-left: 5px solid #999;
+	padding-left: 10px;
+	font-size: 13px;
+}
+.tj_list li:first-child {
+    margin-left: 280px;
+}
+.tj_list li {
+    float: left;
+    margin: 30px 0 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    width: 260px;
+}
+.tj_list li .tj_num {
+    font-size: 22px;
+    color: #000;
+}
+.tj_list2 {
+    margin: 0 0 40px 235px;
+}
+.tj_list2 li:first-child {
+    margin-left: 0;
+}
+.tj_list2 li {
+    width: 214px;
+    height: 98px;
+    border: 1px solid #ffd2a4;
+    border-radius: 5px;
+    float: left;
+    margin-left: 25px;
+}
+.tj_list2 li h3 {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    background: url(__PUBLIC__/images/invite_grade.jpg) no-repeat;
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 0 0 15px;
+}
+.tj_list2 li p {
+    font-size: 12px;
+    color: #999;
+    line-height: 24px;
+    margin: 0 0 0 50px;
+}
+.lc_list {
+    margin-left: 175px;
+    height: 68px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+.lc_list li {
+    float: left;
+    color: #999;
+    font-size: 14px;
+    height: 68px;
+    line-height: 20px;
+}
+.lc_list li img {
+    float: left;
+}
+.lc_list .invite_next {
+    float: left;
+    margin: 11px 30px 11px 40px;
+}
+.lc_list li p {
+    float: left;
+    margin: 14px 10px;
+}
+.lc_list li p.lineh_68 {
+    margin-top: 28px;
+}
+.invite_way1 {
+    height: 200px;
+}
+.invite_way {
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    position: relative;
+    clear: both;
+    margin-top: 15px;
+    padding-left: 65px;
+}
+.invite_way_num {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 48px;
+    height: 34px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    background: url(__PUBLIC__/images/invite_num.png) no-repeat;
+    padding-top: 5px;
+}
+.invite_way h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 15px 0 20px;
+}
+.invite_way1 ul li a {
+    display: block;
+    width: 52px;
+    height: 70px;
+    text-align: center;
+    background: url(__PUBLIC__/images/invite_share.png) no-repeat;
+    padding-top: 50px;
+    float: left;
+    margin-right: 20px;
+}
+.invite_way1 ul li a.share1 {
+    background-position: 2px 0;
+}
+.invite_way1 ul li a.share2 {
+    background-position: -69px 0;
+}
+.invite_way1 ul li a.share3 {
+    background-position: -138px 0;
+}
+.invite_way1 ul li a.share4 {
+    background-position: -208px 0;
+}
+.invite_way1 ul li a.share5 {
+    background-position: -278px 0;
+}
+.invite_way1 ul li a.share6 {
+    background-position: -348px 0;
+}
+.invite_way1 ul li a.share7 {
+    background-position: -418px 0;
+}
+</style>
+</block>
+<block name="js">
+<script type="text/javascript">
+$(function(){
+	$(".invite_nav li").hover(function(){
+
+	});
+	$(".invite_nav li").click(function(){
+		var i = $(this).index();
+		var id = $(this).find('a').attr("href");
+		var l = 100*i+10*i;
+		$("em.activebg").css({'left':l+"px"});
+		$(id).removeClass('hide').siblings('div').addClass('hide');
+		return false;
+	});
+})
+</script>
+</block>

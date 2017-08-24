@@ -1,0 +1,10 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <include file="Public:banner" />
+
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+
+</block>

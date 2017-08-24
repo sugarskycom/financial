@@ -1,0 +1,468 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<!-- banner -->
+	<div class="bg container"></div>
+	<!--类型-->
+	<div class="pro-box text-center container">
+		<div class="row pro-type">
+			<a href="{:U('invest')}?tid=1"><div id="fundRaise" class="pro-type-title col-md-4 <eq name='Think.get.tid' value='1'>pro-active</eq>">仓单融资</div></a>
+			<a href="{:U('invest')}?tid=2"><div id="assetPledge" class="pro-type-title col-md-4 <eq name='Think.get.tid' value='2'>pro-active</eq>">资产抵押</div></a>
+			<a href="{:U('invest')}?tid=3"><div id="receivable" class="pro-type-title col-md-4 <eq name='Think.get.tid' value='3'>pro-active</eq>">应收账款</div></a>
+		</div>	
+	</div>
+	<div class="pro-box container">
+		<div class="row">
+			<div class="notice">融资企业将自有库存货品存放到易电联仓库内作为融资担保品</div>
+		</div>
+	</div>
+	<!--仓单融资-->
+	<div class="container content1 content-box" style="display:<eq name='Think.get.tid' value='1'>block;<else/>none;</eq>">
+		<div class="row project">
+		<volist name ="loan" id ="l">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('detail')}?hid={$l.hid}">{$l.title}</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">{$l.year_rate}</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">{$l.raise_time}</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">{$l.min_amount}</i><i class="f14">元</i></td>
+								<switch name = "l.pay_type">
+								<case value = "1">
+									<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+								</case>
+								<case value = "2">
+									<td class="p-num"><i class="f18">一次性还本付息</i></td>
+								</case>
+								</switch>
+								<td class="p-num"><i class="f18">{$l.usable_amount_num}</i><i class="f14">元</i></td>
+								<switch name = "l.status">
+								<case value = "1">
+								<td class="p-num"><a href="{:U('detail')}?hid={$l.hid}" class="btn btn-success btn-able">立即投资</a></td>
+								</case>
+								<case value = "9">
+									<td class="p-num"><a href="{:U('detail')}?hid={$l.hid}" class="btn btn-success btn-able">即将开标</a></td>
+								</case>
+								<case value = "4">
+									<td class="p-num"><a href="#" class="btn btn-success btn-done" disabled="disabled">已完成</a></td>
+								</case>
+								<case value = "11">
+									<td class="p-num"><a href="#" class="btn btn-success btn-sellout" disabled="disabled">已售罄</a></td>
+								</case>
+								</switch>
+								
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">收益方式</td>
+								<td class="p-title">剩余可购金额</td>
+								<switch name = "l.status">
+								<case value = "1">
+									<td class="p-title p-percent">已完成：{$l.schedule}%</td>
+								</case>
+								<case value = "9">
+									<td class="p-title p-countdown" timestamp = "{$l.open_time}" id="{$l.open_time}">00天00时00分00秒</td>
+								</case>
+								<case value = "11">
+									<td class="p-title p-percent">已完成：{$l.schedule}%</td>
+								</case>
+								</switch>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</volist>	
+		</div>
+		<div class="row">
+			<!--分页器-->
+			<nav aria-label="Page navigation" style="text-align: right;">
+				<ul class="pagination">
+       				{$loanpage}
+				</ul>
+			</nav>
+		</div>		
+	</div>
+	<div class="container content2 content-box" style="display:<eq name='Think.get.tid' value='2'>block;<else/>none;</eq>">
+		<div class="row project">
+		<volist name ="asset" id ="a">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('detail')}?hid={$a.hid}">{$a.title}</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">{$a.year_rate}</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">{$a.raise_time}</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">{$a.min_amount}</i><i class="f14">元</i></td>
+								<switch name = "a.pay_type">
+								<case value = "1">
+									<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+								</case>
+								<case value = "2">
+									<td class="p-num"><i class="f18">一次性还本付息</i></td>
+								</case>
+								</switch>
+								<td class="p-num"><i class="f18">{$a.usable_amount_num}</i><i class="f14">万元</i></td>
+								<switch name = "a.status">
+								<case value = "1">
+								<td class="p-num"><a href="{:U('detail')}?hid={$a.hid}" class="btn btn-success btn-able">立即投资</a></td>
+								</case>
+								<case value = "9">
+									<td class="p-num"><a href="{:U('detail')}?hid={$a.hid}" class="btn btn-success btn-able">即将开标</a></td>
+								</case>
+								<case value = "4">
+									<td class="p-num"><a href="#" class="btn btn-success btn-done" disabled="disabled">已完成</a></td>
+								</case>
+								<case value = "11">
+									<td class="p-num"><a href="#" class="btn btn-success btn-sellout" disabled="disabled">已售罄</a></td>
+								</case>
+								</switch>
+								
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">收益方式</td>
+								<td class="p-title">剩余可购金额</td>
+								<switch name = "a.status">
+								<case value = "1">
+									<td class="p-title p-percent">已完成：{$a.schedule}%</td>
+								</case>
+								<case value = "9">
+									<td class="p-title p-countdown">1天12时9分12秒</td>
+								</case>
+								<case value = "11">
+									<td class="p-title p-percent">已完成：{$a.schedule}%</td>
+								</case>
+								</switch>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</volist> 
+		</div>
+		<div class="row">
+			<!--分页器-->
+			<nav aria-label="Page navigation" style="text-align: right;">
+				<ul class="pagination">
+       				{$assetpage}
+				</ul>
+			</nav>
+		</div>	
+	</div>
+	<div class="container content3 content-box" style="display:<eq name='Think.get.tid' value='3'>block;<else/>none;</eq>">
+		<div class="row project">
+		<volist name ="receivable" id ="r">
+				<div class="project-border">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="6"><a href="{:U('detail')}?hid={$r.hid}">{$r.title}</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="p-num"><i class="f34">{$r.year_rate}</i><i class="per">%</i></td>
+								<td class="p-num"><i class="f18">{$r.raise_time}</i><i class="f14">天</i></td>
+								<td class="p-num"><i class="f18">{$r.min_amount}</i><i class="f14">元</i></td>
+								<switch name = "r.pay_type">
+								<case value = "1">
+									<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+								</case>
+								<case value = "2">
+									<td class="p-num"><i class="f18">一次性还本付息</i></td>
+								</case>
+								</switch>
+								<td class="p-num"><i class="f18">{$r.usable_amount_num}</i><i class="f14">万元</i></td>
+								<switch name = "r.status">
+								<case value = "1">
+								<td class="p-num"><a href="{:U('Project/detail')}?hid={$r.hid}" class="btn btn-success btn-able">立即投资</a></td>
+								</case>
+								<case value = "9">
+									<td class="p-num"><a href="{:U('detail')}?hid={$a.hid}" class="btn btn-success btn-able">即将开标</a></td>
+								</case>
+								<case value = "4">
+									<td class="p-num"><a href="#" class="btn btn-success btn-done" disabled="disabled">已完成</a></td>
+								</case>
+								<case value = "11">
+									<td class="p-num"><a href="#" class="btn btn-success btn-sellout" disabled="disabled">已售罄</a></td>
+								</case>
+								</switch>
+							</tr>				
+							<tr>
+								<td class="p-title">预期年化收益</td>
+								<td class="p-title">合约期限</td>
+								<td class="p-title">起投金额</td>
+								<td class="p-title">收益方式</td>
+								<td class="p-title">剩余可购金额</td>
+								<switch name = "r.status">
+								<case value = "1">
+									<td class="p-title p-percent">已完成：{$r.schedule}%</td>
+								</case>
+								<case value = "9">
+									<td class="p-title p-countdown">1天12时9分12秒</td>
+								</case>
+								<case value = "11">
+									<td class="p-title p-percent">已完成：{$r.schedule}%</td>
+								</case>
+								</switch>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</volist>
+		</div>
+		<div class="row">
+			<!--分页器-->
+			<nav aria-label="Page navigation" style="text-align: right;">
+				<ul class="pagination">
+       				{$receivablepage}
+				</ul>
+			</nav>
+		</div>	
+	</div>
+	<include file="Public:footer" />
+
+</block>
+<block name="css">
+	<style>
+		.bg {
+			background: url(__PUBLIC__/images/bg.png) no-repeat center center;
+			height: 200px;
+			overflow:hidden;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		/*与detail相同的样式*/
+		.pro-box {
+			background-color: #fff;
+			cursor: pointer;
+			border-left: 1px solid #e5e5e5;
+			border-right: 1px solid #e5e5e5;			
+			margin-top:-3px;
+		}
+		.pro-type{
+			font-size: 18px;
+			height: 50px;
+			line-height: 50px;
+			background-color: #fafafa;
+			border-top:1px solid #e5e5e5;			
+			margin-top:-3px;
+		}
+		.pro-type a {color:#333;}
+		.pro-type .pro-type-title {height: 47px;border-bottom: 1px solid #e5e5e5;}
+		.pro-active{
+			color: #fdc230;
+			background-color: #fff;
+			border-top: 2px solid #fdc230;
+			border-left:1px solid #e5e5e5;
+			border-right:1px solid #e5e5e5;
+			border-bottom: 0 !important;
+		}
+		.content-box > .project {
+			background-color: #fff;
+			/*border: 1px solid #e5e5e5;*/
+			border-top:0;
+			margin-top:-3px;
+		}
+		.pro-box .notice {
+			font-size: 14px;
+			color: #ccc;
+			background-color: #fff;
+			height: 50px;
+			line-height: 50px;
+			margin-left: 395px;
+		}
+		.content-box > .project .project-border {
+			margin-bottom: 0;
+			border:1px solid #e5e5e5;
+			border-bottom-color: transparent;
+			padding:40px 50px;
+		}
+		.content-box > .project .project-border:last-child {border-bottom: 1px solid #e5e5e5;}
+		.content-box > .project .project-border:hover {
+			background-color: #fffefa;
+			border-color: #fdc230;
+		}
+		.content-box > .project .project-border:hover .content-box > .project .project-border tbody tr td a{
+            background-color: #fdc230;
+            color: #fff;
+		}
+		.content-box > .project .project-border table th {text-align: left;}
+		.content-box > .project .project-border thead tr th {font-size: 16px;color: #333;}
+		.content-box > .project .project-border tbody tr td a {font-size: 16px;padding:4px 10px;font-weight: 500;}
+        .content-box > .project .project-border thead a{
+            color: #333;
+            font-weight: 500;
+        }
+		.content-box > .project .project-border thead a:hover{
+            color: #fdc230;
+        }
+		.project-border i {font-style: normal;}
+		.project-border i.f34 {
+			font-size: 34px;
+			color: #fdc230;
+		}
+		.project-border i.per {
+			font-size: 14px;
+			color: #fdc230;
+		}        
+		.project-border i.f18 {
+			font-size: 16px;
+			color: #666;
+		}  
+		.project-border i.f14 {
+			font-size: 14px;
+			color: #999;
+		} 
+		.project-border table tbody td.p-title {
+			font-size: 14px;
+			color: #b2b2b2;
+		}
+		.project-border td.p-countdown {color: #fbc230;}
+
+		.btn-success {
+			color: #fdc230;
+			background-color: #fff;
+			border-color: #fdc230;
+			border-radius: 4px;
+			width: 112px;
+			height: 32px;
+		}
+		.btn-success:hover,
+		.btn-success:focus,
+		.btn-success.focus,
+		.btn-success:active,
+		.btn-success.active,
+		.open > .dropdown-toggle.btn-success {
+			color: #fff;
+			background-color: #fdc230 !important;
+			border-color: #fdc230 !important;
+		}    
+		.btn-success.disabled,
+		.btn-success[disabled],
+		fieldset[disabled] .btn-success,
+		.btn-success.disabled:hover,
+		.btn-success[disabled]:hover,
+		fieldset[disabled] .btn-success:hover,
+		.btn-success.disabled:focus,
+		.btn-success[disabled]:focus,
+		fieldset[disabled] .btn-success:focus,
+		.btn-success.disabled.focus,
+		.btn-success[disabled].focus,
+		fieldset[disabled] .btn-success.focus,
+		.btn-success.disabled:active,
+		.btn-success[disabled]:active,
+		fieldset[disabled] .btn-success:active,
+		.btn-success.disabled.active,
+		.btn-success[disabled].active,
+		fieldset[disabled] .btn-success.active {
+			background-color: #fff;
+			border-color: #b2b2b2;
+		}
+		a.btn-sellout,
+		a.btn-done {
+			color:#b2b2b2;
+			border-color: #b2b2b2;
+		} 
+		.p-percent {
+			color: #b2b2b2;
+		}
+
+
+	</style>
+</block>
+<block name="js">
+    <script> 
+        $(function () {
+            $(".one-menu:eq(1)").addClass("active");
+
+            /*根据不同tid来显示不同区块*/
+            $("#fundRaise").css("border-left-color","transparent");
+            $("#receivable").css("border-right-color","transparent");
+            var tid = getUrlParam("tid");
+
+            if(tid == 1){
+                $("#fundRaise").addClass("pro-active");
+                $("#fundRaise").siblings().removeClass("pro-active");
+                $(".content1").show();
+                $(".content2,.content3").hide();
+            }else if(tid == 2){
+                $("#assetPledge").addClass("pro-active");
+                $("#assetPledge").siblings().removeClass("pro-active");
+                $(".content2").show();
+                $(".content1,.content3").hide();
+            }else if(tid == 3){
+                $("#receivable").addClass("pro-active");
+                $("#receivable").siblings().removeClass("pro-active");
+                $(".content3").show();
+                $(".content1,.content2").hide();
+            }
+        });
+        //得到URL参数
+        function getUrlParam(name)
+        {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
+
+        $(function () {
+            $.each($(".p-title[timestamp]"),function () {
+                var timer = [];
+                timer.push($(this).attr("timestamp"));
+                var date = new Date(parseInt(timer)*1000);
+                if(timer!=undefined){
+                    setInterval(function(){
+                        ShowCountDown(
+                            date.getFullYear(),
+                            date.getMonth()+1,
+                            date.getDate(),date.getHours(),
+                            date.getMinutes(),
+                            date.getSeconds(),
+                            timer);
+                    },1000);
+                }
+            });
+        });
+
+        function ShowCountDown(year,month,day,h,m,s,divname)
+        {
+            var now = new Date();
+            var endDate = new Date(year, month-1, day,h,m,s);
+            var leftTime=endDate.getTime()-now.getTime();
+            var leftsecond = parseInt(leftTime/1000);
+            var day1=checkTime(Math.floor(leftsecond/(60*60*24)));
+            var hour=checkTime(Math.floor((leftsecond-day1*24*60*60)/3600));
+            var minute=checkTime(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60));
+            var second=checkTime(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60));
+            var cc = document.getElementById(divname);
+            if(day1 <= 0 && hour <= 0 && minute <=0 && second <= 0){
+                cc.innerHTML = null;
+            }else{
+                if(cc != null){
+                    cc.innerHTML = day1+"天"+hour+"小时"+minute+"分"+second+"秒";
+                }
+            }
+        }
+
+        function checkTime(i){
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    </script>
+</block>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{$title}</title>
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{$Think.config.RESOURCE_URL}/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="{$Think.config.RESOURCE_URL}/components/dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/finance/skin/main.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            background-color:#f3f3f4;
+            padding: 0;
+            margin: 0;
+            font-family: "Microsoft YaHei";
+        }
+        .api-container{
+            padding: 30px;
+            padding-top: 78px;
+        }
+        .navbar-fixed-top{
+            background-color: #fff;
+            border-bottom: 3px solid #e7eaec!important; 
+        }
+        .nav>li.active{
+            border-left-color: #fff;
+            border:0;
+        }
+        .nav>li>a{
+            font-weight: 500;
+        }
+        .navbar-default .nav>li>a:focus, .navbar-default .nav>li>a:hover{
+            background-color: #e7e7e7;
+            color: #333;
+        }
+        .ibox-title h3{
+            font-weight: 500;
+        }
+    </style>
+    <block name="css"></block>
+</head>
+<body>
+<div class="api-container">
+<block name="content"></block>
+</div>
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li <if condition="$action eq 'index'">class="active"</if>  ><a href="__URL__/index">我的贷款</a></li>
+            <li <if condition="strtolower($action) eq 'myfreeze' or strtolower($action) eq 'freezedetail' or strtolower($action) eq 'applyfreeze'">class="active"</if>  ><a href="__URL__/myfreeze">我的质押单</a></li>
+            <li <if condition="strtolower($action) eq 'exchangedetail' or strtolower($action) eq 'myexchange' or strtolower($action) eq 'applyexchange'">class="active"</if>  ><a href="__URL__/myexchange">我的置换单</a></li>
+            <li <if condition="strtolower($action) eq 'unfreezedetail' or strtolower($action) eq 'myunfreeze' or strtolower($action) eq 'applyunfreeze'">class="active"</if> ><a href="__URL__/myunfreeze">我的解冻单</a></li>
+          </ul>
+        </div>
+      </div>
+</nav>
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/toastr/toastr.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<script src="__PUBLIC__/js/api.js"></script>
+<block name="js"></block>
+</body>
+</html>

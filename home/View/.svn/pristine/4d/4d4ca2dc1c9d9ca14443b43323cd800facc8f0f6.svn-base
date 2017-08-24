@@ -1,0 +1,31 @@
+<table class="table table-striped table-hover">
+    <tbody><tr>
+        <td>还款期数：</td>
+        <td>第{$data.issue}期</td>
+    </tr>
+    <tr>
+        <td>应还本金：</td>
+        <td>￥{$data.repay_principal}</td>
+    </tr>
+    <tr>
+        <td>应还利息：</td>
+        <td>￥{$data.repay_interest}</td>
+    </tr>
+     <tr>
+        <td>逾期罚息：</td>
+        <td>￥{$data.overdue_penalty}</td>
+    </tr>
+     <tr>
+        <td>逾期管理费：</td>
+        <td>￥{$data.overdue_fees}</td>
+    </tr>
+    <tr>
+        <td>借款管理费：</td>
+        <td>￥{$data.manage_fees}</td>
+    </tr>
+    <tr>
+        <td>金额总计：</td>
+        <td>￥{$data['repay_principal'] + $data['repay_interest'] + $data['manage_fees'] + $data['overdue_penalty'] + $data['overdue_fees'] + $data['prepayment']}</td>
+    </tr>
+</tbody>
+</table>

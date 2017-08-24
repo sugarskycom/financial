@@ -1,0 +1,47 @@
+<!--左侧用户信息-->
+<div class="user-info">
+    <!--头像-->
+    <div class="user-avatar">
+        <i class="fa fa-user fa-5x"></i>
+    </div>
+    <div class="user-name"><empty name="userinfo.realname">{$userinfo.username}<else />{$userinfo.realname}</empty></div>
+    <!--开户状态-->
+    <div class="user-status">
+        <i class="fa fa-credit-card fa-fw"></i>&nbsp;<span>已开户</span>
+    </div>
+    <div class="user-action-count clearfix">
+        <div class="col-lg-6">
+            <span>{$userinfo.loans_count}</span> 贷款次数
+        </div>
+        <div class="col-lg-6">
+            <span>{$userinfo.invest_count}</span> 投资次数
+        </div>
+    </div>
+    <!--账号信息-->
+    <h1><span>账户信息</span></h1>
+    <div class="user-account">
+        上次登陆：<span><notempty name="userinfo.last_login">{$userinfo.last_login|date="Y-m-d H:i",###}<else />--</notempty></span>
+        <br>
+        注册时间：<span>{$userinfo.create_time|date="Y-m-d H:i",###}</span>
+        <br>
+    </div>
+    <!--资金信息-->
+    <h1><span>资金信息</span></h1>
+    <div class="user-amount">
+        可用金额：<span>{$userinfo.useable_amount|number_format=2}</span><br>
+        冻结金额：<span>{$userinfo.freeze_amount|number_format=2}</span><br>
+        待收总额：<span>{$userinfo.receivable_amount|number_format=2}</span><br>
+        待还总额： <span>{$userinfo.due_amount|number_format=2}</span><br>
+        充值总额： <span>{$userinfo.recharge_amount|number_format=2}</span><br>
+        提现总额： <span>{$userinfo.take_amount|number_format=2}</span><br>
+    </div>
+    <!--信用信息-->
+    <h1><span>信用信息</span></h1>
+    <div class="user-credit">
+        逾期次数：<span>{$userinfo.overdue}</span><br>
+        信用等级：<span>{$userinfo.grade}</span><br>
+        信用评分：<span>{$userinfo.score}</span><br>
+        预授信额度：<span>{$userinfo.credit}</span><br>
+        可用额度：<span>{$userinfo.credit_lines}</span><br>
+    </div>
+</div>

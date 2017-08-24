@@ -1,0 +1,48 @@
+<table class="table  table-striped table-hover" id="searchIn">
+        <thead>
+            <tr>
+                <th data-field="product_id">编号</th>
+                <th data-field="product_name">商品名称</th>
+                <th data-field="product_no">型号</th>
+                <th data-field="quantity">数量</th>
+                <th data-field="id">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <volist name="rows.product_list" id="r">
+            <tr>
+                <td>{$r.Product_Id}</td>
+                <td>{$r.Brand_CnName}/{$r.Type_Name}</td>
+                <td>{$r.Product_Name}</td>
+                <td>{$r['Total_True_Product_Storage'] - $r['PlaceholderStorage']}</td>
+                <td><button type="button" class="btn btn-primary" onclick="addIn({$r.Product_Id},this,{$r['Total_True_Product_Storage'] - $r['PlaceholderStorage']},'{$r.Brand_CnName}{$r.Type_Name}','{$r.Product_Name}','{$r.Storage_Name}','{$r.Storage_Id}')">加入</button></td>
+            </tr>
+        </volist>
+        </tbody>
+</table>
+<script type="text/javascript">
+function addIn(pid,o,q,bn,pn,dn,did){
+    $(o).parent('td').parent('tr').remove();
+    $.post(
+        '__URL__/searchinproduct',
+        {
+            // order_sn:'{$order_sn}',
+            product_id:pid,
+            quantity:q,
+            osn:osn,
+            product_name:bn,
+            product_no:pn,
+            depot_name:dn,
+            order_sn:did
+        },
+        function(ret){
+            if(ret.status==1){
+                toastr.success(ret.data);
+                $("#inTableList").bootstrapTable('refresh');
+            } else {
+                alt(ret.msg);
+            }
+        }
+    );
+}
+</script>

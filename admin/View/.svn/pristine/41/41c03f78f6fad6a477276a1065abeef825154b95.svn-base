@@ -1,0 +1,21 @@
+<form action="__ACTION__" method="post" id="form" class="form-horizontal">
+	<div class="form-group">
+	    <div class="col-sm-12">
+	        <input type="text" class="form-control" name="title" id="title" value="{$data.title}" <neq name="data[id]" value="" placeholder="合同标题">disabled</neq>>
+	    </div>
+	</div>
+	<!---/form-group-->
+	<div class="form-group">
+	    <div class="col-sm-12">
+	        <textarea id="content" name="content">{$data.template}</textarea>
+	    </div>
+	</div>
+	<!---/form-group-->
+    <div class="form-group">
+        <div class="col-sm-3">
+        	<input type="hidden" value="{$data.hash_id}" name="hash">
+            <button type="submit" class="btn btn-primary" id="btn">保存</button>
+        </div>
+    </div>
+</form>
+<!--form-->

@@ -1,0 +1,97 @@
+<extend name="Public:base"/>
+<block name="content">
+<div class="ibox">
+	<div class="tabs-container">
+			<ul class="nav nav-tabs">
+                <li <eq name="project" value="1">class="active"</eq>>
+                <a  href="__URL__/index?project=1">仓单贷(CDD)</a>
+                </li>
+                <li <eq name="project" value="2">class="active"</eq>>
+                <a href="__URL__/index?project=2">订单贷(DDD)</a>
+                </li>
+                <li <eq name="project" value="3">class="active"</eq> >
+                <a href="__URL__/index?project=3">信商贷(XSD)</a>
+                </li>
+                <li <eq name="project" value="4">class="active"</eq>>
+                <a href="__URL__/index?project=4">资管标(ZGB)</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+            	<div id="tab" class="tab-pane active">
+            		<div class="panel-body">
+            			<include file="form"/>
+            		</div>
+            	</div>
+            </div>
+	</div>
+</div>
+</block> 
+<block name="css">
+<style type="text/css">
+.table-max{
+	max-width: 750px;
+}
+.popover{
+	max-width: 800px;
+}
+</style>
+</block>   
+<block name="js">
+<script type="text/javascript">
+var project='{$project}';
+var name = '{$name}';
+$(function(){
+	$("#month").change(function() {
+		$.post("__URL__/index",{project:project,month:$.trim($(this).val())},function(ret){
+			//console.info(ret.data);
+			if(ret.status==1){
+				$("#year_rate").val(ret.data.year_rate);
+				$("#service_rate").val(ret.data.service_rate);
+				$("#manage_rate").val(ret.data.manage_rate);
+				$("#overdue_rate").val(ret.data.overdue_rate);
+				$("#risk_rate").val(ret.data.risk_rate);
+				$("#overdue_punish").val(ret.data.overdue_punish);
+				$("#break_punish").val(ret.data.break_punish);
+				$("input[name=pid]").val(ret.data.pid);
+			}
+		});
+	});
+
+	$("#saveProject").click(function(){
+		$(this).attr('disabled',true).text('保存中...');
+		var obj = {};
+		obj.project = $("input[name=project]").val();
+		obj.pid = $("input[name=pid]").val();
+		obj.month = $("#month").val();
+		obj.year_rate = $("#year_rate").val();
+		obj.service_rate = $("#service_rate").val();
+		obj.manage_rate = $("#manage_rate").val();
+		obj.overdue_rate = $("#overdue_rate").val();
+		obj.risk_rate = $("#risk_rate").val();
+		obj.overdue_punish = $("#overdue_punish").val();
+		obj.break_punish = $("#break_punish").val();
+		$.post("__URL__/update",obj,function(ret){
+			if(ret.status==1){
+				$("#saveProject").text('保存成功');
+				setTimeout(function(){$("#saveProject").attr('disabled',false).text('保存')},1000);
+			}
+		});
+	});
+
+	$("#view").click(function(){
+		$(this).popover({
+			container:'body',
+			placement:'bottom',
+			html:true,
+			trigger:'focus',
+			title:name,
+		}).on('show.bs.popover',function(){
+			var v = $.ajax({url:'__URL__/view',data:{project:project},type:'get',async:false}).responseText;
+				$(this).attr('data-content',v);
+		}).on('hidden.bs.popover',function(){
+        	$(this).attr('data-content','');
+    	}).popover('show');
+	});
+});
+</script>
+</block>

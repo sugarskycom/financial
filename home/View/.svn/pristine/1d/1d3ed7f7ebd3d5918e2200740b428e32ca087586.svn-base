@@ -1,0 +1,17 @@
+<!--奖励明细-->
+<div class="invite-box-2 hide" id="div-3">
+<table class="table table-striped">
+<thead>
+    <tr>
+        <td width="20%">结算日期</td>
+        <td width="20%">用户名</td>
+        <td width="15%">出借金额</td>
+        <td width="15%">出借期限</td>
+        <td width="15%">年化利率</td>
+        <td width="15%">奖金金额</td>
+    </tr>
+</thead>
+<tbody id="inviteAwardBody"><tr><td colspan="11" style="background: none;">暂无数据</td></tr>
+</tbody>
+</table>
+</div>

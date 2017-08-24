@@ -1,0 +1,1035 @@
+<extend name="Public:theme"/>
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="font-size: 14px;color: #999999;">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li class="active">注册服务协议</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--用户协议内容-->
+    <div class="container content">
+            <h1 class="text-center">注册服务协议</h1>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第一章</span> <span>说明</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span>第一条</span></span><span style="font-size:14px">&nbsp;“</span><span
+                style="font-size:14px;"><span>汇通网</span></span><span
+                style="font-size:14px;">”网站（www.huitongwang.com）（以下称“本平台”）是由大视野汇通（北京）资产管理有限公司（以下称“汇通资产”）负责运营。本平台注册服务协议（以下称“本协议”）双方为</span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>与本平台注册用户（以下称</span>“注册用户”），本注册协议具有法律效力。</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span style="font-size: 16px"><span>第二条</span></span><span
+                style="font-size:14px;">&nbsp;<span>在您决定成为注册用户之前，请务必认真、仔细阅读并完全理解本协议所包含的条款、条件等全部内容。您可自行决定在本平台注册或者不注册，但是您一旦在本平台注册，则视为您已充分理解和同意本协议的全部内容，接受本平台的服务，并同意受本协议全部条款的约束。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本协议内容包括本协议的条款及已经发布的或将来可能发布的各类规则。所有规则为本协议不可分割的一部分，与协议正文具有同等法律效力。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本协议是由注册用户与</span></span><span style="font-size:14px;"><span
+               >汇通资产</span></span><span style="font-size:14px;"><span
+               >共同签订的，适用于注册用户在本平台的全部活动。在您注册成为注册用户时，您已经阅读、理解并接受本协议的全部条款及各类规则，并承诺遵守中国现行的法律、法规，如有违反而导致任何法律后果的发生，注册用户将以自己的名义独立承担所有相应的法律责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五条</span></span><span
+                style="font-size:14px;">&nbsp;</span><span style="font-size:14px;"><span
+               >汇通资产</span></span><span style="font-size:14px;"><span
+               >有权根据需要制定、修改本协议或各类规则，如本协议及规则有任何变更，一切变更以本平台最新公布的协议或各类规则为准。本平台将随时刊载并公告本协议及规则的变更情况，经修订的协议、规则一经公布，立即自动生效。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第六条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户应不时地注意本协议及附属规则的变更，若注册用户不同意相关变更，请立即停止使用本平台的服务，同时本平台有权不经任何告知终止、中止本协议或者限制注册用户进入本平台的全部或者部分板块且不承担任何法律责任。但该终止、中止或限制行为并不能豁免注册用户在本平台已经进行的交易下所应承担的任何法律责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第七条</span></span><span
+                style="font-size:14px;">&nbsp;<span
+               >注册用户确认本协议后，本协议即在注册用户和</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>之间产生法律效力。您按照本平台规定的注册程序成功注册为注册用户，您的行为即表示同意并签署了本协议。本协议不涉及注册用户与其他注册用户之间因网上交易而产生的法律关系及法律纠纷，但注册用户在此同意将全面接受和履行与其他注册用户在本平台签订的任何电子法律文本，并承诺按该法律文本享有和</span>/或放弃相应的权利、承担和/或豁免相应的义务。</span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第二章</span> &nbsp;<span
+                   >注册要求</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第八条</span></span><span
+                style="font-size:14px;">&nbsp;<span>本平台只接受持有中华人民共和国有效身份证（不包括香港特区、澳门特区及台湾地区）、年龄在</span>18周岁以上、具有完全民事行为能力的自然人成为注册用户。如您不具备前述主体资格，请立即停止注册。若您违反前述规定注册、使用本平台服务，</span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span
+               >保留随时终止您的注册用户资格、追究您或您监护人的相关法律责任的权利。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第九条</span></span><span
+                style="font-size:14px;">&nbsp;<span>注册用户承诺合法使用本平台提供的服务及平台的内容。遵守中国现行法律、法规、规章、规范性文件以及本协议的约定。若注册用户违反上述规定，所产生的一切法律责任和后果与</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span
+               >和本平台无关，由注册用户自行承担，如因此给</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>和本平台造成损失的，由注册用户赔偿</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>和本平台的损失。</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>保留将注册用户违法违规行为及有关信息资料进行公示，计入注册用户信用档案，按照法律法规的规定提供给有关政府部门或按照有关协议的约定提供给第三方的权利。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第十条</span></span><span
+                style="font-size:14px;">&nbsp;<span>为维护各方权益，保证本平台的合理运行，每个注册用户仅限以自己的有效身份证号码注册一个账户，注册用户不得以同一个身份证号码注册多个账户或者以他人身份证号码注册为自己的账户。注册用户违反上述规定注册造成的不利后果（包括但不限于注册用户账户实名审核受限、投资、借款等权益受限等）由注册用户本人承担。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十一条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户有义务在注册时提供自己的真实的、最新的、完整的资料和信息（包括但不限于真实姓名、身份证号码、电子邮件地址、联系电话、联系地址等内容），并保证这些内容的真实性、有效性及安全性。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十二条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户有义务维持并及时更新注册资料，确保其为真实的、最新的、有效的、完整的。若注册用户提供任何错误的、虚假的、过时的或不完整的资料，或者本平台有合理的理由怀疑资料为错误的、虚假的、过时的或不完整的，本平台有权暂停或终止注册用户的账户，并限制注册用户使用本平台的部份或全部功能。如因注册用户未及时更新信息和资料而导致本平台无法向注册用户提供服务或发生错误而产生的法律责任由注册用户本人承担。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十三条</span></span><span style="font-size:14px;">&nbsp;<span
+               >因注册用户使用他人信息和文件注册使用本平台的服务或向本平台提供的信息和资料不符合上述规定而引发的相关法律责任和后果由注册用户自己承担。如因上述情况给</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span
+               >或本平台造成损失的，注册用户应承担赔偿</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>及本平台损失的责任。如注册用户因网上交易与其他注册用户产生诉讼的，其他注册用户有权通过司法部门要求</span></span><span
+                style="font-size:14px;"><span>汇通资产</span></span><span
+                style="font-size:14px;"><span>提供相关资料。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第三章</span> <span
+                   >服务说明</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十四条</span></span><span style="font-size:14px;">&nbsp;“</span><span
+                style="font-size:14px;"><span>汇通网</span></span><span
+                style="font-size:14px;"><span>账户</span>”：指在注册用户使用本服务时，本网站向注册用户提供的虚拟电子账户。注册用户可自行设置密码，并用以查询或计量本账户的应收或应付款等数据信息。</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十五条</span></span><span style="font-size:14px;">&nbsp;<span
+               >充值：注册用户可以通过银行将资金转账到本平台指定的</span></span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span
+               >账户。充值完成后，本平台将在注册用户的电子账户内增加等额资金数。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十六条</span></span><span style="font-size:14px;">&nbsp;<span
+               >代管：注册用户可以使用本服务指定的方式向本人在本平台开立的账户充值，并委托本平台代为保管。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十七条</span></span><span style="font-size:14px;">&nbsp;<span
+               >代收：注册用户可以要求本平台代为收取其他本平台注册用户向您支付的款项。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十八条</span></span><span style="font-size:14px;">&nbsp;<span
+               >提现：注册用户可以要求本平台退返本平台代管本人的款项（即退返）或向本人支付应收款（即提现）。当注册用户向本平台做出提现指令时，必须提供一个与本人委托本平台代管时的汇款人或本人的有效中国大陆银行账户，本平台将于收到指令后的一至五个工作日内，将相应的款项汇入其提供的有效银行账户（根据注册用户提供的银行不同，会产生汇入时间上的差异）。除本条约定外，本平台不接受注册用户提供的其他受领方式。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第十九条</span></span><span style="font-size:14px;">&nbsp;<span
+               >查询：本平台将对注册用户在本系统中的所有操作进行记录，不论该操作之目的最终是否实现。注册用户可以在本系统中实时查询本人账户名下的交易记录，注册用户认为记录有误的，本平台将向注册用户提供本平台已按照您的指令所执行的收付款的记录。注册用户理解并同意您最终收到款项的服务是由注册用户本人提供的银行账户对应的银行提供的，注册用户需向该银行请求查证。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十条</span></span><span style="font-size:14px;">&nbsp;<span
+               >款项专属：对注册用户支付到本平台并归属至本人账户的款项及本人通过账户收到的款项，本平台将予以妥善保管。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十一条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台网站并非银行或其它金融机构，本服务也非金融业务，本协议项下的资金移转均通过银行来实现，注册用户理解并同意其资金于流转途中的合理时间。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十二条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本服务所涉及到的任何款项只以人民币计结，不提供任何形式的结售汇业务。</span>&nbsp;</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十三条</span></span><span style="font-size:14px;">&nbsp;<span
+               >发标：注册用户注册成为本网站借款注册用户后，可以委托本平台将其借款需求信息通过本网站公开发布，即发出借款要约。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十四条</span></span><span style="font-size:14px;">&nbsp;<span
+               >投标：注册用户注册成为本网站投资注册用户后，可以委托本平台在本网站发布的借款需求信息的借款注册用户做出借款承诺，并委托本平台将甲方电子账户内的资金额划分付到借款注册用户的电子账户中。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第四章</span> <span
+                   >注册用户须知与承诺</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十五条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户账户是注册用户登陆本平台平台的唯一账户，也是记载注册用户交易信息的唯一凭证。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十六条</span></span><span style="font-size:14px;">&nbsp;<span
+               >投资者注册用户账户的同时即拥有投资帐户。可以在本平台上直接给账户充值，充值金额将托管到与本平台合作的第三方机构（包括但不限于存管</span></span><span
+                style="font-size:14px;"><span>银行</span></span><span
+                style="font-size:14px;"><span>、基金公司、证券公司等，下同）。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十七条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台仅向注册用户提供资金支付渠道，本平台并非为理财产品购买协议的参与方，不对理财产品购买协议方的任何口头、书面陈述信息之真实性、合法性做任何明示或暗示的担保，或对此承担任何连带责任，不对任何第三方的法定义务和责任承担任何连带责任。本平台亦无义务参与理财产品协议资金划转及支付环节之外的任何赔偿、纠纷处理等活动。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十八条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户应妥善保管注册用户账户的相关信息及密码。如果非因本平台原因导致注册用户账户信息及密码泄露，并进一步导致注册用户通过本平台进行交易的资金受到损失的，注册用户将不能以任何方式追究本平台的法律责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第二十九条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户在本平台上按本平台服务流程所确认的交易状态，将成为本平台为注册用户进行相关交易或操作（包括但不限于支付或收取款项、冻结资金、订立合同</span>/协议等）的不可撤销的指令。注册用户同意相关指令的执行时间以本平台在本平台系统中进行实际操作的时间为准。注册用户同意本平台有权依据本协议及</span><span
+                style="font-size:14px;">/</span><span style="font-size:14px;"><span
+               >或本平台相关纠纷处理规则等约定对相关事项进行处理。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户未能及时对交易状态进行修改、确认或未能提交相关申请所引起的任何纠纷或损失由注册用户自行负责，注册用户将不会以任何方式追究本平台的法律责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十一条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户了解本平台并不是银行或金融机构，按照中国法律规定，本平台不提供</span></span><span
+                style="font-size:14px;">“</span><span style="font-size:14px;"><span
+               >即时</span></span><span style="font-size:14px;">”</span><span
+                style="font-size:14px;"><span
+               >金额转账服务，注册用户同意本平台对资金到账延迟不承担任何责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十二条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台对在本平台上进行的投资、借款等交易行为不承担任何责任，本平台无法也没有义务保证注册用户在发出借款要约或投资意向后，能够实际获得借款或投资成功，注册用户因前述原因导致的损失（包括但不限于利息、手续费等损失）由注册用户自行承担，注册用户将不会以任何方式追究本平台的法律责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十三条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户通过本平台平台进行各项交易或接受交易款项时，若注册用户未遵从本服务协议条款或本平台公布的交易规则中的操作指示，本平台不承担任何责任。若发生上述状况而款项已先行拨入注册用户账户下，注册用户将授权本平台直接从相关注册用户账户中扣回款项。此款项若已汇入注册用户的银行账户，注册用户同意本平台有向注册用户事后索回的权利，由此产生的追索费用由注册用户承担。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十四条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台有权基于交易安全等方面的考虑不时设定涉及交易的相关事项，包括但不限于交易限额、交易次数等，注册用户了解本平台的前述设定可能会对交易造成一定不便，对此没有异议。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十五条</span></span><span style="font-size:14px;">&nbsp;<span
+               >如果本平台发现因系统故障或其他任何原因导致的处理错误，无论有利于本平台还是有利于注册用户，本平台都有权纠正该错误。如果该错误导致注册用户实际收到的款项多于应获得的金额，则无论错误的性质和原因为何，本平台保留纠正不当执行的交易的权利，注册用户应根据本平台向注册用户发出的有关纠正错误的通知的具体要求返还多收的款项或进行其他操作。注册用户理解并同意，注册用户因前述处理错误而多付或少付的款项均不计利息，本平台不承担因前述处理错误而导致的任何损失或责任（包括注册用户可能因前述错误导致的利息、汇率等损失）。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十六条</span></span><span style="font-size:14px;">&nbsp;<span
+               >如注册用户未按照本平台规定提交相关信息或提交的信息错误、虚假、过时或不完整，或者本平台有合理的理由怀疑注册用户提交的信息为错误、虚假、过时或不完整，本平台有权拒绝注册用户的相关申请，注册用户因此未能使用充值、取现、代扣等服务而产生的损失自行承担。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十七条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户理解并同意注册用户最终收到款项的服务是注册用户本人真实有效的银行账户。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十八条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户理解并同意通过本平台平台查询的任何信息仅作为参考，不作为相关操作或交易的证据或依据；如该等信息与本平台记录存在任何不一致，应以本平台提供的书面记录为准。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第三十九条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户了解，上述充值、代收</span></span><span style="font-size:14px;">/</span><span
+                style="font-size:14px;"><span
+               >代付及取现服务涉及本平台与银行、线下融资服务机构、</span></span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span>机构等方的合作。注册用户同意：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span
+                   >（</span>1）受银行、线下融资服务机构、</span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span>机构等方仅在工作日进行资金代扣及划转的现状等各种原因所限，本平台不对前述服务的资金到账时间做任何承诺，也不承担与此相关的责任，包括但不限于由此产生的利息、货币贬值等损失；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）一经注册用户使用前述服务，即表示注册用户不可撤销地授权本平台进行相关操作，且该等操作是不可逆转的，注册用户不能以任何理由拒绝付款或要求取消交易。如银行或者</span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span>机构就资金划转等服务要求注册用户支付费用的，注册用户应自行支付，具体请见第三方网站的相关信息。注册用户与银行或者</span></span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span
+               >机构之间就费用支付事项产生的争议或纠纷，与本平台无关。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第五章</span> <span
+                   >账户安全及管理</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >了解并同意，确保</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >账户及密码的机密安全是</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的责任。</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >将对利用该</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >账户及密码所进行的一切行动及言论，负完全的责任，并同意以下事项：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）注册用户</span><span
+                style="font-size:14px;"><span>不对其他任何人泄露账户或密码，亦不可使用其他任何人的账户或密码。因黑客、病毒或</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的保管疏忽等非</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>原因导致</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户遭他人非法使用的，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>不承担任何责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）本平台</span><span
+                style="font-size:14px;"><span>通过</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户及密码来识别</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的指令，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>确认，使用</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户和密码登陆后在</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>的一切行为均代表</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>本人。</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户操作所产生的电子信息记录均为</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>行为的有效凭据，并由</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>本人承担由此产生的全部责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）</span><span
+                style="font-size:14px;"><span>冒用他人账户及密码的，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >及其合法授权主体保留追究实际使用人连带责任的权利。</span></span><span
+                style="font-size:14px;">&nbsp;</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>4）注册用户</span><span
+                style="font-size:14px;"><span>如发现有第三人冒用或盗用</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >账户及密码，或其他任何未经合法授权的情形，应立即以有效方式通知</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>，要求</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >暂停相关服务，否则由此产生的一切责任由</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>本人承担。同时，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>理解</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>对</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >的请求采取行动需要合理期限，在此之前，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >对第三人使用该服务所导致的损失不承担任何责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>5）注册用户</span><span
+                style="font-size:14px;"><span>决定不再使用</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户时，应首先清偿所有应付款项（包括但不限于借款本金、利息、罚息、违约金、服务费、管理费等），再将</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户中的可用款项（如有）全部取现</span></span><span
+                style="font-size:14px;"><span>，</span></span><span
+                style="font-size:14px;"><span>并向</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>申请注销该</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户，经</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>审核同意后可正式注销</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十一条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >有权基于单方独立判断，在其认为可能发生危害交易安全等情形时，不经通知而先行暂停、中断或终止向</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>提供本协议项下的全部或部分</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >服务（包括收费服务），并将注册资料移除或删除，且无需对</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >或任何第三方承担任何责任。前述情形包括但不限于：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）本平台</span><span
+                style="font-size:14px;"><span>认为</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>提供的个人资料不具有真实性、有效性或完整性；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）本平台</span><span
+                style="font-size:14px;"><span>发现异常交易或有疑义或有违法之虞时；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）本平台</span><span
+                style="font-size:14px;"><span>认为</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户涉嫌洗钱、套现、传销、被冒用或其他</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>认为有风险之情形；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>4）本平台</span><span
+                style="font-size:14px;"><span>认为</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>已经违反本协议中规定的各类规则及精神；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>5）注册用户</span><span
+                style="font-size:14px;"><span>在使用</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>收费服务时未按规定向</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>支付相应的服务费用；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>6）注册用户</span><span
+                style="font-size:14px;"><span>同意在必要时，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>无需进行事先通知即有权终止提供</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >账户服务，并可能立即暂停、关闭或删除</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户及该</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户中所有相关资料及档案。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>7）注册用户</span><span
+                style="font-size:14px;"><span>同意，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>账户的暂停、中断或终止不代表</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>责任的终止，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>仍应对使用</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >服务期间的行为承担可能的违约或损害赔偿责任，同时</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>仍可保有</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的相关信息。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第六章</span> <span
+                   >注册用户的守法义务承若</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十二条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >同意并保证</span></span><span style="font-size:14px;"><span
+               >投资资金来源合法的同时</span></span><span style="font-size:14px;"><span
+               >不得利用</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >服务从事侵害他人权益或违法之行为，若有违反者应负所有法律责任。上述行为包括但不限于：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）</span><span
+                style="font-size:14px;"><span>反对宪法所确定的基本原则，危害国家安全、泄漏国家秘密、颠覆国家政权、破坏国家统一的。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）</span><span
+                style="font-size:14px;"><span>侵害他人名誉、隐私权、商业秘密、商标权、著作权、专利权、其他知识产权及其他权益。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）</span><span
+                style="font-size:14px;"><span>违反依法律或合约所应负之保密义务。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>4）</span><span
+                style="font-size:14px;"><span>冒用他人名义使</span></span><span
+                style="font-size:14px;"><span>用本平台</span></span><span
+                style="font-size:14px;"><span>服务。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>5）</span><span
+                style="font-size:14px;"><span
+               >从事任何不法交易行为，如贩卖枪支、毒品、禁药、盗版软件或其他违禁物。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>6）</span><span
+                style="font-size:14px;"><span>提供赌博资讯或以任何方式引诱他人参与赌博。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>7）</span><span
+                style="font-size:14px;"><span>涉嫌洗钱、套现或进行传销活动的。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>8）</span><span
+                style="font-size:14px;"><span
+               >从事任何可能含有电脑病毒或是可能侵害</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>服务系統、资料等行为。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>9）</span><span
+                style="font-size:14px;"><span>利用</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >服务系统进行可能对互联网或移动网正常运转造成不利影响之行为。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>10）</span><span
+                style="font-size:14px;"><span>侵犯</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>的商业利益，包括但不限于发布非经</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>许可的商业广告。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>11）</span><span
+                style="font-size:14px;"><span>利用</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>服务上传、展示或传播虚假的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的或其他任何非法的信息资料。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>12）</span><span
+                style="font-size:14px;"><span>其他</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>有正当理由认为不适当之行为。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十三条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >保有依其单独判断删除</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >平台内各类不符合法律政策或不真实或不适当的信息内容而无须通知</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的权利，并无需承担任何责任。</span> <span
+               >若</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >未遵守以上规定的，</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >有权作出独立判断并采取暂停或关闭</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >账户等措施，而无需承担任何责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十四条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >承诺，其通过</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >平台上传或发布的信息均真实有效，其向</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >提交的任何资料均真实、有效、完整、详细、准确。如因违背上述承诺，造成</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>或</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>其他使用方损失的，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>将承担相应责任。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第七章</span> <span
+                   >隐私权保护</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十五条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >对于</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >提供的、</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >自行收集的、经认证的个人信息将按照本协议予以保护、使用或者披露。</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>无需</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>同意即可向</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>关联实体转让与</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>有关的全部或部分权利和义务。未经</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>事先书面同意，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>不得转让其在本协议项下的任何权利和义务。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十六条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >可能自公开及私人资料来源收集</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的额外资料，以更好地掌握</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >情况，并为</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >度身订造</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >服务、解决争议并有助确保在</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >进行安全交易。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十七条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >按照</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >在</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >上的行为自动追踪关于</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的某些资料。在不透露</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的隐私资料的前提下，</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >有权对整个</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >数据库进行分析并对</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >数据库进行商业上的利用。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十八条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >同意</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >可使用关于</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的相关资料（包括但不限于</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >持有的有关</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的档案中的资料，</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >从</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >目前及以前在</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >上的活动所获取的其他资料以及</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >通过其他方式自行收集的资料）以解决争议、对纠纷进行调停。</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>同意</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>可通过人工或自动程序对</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的资料进行评价。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第四十九条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >采用行业标准惯例以保护</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >的资料。</span></span><span style="font-size:14px;"><span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >因履行本协议提供给</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >的信息，</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >不会恶意出售或免费共享给任何第三方，以下情况除外：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）</span><span
+                style="font-size:14px;"><span
+               >提供独立服务且仅要求服务相关的必要信息的供应商，如印刷厂、邮递公司等；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）</span><span
+                style="font-size:14px;"><span>具有合法调阅信息权限并从合法渠道调阅信息的政府部门或其他机构，如公安机关、法院；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）本平台</span><span
+                style="font-size:14px;"><span>的关联实体；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>4）</span><span
+                style="font-size:14px;"><span
+               >经平台使用方或平台使用方授权代表同意的第三方。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>5）本平台</span><span
+                style="font-size:14px;"><span
+               >有义务根据有关法律要求向司法机关和政府部门提供您的个人资料。在</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>未能按照与</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>签订的服务协议或者与</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>其他</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >签订的协议等其他法律文本的约定履行自己应尽的义务时，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>有权根据自己的判断，或者与该笔交易有关的其他</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的请求披露</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的个人信息和资料，并做出评论。</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>严重违反</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>的相关规则（包括但不限于</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的借款逾期超过</span>[30]天等）的，</span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>有权对</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>提供的及</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>自行收集的</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span
+               >的个人信息和资料编辑入网站黑名单，并将该黑名单对第三方披露，且</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>有权将</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>提交或</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>自行收集</span></span><span
+                style="font-size:14px;"><span>其</span></span><span
+                style="font-size:14px;"><span
+               >个人资料和信息与任何第三方进行数据共享，以便网站和第三方催收逾期借款及对</span></span><span
+                style="font-size:14px;"><span>注册用户本人</span></span><span
+                style="font-size:14px;"><span
+               >的其他申请进行审核之用，由此可能造成</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>的任何损失，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>不承担法律责任。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第八章</span> <span
+                   >服务费用说明</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十条</span></span><span style="font-size:14px;">&nbsp;<span
+               >当注册用户使用本平台服务时，本平台或第三方会向注册用户收取相关服务费用。（若有相关费用的改动或变更，本平台将在官网公示具体标准）具体如下：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>借款服务费：平台对于借款者</span></span><span
+                style="font-size:14px;"><span>每笔</span></span><span
+                style="font-size:14px;"><span>收取平台服务费</span></span><span
+                style="font-size:14px;;background:rgb(255,255,0);background:rgb(255,255,0)">6%</span><span
+                style="font-size:14px;"><span>。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span
+                   >利息管理费：投资者投标成功赚取利息后，</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>平台收取投资人利息收入的</span></span><span
+                style="font-size:14px;;background:rgb(255,255,0);background:rgb(255,255,0)">10%</span><span
+                style="font-size:14px;"><span
+               >作为服务费（投资人所得利息由投资人自行缴纳所得税）。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十一条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户</span></span><span style="font-size:14px;"><span
+               >在使用</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >服务过程中（如充值或取现等）可能需要向第三方（如银行或银行存管公司等）支付一定的费用</span></span><span
+                style="font-size:14px;"><span>（若有相关费用的改动或变更，本平台将在官网公示具体标准）</span></span><span
+                style="font-size:14px;"><span>：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>绑卡支付、网银支付的充值费用为</span></span><span
+                style="font-size:14px;;background:rgb(255,255,0);background:rgb(255,255,0)">0.2%</span><span
+                style="font-size:14px;"><span>。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>账户提现费每笔</span></span><span
+                style="font-size:14px;;background:rgb(255,255,0);background:rgb(255,255,0)">2元</span><span
+                style="font-size:14px;"><span>。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>每日最高体现额为</span></span><span
+                style="font-size:14px;;background:rgb(255,255,0);background:rgb(255,255,0)">500万元</span><span
+                style="font-size:14px;"><span>。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第九章</span> <span
+                   >风险提示</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十二条</span></span><span style="font-size:14px;">&nbsp;<span
+               >注册用户了解并认可，任何通过本平台网站进行的交易并不能避免以下风险的产生，本平台不能也没有义务为如下风险负责：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）宏观经济风险：因宏观经济形势变化，可能引起价格等方面的异常波动，注册用户有可能遭受损失；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）政策风险：有关法律、法规及相关政策、规则发生变化，可能引起价格等方面异常波动，注册用户有可能遭受损失；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）利率风险：市场利率变化可能对购买或持有产品的实际收益产生影响；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>4）不可抗力因素导致的风险；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>5）因注册用户自身的过错导致的任何损失，该过错包括但不限于：决策失误、操作不当、遗忘或泄露密码、密码被他人破解、您使用的计算机系统被第三方侵入、您委托他人代理交易时他人恶意或不当操作而造成的损失。</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十三条</span></span><span style="font-size:14px;">&nbsp;<span
+               >以上并不能揭示您通过本平台网站进行交易的全部风险及市场的全部情形。您在做出交易决策前，应全面了解相关交易，依赖于您的独立判断进行交易，谨慎决策，并自行承担全部风险。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第十章</span> <span
+                   >免责声明</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十四条</span></span><span style="font-size:14px;">&nbsp;<span
+               >在任何情况下，对于注册用户使用本平台服务过程中涉及由第三方提供相关服务的责任由该第三方承担，本平台不承担该等责任。本平台不承担责任的情形包括但不限于：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）因银行、</span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span>机构等第三方未按照注册用户和</span></span><span
+                style="font-size:14px;">/</span><span style="font-size:14px;"><span
+               >或本平台指令进行操作引起的任何损失或责任；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）因银行、</span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span
+               >机构等第三方原因导致资金未能及时到账或未能到账引起的任何损失或责任；</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）因银行、</span><span
+                style="font-size:14px;"><span>银行存管</span></span><span
+                style="font-size:14px;"><span
+               >机构等第三方对交易限额或次数等方面的限制而引起的任何损失或责任。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十五条</span></span><span style="font-size:14px;">&nbsp;<span
+               >因注册用户自身的原因导致的任何损失或责任，由注册用户自行负责，本平台不承担责任。本平台不承担责任的情形包括但不限于：</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>1）注册用户未按照本协议或本平台不时公布的任何规则进行操作导致的任何损失或责任；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>2）因注册用户使用的银行卡的原因导致的损失或责任，包括注册用户使用未经认证的银行卡或使用非注册用户本人的银行卡或使用信用卡，注册用户的银行卡被冻结、挂失等导致的任何损失或责任；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span>（</span>3）注册用户向本平台发送的指令信息不明确、或存在歧义、不完整等导致的任何损失或责任；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span
+                   >（</span>4）注册用户账户内余额不足导致的任何损失或责任；</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"><span
+                   >（</span>5）其他因注册用户原因导致的任何损失或责任。</span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第十一章</span> <span
+                   >知识产权的保护</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十六条</span></span><span style="font-size:14px;">&nbsp;<span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >上所有内容的知识产权均由</span></span><span style="font-size:14px;"><span
+               >本平台</span></span><span style="font-size:14px;"><span
+               >及其权利人依法拥有，包括但不限于文本、数据、文章、图片、资讯、平台架构、网页设计等。未经</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >或其权利人书面同意，任何人不得擅自使用、修改、复制、公开发布</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>程序或内容。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十七条</span></span><span style="font-size:14px;">&nbsp;</span><span
+                style="font-size:14px;"><span>尊重知识产权是</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>应尽的义务，如有违反，</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>应对</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>承担损害赔偿等法律责任。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第十二章</span> <span
+                   >法律适用及争议解决</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十八条</span></span><span style="font-size:14px;">&nbsp;</span><span
+                style="font-size:14px;"><span>本协议是由个人</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>与</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>共同签订的，适用于</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>在</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span>的部</span></span><span
+                style="font-size:14px;"><span>分</span></span><span
+                style="font-size:14px;"><span>活动。本协议内容包括但不限于协议正文条款及已经发布的或将来可能发布的各类规则，所有条款和规则为协议不可分割的一部分，与协议正文具有同等法律效力。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第五十九条</span></span><span style="font-size:14px;">&nbsp;</span><span
+                style="font-size:14px;"><span>本协议及其修订的有效性、履行与本协议及其修订效力有关的所有事宜，将受中国法律管辖，任何争议仅适用中国法律。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第六十条</span></span><span style="font-size:14px;">&nbsp;</span><span
+                style="font-size:14px;"><span
+               >本协议签订地为中国北京市。因本协议所引起的</span></span><span
+                style="font-size:14px;"><span>注册用户</span></span><span
+                style="font-size:14px;"><span>与</span></span><span
+                style="font-size:14px;"><span>本平台</span></span><span
+                style="font-size:14px;"><span
+               >的任何纠纷或争议，首先应友好协商解决，协商不成的，提交</span></span><span
+                style="font-size:14px;"><span>海南</span></span><span
+                style="font-size:14px;"><span>仲裁委员会仲裁</span></span><span
+                style="font-size:14px;"><span>，仲裁在北京进行</span></span><span
+                style="font-size:14px;"><span>。</span></span>
+        </p>
+        <p style="text-align:center">
+            <span style="font-size: 16px"><span>第十三章</span> &nbsp;<span
+                   >附则</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第六十一条</span></span><span
+                style="font-size:14px;">&nbsp;</span><span style="font-size:14px;"><span
+               >汇通资产</span></span><span style="font-size:14px;"><span
+               >对于注册用户的违约行为放弃行使本协议规定的权利的，不得视为其对该注册用户的其他违约行为放弃主张本协议项下的权利。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第六十二条</span></span><span
+                style="font-size:14px;">&nbsp;<span>本协议自成功注册为注册用户之日起生效，除非本平台终止本协议或者注册用户丧失本平台用户资格，否则本协议始终有效。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px;"></span><span
+                style="font-size: 14px"><span>第六十三条</span></span><span
+                style="font-size:14px;">&nbsp;<span>在本平台的某些部分或页面中可能存在除本协议以外的单独的附加条款，当这些条款存在冲突时，在这些部分和页面中附加条款优先适用。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span>第六十四条</span></span><span
+                style="font-size:14px;">&nbsp;<span>若本协议的部分条款被认定为无效或者无法实施时，本协议中的其他条款仍然有效。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span
+                   >第六十五条</span></span><span style="font-size:14px;">&nbsp;<span
+               >若用户对本平台有任何投诉和建议，您可以拨打我们的客服热线</span></span><span
+                style="font-size:14px;;background:rgb(255,255,0);background:rgb(255,255,0)">XXXXX。</span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size: 14px"><span>第六十六条</span></span><span
+                style="font-size:14px;">&nbsp;</span><span style="font-size:14px;"><span
+               >汇通资产</span></span><span style="font-size:14px;"><span
+               >对本协议有最终解释权。</span></span>
+        </p>
+        <p style="text-indent:28px">
+            <span style="font-size:14px">&nbsp;</span>
+        </p>
+        <p style="text-indent:28px">
+            <br/>
+        </p>
+    </div>
+
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .content {
+            padding: 30px;
+        }
+        h1 {font-size: 18px;color: #666;font-weight: 500;}
+
+        .breadcrumb {
+            background-color: #f5f5f5;
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .detailtitle, .content {
+            background-color: #ffffff;
+        }
+
+        .noticelist {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            background-color: #ffffff;
+            height: 70px;
+        }
+
+        .noticelist h3 {
+            padding-left: 20px;
+            font-size: 18px;
+            color: #666666;
+            margin-top: 15px;
+        }
+
+        .titlename {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+    </style>
+</block>

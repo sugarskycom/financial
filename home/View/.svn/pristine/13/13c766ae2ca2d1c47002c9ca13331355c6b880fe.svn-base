@@ -1,0 +1,73 @@
+<extend name="Public:theme"/>
+<block name="content">
+	<div class="top clearfix">
+		<div class="container clearfix">
+			<i class="fa fa-phone"></i>
+			<span class="top-tel">010-67706199</span>&nbsp;<span class="help">(09:00-18:00)</span>
+			<div class="pull-right">
+				<ul class="list-inline top-right">
+					<if condition="$Think.session.username neq ''">
+						中电金服，欢迎您！<font color="red"><a class="loginusername" href="{:U('Dashboard/index')}" style="font-size:12px;color: #999;">{$Think.session.username}</a></font>
+
+						<a href="{:U('Index/logout')}">安全退出</a>
+						<else/>
+						<li><a href="{:U('Login/index')}" class="curre">登录</a></li>
+						<li><a href="{:U('Register/index')}">注册</a></li>
+					</if>
+					<li><a href="#" class="one-level">帮助中心 <i class="fa fa-angle-down"></i></a>
+						<ul class="list-unstyled two-level">
+							<li><a href="#">新手指南</a></li>
+							<li><a href="#">安全中心</a></li>
+							<li><a href="#">投资建议</a></li>
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--菜单-->
+	<div style="background-color: #fff;">
+		<div class="container clearfix menu-logo">
+			<a href="{:U('Index/index')}" class="logo"><img src="__PUBLIC__/images/logo-wide.png"></a>
+			<ul class="list-inline menu">
+				<li><a href="{:U('Index/index')}" class="one-menu active">首页</a></li>
+				<li><a href="#" class="one-menu">我要投资 <i class="fa fa-angle-down"></i></a>
+					<ul class="list-unstyled two-menu">
+						<li><a href="{:U('Index/invest')}">仓单融资</a></li>
+						<li><a href="{:U('Index/invest')}">资产抵押</a></li>
+						<li><a href="{:U('Index/invest')}">应收帐款</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="{:U('Index/loannew')}" class="one-menu">我要借款</a>
+				</li>
+				<li><a href="#" class="one-menu">信息披露 <i class="fa fa-angle-down"></i></a>
+					<ul class="list-unstyled two-menu">
+						<li><a href="{:U('Help/disclosure')}">平台信息</a></li>
+						<li><a href="{:U('Help/noticelist')}">信息公告</a></li>
+						<li><a href="#">关于我们</a></li>
+					</ul>
+				</li>
+				<li><a href="{:U('Dashboard/index')}" class="one-menu">我的账户</a></li>
+			</ul>
+		</div>
+	</div>
+</block>
+<!-- 样式 -->
+<block name="css">
+	<style>
+		ul.two-level{display: none;position: absolute; z-index: 9999;width:70px;padding-top: 10px;top:26px;border:1px solid #ccc; border-top:0;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;padding:2px;}
+		ul.two-level a{color: #333;}
+		ul.two-level li{
+			text-align: center;
+			line-height: 28px;
+			height: 28px;
+		}
+		ul.two-level li:hover{
+			background-color:#ccc;
+			color: #333
+		}
+	</style>
+</block>
+

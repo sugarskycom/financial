@@ -1,0 +1,54 @@
+<div class="prepayment">
+    <dl class="dl-horizontal dl-prepayment">
+        <dt>利息管理费：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" class="form-control">
+            </div>
+        </dd>
+        <dt>违约金（对商户）：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" class="form-control">
+            </div>
+        </dd>
+        <dt>违约金（对用户）：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" class="form-control">
+            </div>
+        </dd>
+        <dt>还款类型：</dt>
+        <dd>
+            <select class="form-control" name="type" id="type">
+                <option value="1">剩余全额本金及当期利息</option>
+                <option value="2">剩余全额本金</option>
+                <option value="3">剩余全额本息</option>
+                <option value="4">当期本息</option>
+                <option value="5">当期本金</option>
+            </select>
+        </dd>
+        <dt></dt>
+        <dd>
+            <button type="button" class="btn btn-primary" onclick="saveAndBank()">确认并返回</button>
+            <button type="button" class="btn btn-default" onclick="closeDialog()">取消</button>
+        </dd>
+    </dl>
+</div>
+<style>
+.text-red {
+    color: red;
+}
+
+.dl-prepayment dt {
+    font-weight: 500;
+}
+
+.dl-prepayment dt,
+.dl-prepayment dd {
+    margin-bottom: 15px;
+}
+</style>

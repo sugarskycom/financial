@@ -1,0 +1,47 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div class="ibox-content">
+			<form class="form-horizontal" action="__URL__/stepFourth" method="post">
+				<div class="form-group">
+					<label for="a" class="col-lg-3 control-label">借款主体说明:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="3" name="desc_info">{$data.desc_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-3 control-label">担保信息:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="3" name="guarantee_info">{$data.guarantee_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-3 control-label">抵押信息:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="3" name="mortgage_info">{$data.mortgage_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-3 control-label">风险管控措施:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="3" name="risk_info">{$data.risk_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-offset-5 col-lg-2">
+						<input type="hidden" name="hid" value="{$data.hid}">
+						<input type="submit" class="btn btn-success" value="生成标">
+						<a href="__URL__/stepThird?hid={$data.hid}" class="btn btn-default">返回</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</block>
+<block name="js">
+<script type="text/javascript">
+
+</script>
+</block>

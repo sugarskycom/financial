@@ -1,0 +1,159 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+	<div class="ibox-title">
+	<table class="table  table-striped " id="dataTableList"
+        data-toggle="table"
+        data-url="__URL__/applydetail"
+        data-query-params="params"
+        data-pagination="true"
+        data-side-pagination="server"
+        data-page-list="[10,20,30,50,100]"
+        data-method="post"
+        data-page-size="10"
+        data-cache="false"
+        data-sort-order="desc"
+        data-sort-name="id"
+        data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+	>
+        <thead>
+            <tr>
+            	<th data-field="product_id">编号</th>
+                <th data-field="product_name">商品名称</th>
+                <th data-field="product_no">型号</th>
+                <th data-field="quantity">质押数</th>
+                <th data-field="assess_price" data-formatter="formatCny">评估价</th>
+                <th data-formatter="formatTotal">小计</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+	</div>
+</div>
+
+<if condition="$data.check_status eq 3">
+<!--审批-->
+<div class="ibox">
+    <button type="button" class="btn btn-success" onclick="doAgree(this)">批准</button>&nbsp;
+    <button type="button" class="btn btn-danger" onclick="doDisagree(this)">拒绝</button>
+    &nbsp;&nbsp;
+    评估总值：<span class="total-price">{$data.total_price|number_format}</span>
+</div>
+</if>
+
+<if condition="count($checkList) gt 0">
+<!--审批进度显示-->
+<div class="ibox">
+    <div class="ibox-title">
+    <h5>审批进度</h5>
+    <div class="ibox-tools">
+    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    <a class="close-link"><i class="fa fa-times"></i></a>
+    </div>
+    </div>
+    <div class="ibox-content">
+            <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                <volist name="checkList" id="r">
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                        <div class="vertical-timeline-content">
+                            <h2>{$r.action}</h2>
+                            <p>操作人：{$r.operator}</p>
+                            <span class="vertical-date">{$r.operate_time|date="Y/m/d H:i",###}</span>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+    </div>
+</div>
+</if>
+
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+function params(params){
+	params.osn = '{$data.osn}'
+	return params;
+}
+function formatTotal(v,r,i){
+	var t = r.assess_price*r.quantity;
+	return formatCny(t);
+}
+</script>
+<if condition="$data.check_status eq 3">
+<script type="text/javascript">
+function doAgree(o){
+    $(o).attr('disabled',true);
+    cfm('您确定此操作吗？',function(ret){
+        if(ret){
+            $.post("__URL__/checkapply",{osn:'{$data.osn}',flag:'agree'},function(ret){
+                if(ret.status==1){
+                    window.location.href=document.URL;
+                }
+                else{
+                    var msg = '<p class="alert alert-danger">'+ ret.error.status_msg +'</p>';
+                    msg += '<dl class="dl-horizontal">';
+                    $.each(ret.error.data, function(index, val) {
+                        msg += '<dt>'+ val.product_id +'</dt><dd>'+ val.cause +'</dd>';
+                    });
+                    msg += '</dl>';
+                    alt(msg);
+                    $(o).attr('disabled',false);
+                }
+            });
+        }
+        else{
+            $(o).attr('disabled',false);
+            return false;
+        }
+    });
+        return false;
+}
+function doDisagree(o){
+    BootstrapDialog.show({
+        title:'拒绝申请',
+        type:BootstrapDialog.TYPE_DEFAULT,
+        size:BootstrapDialog.SIZE_SMALL,
+        message:function(){
+            var html = '<textarea class="form-control" placeholder="请写明具体原因" style="margin-bottom:15px;" id="reason"></textarea>';
+            html += '<button type="button" class="btn btn-danger btn-block" onclick="handler()">提交审批</button>';
+            return html;
+        }
+    });
+}
+function handler(){
+    var o = $("#reason");
+    var v = $.trim(o.val());
+    if(v==''){
+        error(o,'拒绝原因必须填写');
+        return false;
+    }
+    else{
+        $.post("__URL__/checkapply",{osn:'{$data.osn}',flag:'disagree',reason:v},function(ret){
+            if(ret.status==1){
+                window.location.href=document.URL;
+            }
+            else{
+                alt(ret.error);
+                $(o).attr('disabled',false);
+            }
+        });
+    }
+}
+</script>
+</if>
+</block>
+<block name="css">
+<style type="text/css">
+.total-price{
+    font-size:18px;
+    font-weight: 600;
+    font-family: Arial;
+    color:red;
+}
+</style>
+</block>

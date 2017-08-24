@@ -1,0 +1,95 @@
+<extend name="Public:base" />
+<block name="content">
+    <!--平台充值审批-->
+    <div class="ibox">
+        <div class="ibox-title clearfix">
+            <h3 class="pull-left">子账户转账记录</h3>
+            <div class="pull-right">
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table 
+	            data-url="__ACTION__" 
+				id="table" 
+				data-method="post" 
+				data-pagination="true" 
+				data-side-pagination="server" 
+				data-show-pagination-switch="false" 
+				data-classes="table table-striped table-hover" 
+				data-page-list="[10,50,100,ALL]" 
+				data-page-size="10" 
+				data-pagination="true"
+				data-sort-order="desc"
+				data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                <thead>
+                    <tr>
+                        <th>订单号</th>
+                        <th>申请人</th>
+                        <th>转账金额</th>
+                        <th>转出账户</th>
+                        <th>转入账户</th>
+                        <th>申请时间</th>
+                        <th>审批状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+$(function(){
+	$('#table').bootstrapTable({
+		sortName: 'apply_time',
+		columns: [
+			{
+				width: 150,
+				field: 'order_sn',
+				name: '订单号',
+			},
+			{
+				width: 100,
+				field: 'applier',
+				name: '申请人',
+			},
+			{
+				field: 'amount',
+				name: '金额',
+			},
+			{
+				field: 'out_account',
+				name: '转出账户'
+			},
+			{
+				field: 'in_account',
+				name: '转入账户'
+			},
+			{
+				field: 'apply_time',
+				name: '申请时间',
+				formatter: function(value){
+					return dateFormat(value, true);
+				}
+			},
+			{
+				width: 100,
+				field: 'status',
+				name: '审批状态',
+				formatter: function(value,row,index){
+					var str = '-';
+					switch (value) {
+						case '0': str = '<span class="badge badge-default">待审核</span>'; break;
+						case '1': str = '<span class="badge badge-success">成功</span>'; break;
+						case '2': str = '<span class="badge badge-danger">取消</span>'; break;
+					}
+					return str;
+				}
+			}
+		],
+	});
+});
+</script>
+</block>

@@ -1,0 +1,122 @@
+<extend name="Public:base" />
+<block name="content">
+<include file="Public:nav"/>
+<div id="wrapper">
+<ol class="breadcrumb">
+  <li>汇通资产</li>
+  <li>我的账户</li>
+  <li class="active">实名认证</li>
+</ol>
+<div class="ibox">
+<div class="ibox-title">
+	<form action="" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">真实姓名：</label>
+			<div class="col-sm-4">
+			<input type="text" class="form-control" name="realname" id="realname" value="">
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">身份证号：</label>
+			<div class="col-sm-4">
+			<input type="text" class="form-control" name="idcard" id="idcard" value="">
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">身份证正面照：</label>
+			<div class="col-sm-6 idcard_pic_1_box">
+			<input type="file" id="idcard_pic_1" data-upload-url="__URL__/upload?flag=front" name="idcard">
+			</div>
+			<div class="col-sm-2">
+				<span class="error" id="idcard_pic_1_error"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">身份证反面照：</label>
+			<div class="col-sm-6 idcard_pic_2_box">
+			<input type="file" id="idcard_pic_2" data-upload-url="__URL__/upload?flag=after" name="idcard">
+			</div>
+			<div class="col-sm-2">
+				<span class="error" id="idcard_pic_2_error"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-2">
+				<input type="hidden" value="0" name="piccount">
+				<button type="submit" class="btn btn-success" id="btnPost">提交认证</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+</div>
+</block>
+<block name="js">
+<link href="{$Think.config.RESOURCE_URL}/components/fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/fileinput/js/fileinput.min.js"></script>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/fileinput/js/fileinput_locale_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#idcard_pic_1,#idcard_pic_2").fileinput({
+		 language: 'zh',
+         allowedFileTypes: ['image'],
+         showPreview:true,
+         showRemove:false,
+         showDelete:false,
+         showCancel:false,
+         showClose:false,
+         showUpload:false,
+         showCaption:false,
+         showBrowse:false,
+         initialPreviewShowDelete:false,
+         //minImageWidth:800,
+         //minImageHeight:600,
+         maxFileCount:1,
+         uploadAsync:true,
+         allowedFileExtensions : ['jpg', 'png','gif'],
+
+	});
+	$("#idcard_pic_1,#idcard_pic_2").on("filebatchselected",function(event, files){
+		$(this).fileinput('upload');
+	}).on('fileuploaded',function(event, res){
+		 var id = $(this).attr('id');
+		 var n = parseInt($("input[name='piccount']").val())+1;
+		 $("input[name='piccount']").val(n);
+		 $("."+id+"_box").find('div.kv-upload-progress').remove();
+		 $("."+id+"_box").find('div.btn-file').remove();
+		 $("."+id+"_box").find('.kv-file-remove').remove();
+
+	}).on('fileuploaderror',function(event, element, error){
+		$(this).fileinput('clear');
+		$(this).fileinput('enable');
+		var id = $(this).attr("id");
+		if(error!=''){
+			$("#"+id+"_error").text(error);
+			closeErr();
+		}
+	})  
+	$("#btnPost").click(function(){
+		var realname = $.trim($("#realname").val());
+		var idcard = $.trim($("#idcard").val());
+		if(realname==''){
+			alt("真实姓名不能为空");
+			return false;
+		}
+		else if(idcard=='' || (idcard.length!=15 && idcard.length!=18)){
+			alt("身份证号不能为空,且必须为15位或18位数");
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+});
+function closeErr(){
+	setTimeout(function(){
+		$(".error").text('');
+	},1000);
+}
+</script>
+</block>

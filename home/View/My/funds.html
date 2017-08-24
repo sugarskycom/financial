@@ -1,0 +1,170 @@
+<extend name="Public:base" />
+<block name="content">
+    <include file="Public:nav" />
+    <div id="wrapper">
+        <ol class="breadcrumb">
+            <li>{:C('WEB_NAME')}</li>
+            <li>资金管理</li>
+            <li class="active">资金记录查询</li>
+        </ol>
+        <div class="ibox">
+            <!--内容-->
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li><a href="__URL__/withdraw">提现</a></li>
+                    <li><a href="__URL__/transfer">转账</a></li>
+                    <li><a href="__URL__/bankcard">我的银行卡</a></li>
+                    <li class="active"><a href="__URL__/funds">资金记录</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!--详细信息-->
+                    <div class="tab-pane active">
+                        <div class="panel-body">
+                            <div id="toolbar">
+                                <form class="form-inline">
+                                    资金类型：
+                                    <select class="form-control" name="fundtype" id="fundtype">
+                                    </select>
+                                    日期范围：
+                                    <input type="text" class="form-control" name="daterange" style="width:300px;">
+                                    <input type="hidden" value="" name="s_time" id="s_time">
+                                    <input type="hidden" value="" name="e_time" id="e_time">
+                                    <button type="submit" class="btn btn-success">查询</button>
+                                </form>
+                            </div>
+                            <table class="table table-striped table-hover" 
+                                id="fund" 
+                                data-toggle="table" 
+                                data-url="__ACTION__" 
+                                data-method="post" 
+                                data-page-size="10" 
+                                data-pagination="true" 
+                                data-side-pagination="server" 
+                                data-page-list="[10,20,30,50]" 
+                                data-sort-order="desc"  
+                                data-sort-name="action_time"
+                                data-show-pagination-switch="false" 
+                                data-search="false" 
+                                data-search-on-enter-key="true" 
+                                data-trim-on-search="false" 
+                                data-show-columns="true" 
+                                data-toolbar="#toolbar" 
+                                data-show-export="true" 
+                                data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+                                >
+                                <thead>
+                                    <tr>
+                                        <th data-field="amount" data-formatter="fundAmountFormat">金额(元)</th>
+                                        <th data-field="trade_no">交易订单号</th>
+                                        <th data-field="f_type" data-formatter="fundFtypeFormat">类型</th>
+                                        <th data-field="action" data-formatter="fundActionFormat">操作</th>
+                                        <th data-field="status" data-formatter="fundStatusFormat">状态</th>
+                                        <th data-field="action_time" data-formatter="fundActiontimeFormat">时间</th>
+                                        <th data-field="remark">备注</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/主要内容-->
+        </div>
+    </div>
+    <include file="Public:copyright" />
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript">
+var fundType = {$fundType};
+$(function(){
+    //日期选择范围
+    $('input[name="daterange"]').daterangepicker({
+        locale: {
+            applyLabel: '确定',
+            cancelLabel: '取消',
+            fromLabel: '起始时间',
+            toLabel: '结束时间',
+            customRangeLabel: '选择范围',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                '七月', '八月', '九月', '十月', '十一月', '十二月'
+            ],
+            firstDay: 1,
+            format: 'YYYY-MM-DD',
+        },
+        opens: 'right',
+        ranges: {
+            "今天": [
+                "{:date('Y-m-d')}",
+                "{:date('Y-m-d')}"
+            ],
+            "昨天": [
+                "{:date('Y-m-d',strtotime('-1 day'))}",
+                "{:date('Y-m-d')}"
+            ],
+            "过去一周": [
+                "{:date('Y-m-d',strtotime('-7 day'))}",
+                "{:date('Y-m-d')}"
+            ],
+            "过去30天": [
+                "{:date('Y-m-d',strtotime('-30 day'))}",
+                "{:date('Y-m-d')}"
+            ],
+            "本月": [
+                "{:date('Y-m-01',time())}",
+                "{:date('Y-m-t',time())}"
+            ],
+            "上个月": [
+                "{$nextMonth[0]}",
+                "{$nextMonth[1]}"
+            ]
+        },
+        "startDate": "{:date('Y-m-d')}",
+        "endDate": "{:date('Y-m-d',strtotime('+1 Month'))}"
+    }, function(start, end, label) {
+        $("#s_time").val(moment(start).unix('X'));
+        $("#e_time").val(moment(end).unix('X'));
+    });
+
+    $.each(fundType, function(index, val) {
+        $('#fundtype').append('<option value="'+index+'">'+val+'</option>')
+    });
+
+    $('#toolbar > form').submit(function() {
+        var params = {
+            f_type: $('select[name=fundtype]').val(),
+            s_time: $('#s_time').val(),
+            e_time: $('#e_time').val()
+        };
+        $('#fund').bootstrapTable('refresh', {query:params});
+        return false;
+    });
+});
+function fundAmountFormat(value,row,index) {
+    if (row.action == '1') {
+        return '+'+value;
+    } else if (row.action == '2') {
+        return '-'+value;
+    }
+}
+function fundFtypeFormat(value,row,index) {
+    return fundType[value];
+}
+function fundActionFormat(value,row,index) {
+    return value == '1' ? '转入' : '转出' ;
+}
+function fundStatusFormat(value,row,index) {
+    return value == '1' ? '成功' : '失败' ;
+}
+function fundActiontimeFormat(value,row,index) {
+    return moment.unix(value).format('YYYY-MM-DD HH:mm');
+}
+</script>
+</block>
+<block name="css">
+    <link href="{$Think.config.RESOURCE_URL}/components/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+</block>

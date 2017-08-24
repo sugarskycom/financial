@@ -1,0 +1,337 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    新增企业用户
+                </div>
+                <div class="ibox-content">
+                    <form action="__URL__/editb" method="post" id="form" class="company-form form-horizontal">
+                        <h5>企业用户申请</h5>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">登录名：</label>
+                            <div class="col-sm-4">
+                                <p class="help-block">{$data.username}</p>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">负责人姓名：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="realname" id="realname" value="{$data.realname}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">负责人身份证号码：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="idcard" id="idcard" value="{$data.idcard}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">负责人邮箱：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="email" id="email" value="{$data.email}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <h5>基本信息（必填）</h5>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业全称：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="fullname" id="fullname" value="{$data.fullname}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业简称：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="shortname" id="shortname" value="{$data.shortname}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">公司类型：</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="company_cat" id="company_cat">
+                                    <option value="">未选择</option>
+                                    <volist name="companyTypeList" id="r">
+                                        <option value="{$key}" <eq name="data.company_cat" value="$key">selected</eq>>{$r}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">类别：</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="industry" id="industry">
+                                    <option value="">未选择</option>
+                                    <volist name="industryList" id="r">
+                                        <option value="{$key}" <eq name="data.industry" value="$key">selected</eq>>{$r}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">组织机构代码：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="organization_code" id="organization_code" value="{$data.organization_code}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">营业执照编号：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="business_no" id="business_no" value="{$data.business_no}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">税务登记号：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="tax_no" id="tax_no" value="{$data.tax_no}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <h5>详细信息（可选）</h5>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业网址：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="website" id="website" value="{$data.website}" placeholder="不带http://，样例：www.edianlian.com">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业地址：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="office_address" id="office_address" value="{$data.office_address}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业联系人：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="link_man" id="link_man" value="{$data.link_man}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系电话：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="link_tel" id="link_tel" value="{$data.link_tel}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系邮箱：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="link_email" id="link_email" value="{$data.link_email}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">注册资本：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                                    <input type="number" class="form-control" name="reg_capital" id="reg_capital" value="{$data.reg_capital}">
+                                    <span class="input-group-addon">万元</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">注册地址：</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="ret_address" id="ret_address" value="{$data.ret_address}">
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">经营范围：</label>
+                            <div class="col-sm-4">
+                                <textarea class="form-control" name="business_scope" id="business_scope">{$data.business_scope}</textarea>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">成立时间：</label>
+                            <div class="col-sm-4">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" name="ret_time" id="ret_time" value="{$data.ret_time|date='Y/m/d',###}" placeholder="yyyy/mm/dd">
+                                </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-3">
+                            	<input type="hidden" name="uid" value="{$data.uid}">
+                                <button type="submit" class="btn btn-primary" id="btn" data-id="">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:date2"/>
+<script type="text/javascript">
+$(function(){
+ $("#form").validate({
+        rules: {
+            username: {
+                required: true,
+                isValidUser:true,
+            },
+            realname: {
+                required: true
+            },
+            idcard:{
+                required: true
+            },
+            email:{
+                required: true,
+                email:true
+            },
+            fullname:{
+                required: true,
+            },
+            shortname:{
+                required: true,
+            },
+            company_cat:{
+                required: true,
+            },
+            industry:{
+                required: true,
+            },
+            organization_code:{
+                required: true,
+            },
+            business_no:{
+                required: true,
+            },
+            tax_no:{
+                required: true,
+            },
+        },
+        messages: {
+            username: {
+                required: '用户登录名不能为空',
+                isValidUser:'用户登录名格式无效'
+            },
+            realname: {
+                required: '用户实际姓名不能为空',
+            },
+            idcard:{
+                required: '身份证号码不能为空'
+            },
+            email:{
+                required: '电子邮箱不能为空',
+                email:'邮箱格式无效'
+            },
+			fullname:{
+                required: '企业全称不能为空',
+            },
+            shortname:{
+                required: '企业简称不能为空',
+            },
+            company_cat:{
+                required: '请选择一个公司类型',
+            },
+            industry:{
+                required: '请选择一个类别',
+            },
+            organization_code:{
+                required: '组织机构代码不能为空',
+            },
+            business_no:{
+                required: '营业执照编号不能为空',
+            },
+            tax_no:{
+                required: '税务登记号不能为空',
+            },
+
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parent('div').next('div'));
+        },
+        errorClass: "error",
+        submitHandler:function(form){
+        	// var obj = {};
+        	// $.each($("input[type=text]"),function(){
+        	// 	obj[$(this).attr('name')] = $(this).val();
+        	// });
+        	// obj.business_scope = $("#business_scope").val().trim();
+        	// obj.company_cat = $("#company_cat").val();
+        	// obj.industry = $("#industry").val();
+        	// obj.reg_capital = $("#reg_capital").val();
+        	// $.post("__URL__/addb",obj,function(ret){
+        	// 	if(ret.status==0){
+        	// 		alt(ret.error);
+        	// 	}
+        	// 	else if(ret.status==1){
+        	// 		alt(ret.data,function(){
+        	// 			window.location.href="__URL__/companylist";
+        	// 		})
+        	// 	}
+        	// });
+        	form.submit();
+        }
+    });
+});
+$.validator.addMethod("isValidUser",function(value,element,params){
+	var reg = /^[a-zA-Z][a-zA-Z0-9_]{4,12}$/;
+	if(reg.test(value))
+		return true;
+	else
+		return false;
+});
+	//验证手机号
+$.validator.addMethod("isMobile",function(value,element,params){
+	var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+	if(!reg.test(value)){
+		return false;
+	}
+	else{
+		return true;
+	}
+
+});
+$('.date').datepicker({
+    keyboardNavigation: false,
+    forceParse: false,
+    autoclose: true,
+    format: "yyyy/mm/dd",
+    language: 'zh-CN',
+    pickerPosition: "bottom-left",
+});
+</script>
+</block>

@@ -1,0 +1,33 @@
+<div class="btn btn-primary" id="feedback">
+    投 <br/>
+    诉 <br/>
+    建 <br/>
+    议 <br/>
+</div>
+<style>
+    .btn-primary{
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+    #feedback{
+        position: fixed;
+        right: 0;
+        bottom: 50px;
+    }
+</style>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<!--bootstrap-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--dialog-->
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<!--validation-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+<script>
+    $("#feedback").click(function () {
+        BootstrapDialog.show({
+            title: '投诉建议',
+            message: $('<div></div>').load('feedback.html')
+        });
+    });
+</script>

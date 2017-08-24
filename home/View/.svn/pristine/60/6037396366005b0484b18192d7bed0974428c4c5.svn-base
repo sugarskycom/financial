@@ -1,0 +1,19 @@
+<!--邀请列表-->
+<div class="invite-box-2 hide" id="div-2">
+<table class="table table-striped">
+<thead>
+    <tr>
+        <td width="20%">邀请用户</td>
+        <td width="20%">已绑定手机号码</td>
+        <td width="20%">注册时间</td>
+        <td width="20%">开通第三方支付时间</td>
+        <td width="20%">首次出借时间</td>
+    </tr>
+</thead>
+<tbody id="inviteListBody">
+<tr>
+<td colspan="5" style="padding:15px 8px">暂无邀请用户</td>
+</tr>
+</tbody>
+</table>
+</div>

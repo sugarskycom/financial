@@ -1,0 +1,271 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+
+	<!-- 背景图片 -->
+	<div class="bg"></div>
+	<!-- 公司介绍 -->
+	<div class="company-intro container">
+		<div class="company-intro-content mb20 mt20">
+			<p>大视野汇通（北京）资产管理有限公司成立于2012年，主要围绕电子产业供应链为服务主体，是集贸易融资、供应链管理、仓储物流、信息交互等多种服务于一体，帮助产业链内各个环节降低运营成本、提高运转效率。</p>
+			<p>公司旗下互联网借贷平台汇通网（www.huitongzichan.com）于2017年某月某日正式上线运营，是国内首家专项服务电子产业供应链的网贷机构。基于十多年的行业经验，现已整合百余家电子生产厂商和上千家分销商与六万多家电子销售平台，精选出最优质的债权展示给投资者。</p>
+			<p>汇通网独自开发的仓储管理系统于2016年试运营，目前与汇通网成功对接，可以监控全国范围内货物仓储及运输状态，并链接数万家电子终端销售企业，使汇通网发布的债权安全可靠可追溯。</p>	
+		</div>
+		<div class="row companyInfo">
+			<div class="dis-wraper col-md-6">
+				<h1 class="dis-title mb20">大视野汇通（北京）资产管理有限公司</h1>
+				<div class="dis-row">
+					<label>统一社会信用代码：</label>
+					<span>91110112593872719u</span>
+				</div>
+				<div class="dis-row">
+					<label>法定代表人：</label>
+					<span>赵泽辉</span>
+				</div>
+				<div class="dis-row">
+					<label>登记机关：</label>
+					<span>北京市工商行政管理局通州分局</span>
+				</div>
+				<div class="dis-row">
+					<label>成立日期：</label>
+					<span>	2012年03月30日</span>
+				</div>
+				<div class="dis-row">
+					<label>公司类型：</label>
+					<span>有限责任公司</span>
+				</div>
+				<div class="dis-row">
+					<label>注册资本：</label>
+					<span>1000万元人民币</span>
+				</div>
+				<div class="dis-row">
+					<label>营业期限：</label>
+					<span>自2012年03月至2032年02月29日</span>
+				</div>
+				<div class="dis-row">
+					<label>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 态：</label>
+					<span>开业</span>
+				</div>
+				<div class="dis-row">
+					<label>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 所：</label>
+					<span>北京市通州区西集镇国防路43号A座－82号</span>
+				</div>
+				<div class="dis-row">
+					<label>公司名称：</label>
+					<span>大视野汇通（北京）资产管理有限公司</span>
+				</div>
+				<div class="dis-row">
+					<label>注&nbsp;册&nbsp;号 ：</label>
+					<span>110112014777391</span>
+				</div>
+				<div class="dis-row">
+					<label>经营范围：</label>
+					<span>投资管理；投资咨询；企业管理；企业策划；经济管理咨询；技术推广；组织文化艺术交流活动；承办展览展示；公共关系服务。</span>
+				</div>
+			</div>
+			<div class="col-md-6" style="margin: 50px auto">
+				<img src="__PUBLIC__/images/logo.png" alt="" />
+			</div>
+
+			<!-- <div id="myCarousel" class="col-md-6 carousel slide">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active b1"></div>
+					<div class="item b2"></div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	<div class="manager-intro container mt20 mb20">
+		<div class="executive-intro">
+			<h1 class="dis-title">高管介绍</h1>
+			<div class="row">
+				<div class="item1 executive-intro-box">
+					<div class="executive-intro-content">
+						<p class="managername manager" style="display: inline-block">总经理</p>
+						<p class="managerposition manager"  style="display: inline-block">某某</p>
+						<p class="managerinfo">毕业于北京大学，拥有近10年金融行业从业经验，具有银行、保险、基金等从业资格，曾就职国有股份制商业银行、公募基金公司、房地产私募基金及财富管理公司，参与多家创业公司管理体系搭建、团队组建及管理，带领团队募集资金过亿元，在公司经营战略、业务运营、团队管理方面拥有丰富管理经验。</p>
+					</div>
+				</div>
+				<div class="item2 executive-intro-box">
+					<div class="executive-intro-content">
+						<p class="managername manager" style="display: inline-block">总经理</p>
+						<p class="managerposition manager"  style="display: inline-block">某某</p>
+						<p class="managerinfo">毕业于北京大学，拥有近10年金融行业从业经验，具有银行、保险、基金等从业资格，曾就职国有股份制商业银行、公募基金公司、房地产私募基金及财富管理公司，参与多家创业公司管理体系搭建、团队组建及管理，带领团队募集资金过亿元，在公司经营战略、业务运营、团队管理方面拥有丰富管理经验。</p>
+					</div>							
+				</div>
+			</div>
+			<div class="row">
+				<div class="item3 executive-intro-box">
+					<div class="executive-intro-content">
+						<p class="managername manager" style="display: inline-block">总经理</p>
+						<p class="managerposition manager"  style="display: inline-block">某某</p>
+						<p class="managerinfo">毕业于北京大学，拥有近10年金融行业从业经验，具有银行、保险、基金等从业资格，曾就职国有股份制商业银行、公募基金公司、房地产私募基金及财富管理公司，参与多家创业公司管理体系搭建、团队组建及管理，带领团队募集资金过亿元，在公司经营战略、业务运营、团队管理方面拥有丰富管理经验。</p>
+					</div>
+				</div>
+				<div class="item4 executive-intro-box">
+					<div class="executive-intro-content">
+						<p class="managername manager" style="display: inline-block">总经理</p>
+						<p class="managerposition manager"  style="display: inline-block">某某</p>
+						<p class="managerinfo">毕业于北京大学，拥有近10年金融行业从业经验，具有银行、保险、基金等从业资格，曾就职国有股份制商业银行、公募基金公司、房地产私募基金及财富管理公司，参与多家创业公司管理体系搭建、团队组建及管理，带领团队募集资金过亿元，在公司经营战略、业务运营、团队管理方面拥有丰富管理经验。</p>
+					</div>							
+				</div>
+			</div>
+		</div>
+        <!--		<div class="company-qualification">
+			<h1 class="dis-title">公司资质</h1>
+			<div class="row">
+				<div class="license1 company-license col-md-6">
+					&lt;!&ndash; <img src="__PUBLIC__/images/logo.png" alt="" /> &ndash;&gt;
+					<b>营业执照</b>
+				</div>
+				<div class="license1 company-license col-md-6">
+					&lt;!&ndash; <img src="__PUBLIC__/images/logo.png" alt="" /> &ndash;&gt;
+					<b>营业执照</b>
+				</div>				
+			</div>
+		</div>-->
+	</div>
+	<include file="Index:float"/>
+	<include file="Public:footer"/>
+</block>
+<block name="css">
+	<style>
+		.mt20 {margin-top:20px;}
+		.mb20 {margin-bottom: 20px;}
+		/*.col-md-6 {padding-right: 0;padding-left: 0;}	*/
+	    /*背景图片*/
+		.bg {
+			background: url(__PUBLIC__/images/banner.jpg) no-repeat center;
+			width: 100%;
+			height: 450px;
+			overflow:hidden;
+		}
+		/*公司介绍轮播图*/
+		.b1 {
+			background: url(__PUBLIC__/images/banner.jpg) no-repeat center;
+			height: 450px;
+			overflow:hidden;
+		}
+		.b2 {
+			background: url(__PUBLIC__/images/b2.jpg) no-repeat center;
+			height: 450px;
+			overflow:hidden;
+		}
+
+		.dis-title {
+			font-size: 20px;
+			color: #333333;
+			margin-bottom: 40px;
+		}
+		.dis-row{
+			font-size: 14px;
+			color: #666666;
+		}
+
+		.company-license {
+			/*width: 500px;*/
+			height: 250px;
+			position: relative;
+		}
+		.company-license b {
+			display: block;
+			font-weight: normal;
+			position: absolute;
+			bottom: 0;
+			left:50%;
+			margin-left: -34px;
+		}
+		.license1 {
+			background:url(__PUBLIC__/images/logo.png) no-repeat center;
+			/*background-size: 100% 80%;*/
+			overflow: hidden;			
+		}
+		.license2 {
+			background:url(__PUBLIC__/images/logo.png) no-repeat center;
+			/*background-size: 100% 80%;*/
+			overflow: hidden;			
+		}
+		.executive-intro-box {
+			position: relative;
+			height: 200px;
+			margin-bottom: 20px;
+		}
+		.item1 {
+			background:url(__PUBLIC__/images/logo.png) no-repeat;
+			overflow: hidden;
+		}
+		.item2 {
+			background:url(__PUBLIC__/images/logo.png) no-repeat;
+			overflow: hidden;			
+		}
+		.item3 {
+			background:url(__PUBLIC__/images/logo.png) no-repeat;
+			overflow: hidden;
+		}
+		.item4 {
+			background:url(__PUBLIC__/images/logo.png) no-repeat;
+			overflow: hidden;			
+		}
+		.executive-intro-content {
+			position: absolute;
+			left: 50%;
+			margin-left:-55px;
+		}
+		.company-intro-content{
+			background-color: #ffffff;
+			padding: 50px;
+			margin-top: 30px;
+			margin-bottom: 10px;
+			font-size: 16px;
+			color: #666666;
+		}
+		.companyInfo{
+			background-color: #ffffff;
+			padding: 50px;
+
+		}
+		.row{
+			margin-left: 0;
+			margin-right: 0;
+		}
+		.container{
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.manager-intro{
+			background-color: #ffffff;
+			padding: 50px;
+		}
+        .manager{
+			margin-top: 26px;
+			margin-bottom: 23px;
+		}
+		.managername{
+			font-size: 20px;
+			color: #ffb400;
+			margin-right: 14px;
+		}
+		.managerposition{
+			font-size: 16px;
+			color: #666666;
+		}
+		.managerinfo{
+			font-size: 14px;
+			color: #666666;
+		}
+	</style>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		$('#myCarousel').carousel({
+			interval: 3000
+		});
+		$('#myCarouse2').carousel({
+			interval: 4000
+		});
+	</script>
+</block>

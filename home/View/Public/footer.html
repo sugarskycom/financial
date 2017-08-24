@@ -1,0 +1,149 @@
+	<div class="foot foot-wrapper">
+		<div class="container clearfix">
+			<div class="row">
+				<div class="foot-about col-md-2">
+					<h1>关于我们</h1>
+					<ul class="list-unstyled">
+						<volist name = "aboutus" id ="a" empty="暂时没有数据">
+							<li><a href="/Help/noticedetail?aid={$a.article_id}">{$a.title}</a></li>
+						</volist>
+						<!-- <li><a href="#">平台实力</a></li>
+						<li><a href="#">社会荣誉</a></li>
+						<li><a href="#">媒体报道</a></li>
+						<li><a href="#">联系我们</a></li> -->
+					</ul>
+				</div>
+				<div class="foot-about col-md-2">
+					<h1>新手指引</h1>
+					<ul class="list-unstyled">
+						<volist name = "novice" id ="n" empty="暂时没有数据">
+							<li><a href="/Help/noticedetail?aid={$n.article_id}">{$n.title}</a></li>
+						</volist>
+						<!-- <li><a href="#">平台实力</a></li>
+						<li><a href="#">社会荣誉</a></li>
+						<li><a href="#">媒体报道</a></li>
+						<li><a href="#">联系我们</a></li> -->
+					</ul>
+				</div>
+				<div class="foot-about col-md-4">
+					<h1>安全保障</h1>
+					<ul class="list-unstyled">
+						<volist name = "safe" id ="s" empty="暂时没有数据">
+							<li><a href="/Help/noticedetail?aid={$s.article_id}">{$s.title}</a></li>
+						</volist>
+						<!-- <li><a href="#">平台实力</a></li>
+						<li><a href="#">社会荣誉</a></li>
+						<li><a href="#">媒体报道</a></li>
+						<li><a href="#">联系我们</a></li> -->
+					</ul>
+				</div>
+
+				<div class="foot-qrcode col-md-4">
+					<h1 style="color: #fff;">公众号</h1>
+					<ul class="list-inline">
+						<li class="weixin">
+							<img src="__PUBLIC__/images/qr.jpg" alt="" />
+							<span class="weixin">微信公众号</span>
+						</li>
+						<li class="weibo">
+							<img src="__PUBLIC__/images/qr.jpg" alt="" />
+							<span class="weibo">微博公众号</span>					
+						</li>
+					</ul>					
+				</div>
+			</div>
+		</div>
+		<div class="container foot-partner">
+			<div class="row">
+				<ul class="list-inline">
+					<li class="title">合作伙伴：</li>
+					<li><img src="__PUBLIC__/images/logos/an.png"></li>
+					<li><img src="__PUBLIC__/images/logos/caihang.png"></li>
+					<li><img src="__PUBLIC__/images/logos/cfxq.png"></li>
+					<li><img src="__PUBLIC__/images/logos/dianrong.png"></li>
+					<li><img src="__PUBLIC__/images/logos/jlc.png"></li>
+					<li><img src="__PUBLIC__/images/logos/tdw.png"></li>
+					<li><img src="__PUBLIC__/images/logos/zmch.png"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="foot-copyright text-center">
+		<p class="notice">
+			投资有风险&nbsp;入市需谨慎<br />
+			大视野汇通（北京）资产管理有限公司&nbsp;&nbsp;&nbsp;&nbsp;京ICP备000000号&nbsp;&nbsp;&nbsp;&nbsp;公安备案号：000000号
+		</p>
+	</div>
+	<style>
+		.foot.foot-wrapper {
+			border-top: 1px solid #e5e5e5;
+			border-bottom: 1px solid #e5e5e5;
+			background-color: #fff;
+			padding:0;
+		}
+	    .foot-wrapper .foot-about,
+	    .foot-wrapper .foot-qrcode {
+	    	margin-bottom: 40px;
+	    	margin-top:40px;
+	    }
+	    .foot-wrapper .foot-about > h1,
+	    .foot-wrapper .foot-qrcode > h1,
+	    .foot-wrapper .foot-partner .title{
+	    	font-size: 18px;
+	    	color: #666;
+	    	font-weight: 500;
+	    }
+	    .foot-wrapper .foot-about > h1 {margin-bottom: 20px;}
+	    .foot-wrapper .foot-about ul li {
+	    	margin-bottom: 10px;
+	    }
+	    .foot-wrapper .foot-about ul li a {
+	    	font-size: 14px;
+	    	color: #999;
+	    }
+	    .foot-qrcode .weixin img,
+	    .foot-qrcode .weibo img {
+	    	width: 90px;
+	    	height: 90px;
+	    }
+	    .foot-qrcode .weixin img {margin-right:28px;}
+	    .foot-qrcode .weixin,
+	    .foot-qrcode .weibo {
+	    	position: relative;
+	    }
+	    .foot-qrcode .weixin span,
+	    .foot-qrcode .weibo span {
+	    	position: absolute;
+	    	font-size: 14px;
+	    	color: #999;
+	    	left: 10%;
+	    }
+
+	    .foot-partner {
+	    	height: 88px;
+	    	line-height: 88px;
+	    	border-top: 1px solid #e5e5e5;
+	    }
+	    .foot-partner ul li {
+	    	padding-right: 20px;
+	    }
+	    .wrapper {
+	    	height: 76px;
+	    	line-height: 76px;
+	    }
+	    .wrapper p {
+	    	font-size: 12px;
+	    	color: #999;
+	    }
+	    .foot-copyright {
+	    	height: 76px;
+	    	line-height: 2;
+	    }
+	    .foot-copyright .notice {
+	    	font-size: 12px;
+	    	color: #999;
+	    	width: 500px;
+	    	margin:0 auto;
+	    	padding-top: 10px;
+	    }
+	</style>

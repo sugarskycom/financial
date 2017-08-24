@@ -1,0 +1,33 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- 下拉按钮 -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">信息披露</a></li>
+                        <li><a href="#">投诉客服</a></li>
+                        <li><a href="#">回款问题</a></li>
+                        <li><a href="#">出借问题</a></li>
+                        <li><a href="#">意见建议</a></li>
+                        <li><a href="#">其他投诉</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        .foot{margin-top: 0;}
+    </style>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+    <script type="text/javascript">
+
+    </script>
+</block>

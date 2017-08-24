@@ -1,0 +1,109 @@
+<div class="row" id="roleForm">
+    <div class="col-lg-12">
+        <!--form start-->
+        <include file="Public:fail" />
+        <include file="Public:success" />
+        <form action="#" method="post" id="form" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">角色名：</label>
+                <div class="col-sm-5 pad0">
+                    <input type="text" class="form-control" id="name" name="name" value="" placeholder="" />
+                </div>
+                <div class="col-sm-4 pad0"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">角色描述：</label>
+                <div class="col-sm-5 pad0">
+                    <textarea class="form-control" rows="3" id="remark" name="remark"></textarea>
+                </div>
+                <div class="col-sm-4 pad0"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">是否开启：</label>
+                <div class="col-sm-3 pad0">
+                    <div class="checkbox checkbox-success">
+                        <input type="checkbox" name="status" id="status" checked>
+                        <label for="status"> 是</label>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" id="id" value="" />
+        </form>
+        <!--form end-->
+    </div>
+</div>
+<script type="text/javascript">
+function add() {
+    $("#form")[0].reset();
+    $("#id").val('');
+    $("#modal").modal('show').find(".modal-title").html('新增角色');
+}
+
+function edit(obj) {
+    var data = eval("(" + $(obj).attr('data-source') + ")");
+    $("#name").val(data.name);
+    $("#id").val(data.id);
+    $("#remark").val(data.remark);
+    if (data.status == 1) {
+        $("#status").prop('checked', true);
+    } else {
+        $("#status").prop('checked', false);
+    }
+    $("#modal").modal('show').find(".modal-title").html('编辑角色');
+}
+
+function del(id) {
+
+}
+var url = "__URL__/add";
+$(function() {
+    $("#btnSaveRole").click(function() {
+        $("#form").submit();
+    });
+    $("#form").validate({
+        rules: {
+            name: {
+                required: true
+            }
+        },
+        messages: {
+            name: {
+                required: "角色名不能为空"
+            }
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parent('div').next('div'));
+        },
+        submitHandler: function(form) {
+            var data = new Object();
+            $.each(form, function(i, e) {
+                var key = $(e).attr('name');
+                var value = $.trim(e.value);
+                if (key == 'status') {
+                    value = $("#" + key).prop("checked") ? 1 : 0;
+                }
+                $(data).attr(key, value);
+            })
+            var id = $("#id").val();
+            if (id != "") url = "__URL__/edit";
+            $.ajax({
+                url: url,
+                type: "post",
+                data: data,
+                success: function(ret) {
+                    if (ret.status == 1) {
+                        alt(ret.data, 1);
+                        setTimeout(function() {
+                            window.location.href = document.URL;
+                        }, 400);
+                    } else {
+                        alt(ret.error, 0);
+                    }
+                }
+            });
+        }
+
+    });
+
+});
+</script>

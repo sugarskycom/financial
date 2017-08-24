@@ -1,0 +1,65 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="row">
+<div class="col-lg-12">
+	<div class="ibox relative">
+		<include file="userbar"/>
+		<div class="user-box">
+			<div class="ibox-title"><label><i class="fa fa-tags"></i>&nbsp;相关标签</label></div>
+			<div class="ibox-content">
+				<textarea class="form-control" name="tags" id="tags">{$tags}</textarea>
+				<p class="help-block">多个标签，请用逗号隔开</p>
+				<button type="button" class="btn btn-primary" id="btnTags">保存</button>
+			</div>
+			<div class="ibox-content">
+				
+				<form class="form-inline" method="post" action="javascript:;">
+				修改推荐人：
+					<span class="radio-inline radio">
+						<input type="radio" value="1" name="type" id="type_1">
+						<label for="type_1">员工</label>
+					</span>
+					<span class="radio-inline radio">
+						<input type="radio" value="1" name="type" id="type_2">
+						<label for="type_2">用户</label>
+					</span>
+					<span class="radio-inline radio">
+						<input type="radio" value="1" name="type" id="type_3">
+						<label for="type_3">其他</label>
+					</span>
+					<input type="text" class="form-control" placeholder="输入手机号搜索">
+					<button class="btn btn-white">搜索</button>
+					<button class="btn btn-primary">保存</button>
+				</form>
+			</div>
+        </div>
+	</div>
+</div>
+</div>
+</block>
+<block name="js">
+<script type="text/javascript">
+$(function(){
+	$("#tags").on("keyup",function(){
+		var v = $(this).val();
+		var reg = /(，|、|。|\.|\/|\\|\|)$/;
+		$(this).val(v.replace(reg,','));
+	});
+	$("#btnTags").click(function(){
+		var tags = $("#tags").val().trim();
+		tags = tags.replace(/(,)$/,'');
+		$.post("__URL__/editTags",{uid:'{$Think.get.uid}',tags:tags},function(ret){
+			if(ret.status==1){
+				alt(ret.data);
+			}
+			else{
+				alt(ret.error);
+			}
+		});
+	})
+});
+</script>
+</block>
+<block name="buttons">
+<include file="topmenu"/>
+</block>

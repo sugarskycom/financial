@@ -1,0 +1,370 @@
+<extend name="Public:base" />
+<block name="content">
+    <!--平台充值审批-->
+    <div class="ibox">
+        <div class="ibox-title clearfix">
+            <h3 class="pull-left">平台充值提现审批</h3>
+            <div class="pull-right">
+                <a href="__URL__/rechargerecord" class="btn btn-default"><i class="fa fa-history fa-fw"></i>历史记录</a>
+                <button type="button" class="btn btn-default"><i class="fa fa-download fa-fw"></i>导出</button>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped table-hover"
+                id="recharge"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="rechargeQureyParams"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="apply_time"
+                >
+                <thead>
+                    <tr>
+                        <th data-field="action_type" data-formatter="rechargeActionTypeFormat">申请类型</th>
+                        <th data-field="order_sn">订单号</th>
+                        <th data-field="applier">申请人</th>
+                        <th data-field="amount">金额</th>
+                        <th data-formatter="rechargeAccountFormat">账户</th>
+                        <th data-field="remark">备注信息</th>
+                        <th data-field="apply_time" data-formatter="rechargeApplyFormat">申请时间</th>
+                        <th data-formatter="rechargeActionFormat">审批操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--平台子账号转账审批-->
+    <div class="ibox">
+        <div class="ibox-title clearfix">
+            <h3 class="pull-left">平台子账号转账审批</h3>
+            <div class="pull-right">
+                <a href="__URL__/atoalist" class="btn btn-default"><i class="fa fa-history fa-fw"></i>历史记录</a>
+                <button type="button" class="btn btn-default"><i class="fa fa-download fa-fw"></i>导出</button>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped table-hover"
+                id="atoa"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="atoaQureyParams"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="apply_time"
+                >
+                <thead>
+                    <tr>
+                        <th data-field="order_sn">订单号</th>
+                        <th data-field="applier">申请人</th>
+                        <th data-field="amount">转账金额</th>
+                        <th data-field="out_account">转出账户</th>
+                        <th data-field="in_account">转入账户</th>
+                        <th data-field="apply_time" data-formatter="atoaApplyFormat">申请时间</th>
+                        <th data-formatter="atoaActionFormat">审批状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--平台转账审批-->
+    <div class="ibox">
+        <div class="ibox-title clearfix">
+            <h3 class="pull-left">平台转账审批</h3>
+            <div class="pull-right">
+                <a href="__URL__/funds" class="btn btn-default"><i class="fa fa-history fa-fw"></i>历史记录</a>
+                <button type="button" class="btn btn-default"><i class="fa fa-download fa-fw"></i>导出</button>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped table-hover"
+                id="transfer"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="transferQureyParams"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="apply_time"
+                >
+                <thead>
+                    <tr>
+                        <th data-field="a_type">转出账号</th>
+                        <th data-field="applier">申请员工</th>
+                        <th data-field="username">用户</th>
+                        <th data-field="realname">用户姓名</th>
+                        <th data-field="amount">转账金额</th>
+                        <th data-field="status" data-formatter="transferStatusFormat">状态</th>
+                        <th data-field="remark">备注</th>
+                        <th data-formatter="transferActionFormat">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--用户提现审批-->
+    <div class="ibox">
+        <div class="ibox-title clearfix">
+            <h3 class="pull-left">用户提现审批</h3>
+            <div class="pull-right">
+                <a href="__URL__/withdrawhistory" class="btn btn-default"><i class="fa fa-history fa-fw"></i>历史记录</a>
+                <button type="button" class="btn btn-default"><i class="fa fa-download fa-fw"></i>导出</button>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped table-hover"
+                id="withdraw"
+                data-toggle="table"
+                data-url="__ACTION__"
+                data-query-params="withdrawQureyParams"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-page-list="[5,10,20,30]"
+                data-method="get"
+                data-page-size="10"
+                data-cache="false"
+                data-sort-order="desc"
+                data-sort-name="apply_time"
+                >
+                <thead>
+                    <tr>
+                        <th data-field="realname">申请人</th>
+                        <th data-field="amount">提现金额</th>
+                        <th data-field="service_fee">提现手续费</th>
+                        <th data-field="bank_name">归属</th>
+                        <th data-field="network_name">开户网点</th>
+                        <th data-field="card_no">银行卡号</th>
+                        <th data-field="order_sn">订单号</th>
+                        <th data-field="apply_time" data-formatter="timeFormat">申请时间</th>
+                        <th data-field="applier">操作员工</th>
+                        <th data-formatter="withdrawActionFormat">审批操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+// 平台充值提现审批>>>
+function rechargeQureyParams(params) {
+    params.flag = 'searchRecharge';
+    return params;
+}
+function rechargeActionTypeFormat(value,row,index) {
+    var str = '-';
+    switch (value) {
+        case '1': str = '<span class="badge badge-success">充值</span>'; break;
+        case '2': str = '<span class="badge badge-danger">提现</span>'; break;
+    }
+    return str;
+}
+function timeFormat(v,r,i){
+    return moment.unix(v).format('YYYY-MM-DD HH:mm');
+}
+function rechargeAccountFormat(value,row,index) {
+    return '往来账户(HTF001)';
+}
+function rechargeApplyFormat(v,r,i) {
+    return moment.unix(v).format('YYYY-MM-DD HH:mm');
+}
+function rechargeActionFormat(value,row,index) {
+    return '<button type="button" class="btn btn-primary btn-sm" onclick="rechargeCheck(1,\''+row.order_sn+'\','+row.action_type+')">批准</button> <button type="button" class="btn btn-warning btn-sm" onclick="rechargeCheck(2,\''+row.order_sn+'\','+row.action_type+')">拒绝</button>';
+}
+function rechargeCheck(status, osn, action) {
+    var url = '__URL__/accountcheck'+action;
+    var data = {osn:osn,status:status};
+    if (status == 1) {
+        cfm("您确定此操作吗？", function(res) {
+            if (res) {
+                $.post(url, data, function(ret) {
+                    if (ret.status == 1) {
+                        alt(ret.data,function(){
+                            // window.location.href=document.URL;
+                            $('#recharge').bootstrapTable('refresh');
+                        });
+                    } else {
+                        alt(ret.error);
+                    }
+                });
+            } else {
+                return false;
+            }
+        });
+    } else {
+        $.post(url, data, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data,function(){
+                    // window.location.href=document.URL;
+                    $('#recharge').bootstrapTable('refresh');
+                });
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+}
+// <<<平台充值提现审批
+// 平台子账号转账审批>>>
+function atoaQureyParams(params) {
+    params.flag = 'searchAtoa';
+    return params;
+}
+function atoaApplyFormat(value,row,index) {
+    return dateFormat(value);
+}
+function atoaActionFormat(value,row,index) {
+    return '<button type="button" class="btn btn-primary btn-sm" onclick="atoaCheck(1,\''+row.order_sn+'\')">批准</button> <button type="button" class="btn btn-warning btn-sm" onclick="atoaCheck(2,\''+row.order_sn+'\')">拒绝</button>';
+}
+function atoaCheck(status,osn) {
+    var url = '__URL__/atoacheck';
+    var data = {osn:osn,status:status};
+    if (status == 1) {
+        cfm("您确定此操作吗？", function(res) {
+            if (res) {
+                $.post(url, data, function(ret) {
+                    if (ret.status == 1) {
+                        alt(ret.data,function(){
+                            // window.location.href=document.URL;
+                            $('#atoa').bootstrapTable('refresh');
+                        });
+                    } else {
+                        alt(ret.error);
+                    }
+                });
+            } else {
+                return false;
+            }
+        });
+    } else {
+        $.post(url, data, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data,function(){
+                    // window.location.href=document.URL;
+                    $('#atoa').bootstrapTable('refresh');
+                });
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+}
+// <<<平台子账号转账审批
+// 平台转账审批>>>
+function transferQureyParams(params) {
+    params.flag = 'searchTransfer';
+    return params;
+}
+function transferStatusFormat(value,row,index) {
+    var str = '-';
+    switch (value) {
+        case '0': str = '待审核'; break;
+        case '1': str = '成功'; break;
+        case '2': str = '取消'; break;
+    }
+    return str;
+}
+function transferActionFormat(value,row,index) {
+    return '<button type="button" class="btn btn-primary btn-sm" onclick="transferCheck(1,\''+row.order_sn+'\')">批准</button> <button type="button" class="btn btn-warning btn-sm" onclick="transferCheck(2,\''+row.order_sn+'\')">拒绝</button>';
+}
+function transferCheck(status,osn) {
+    var url = '__URL__/transferAction';
+    var data = {order_sn:osn};
+    if (status == 1) {
+        data.flag = 'success'
+        cfm("您确定此操作吗？", function(res) {
+            if (res) {
+                $.post(url, data, function(ret) {
+                    if (ret.status == 1) {
+                        alt(ret.data,function(){
+                            $('#transfer').bootstrapTable('refresh');
+                        });
+                    } else {
+                        alt(ret.error);
+                    }
+                });
+            } else {
+                return false;
+            }
+        });
+    } else {
+        data.flag = 'cancel';
+        $.post(url, data, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data,function(){
+                    $('#transfer').bootstrapTable('refresh');
+                });
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+}
+// <<<平台转账审批
+// 用户提现审批>>>
+function withdrawQureyParams(params) {
+    params.flag = 'searchWithdraw';
+    return params;
+}
+function withdrawActionFormat(value,row,index) {
+    return '<button type="button" class="btn btn-primary btn-sm" onclick="withdrawCheck(1,\''+row.order_sn+'\')">批准</button> <button type="button" class="btn btn-warning btn-sm" onclick="withdrawCheck(2,\''+row.order_sn+'\')">拒绝</button>';
+}
+function withdrawCheck(status,osn) {
+    var url = '__URL__/withdrawCheck';
+    var data = {order_sn:osn};
+    if (status == 1) {
+        data.flag = 'success'
+        cfm("您确定此操作吗？", function(res) {
+            if (res) {
+                $.post(url, data, function(ret) {
+                    if (ret.status == 1) {
+                        alt(ret.data,function(){
+                            $('#withdraw').bootstrapTable('refresh');
+                        });
+                    } else {
+                        alt(ret.error);
+                    }
+                });
+            } else {
+                return false;
+            }
+        });
+    } else {
+        data.flag = 'cancel';
+        $.post(url, data, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data,function(){
+                    $('#withdraw').bootstrapTable('refresh');
+                });
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+}
+// <<<用户提现审批
+</script>
+</block>

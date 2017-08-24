@@ -1,0 +1,278 @@
+<form action="" method="post" class="form-inline add-loan">
+<table>
+<tr>
+	<th>借款用户：</th>
+	<td>
+	<div class="input-group">
+	<input type="text" class="form-control" placeholder="借款用户账户" id="user1">
+	<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="search(1)">查询</button></div>
+	</div>
+	</td>
+	<td colspan="2">
+		<div class="text-info" id="project_uid_txt">
+			<label>信息：</label>
+			<span></span>
+		</div>
+	</td>
+</tr>
+<tr>
+	<th>关联用户：</th>
+	<td>
+	<div class="input-group">
+	<input type="text" class="form-control" placeholder="关联用户账户" id="user2">
+	<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="search(2)">查询</button></div>
+	</div>
+
+	</td>
+	<td colspan="2">
+		<div class="text-info" id="relation_uid_txt">
+			<label>信息：</label>
+			<span></span>
+		</div>
+
+	</td>
+</tr>
+<tr>
+	<th>借款标题：</th>
+	<td>
+	<input type="text" class="form-control" name="title" id="title">
+	</td>
+	<th>借款唯一号：</th>
+	<td><input type="text" class="form-control" name="bno" id="bno"></td>
+</tr>
+<tr>
+	<th>借款金额：</th>
+	<td><input type="number" class="form-control" name="amount" id="amount"></td>
+	<th>合同编号：</th>
+	<td><input type="text" class="form-control" name="contract_no" id="contract_no"></td>
+</tr>
+<tr>
+	<th>借款日期：</th>
+	<td><input type="text" class="form-control date" name="borrowing_date" id="borrowing_date" readonly></td>
+	<th>借款期限：</th>
+	<td>
+	<div class="input-group" style="width: 100px;" id="t">
+		<span class="input-group-addon">月</span>
+		<input type="number" class="form-control" placeholder="0" id="month" value="0" onchange="checknum(this,'m')" onkeyup="checknum(this,'m')">
+	</div>
+	<div class="input-group" style="width: 100px;">
+		<span class="input-group-addon">日</span>
+		<input type="number" class="form-control" placeholder="0" id="day" value="0" onchange="checknum(this,'d')" onkeyup="checknum(this,'d')">
+	</div>
+
+	</td>
+</tr>
+<tr>
+	<th>还款方式：</th>
+	<td>
+		<select class="form-control" id="repay_type">
+			<option value="1">一次性还本付息</option>
+			<option value="2">按月付息到期还本</option>
+			<option value="3">按日计息</option>
+		</select>
+	</td>
+	<th>年化利率：</th>
+	<td>
+	<div class="input-group" style="width: 100px;">
+		<input type="text" class="form-control" placeholder="0" id="year_rate">
+		<span class="input-group-addon">%</span>
+	</div>
+	</td>
+</tr>
+<tr>
+	<th>借款服务费：</th>
+	<td>
+	<div class="input-group" style="width: 100px;">
+		<input type="text" class="form-control" placeholder="0" id="service_rate">
+		<span class="input-group-addon">%</span>
+	</div>
+	</td>
+	<th>借款管理费：</th>
+	<td>
+	<div class="input-group" style="width: 100px;">
+		<input type="text" class="form-control" placeholder="0" id="manage_rate">
+		<span class="input-group-addon">%</span>
+	</div>
+	</td>
+</tr>
+<tr>
+	<th>资金渠道：</th>
+	<td>
+		<select class="form-control" id="asset_from">
+			<option value="1">安润</option>
+			<option value="2">钱包</option>
+		</select>
+	</td>
+	<th>备注：</th>
+	<td rowspan="2">
+		<textarea class="form-control" style="width:100%;" id="remark"></textarea>
+	</td>
+</tr>
+<tr>
+	<th>产品类型：</th>
+	<td style="padding-bottom: 15px;">
+		<select class="form-control" id="product_type">
+			<option value="1">仓单贷</option>
+			<option value="2">配资单</option>
+			<option value="3">其他</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="center" style="padding-top:15px;border-top:1px solid #ddd;">
+		<input type="hidden" name="project_uid" value="0">
+		<input type="hidden" name="relation_uid" value="0">
+		<button type="button" class="btn btn-primary" onclick="save(this,0)">保存</button>
+				<!-- <button type="button" class="btn btn-default">预览还款计划</button> -->
+		<button type="button" class="btn btn-white" onclick="closeDialog();">关闭</button>
+	</td>
+</tr>
+
+</table>
+</form>
+<script type="text/javascript">
+ 	$('.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            language: 'zh-CN',
+            pickerPosition: "bottom-left",
+    });
+function save(o,flag){
+	var data={
+		project_uid:$("input[name=project_uid]").val(),
+		relation_uid:$("input[name=relation_uid]").val(),
+		title:$.trim($("#title").val()),
+		bno:$.trim($("#bno").val()),
+		borrowing_date:$.trim($("#borrowing_date").val()),
+		contract_no:$.trim($("#contract_no").val()),
+		borrowing_date:$.trim($("#borrowing_date").val()),
+		month:$.trim($("#month").val()),
+		day:$.trim($("#day").val()),
+		repay_type:$.trim($("#repay_type").val()),
+		year_rate:$.trim($("#year_rate").val()),
+		asset_from:$.trim($("#asset_from").val()),
+		product_type:$.trim($("#product_type").val()),
+		remark:$.trim($("#remark").val()),
+		amount:$.trim($("#amount").val()),
+		status:flag,
+		manage_rate:$.trim($("#manage_rate").val()),
+		service_rate:$.trim($("#service_rate").val()),
+	};
+	if(data.project_uid=='0'){
+		error($("#user1"),'借款用户不能为空');
+		return false;
+	}
+	else if(data.title==''){
+		error($("#title"),'借款标题不能为空');
+		return false;
+	}
+	else if(data.bno==''){
+		error($("#bno"),'借款唯一号不能为空');
+		return false;
+	}
+	else if(data.amount=='' || parseFloat(data.amount)<=0){
+		error($("#amount"),'借款金额必须大于0');
+		return false;
+	}
+	else if(data.contact_no==''){
+		error($("#contact_no"),'合同编号不能为空');
+		return false;
+	}
+
+	else if(data.borrowing_date==''){
+		error($("#borrowing_date"),'借款日期不能为空');
+		return false;
+	}
+	else if((data.month=='' && data.day=='' ) || (parseInt(data.month)==0 && parseInt(data.day)==0)  ){
+		error($("#t"),'借款期限必须大于0');
+		return false;
+	}
+	else if(data.year_rate=='' || parseFloat(data.year_rate)<=0){
+		error($("#year_rate"),'年化利率必须大于0');
+		return false;
+	}
+	var s = $.ajax({type:"post",url:'__ACTION__',async:false,data:{flag:'checkbno',bno:data.bno}}).responseText;
+	if(s!='1'){
+		error($("#bno"),'借款唯一号已经存在');
+		return false;
+	}
+	$.post("__ACTION__",data,function(ret){
+		if(ret.status==1){
+			alt(ret.data,function(){
+				closeDialog();
+				$("#table").bootstrapTable('refresh');
+			})
+			
+		}
+		else{
+			error($(o),ret.error);
+		}
+	});
+
+}
+function search(flag){
+	var uname;
+	if(flag==1)
+		uname = $.trim($("#user1").val());
+	else
+		uname = $.trim($("#user2").val());
+	if(uname=='' && flag==1){
+		error($("#user1"),'请输入借款用户账号');
+		return false;
+	}
+	else if(uname=='' && flag==2){
+		error($("#user2"),'请输入关联用户账号');
+		return false;
+	}
+	$.post("__ACTION__",{username:uname,flag:'searchuser'},function(ret){
+		if(ret.data.length==0){
+			if(flag==1){
+				$("#project_uid_txt").find('span').empty();
+				$("input[name=project_uid]").val(0)
+			}
+			else{
+				$("#relation_uid_txt").find('span').empty();
+				$("input[name=relation_uid]").val(0)
+			}
+		}
+		else
+		{
+			if(flag==1){
+				$("#project_uid_txt").find('span').text(ret.data[0].realname+" / "+ret.data[0].mobile+" / "+ret.data[0].idcard);
+				$("input[name=project_uid]").val(ret.data[0].uid)
+			}
+			else{
+				$("#relation_uid_txt").find('span').text(ret.data[0].realname+" / "+ret.data[0].mobile+" / "+ret.data[0].idcard);
+				$("input[name=relation_uid]").val(ret.data[0].uid)
+			}
+		}
+
+	});
+}
+function checknum(o,f){
+	var v = $(o).val();
+	if(v=='') v=0;
+	v = parseInt(v);
+	if(v>0 && f=='m'){
+		$("#day").val(0);
+		var t = $("#repay_type").val();
+		if(t=='3'){
+			$("#repay_type").find('option:eq(0)').prop('selected',true).siblings('option').prop('selected',false);
+		}
+	}
+	else{
+		$("#month").val(0);
+		$("#repay_type").find('option:eq(2)').prop('selected',true).siblings('option').prop('selected',false);
+	}
+}
+function formatamount(o){
+	var v = $(o).val();
+	if(v=='') v=0;
+	if(v>0){
+	}
+}
+</script>

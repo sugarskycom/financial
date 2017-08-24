@@ -1,0 +1,69 @@
+<div class="container param">
+    <div class="backimg"></div>
+    <div class="attention">风险测评提示</div>
+    <p>根据证监会相关法律规定，完成风险测评有助</p>
+    <p>于您了解自己的风险承受能力，同时也为了给</p>
+    <p>您提供更好准确的金融服务。请您完成风险测</p>
+    <p>评。</p>
+    <div class="btn btn-warning thisbtn" onclick="window.location.href='{:U("Help/risk")}';">立即测评</div>
+    <div class="btn btn-default thisbtn" style="margin-left: 20px;">继续转入</div>
+</div>
+<style>
+    .modal-header{
+        background-color: #fdc230;
+        padding: 15px 30px;
+    }
+    .bootstrap-dialog-header{
+        color: #333333;
+        font-size: 18px;
+    }
+    .param{
+        padding-left: 110px;
+        position: relative;
+    }
+    .backimg{
+        position: absolute;
+        top:40px;
+        left: 60px;
+        width: 40px;
+        height: 40px;
+        background: url("/Public/images/tanhao.png") no-repeat ;
+    }
+    .attention {
+        font-size: 24px;
+        color: #333333;
+        padding-bottom: 24px;
+        padding-top: 40px;
+    }
+    p{
+        font-size: 16px;
+        color: #666666;
+        margin: 0 0 5px;
+    }
+    .thisbtn{
+        width: 140px;
+        height: 44px;
+        font-size: 16px;
+        line-height: 30px;
+        margin-top: 36px;
+        margin-bottom: 36px;
+    }
+    .param > .btn-warning {
+        background-color: #fdc230;
+        border-color: #fdc230;
+    }
+    .param > .btn-default {
+        color: #666;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+</style>
+<script>
+    $(".param .btn-default").click(function () {
+        BootstrapDialog.show({
+            title: '确定投资',
+            type: BootstrapDialog.TYPE_WARNING,
+            message: $('<div></div>').load('/Index/confirm.html')
+        });
+    });
+</script>

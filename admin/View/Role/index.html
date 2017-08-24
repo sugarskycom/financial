@@ -1,0 +1,121 @@
+<extend name="Public:base" />
+<block name="js">
+    <include file="Public:table-extend" />
+    <script>
+    $.extend($.fn.dataTable.defaults, {
+        language: {
+            "url": "{$Think.config.RESOURCE_URL}/components/datatables-plugins/i18n/datatables-chinese.json",
+            "sSearchPlaceholder": "角色键词..."
+        },
+        lengthMenu: [5, 10, 25, 50, 100],
+        searching: true,
+        ordering: true,
+        responsive: true,
+        pageLength: 25,
+        processing: false,
+        serverSide: false,
+        autoWidth: false,
+        paging: true //禁止表格分页
+    });
+    $(function() {
+        $('#dataTables-dataList').DataTable({
+            columns: [
+                {
+                    orderable: true,
+                    searchable: false
+                },
+                {
+                    orderable: true,
+                    searchable: false
+                },
+                {
+                    orderable: false,
+                    searchable: true
+                },
+                {
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    orderable: false,
+                    searchable: false
+                }
+            ]
+        });
+    });
+    </script>
+    <!---角色Modal-->
+    <div class="modal in" id="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">新增角色</h4>
+                </div>
+                <div class="modal-body">
+                    <include file="form" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveRole">保存角色</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <a class="btn btn-primary btn-sm" href="{:U('User/index')}" role="button">用户管理</a>
+                    <a class="btn btn-primary btn-sm" href="{:U('Node/index')}" role="button">节点管理</a>
+                    <a class="btn btn-success btn-sm" href="javascript:;" onclick="add()" role="button">新增角色</a>
+                </div>
+                <div class="ibox-content">
+                    <table class="table  table-hover" id="dataTables-dataList">
+                        <thead>
+                            <tr>
+                                <th>排序</th>
+                                <th>编号</th>
+                                <th>角色名称</th>
+                                <th>角色描述</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="data" id="r">
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="sort_order_{$r.id}">sort_order</label>
+                                            <input type='number' value='{$r.sort}' name='sort_order' class="form-control input-max-w-100" id="sort_order_{$r.id}" />
+                                        </div>
+                                    </td>
+                                    <td>{$r.id}</td>
+                                    <td>{$r.name}</td>
+                                    <td>{$r.remark}</td>
+                                    <td>
+                                        <eq name="r.status" value="1">开启
+                                            <else/>关闭</eq>
+                                    </td>
+                                    <td>
+                                        <a href="{:U('Role/access')}/role_id/{$r.id}">权限设置</a> | <a href="javascript:;" onclick="edit(this)" data-source='{$r.json}'>编辑</a>
+                                        <neq name="r.id" value="10000">
+                                            | <a href="__URL__/del/id/{$r.id}">删除</a>
+                                        </neq>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

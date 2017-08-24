@@ -1,0 +1,142 @@
+<script type="text/javascript">
+var etime = '1502337600';
+var uamount = '60000';
+var total_rate = '{$data.total_rate}';
+var tLong = '{$data.duration}';
+var min = '{$data.min_amount}';
+var max = '{$data.max_amount}';
+var step = '{$data.step_amount}';
+var hid = '{$data.hid}';
+var type = '{$data.duration_type}';
+var sh;
+$(function(){
+	$("#btnCalculator").click(function(){
+		BootstrapDialog.show({
+			type:BootstrapDialog.TYPE_DEFAULT,
+			size:BootstrapDialog.SIZE_WIDE,
+			title:"收益计算器",
+			message:$('<div></div>').load("__URL__/incomecalculator"),
+			cssClass:'bounceInDown animated',
+	        onshown:function(){
+	            var dialog_h = $(".modal-content").height();
+	            var window_h = $(window).height();
+	            var top = (window_h-dialog_h)/2;
+	            $(".modal-content").css('top',top);
+	        }
+		})
+	});
+    //启动
+	var sh=setInterval(fleshTime,1000);
+    $("#btnSure").click(function(){
+        var v = parseFloat($("#invest_amount").val());
+        if(isNaN(v)) return false;
+        if(v<min){
+            alt("最低投资额为：￥"+min+"元");
+            return false;
+        }
+        else if(v>max){
+            alt("最大投资额为：￥"+max+"元");
+            return false;        
+        }
+        else if(v%parseInt(step)>0){
+            alt("投资额应为："+step+"的倍数");
+            return false;    
+        }
+        else if((parseFloat(uamount)-v)<0){
+            alt("账号余额不足");
+            return false;
+        }
+        else{
+            BootstrapDialog.show({
+                title:'请输入交易密码：',
+                message:function(){
+                    var html = '<div class="form-group">';
+                    html += '<input type="password" value="" id="tradePwd" class="form-control">';
+                    html += '</div>';
+                    html += '<button type="button" class="btn btn-primary btn-block" id="btnPayPwd" onclick="checkPwd(this)">确定交易密码</button>';
+                    return html;
+                },
+                type:BootstrapDialog.TYPE_DEFAULT,
+                size:BootstrapDialog.SIZE_SMALL,
+                onshown:vertical,
+                cssClass:'bounceInDown animated',
+            })
+        }
+    });
+});
+function checkPwd(o){
+    var tradePwd = $.trim($("#tradePwd").val());
+    if(tradePwd==''){
+        error($("#tradePwd"),'请输入交易密码');
+        return false;
+    }
+    else if(tradePwd.length<6){
+        error($("#tradePwd"),'交易密码至少6位');
+        return false;
+    }
+    else{
+        $(o).attr('disabled',true);
+        $.post("__URL__/checkPwd",{pwd:tradePwd},function(ret){
+            if(ret.status==1){
+                var v = parseFloat($("#invest_amount").val())
+                $.post("__URL__/invest",{hid:hid,amount:v,hash:ret.data},function(ret){
+                    if(ret.status==1){
+                        alt(ret.data,function(){
+                            window.location.href = document.URL;
+                        });
+                    }
+                    else{
+                        alt(ret.error);
+                        $(o).attr('disabled',false);
+                    }
+                });
+            }
+            else{
+                error($("#tradePwd"),ret.error);
+                $(o).attr('disabled',false);
+            }
+        });
+    }
+}
+
+function fleshTime(){
+	var endtime=new Date(etime);
+    var nowtime = new Date();
+    var leftsecond=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+    var d,h,m,s;
+    d=parseInt(leftsecond/3600/24);
+    h=parseInt((leftsecond/3600)%24);
+    m=parseInt((leftsecond/60)%60);
+    s=parseInt(leftsecond%60);
+    if(d<=0) d = 0;
+    if(h<=0) h = 0;
+    if(m<=0) m = 0;
+    if(s<=0) s = 0;
+    $("span.day").text(d);
+    $("span.hour").text(h);
+    $("span.minute").text(m);
+    $("span.second").text(s);
+    if(leftsecond<=0){
+        //$("span.end-time")="已结束";
+        clearInterval(sh);
+    }
+}
+function calculateIncome(o){
+    var v = $(o).val();
+    if(v==''){
+        $("#income").text('0.0')
+        return false;
+    }
+    else if(parseFloat(v)<0 || parseFloat(v)<1){
+        $("#income").text('0.0')
+    }
+    else{
+        var t;
+        if(type=='3')
+            t = parseFloat(total_rate)*parseFloat(v)*parseFloat(tLong)/36500;
+        else
+            t = parseFloat(total_rate)*parseFloat(v)*parseFloat(tLong)/1200;
+        $("#income").text(t.toFixed(2).toLocaleString());
+    }
+}
+</script>

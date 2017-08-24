@@ -1,0 +1,101 @@
+<form action="" method="post" id="bankform" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-3 control-label">银行简称：</label>
+		<div class="col-sm-5">
+		<input type="text" class="form-control" name="bank" id="bank" value="">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<!---/form-group-->
+	<div class="form-group">
+		<label class="col-sm-3 control-label">开户行名称：</label>
+		<div class="col-sm-5">
+		<input type="text" class="form-control" name="bank_name" id="bank_name" value="">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<!---/form-group-->
+	<div class="form-group">
+		<label class="col-sm-3 control-label">开户名称：</label>
+		<div class="col-sm-5">
+		<input type="text" class="form-control" name="account_name" id="account_name" value="">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<!---/form-group-->
+	<div class="form-group">
+		<label class="col-sm-3 control-label">卡号：</label>
+		<div class="col-sm-5">
+		<input type="text" class="form-control" name="number" id="number" value="">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<!---/form-group-->
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-5">
+			<button type="submit" class="btn btn-success" id="btn2" data-id="">保存修改</button>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+$(function(){
+	$("#bankform").validate({
+ 		 rules: {
+            bank: {
+                required: true
+            },
+            bank_name:{
+                required: true
+            },
+            account_name:{
+                required: true,
+            },
+            number: {
+                required: true,
+            },
+        },
+        messages: {
+            bank: {
+                required: '银行简称不能为空'
+            },
+            bank_name:{
+                required: '开户行名称不能为空'
+            },
+            account_name:{
+                required: '开户名称不能为空',
+            },
+            number: {
+                required: '卡号不能为空',
+            },
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parent('div').next('div'));
+        },
+        errorClass: "error",
+        submitHandler:function(form){
+        	var obj = {
+        		bank:$.trim($("#bank").val()),
+        		bank_name:$.trim($("#bank_name").val()),
+        		account_name:$.trim($("#account_name").val()),
+        		number:$.trim($("#number").val())
+        	}
+        	$.ajax({
+        		type:"post",
+        		data:obj,
+        		url:"__URL__/addbank",
+        		success:function(ret){
+        			if(ret.status==0){
+        				alt(ret.error);
+        			}
+        			else{
+        				alt(ret.data,function(){
+        					window.location.href=document.URL;
+        				})
+        			}
+        		}
+        	})
+            return false;
+        }
+    });
+});
+</script>

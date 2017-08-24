@@ -1,0 +1,138 @@
+<extend name="Public:base" />
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="ibox">
+			<div class="ibox-title">
+				<table class="table table-striped table-hover" id="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>登录名</th>
+						<th>姓名</th>
+						<th>身份证</th>
+						<th>手机号</th>
+						<th>上次登录</th>
+						<th>注册时间</th>
+						<th>推荐人</th>
+						<th>注册来源</th>
+						<th>设置</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>	
+				</table>
+			</div>
+		</div>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="Public:table-extend"/>
+<script type="text/javascript">
+$(function(){
+	$("#table").dataTable({
+		"stateSave": false,
+        "serverSide": true,
+		"searching": true,
+		"columnDefs":[
+			{
+				"searchable": true,
+				"orderable": true,
+				"data": "uid",
+				"targets": 0
+			},{
+				"searchable": true,
+				"orderable": false,
+				"data": "username",
+				"targets": 1,
+			},{
+				"searchable": true,
+				"orderable": false,
+				"data": "realname",
+				"targets": 2,
+			},{
+				"searchable": true,
+				"orderable": false,
+				"data": "idcard",
+				"targets": 3,
+			},{
+				"searchable": true,
+				"orderable": false,
+				"data": "mobile",
+				"targets": 4,
+			},{
+				"searchable": false,
+				"orderable": true,
+				"data": "last_login",
+				"targets": 5,
+				"render": function(data, type, row) {
+     				return dateFormat(data);
+                }
+			},{
+				"searchable": false,
+				"orderable": true,
+				"data": "create_time",
+				"targets": 6,
+				"render": function(data, type, row) {
+					return dateFormat(data);
+				}
+			},{
+				"searchable": false,
+				"orderable": false,
+				"data": "recommend",
+				"targets": 7,
+			},{
+				"searchable": false,
+				"orderable": false,
+				"data": "come_from",
+				"targets": 8,
+				"render": function(data, type, row) {
+					var come_from = '?';
+					switch (data) {
+						case '1':
+						come_from = 'PC';
+						break;
+						case '2':
+						come_from = 'APP';
+						break;
+						case '3':
+						come_from = '后台';
+						break;
+					}
+					return come_from;
+				}
+			},{
+				"searchable": false,
+				"orderable": false,
+				"targets": 9,
+				"render": function(data, type, row) {
+					return '<a href="__URL__/detail?uid='+row.uid+'" class="btn btn-success btn-xs">更换设置</a>';
+				}
+			}
+		],//待完善
+		"order":[0, 'asc'],
+		"ajax":{
+			"url": "__URL__/index",
+			"data": {},
+			"type": "post",
+			"dataSrc": "data",
+		}
+	})
+});
+$("#btnQuick").click(function(){
+	BootstrapDialog.show({
+		title:"快速开户",
+		message:$("<div></div>").load("__URL__/quickaccount"),
+		type:BootstrapDialog.TYPE_DEFAULT,
+		draggable:true,
+	});
+})
+</script>
+</block>
+<block name="buttons">
+<a href="__URL__/adda" class="btn btn-info">增加用户</a>
+<a href="javascript:;" class="btn btn-success">导出列表</a>
+<a href="javascript:;" class="btn btn-primary" id="btnQuick">快速开户</a>
+</block>

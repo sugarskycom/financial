@@ -1,0 +1,152 @@
+<form action="" method="post" id="form" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 转账金额：
+		</label>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" name="amount" id="amount">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 转出账户：
+		</label>
+		<div class="col-sm-6">
+			<select id="out" name="out" class="form-control">
+				<option value="HTF001">往来账户(HTF001)</option>
+				<option value="HTF002">服务费账户(HTF002)</option>
+				<option value="HTF003">风险金账户(HTF003)</option>
+				<option value="HTF004">保证金及罚息账户(HTF004)</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 转入账户：
+		</label>
+		<div class="col-sm-6">
+			<select id="in" name="in" class="form-control">
+				<option value="HTF002">服务费账户(HTF002)</option>
+				<option value="HTF003">风险金账户(HTF003)</option>
+				<option value="HTF004">保证金及罚息账户(HTF004)</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 备注信息：
+		</label>
+		<div class="col-sm-9">
+			<textarea name="remark" id="remark" class="form-control"></textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label">
+			<span class="text-red">*</span> 验证码：
+		</label>
+		<div class="col-sm-5">
+			<input type="text" id="code" name="code" class="form-control">
+		</div>
+		<div class="col-sm-4">
+			<a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src='{:U(\'Verify/load\')}/?rnd='+Math.random()"></a>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-success" id="btnRecharge">确定转账</button>
+		</div>
+	</div>
+
+</form>
+
+<script type="text/javascript">
+var out = {'HTF001':'往来账户(HTF001)','HTF002':'服务费账户(HTF002)','HTF003':'风险金账户(HTF003)','HTF004':'保证金及罚息账户(HTF004)'};
+$(function(){
+	$("#out").change(function() {
+		var v = $(this).val();
+		var opts = '';
+		switch(v){
+			case 'HTF001':
+			opts = '<option value="HTF002">服务费账户(HTF002)</option><option value="HTF003">风险金账户(HTF003)</option><option value="HTF004">保证金及罚息账户(HTF004)</option>';
+			$("#in").html(opts)
+			break;
+			case 'HTF002':
+				opts = '<option value="HTF001">往来账户(HTF001)</option>';
+				$("#in").html(opts)
+			break;
+			case 'HTF003':
+				opts = '<option value="HTF001">往来账户(HTF001)</option>';
+				$("#in").html(opts)
+			break;
+			case 'HTF004':
+				opts = '<option value="HTF001">往来账户(HTF001)</option>';
+				$("#in").html(opts)
+			break;
+			default:
+				opts = '<option value="HTF002">服务费账户(HTF002)</option><option value="HTF003">风险金账户(HTF003)</option><option value="HTF004">保证金及罚息账户(HTF004)</option>';
+				$("#in").html(opts)
+		}
+
+	});
+	$("#form").validate({
+		rules:{
+			amount:{
+				required:true,
+				min:1,
+			},
+			remark:{
+				required:true,
+			},
+			code:{
+				required:true,
+				check:true,
+			}
+		},
+		messages:{
+			amount:{
+				required:'转账金额不能为空或0',
+				min:'转账金额应大于0',
+			},
+			remark:{
+				required:'备注必须填写',
+			},
+			code:{
+				required:'验证码不能为空',
+				check:'验证码错误'
+			}
+		},
+		submitHandler:function(form){
+			$("#btnRecharge").attr('disabled',true);
+			$.post('__URL__/atoa',{amount:$("#amount").val(),remark:$("#remark").val(),code:$("#code").val(),out:$("#out").val(),in:$("#in").val()},function(ret){
+				if(ret.status==1){
+					$("#btnRecharge").text(ret.data);
+					setTimeout(function(){
+						window.location.href=document.URL;
+					},500)
+				}
+				else{
+					alt(ret.error);
+				}
+			});
+		}
+	});
+});
+$.validator.addMethod("check", function(value, element, params) {
+    if (value.length != 4) {
+        return false;
+    } else {
+        var ret = $.ajax({
+            url: "{:U('Verify/check')}",
+            type: "get",
+            data: {
+                code: $("#code").val()
+            },
+            async: false
+        }).responseText;
+        return ret == "yes" ? true : false
+    }
+});
+</script>

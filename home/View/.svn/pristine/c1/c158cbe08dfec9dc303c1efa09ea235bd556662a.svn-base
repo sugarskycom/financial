@@ -1,0 +1,233 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<!-- banner -->
+	<div class="bg container"></div>
+	<!--类型-->
+	<div class="pro-box container">
+		<div class="row text-center pro-type">
+			<div id="funcRaise" class="pro-type-title col-md-4 pro-active">仓单融资</div>
+			<div id="assetPledge" class="pro-type-title col-md-4">资产抵押</div>
+			<div id="receivable" class="pro-type-title col-md-4">应收账款</div>
+		</div>
+	</div>
+	<!--仓单融资-->
+	<div class="project container">
+		<div class="row">
+			<p class="notice">融资企业将自有库存货品存放到易电联仓库内作为融资担保品</p>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th>项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num">按月还息到期还本</td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success">即将开标</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-countdown">1天12时9分12秒</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--/1-->
+			<div class="project-border">
+				<table>
+					<tr>
+						<td class="p-title">项目编号</td>
+						<td class="p-title">预期年化收益</td>
+						<td class="p-title">合约期限</td>
+						<td class="p-title">可投金额</td>
+						<td class="p-title">募集进度</td>
+						<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+					</tr>
+					<tr>
+						<td class="p-num p-bno">CDD2017071208</td>
+						<td class="p-num">14%</td>
+						<td class="p-num">30天</td>
+						<td class="p-num">0.5万元</td>
+						<td class="p-num">
+							<div class="ind-3 text-center"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--/2-->
+			<div class="project-border">
+				<table>
+					<tr>
+						<td class="p-title">项目编号</td>
+						<td class="p-title">预期年化收益</td>
+						<td class="p-title">合约期限</td>
+						<td class="p-title">可投金额</td>
+						<td class="p-title">募集进度</td>
+						<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+					</tr>
+					<tr>
+						<td class="p-num p-bno">CDD2017071203</td>
+						<td class="p-num">14%</td>
+						<td class="p-num">30天</td>
+						<td class="p-num">0.5万元</td>
+						<td class="p-num">
+							<div class="ind-4 text-center"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--/3-->
+			<div class="project-border">
+				<table>
+					<tr>
+						<td class="p-title">项目编号</td>
+						<td class="p-title">预期年化收益</td>
+						<td class="p-title">合约期限</td>
+						<td class="p-title">可投金额</td>
+						<td class="p-title">募集进度</td>
+						<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+					</tr>
+					<tr>
+						<td class="p-num p-bno">CDD2017071206</td>
+						<td class="p-num">14%</td>
+						<td class="p-num">30天</td>
+						<td class="p-num">0.5万元</td>
+						<td class="p-num">
+							<div class="ind-5 text-center"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--/4-->
+			<div class="project-border">
+				<table>
+					<tr>
+						<td class="p-title">项目编号</td>
+						<td class="p-title">预期年化收益</td>
+						<td class="p-title">合约期限</td>
+						<td class="p-title">可投金额</td>
+						<td class="p-title">募集进度</td>
+						<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+					</tr>
+					<tr>
+						<td class="p-num p-bno">CDD2017071205</td>
+						<td class="p-num">14%</td>
+						<td class="p-num">30天</td>
+						<td class="p-num">0.5万元</td>
+						<td class="p-num">
+							<div class="ind-6 text-center"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--/5-->
+		</div>
+	</div>
+
+
+	<include file="Public:footer" />
+
+</block>
+<block name="css">
+	<style>
+		.bg {
+			background-color: #1b85ee;
+			height: 200px;
+			overflow:hidden;
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+		/*与detail相同的样式*/
+		.pro-box {
+			background-color: #fff;
+			cursor: pointer;
+		}
+		.pro-type{
+			font-size: 18px;
+			height: 50px;
+			line-height: 50px;
+			background-color: #fafafa;
+			border: 1px solid #e5e5e5;
+		}
+		.pro-active{
+			color: #fdc230;
+			background-color: #fff;
+			border-top: 2px solid #fdc230;
+            /*border-left:1px solid #e5e5e5;
+            border-right:1px solid #e5e5e5;*/
+        }
+        .project {
+        	background-color: #fff;
+        	border: 1px solid #e5e5e5;
+        	border-top:0;margin-top:-3px;
+        }
+        .project p.notice {
+        	text-align: center;
+        	font-size: 14px;
+        	color: #ccc;
+        	height: 50px;
+        	line-height: 50px;
+        }
+        .project .row .project-border {
+        	margin-bottom: 0;
+        	border:0;
+        	border-top:1px solid #e5e5e5;
+        	padding:40px 50px;
+        }
+        .project .project-border table, .project .project-border table td {text-align: left;}
+        .project-border thead tr th {font-size: 16px;color: #333;}
+        .project-border tbody tr td a {font-size: 16px;padding:4px 10px;}
+        .project-border i {font-style: normal;}
+        .project-border i.f34 {
+        	font-size: 34px;
+        	color: #fdc230;
+        }
+        .project-border i.per {
+        	font-size: 14px;
+        	color: #fdc230;
+        }        
+        .project-border i.f18 {
+        	font-size: 18px;
+        	color: #666;
+        }  
+        .project-border i.f14 {
+        	font-size: 14px;
+        	color: #999;
+        } 
+        .project-border table tbody td.p-title {
+        	font-size: 14px;
+        	color: #b2b2b2;
+        }
+        .project-border td.p-countdown {color: #fbc230;}
+
+        .btn-success {
+        	color: #fdc230;
+        	background-color: #fff;
+        	border-color: #fdc230;
+        	border-radius: 4px;
+        	width: 112px;
+        	height: 32px;
+        }
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.btn-success {
+        	color: #fff;
+        	background-color: #ffce55;
+        	border-color: #fdc230;
+        }        
+    </style>
+</block>

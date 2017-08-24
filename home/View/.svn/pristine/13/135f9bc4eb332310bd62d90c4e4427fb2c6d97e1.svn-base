@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="quote">
+            <div class="col-md-2 title">标的标题</div>
+            <div class="col-md-10 detail">{$data.title}</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">预计年利率</div>
+            <div class="col-md-10 detail">{$data.year_rate}%</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">预计收益金额</div>
+            <div class="col-md-10 detail"></div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">投资期限</div>
+            <div class="col-md-10 detail">{$data.raise_time}天</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">收益方式</div>
+            <div class="col-md-10 detail">按月付息，到期还本</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">投资额度</div>
+            <div class="col-md-10 detail"></div>
+            <div class="col-md-10 detail" style="display: none">1000.00元&nbsp;&nbsp;&nbsp;您的余额不足&nbsp;&nbsp;&nbsp;<a
+                    href="{:U('Index/recharge')}">去充值</a></div>
+        </div>
+    </div>
+    <div class="btn btn-warning rightnow">立即投资</div>
+</div>
+<style>
+    .title{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #999999;
+    }
+    .detail{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #333333;
+        font-weight: 500;
+    }
+    .rightnow{
+        width: 290px;
+        height: 40px;
+        font-size: 18px;
+        color: #ffffff;
+        background-color: #fdc230;
+        margin-left: 100px;
+        margin-bottom: 10px;
+    }
+    /*Bootstrap-dialog更改样式*/
+    .modal-header{
+        background-color: #fdc230;
+        padding: 15px 30px;
+    }
+    .bootstrap-dialog-header{
+        color: #ffffff;
+        font-size: 18px;
+    }
+    .close{
+        color: #ffffff;
+        opacity: 1;
+    }
+</style>
+<script>
+    
+</script>

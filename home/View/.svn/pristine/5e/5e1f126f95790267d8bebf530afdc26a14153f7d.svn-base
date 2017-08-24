@@ -1,0 +1,246 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<include file="Public:banner" />
+	<div class="container i-loan">
+		<!--借款流程-->
+		<h1><span>借款流程</span></h1>
+		<div class="flow-list row">
+			<div class="col-sm-3">
+				<div class="flow-box">
+					<span><i class="fa fa-pencil"></i></span>
+					<strong>申请融资</strong>
+				</div>
+				<div class="flow-desc">
+					融资企业将融资申请通过平台提交，汇通网在12小时之内电话回复，沟通融资事项。
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="flow-box">
+					<span><i class="fa fa-check"></i></span>
+					<strong>资质审核</strong>
+				</div>
+				<div class="flow-desc">
+					融资企业提交材料后，风控人员对借款企业和质押物等进行审核，必要是实地调查。
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="flow-box">
+					<span><i class="fa fa-user"></i></span>
+					<strong>签订合同</strong>
+				</div>
+				<div class="flow-desc">
+					邀请融资企业到易电联公司进行洽谈，约定各方权利义务，并签署相关合同。
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="flow-box">
+					<span><i class="fa fa-cny"></i></span>
+					<strong>资金放款</strong>
+				</div>
+				<div class="flow-desc">
+					签署合同后，将融资需求发布于汇通网募集、放款，企业按照约定的方式按期还款。
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--借款产品-->
+	<div class="project-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="project-box">
+						<h3>仓单抵押借款</h3>
+						<p>专属电子类仓储货物的抵押融资，利率低，方便快捷！</p>
+						<button type="button" class="btn btn-success btn-lg">立即申请</button>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="project-box">
+						<h3>采购垫资借款</h3>
+						<p>电子货物采购融资，配比资金最高70%。</p>
+						<button type="button" class="btn btn-success btn-lg">立即申请</button>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="project-box">
+						<h3>其他资产抵押借款</h3>
+						<p>含各类资产抵押，包括房产、车产、应收帐款等资产抵押融资，针对融资项目可量身设计，灵活度高！</p>
+						<button type="button" class="btn btn-success btn-lg">立即申请</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 申请借款表单 -->
+	<div class="container i-loan">
+		<h1><span>申请借款</span></h1>
+		<div class="row">
+			<form action="#" method="" class="form-horizontal loan-form" id="loanForm" novalidate="novalidate">
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">借款人姓名：</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="name" name="name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="address" class="col-sm-2 control-label">常住地址：</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="address" name="address">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="mobile" class="col-sm-2 control-label">联系方式：</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="mobile" name="mobile" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sum" class="col-sm-2 control-label">借款额度：</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="sum" name="sum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="purpose" class="col-sm-2 control-label">借款用途：</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="purpose" name="purpose">
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-submit" id="btnSubmit">提交申请</button>
+					<p class="notice">仅认证通过用户能申请借款</p>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<style type="text/css">
+		.foot{margin-top: 0;}
+		.loan-form {margin-top:20px;margin-bottom: 20px;}
+		.loan-form .form-group .form-control {display: inline-block;width:400px;}
+		.btn-submit,
+		.btn-primary {
+			color: #fff;
+			background-color: #4b92ff;
+			border-color: 0 !important;
+			outline: 0 !important;
+		}
+		.btn-primary:hover,
+		.btn-primary:focus,
+		.btn-primary.focus,
+		.btn-primary:active,
+		.btn-primary.active,
+		.open > .dropdown-toggle.btn-primary {
+			color: #fff;
+			background-color: #4b92ff;
+			border-color: 0 !important;
+		}
+
+	</style>
+	<include file="Public:footer"/>
+</block>
+<block name="js">
+	<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+		$('#myCarousel').carousel({
+			interval: 3000
+		});
+
+		$(function(){
+			$("#loanForm").validate({
+				rules:{
+					name:{
+						required:true,
+						minlength:2
+					},
+					address:{
+						required:true
+					},					
+					mobile:{
+						required:true,
+						isValidMobile:true
+					},
+					sum:{
+						required:true					
+					},	
+					purpose:{
+						required:true
+					}				
+				},
+				messages:{
+					name:{
+						required:"用户名不能为空",
+						minlength:"用户名至少2个字符",
+					},
+					address:{
+						required:"常住地址不能为空"
+					},
+					mobile:{
+						required:"手机号不能为空",
+						isValidMobile:"手机号格式无效"
+					},
+					sum:{
+						required:"借款额度不能为空"
+					},
+					purpose:{
+						required:"借款用途不能为空"
+					}
+				},
+
+				submitHandler: function (form) {
+
+					$("#btnSubmit").attr("disabled", true).text("提交中···");
+					$.ajax({
+						url: " ",
+						data: {
+							name: $("#name").val().trim(), 
+							address: $("#address").val().trim(),
+							mobile: $("#mobile").val().trim(),
+							sum: $("#sum").val().trim(),
+							purpuse: $("#purpuse").val().trim()						
+						},
+						type: "post",
+						success: function (ret) {
+							if (ret.status == 1) {
+								$("#btnSubmit").text("提交成功，跳转中...");
+								var url = "跳转页面";
+								if (backUrl != "") url = backUrl;
+								setTimeout(function () {
+									window.location.href = url;
+								}, 1000);
+							}
+							else {
+								$("#btnSubmit").text("错误提示");
+								setTimeout(function () {
+									window.location.reload ();
+								}, 1000);								
+							}
+						}
+					})
+				}
+			})
+
+			// 手机号码验证
+			$.validator.addMethod("isValidMobile",function(value,element,params){
+
+				var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+
+				if(!reg.test(value)){
+
+					return false;
+
+				}
+
+				else{
+
+					return true;
+
+				}
+
+			});
+		})
+
+
+	</script>
+</block>

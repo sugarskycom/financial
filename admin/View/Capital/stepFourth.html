@@ -1,0 +1,66 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+<div class="ibox-title">其他信息</div>
+		<div class="ibox-content"><!--__URL__/stepFourth-->
+			<form class="form-horizontal" action="javascript:;" method="post">
+				<div class="form-group">
+					<label for="a" class="col-lg-2  col-sm-3 control-label">借款主体说明:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="2" name="desc_info" id="desc_info">{$data.desc_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-2  col-sm-3 control-label">担保信息:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="2" name="guarantee_info" id="guarantee_info">{$data.guarantee_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-2  col-sm-3 control-label">抵押信息:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="2" name="mortgage_info" id="mortgage_info">{$data.mortgage_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-2 col-sm-3 control-label">风险管控措施:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="2" name="risk_info" id="risk_info">{$data.risk_info}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-2  col-sm-3 control-label">资金用途:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="2" name="fund_use" id="fund_use">{$data.fund_use}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-2  col-sm-3  control-label">还款来源:</label>
+					<div class="col-lg-6">
+						<textarea class="form-control" rows="2" name="repay_source" id="repay_source">{$data.repay_source}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="a" class="col-lg-2  col-sm-3  control-label">项目资料:</label>
+					<div class="col-lg-10 col-sm-9">
+						<div class="alert alert-warning">支持多个文件上传，最多10个图片，单个文件最大5M,支持:jpg,gif,png,bmp格式图片</div>
+						<div class="pic-list hide"></div>
+						<input type="file" name="upload" id="upload" multiple>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-lg-offset-2 col-sm-offset-3 col-lg-2 col-sm-3">
+						<input type="hidden" name="hid" value="{$data.hid}">
+						<input type="submit" class="btn btn-success" value="生成标" id="btnSave">
+						<a href="__URL__/stepThird?hid={$data.hid}" class="btn btn-default">返回</a>
+					</div>
+				</div>
+			</form>
+		</div>
+</div>
+</block>
+<block name="js">
+<include file="picjs"/>
+</block>

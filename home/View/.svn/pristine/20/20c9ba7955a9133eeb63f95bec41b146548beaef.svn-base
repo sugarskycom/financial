@@ -1,0 +1,68 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="intro-bg bg">
+        <div class="container news-title">
+            <div class="fadeInDown animated">
+                <h2>关于易电联</h2>
+                <span>用我们200%的努力，换您100%的放心</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <!-- 公司介绍 -->
+            <h3 class="about-content-title">公司介绍</h3>
+            <div class="about-content-intro row">
+                <div class="about-content-text col-md-6" style="padding-left:0">
+                    <p>易电联（北京）电子商务有限公司，北京电子商会会员服务平台，首个消费电子领域“新技术、新服务”提供商。专注于为消费电子行业后市场提供产业解决方案，即仓配一体化、智能分销及供应链金融服务，打造集“仓储、物流、金融、交易”四位一体的综合服务平台。</p>
+                    <p>易电联通过自主研发的ERP管理系统与移动端工具，为上游厂商、品牌代理商与下游零售终端提供智能化系统服务。即易电联整合全国仓储与物流资源，结合供应商体系特征，提供本地化仓配服务，帮助厂商与品牌代理商降低运营成本，提升用户体验；通过移动端工具进行撮合交易，使品牌商和零售终端智能匹配，精准推送，快速分销，提高销量与商品流通率；同时，易电联与全国知名金融平台合作，建设消费电子行业评估体系，为品牌代理商提供定制化供应链金融增值服务。</p>
+                    <p>易电联注重研发投入，公司30%以上为研发人员，经过近两年时间的快速发展，易电联已在全国部署云仓5万多平米，覆盖全国近30个主要城市，拥有超过150家合作品牌商，为品牌代理商提供仓单贷、采购配资等供应链金融服务额达3亿元。</p>
+                    <p>易电联正在全国进行业务布局，将各类品牌商纳入体系内，以加快促进产业升级，推进产业融合发展，致力打造国内消费电子行业云服务第一品牌。</p>
+                </div>
+                <div class="col-md-6" style="padding:0;">
+                    <img src="__PUBLIC__/images/intro/intro_index.png" alt="" />
+                </div>
+            </div>
+            <div class="divider"></div>
+            <!-- 企业文化 -->
+            <a name="culture"></a>
+            <div class="culture-content">
+                <h3 class="culture-content-title">企业文化</h3>
+                <div class="row culture-content-intro">
+                    <div class="col-md-4">
+                        <img src="__PUBLIC__/images/intro/culture_1.jpg" alt="" />
+                        <h4>企业愿景</h4>
+                        <p style="font-size:small">Our Vision</p>
+                        <p>消费电子云服务第一品牌</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="__PUBLIC__/images/intro/culture_2.jpg" alt="" />
+                        <h4>企业使命</h4>
+                        <p style="font-size:small">Our Mission</p>
+                        <p>让技术更简单，让服务更贴心</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="__PUBLIC__/images/intro/culture_3.jpg" alt="" />
+                        <h4>公司核心价值观</h4>
+                        <p style="font-size:small">Our Value</p>
+                        <p>服务 创新 高效 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .container {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .about-content-text p {
+            text-indent:2em;
+            letter-spacing: 1.5px;
+        }
+    </style>
+</block>

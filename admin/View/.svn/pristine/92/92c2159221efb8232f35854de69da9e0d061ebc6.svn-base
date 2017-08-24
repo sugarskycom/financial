@@ -1,0 +1,3 @@
+<link href="{$Think.config.RESOURCE_URL}/components/datepicker/datepicker3.css" rel="stylesheet">
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/datepicker/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>

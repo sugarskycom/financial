@@ -1,0 +1,124 @@
+<!--联系人信息-->
+<div id="tab-4" class="tab-pane">
+    <div class="panel-body">
+        <form action="" method="post" id="form" class="form-horizontal">
+            <h5>紧急联系人</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">姓名：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="main" id="main" value="{$userinfo.main}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">关系：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="main_rela" id="main_rela">
+                    	<option value="1" <eq name="userinfo.main_rela" value="1">selected</eq>>其他</option>
+                        <option value="2" <eq name="userinfo.main_rela" value="2">selected</eq>>亲人</option>
+                        <option value="3" <eq name="userinfo.main_rela" value="3">selected</eq>>朋友</option>
+                        <option value="4" <eq name="userinfo.main_rela" value="4">selected</eq>>上司</option>
+                        <option value="5" <eq name="userinfo.main_rela" value="5">selected</eq>>下属</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">电话号码：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="main_tel" id="main_tel" value="{$userinfo.main_tel}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>同事</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">姓名：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="workmate" id="workmate" value="{$userinfo.workmate}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">关系：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="workmate_rela" id="workmate_rela">
+                    	<option value="1" <eq name="userinfo.workmate_rela" value="1">selected</eq>>其他</option>
+                        <option value="2" <eq name="userinfo.workmate_rela" value="2">selected</eq>>亲人</option>
+                        <option value="3" <eq name="userinfo.workmate_rela" value="3">selected</eq>>朋友</option>
+                        <option value="4" <eq name="userinfo.workmate_rela" value="4">selected</eq>>上司</option>
+                        <option value="5" <eq name="userinfo.workmate_rela" value="5">selected</eq>>下属</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">电话号码：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="workmate_tel" id="workmate_tel" value="{$userinfo.workmate_tel}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>其他联系人</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">姓名：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="backup" id="backup" value="{$userinfo.backup}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">关系：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="backup_rela" id="backup_rela">
+                    	<option value="1" <eq name="userinfo.backup_rela" value="1">selected</eq>>其他</option>
+                        <option value="2" <eq name="userinfo.backup_rela" value="2">selected</eq>>亲人</option>
+                        <option value="3" <eq name="userinfo.backup_rela" value="3">selected</eq>>朋友</option>
+                        <option value="4" <eq name="userinfo.backup_rela" value="4">selected</eq>>上司</option>
+                        <option value="5" <eq name="userinfo.backup_rela" value="5">selected</eq>>下属</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">电话号码：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="backup_tel" id="backup_tel" value="{$userinfo.backup_tel}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>注册推荐人</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">姓名：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="recommend" id="recommend" value="{$userinfo.recommend}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">关系：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="recommend_rela" id="recommend_rela">
+                    	<option value="1" <eq name="userinfo.recommend_rela" value="1">selected</eq>>其他</option>
+                        <option value="2" <eq name="userinfo.recommend_rela" value="2">selected</eq>>亲人</option>
+                        <option value="3" <eq name="userinfo.recommend_rela" value="3">selected</eq>>朋友</option>
+                        <option value="4" <eq name="userinfo.recommend_rela" value="4">selected</eq>>上司</option>
+                        <option value="5" <eq name="userinfo.recommend_rela" value="5">selected</eq>>下属</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">电话号码：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="recommend_tel" id="recommend_tel" value="{$userinfo.recommend_tel}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <div class="col-md-offset-3 col-sm-offset-4 col-sm-3">
+                    <button type="submit" class="btn btn-success" id="btn4" data-id="">保存修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="btn btn-primary" id="feedback">
+    投诉建议
+</div>
+<style>
+    #feedback{
+        position: fixed;
+        right: 0;
+        bottom: 50px;
+    }
+</style>
+<script>
+    $("#feedback").click(function () {
+        BootstrapDialog.show({
+            message: $('<div></div>').load('feedback.html')
+        });
+    });
+</script>

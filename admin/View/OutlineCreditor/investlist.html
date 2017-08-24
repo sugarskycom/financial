@@ -1,0 +1,19 @@
+<table class="table table-striped">
+<thead>
+<tr>
+	<th>投资人</th>
+	<th>投资金额</th>
+	<th>投资日期</th>
+</tr>
+</thead>
+<volist name="list" id="r">
+	<tr>
+		<td>{$r.realname}/{$r.mobile}/{$r.idcard}</td>
+		<td>{$r.amount|number_format=0}</td>
+		<td>{$r.invest_date|date='Y-m-d',###}</td>
+	</tr>
+</volist>
+<if condition="count($list) eq 0">
+	<tr><td colspan="8" class="text-center">暂无信息</td></tr>
+</if>
+</table>

@@ -1,0 +1,61 @@
+<div class="feedback-bg">
+    <a class="feedback front" id="feedback" href="#" alt="投诉建议"></a>
+    <!-- <a class="back" href="#"><b>投诉</b><b>建议</b></a> -->
+</div>
+<div class="totop-bg">
+    <a class="totop front" href="#" alt="返回顶部"></a>
+    <!-- <a class="back" href="#"><b>返回</b><b>顶部</b></a> -->
+</div>
+
+<style>
+    .bootstrap-dialog.type-primary .modal-header {
+        background-color: #fdc230;
+    }
+
+    .feedback-bg,.totop-bg {
+        height: 70px;
+        width: 70px;
+        border:1px solid #efefef;
+        background-color: #fff;
+        position: fixed;
+        right: 0;
+    }
+    .feedback-bg {border-bottom: 171px;}
+    .totop-bg {border-bottom: 100px;border-top: 0;display: none;}
+
+  /*  .feedback-bg > .front,.totop-bg > .front{display: none;}*/
+
+    .feedback {
+        background-image: url(/Public/images/feedback.png);
+        background-repeat: no-repeat;
+        width: 28px;
+        height: 29px;
+        position: absolute;
+        top: 33%;
+        left: 33%;
+    }
+    .totop {
+        background-image : url(/Public/images/top.png);
+        background-repeat: no-repeat;
+        width: 26px;
+        height: 18px;  
+        position: absolute;
+        top: 33%;
+        left: 33%;  
+    }
+/*    #feedback{
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+    }*/
+/*    .fa-arrow-up {
+        position: fixed;
+        right: 15px;
+        bottom: 80px;
+        font-size: 14px;
+        color: #fdc230;
+    }
+    .fa-arrow-up:hover{
+        color: #fdc230;
+    }*/
+</style>

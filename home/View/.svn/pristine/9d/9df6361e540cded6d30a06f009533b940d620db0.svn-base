@@ -1,0 +1,86 @@
+<extend name="Public:theme" />
+<block name="content">
+<include file="Public:top"/>
+<include file="Public:banner" />
+<div class="container i-loan">
+	<!--借款流程-->
+	<h1><span>借款流程</span></h1>
+	<div class="flow-list row">
+		<div class="col-sm-3">
+			<div class="flow-box">
+				<span><i class="fa fa-pencil"></i></span>
+				<strong>申请融资</strong>
+			</div>
+			<div class="flow-desc">
+				融资企业将融资申请通过平台提交，汇通网在12小时之内电话回复，沟通融资事项。
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="flow-box">
+				<span><i class="fa fa-check"></i></span>
+				<strong>资质审核</strong>
+			</div>
+			<div class="flow-desc">
+				融资企业提交材料后，风控人员对借款企业和质押物等进行审核，必要是实地调查。
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="flow-box">
+				<span><i class="fa fa-user"></i></span>
+				<strong>签订合同</strong>
+			</div>
+				<div class="flow-desc">
+					邀请融资企业到易电联公司进行洽谈，约定各方权利义务，并签署相关合同。
+				</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="flow-box">
+				<span><i class="fa fa-cny"></i></span>
+				<strong>资金放款</strong>
+			</div>
+			<div class="flow-desc">
+				签署合同后，将融资需求发布于汇通网募集、放款，企业按照约定的方式按期还款。
+			</div>
+		</div>
+	</div>
+</div>
+<!--借款产品-->
+<div class="project-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="project-box">
+					<h3>仓单抵押借款</h3>
+					<p>专属电子类仓储货物的抵押融资，利率低，方便快捷！</p>
+					<button type="button" class="btn btn-success btn-lg">立即申请</button>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="project-box">
+					<h3>采购垫资借款</h3>
+					<p>电子货物采购融资，配比资金最高70%。</p>
+					<button type="button" class="btn btn-success btn-lg">立即申请</button>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="project-box">
+					<h3>其他资产抵押借款</h3>
+					<p>含各类资产抵押，包括房产、车产、应收帐款等资产抵押融资，针对融资项目可量身设计，灵活度高！</p>
+					<button type="button" class="btn btn-success btn-lg">立即申请</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+.foot{margin-top: 0;}
+</style>
+<include file="Public:footer"/>
+</block>
+<block name="js">
+<script type="text/javascript">
+	$('#myCarousel').carousel({
+		interval: 3000
+	});
+</script>
+</block>

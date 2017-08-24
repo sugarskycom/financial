@@ -1,0 +1,56 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>>>
+                    <li><a href="#">信息披露</a></li>>>
+                    <li class="active"><strong>文章名</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--文章标题-->
+    <div class="container">
+        <div>汇通网线上公告汇通网线上公告汇通网线上公告</div>
+        <div><span>编辑：</span><span>xxx</span><span>2017-05-23</span></div>
+    </div>
+
+    <!--公告内容-->
+    <div class="container">
+        <p>亲爱的用户朋友们：
+            现接到富友支付通知如下：
+            浦发银行计划于5月28日（周日）00:00-5月30日（周二）24:00进行系统维护；届时使用浦发银行办理基金申购、验证等业务都将受影响；
+            浦发银行计划于5月27日（周六）21:30-5月30日（周二）24:00进行系统维护，届时使用浦发银行办理基金申购、验证等业务都将受影响；
+            平安银行计划于5月27日（周六）00:30-05:00进行系统维护，届时使用平安银行办理基金申购、验证等业务都将受影响；
+            中国银行计划于5月27日（周六）00:30-02:30进行系统维护，届时使用中国银行办理基金申购、验证等业务都将受影响；
+            中信银行计划于5月28日（周日）01:00-02:00进行系统维护，届时使用中信银行办理基金申购、验证等业务都将受影响；
+            建设银行计划于5月28日（周日）03:30-06:00进行系统维护，届时使用建设银行办理基金申购、验证等业务都将受影响；</p>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+    <script type="text/javascript">
+        $('#myCarousel').carousel({
+            interval: 3000
+        });
+        var num = [0,55,63,80,70,68,18,54,34,79];
+        for(var i=1;i<=9;i++){
+            var ind = $('.ind-'+i).radialIndicator({
+                barColor: '#ff0000',
+                barWidth: 6,
+                initValue: 0,
+                roundCorner : true,
+                percentage: true,
+                radius:25,
+            }).data('radialIndicator');
+            ind.animate(num[i]);
+        }
+    </script>
+    <script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</block>

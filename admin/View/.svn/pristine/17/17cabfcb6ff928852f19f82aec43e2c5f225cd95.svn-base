@@ -1,0 +1,56 @@
+<extend name="Public::base"/>
+<block name="content">
+	<div class="ibox">
+		<div class="ibox-title"><a href="javascript:;" id="adduser" class="btn btn-primary">新增ERP用户</a></div>
+		<div class="ibox-content">
+			<table class="table table-striped table-hover"
+			id="table"
+            data-toggle="table"
+            data-url="__ACTION__"
+            data-query-params="loanQureyParams"
+            data-pagination="true"
+            data-side-pagination="server"
+            data-page-list="[5,10,20,30]"
+            data-method="get"
+            data-page-size="10"
+            data-cache="false"
+            data-sort-order="desc"
+            data-sort-name="id"
+			>
+				<thead>
+					<tr>
+						<th data-field="id">编号</th>
+						<th data-field="realname">姓名</th>
+						<th data-field="fms_user_id">FMS用户ID</th>
+						<th data-field="fms_username">FMS用户名</th>
+						<th data-field="erp_user_id">ERP用户ID</th>
+						<th data-field="erp_username">ERP用户名</th>
+						<th data-field="id" data-formatter="del">操作</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+function loanQureyParams(params){
+	params.flag = 'load';
+	return params;
+}
+$("#adduser").click(function(){
+	BootstrapDialog.show({
+		title:'ERP用户绑定',
+		type:BootstrapDialog.TYPE_DEFAULT,
+		message:function(ret){
+			return $('<div></div>').load('__URL__/builduser')
+		}
+	});
+});
+function del(v,r,i){
+	return '<a href="__URL__/deluser?id='+v+'">删除</a>';
+}
+</script>
+</block>

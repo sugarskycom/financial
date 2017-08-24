@@ -1,0 +1,79 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+<div class="ibox-title">
+	<table class="table table-hover table-striped" id="table"
+		data-toggle="table"
+		data-url="__ACTION__"
+		data-method="post"
+		data-page-size="10"
+		data-pagination="true"
+		data-side-pagination="server"
+		data-page-list="[10,20,30,50]"
+		data-sort-order="desc"
+		data-query-params="params"
+		data-show-pagination-switch="false"
+		data-search="true"
+		data-search-on-enter-key="true"
+		data-trim-on-search="false"
+		data-show-columns="true"
+		data-show-export="true"
+		data-export-types="['excel']"
+		data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+		<thead>
+			<tr>
+				<th data-field="order_sn">订单号</th>
+				<th data-field="applier">申请人</th>
+				<th data-field="amount" data-formatter="formatCny">提现金额</th>
+				<th data-field="service_fee">提现手续费</th>
+				<th data-field="bank_name">归属</th>
+				<th data-field="network_name">开户网点</th>
+				<th data-field="realname">开户名</th>
+				<th data-field="card_no" data-formatter="formatCard">银行卡号</th>
+				<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+				<th data-field="check_time" data-formatter="formatTime">批复时间</th>
+				<th data-field="checker">审批操作员工</th>
+				<th data-field="status" data-formatter="formatStatus" data-sortable="true">审批结果</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/export/bootstrap-table-export.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/export/table-export.js"></script>
+<script type="text/javascript">
+
+function params(params){
+	params.flag = 'searchTransferA';
+	return params;
+}
+function formatCard(v,r,index){
+	var str = '';
+	var len = v == null ? 0 : v.length;
+	for(var i=0;i<len;i++){
+		if(i>0 && i%4==0 && i<len){
+			str += ','+v.substr(i,1);
+		}
+		else{
+			str += v.substr(i,1);
+		}
+	}
+	return str;
+}
+function formatTime(v,r,i){
+	return moment.unix(v).format('YYYY-MM-DD HH:mm');
+}
+function formatStatus(v,r,i){
+	if(v==1){
+		return '<span class="badge badge-success">成功</span>'
+	}
+	else if(v==2){
+		return '<span class="badge badge-warning">拒绝</span>'
+	}
+}
+</script>
+</block>

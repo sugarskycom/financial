@@ -1,0 +1,78 @@
+<div id="tab-6" class="tab-pane">
+<div class="panel-body">
+	<if condition="$userinfo.is_auth eq 3">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">真实姓名：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				{$userinfo.realname}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">身份证号：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				{$userinfo.idcard}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">身份证正面：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				<if condition="$userinfo.idcard_pic_1 neq ''">
+					<a href="{:U('Image/index')}?filepath=__URL__/vjpg?img={$userinfo.idcard_pic_1}" target="_blank"><img src="__URL__/vjpg?img={$userinfo.idcard_pic_1}" height="150"></a>
+				</if>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">身份证反面：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				<if condition="$userinfo.idcard_pic_1 neq ''">
+					<a href="{:U('Image/index')}?filepath=__URL__/vjpg?img={$userinfo.idcard_pic_2}" target="_blank"><img src="__URL__/vjpg?img={$userinfo.idcard_pic_2}" height="150"></a>
+				</if>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">状态：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				<if condition="$userinfo.is_auth eq 3">
+					<label class="label label-info">审核中</label>
+				</if>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label"></label>
+			<div class="col-md-4 col-sm-4 help-block">
+				<button type="button" class="btn btn-success btn-sure" onclick="successBatch()">认证成功</button>
+				<button type="button" class="btn btn-danger" onclick="failBatch()">认证失败</button>
+			</div>
+		</div>
+	</form>
+	</if>
+	<if condition="$userinfo.is_auth eq 0">
+		<div class="alert alert-warning"><label class="label label-danger">未认证</label></div>
+	</if>
+	<if condition="$userinfo.is_auth eq 1">
+	<form class="form-horizontal">
+		<div class="alert alert-success"><label class="label label-info">已认证</label></div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">身份证正面：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				<if condition="$userinfo.idcard_pic_1 neq ''">
+					<a href="{:U('Image/index')}?filepath=__URL__/vjpg?img={$userinfo.idcard_pic_1}" target="_blank"><img src="__URL__/vjpg?img={$userinfo.idcard_pic_1}" height="150"></a>
+				</if>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 col-sm-4 control-label">身份证反面：</label>
+			<div class="col-md-4 col-sm-4 help-block">
+				<if condition="$userinfo.idcard_pic_1 neq ''">
+					<a href="{:U('Image/index')}?filepath=__URL__/vjpg?img={$userinfo.idcard_pic_2}" target="_blank"><img src="__URL__/vjpg?img={$userinfo.idcard_pic_2}" height="150"></a>
+				</if>
+			</div>
+		</div>
+		</form>
+	</if>
+	<if condition="$userinfo.is_auth eq 2">
+		<div class="alert alert-warning"><label class="label label-warning">认证失败！原因：{$userinfo.reason}</label></div>
+	</if>
+</div>
+</div>

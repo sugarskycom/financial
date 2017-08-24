@@ -1,0 +1,28 @@
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>期限</th>
+			<th>基础年化</th>
+			<th>借款服务费</th>
+			<th>借款管理费</th>
+			<th>逾期管理费</th>
+			<th>风险管理金</th>
+			<th>逾期罚息</th>
+			<th>违约罚息</th>
+		</tr>
+	</thead>
+	<tbody>
+	<volist name="list" id="r">
+		<tr>
+			<td><eq name="r.month" value="0">-<else/>{$r.month}</eq></td>
+			<td>{$r.year_rate}</td>
+			<td>{$r.service_rate}</td>
+			<td>{$r.manage_rate}</td>
+			<td>{$r.overdue_rate}</td>
+			<td>{$r.risk_rate}</td>
+			<td>{$r.overdue_punish}</td>
+			<td>{$r.break_punish}</td>
+		</tr>
+	</volist>	
+	</tbody>
+</table>

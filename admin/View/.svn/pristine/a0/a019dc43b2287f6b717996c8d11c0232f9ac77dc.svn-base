@@ -1,0 +1,50 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+	<div class="ibox-title">
+		置换单据导出
+	</div>
+	<div class="ibox-content">
+		<form action="" method="post" class="form-inline form-bottom-border">
+	        <select name="depot_id" id="depot_id_1" class="form-control" onchange="loadCustomer(this,'order_sn_1')">
+	        </select>
+	        <select name="order_sn" id="order_sn_1" class="form-control">
+	        <option value="">选择客户</option>
+	        </select>
+	        <input type="text" name="date" id="date" class="form-control date" readonly="true" value="{:date('Y-m-d')}">
+			<button type="button" class="btn btn-primary" id="btn" onclick="exportDo(this)">合并导出</button>
+		</form>
+	</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:date2" />
+<include file="js" />
+<script type="text/javascript">
+$('.date').datepicker({
+    startView: 1,
+    todayBtn: "linked",
+    keyboardNavigation: false,
+    forceParse: false,
+    autoclose: true,
+    format: "yyyy-mm-dd",
+    language: 'zh-CN',
+    pickerPosition: "bottom-left",
+});
+loadDepot("select[name=depot_id]");
+function exportDo(o){
+	var depot_id_1 = $("#depot_id_1").val();
+	var order_sn_1 = $("#order_sn_1").val();
+	var date = $("#date").val();
+	if(depot_id_1==''){
+		error($(o),'必须选择一个仓库');
+	}
+	else if(order_sn_1==''){
+		error($(o),'必须选择一个客户');
+	}
+	else{
+		window.location.href="__URL__/exportexchange?flag=export&depot_id="+depot_id_1+"&order_sn="+order_sn_1+"&date="+date;
+	}
+}
+</script>
+</block>

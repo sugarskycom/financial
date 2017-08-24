@@ -1,0 +1,110 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="font-size: 18px;">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li><a href="{:U('Help/disclosure')}">信息披露</a></li>
+                    <li class="active"><strong>网站公告</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!--公告列表-->
+    <div class="container">
+        <div style="border-bottom: black 1px solid">
+            <h3>平台公告</h3>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li>
+        </ul>
+        <nav aria-label="Page navigation" class="text-center">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+
+</block>

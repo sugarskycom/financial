@@ -1,0 +1,64 @@
+<extend name="Public:base" />
+<block name="buttons">
+    <a class="btn btn-primary btn-sm" href="{:U('Article/add')}" role="button">新增文章</a>
+    <!-- <a class="btn btn-success btn-sm" href="{:U('ArticleCategory/add')}" role="button">新增分类</a> -->
+</block>
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>文章分类</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                <a class="close-link"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table id="table" class="table table-hover" 
+            data-toggle="table" 
+            data-url="__ACTION__" 
+            data-pagination="true" 
+            data-query-params="params" 
+            data-side-pagination="server" 
+            data-page-list="[10,50,100]" 
+            data-method="post" 
+            data-page-size="10" 
+            data-cache="false" 
+            data-sort-order="desc" 
+            data-sort-name="id" 
+            data-content-type="application/x-www-form-urlencoded; charset=UTF-8" 
+            >
+                <thead>
+                    <tr>
+                        <th data-field="sort_order">排序号</th>
+                        <th data-field="cat_name" data-formatter="treeFormat">名称</th>
+                        <th data-field="keywords">关键词</th>
+                        <th data-field="description">描述</th>
+                        <th data-field="is_show" data-formatter="isshowFormat">状态</th>
+                        <th data-field="cat_id" data-formatter="operateFormat">操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+	<include file="Public:bootstrap-table" />
+	<script>
+    function params(params) {return params;}
+	function treeFormat(v, r, i) {
+		for (var i = 0; i < r.level; i++) {
+			v = '&nbsp;&nbsp;&nbsp;&nbsp;' + v;
+		};
+		return v;
+	}
+    function isshowFormat(v, r, i) {
+        return v == 1 ? '开启' : '关闭';
+    }
+	function operateFormat(v, r, i) {
+		var btn1 = '<a href="__URL__/edit/cat_id/'+v+'" class="btn btn-success btn-xs">编辑</a> ';
+		// var btn2 = '<a href="__URL__/del/cat_id/'+v+'" class="btn btn-success btn-sm">删除</a>';
+		return btn1;
+	}
+	</script>
+</block>

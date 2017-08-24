@@ -1,0 +1,68 @@
+<extend name="base"/>
+<block name="content">
+	<div class="ibox">
+		<div class="ibox-title">
+			<h3>我的置换单 <a href="__URL__/applyexchange" class="btn btn-info">✚&nbsp;申请解冻押品</a></h3>
+		</div>
+		<div class="ibox-content">
+			<table class="table table-hover"
+			id="table"
+			data-toggle="table"
+			data-url="__ACTION__"
+			data-method="post"
+			data-page-size="5"
+			data-pagination="true"
+			data-side-pagination="server"
+			data-page-list="[5,10,20,30,50]"
+			data-sort-order="desc"
+			data-show-pagination-switch="false"
+			data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+			>
+				<thead>
+					<tr>
+						<th data-field="osn" data-formatter="formatSnb">申请单号</th>
+						<th data-field="bno">借款标唯一号</th>
+						<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+						<th data-field="applier">申请人</th>
+						<th data-field="checker">审核人</th>
+						<th data-field="check_status" data-formatter="formatStatus">审核状态</th>
+						<th data-field="remark">备注</th>
+						<th data-field="osn" data-formatter="actionApply">操作</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="table"/>
+<script type="text/javascript">
+function formatStatus(v,r,i){
+	if(v==1){
+		return '<span class="label label-primary">批准</span>';
+	}
+	else if(v==0){
+		return '<span class="label label-default">编辑中</span>';
+	}
+	else if(v==2){
+		return '<span class="label label-warning">拒绝</span>';
+	}
+	else if(v==3){
+		return '<span class="label label-default">审批中</span>';
+	}
+}
+function actionApply(v,r,i){
+	if(r.check_status=='0' || r.check_status=='2'){
+		return '<a href="__URL__/applyexchange?step=second&osn='+r.osn+'" class="btn btn-info">编辑</a>'
+	}
+	else{
+		return '-';
+	}
+}
+function formatSnb(v,r,i){
+	return '<a href="__URL__/exchangedetail?osn='+v+'">'+v+'</a>';
+}
+
+</script>
+</block>	

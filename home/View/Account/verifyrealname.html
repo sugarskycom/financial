@@ -1,0 +1,141 @@
+<extend name="Public:base"/>
+<block name="content">
+    <include file="Public:nav"/>
+    <div class="container white-bg">
+        <!-- 面包屑导航栏 -->
+        <ol class="breadcrumb">
+            <li><a href="#">汇通资产</a></li>
+            <li><a href="#">我的账户</a></li>
+            <li style="color: #666;">实名认证</li>
+        </ol>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h1>请开通富滇银行存管账户以便您正常理财</h1>
+                <form action="__ACTION__" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">手机号</label>
+                        <div class="col-sm-4 h44 change">
+                            <span class="origin-mobile origin">{:mobileformat($data['mobile'])}</span>
+                            <span class="new-mobile new"><a href="{:U('Account/index')}">更换手机号&gt;&gt;</a></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">真实姓名</label>
+                        <div class="col-sm-6 h44">
+                            <input type="text" class="form-control" name="realname" id="realname" value="">
+                            <label class="fa fa-exclamation-circle realname"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">身份证号</label>
+                        <div class="col-sm-6 h44">
+                            <input type="text" class="form-control" name="idcard" id="idcard" value="">
+                            <label class="fa fa-exclamation-circle idnumber"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success btn-post" id="btnPost">开通银行存管账户</button>
+                            <p class="notice">将进入富滇银行存管界面操作</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="reminder">
+            <ol class="list-unstyled">温馨提示：
+                <li>1、需要提交真实身份信息，将为你开通银行存管账户。</li>
+                <li>2、本账户开通后，所有投资金额将直接由银行管理。</li>
+                <li>3、本操作需要在富滇银行平台完成。</li>
+            </ol>
+        </div>
+    </div>
+
+    <include file="Public:copyright"/>
+</block>
+<block name="css">
+    <link href="__PUBLIC__/css/account.css" rel="stylesheet" type="text/css">
+</block>
+<block name="js">
+    <script type="text/javascript"
+    src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+    <!--bootstrap dialog-->
+
+    <script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+    <script>
+        $(function() {
+            var tel = $('.origin-mobile').html();
+            var mtel = tel.substr(0, 3) + '****' + tel.substr(7);
+            $('.origin-mobile').text(mtel);
+        });
+        $(function () {
+            $("#form").validate({
+            //自定义提示信息                
+                rules: {
+                    realname: {
+                        required: true,
+                        isValidRealName: true
+                    },
+                    idcard: {
+                        required: true,
+                        isValidIdCard: true
+                    }
+
+                },
+                messages: {
+                    realname: {
+                        required: "真实姓名不能为空",
+                        isValidRealName: "请输入正确的姓名"
+                    },
+                    idcard: {
+                        required: "身份证号不能为空",
+                        isValidIdCard: "身份证号格式无效"
+                    }
+                },
+                submitHandler: function (form) {
+                    $("#btnPost").attr("disabled", true).text("提交中···");
+                    $.ajax({
+                        url: "__ACTION__",
+                        data: {
+                            realname: $.trim($("#realname").val()),
+                            idcard: $.trim($("#idcard").val())
+                        },
+                        type: "post",
+                        success: function (ret) {
+                            if (ret.status == 1) {
+                                    window.location.href = "__URL__/sendverify?token="+ret.data;
+                            }
+                            else {
+                                console.info(ret.error);
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+            // 验证中文名称
+            $.validator.addMethod("isValidRealName", function (value, element, params) {
+                var reg = /^[\u4E00-\u9FA5]{1,6}$/;
+                if (!reg.test(value)) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            });
+            // 验证身份证
+            $.validator.addMethod("isValidIdCard", function (value, element, params) {
+                var reg1 = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+                var reg2 = /^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$/;
+                if (!reg1.test(value) && reg2.test(value)) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            });
+            
+        })
+    </script>
+</block>

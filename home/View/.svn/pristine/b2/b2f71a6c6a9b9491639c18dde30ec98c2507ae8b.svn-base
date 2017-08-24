@@ -1,0 +1,78 @@
+<extend name="Public:base" />
+<block name="content">
+    <include file="Public:nav" />
+    <div id="wrapper">
+        <ol class="breadcrumb">
+            <li>汇通资产</li>
+            <li>资金管理</li>
+            <li class="active">提现历史记录</li>
+        </ol>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h3>提现历史记录</h3>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-striped table-hover" 
+                	data-toggle="table" 
+                	data-url="__ACTION__" 
+                	data-method="post" 
+                	data-page-size="10" 
+                	data-pagination="true" 
+                	data-side-pagination="server" 
+                	data-page-list="[10,20,30,50]" 
+                	data-sort-order="desc" 
+                	data-sort-name="apply_time" 
+                	data-show-pagination-switch="false" 
+                	data-trim-on-search="false" 
+                	data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                    <thead>
+                        <tr>
+                            <th data-field="order_sn">订单号</th>
+                            <th data-field="amount">提现金额</th>
+                            <th data-field="service_fee">提现手续费</th>
+                            <th data-field="bank_name">归属</th>
+                            <th data-field="network_name">开户网点</th>
+                            <th data-field="realname">开户名</th>
+                            <th data-field="card_no" data-formatter="formatCard">银行卡号</th>
+                            <th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+                            <th data-field="check_time" data-formatter="formatTime">批复时间</th>
+                            <th data-field="checker">审批操作员工</th>
+                            <th data-field="status" data-formatter="formatStatus">审批结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <include file="Public:bootstrap-table" />
+    <script type="text/javascript">
+    function formatCard(v, r, index) {
+    	if (v == null) return '-';
+        var str = '';
+        var len = v.length;
+        for (var i = 0; i < len; i++) {
+            if (i > 0 && i % 4 == 0 && i < len) {
+                str += ',' + v.substr(i, 1);
+            } else {
+                str += v.substr(i, 1);
+            }
+        }
+        return str;
+    }
+    function formatTime(v, r, i) {
+        return moment.unix(v).format('YYYY-MM-DD HH:mm');
+    }
+
+    function formatStatus(v, r, i) {
+        if (v == 1) {
+            return '<span class="badge badge-success">成功</span>'
+        } else if (v == 2) {
+            return '<span class="badge badge-warning">拒绝</span>'
+        }
+    }
+    </script>
+</block>

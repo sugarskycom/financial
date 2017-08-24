@@ -1,0 +1,86 @@
+<extend name="Public:theme" />
+<block name="content">
+<include file="Public:top"/>
+<include file="Public:banner" />
+<!--业务特色####-->
+<div class="container icon-list">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-cny fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>资金银行存管</h3>
+				<p>平台资金全部由富滇银行存管</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-chain fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>专注电子产业链</h3>
+				<p>贯穿电子产业供应链，绑定上下游</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-recycle fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>多重风控体系</h3>
+				<p>8个维度的风控体系保证项目安全运营</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>完全的信息披露</h3>
+				<p>根据现有法律法规充分披露项目信息</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<include file="Public:footer"/>
+</block>
+<block name="js">
+<script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+<script type="text/javascript">
+	$('#myCarousel').carousel({
+		interval: 3000
+	});
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</block>

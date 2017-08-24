@@ -1,0 +1,60 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+	<div class="ibox-title clearfix">
+		<h3 class="pull-left">合同模板</h3>
+		<div class="pull-right">
+			<a href="__URL__/addtmp" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>新增合同模板</a>
+		</div>
+	</div>
+	<div class="ibox-content">
+		<table class="table table-hover table-striped"
+			data-toggle="table"
+			data-url="__ACTION__"
+			data-query-params="params"
+			data-pagination="true"
+			data-side-pagination="server"
+			data-page-list="[5,10,20,30]"
+			data-method="get"
+			data-page-size="10"
+			data-cache="false"
+			data-sort-order="asc"
+		>
+			<thead>
+				<tr>
+					<th data-field="id">合同ID</th>
+					<th data-field="title">标题</th>
+					<th data-field="is_use" data-formatter="formatStatus">状态</th>
+					<th data-field="last_update" data-formatter="formatTime">更新时间</th>
+					<th data-field="updater">更新人</th>
+					<th data-field="hash_id" data-formatter="handlerAction">操作</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<script type="text/javascript">
+function params(params){
+	params.flag = 'load';
+	return params;
+}
+function formatStatus(v,r,i){
+	if(v=='1'){
+		return '已启用';
+	}
+	else{
+		return '关闭';
+	}
+}
+function formatTime(v,r,i){
+	return moment.unix(v).format('YYYY-MM-DD HH:mm');
+}
+function handlerAction(v,r,i){
+	return '<a href="__URL__/edittmp?hash='+v+'" class="btn btn-success" target="_blank">编辑</a>'
+}
+</script>
+</block>

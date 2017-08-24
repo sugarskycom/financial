@@ -1,0 +1,234 @@
+<extend name="Public:theme"/>
+<block name="content">
+    <include file="Public:top"/>
+    <div class="register-bg">
+        <div class="container">
+            <div class="middle-box loginscreen animated fadeInDown">
+                <h3 class="reg-title">找回密码</h3>
+                <p>请在下面输入您注册时绑定的手机号，将进行重置密码。</p>
+                <if condition="$authsms neq ''">
+                <form role="form" action="javascript:;" method="post" id="form" name="form">
+                    <div class="form-group" >
+                        <input type="password"  class="form-control" placeholder="请输入新密码" required="" id="newpwd" name="newpwd" style="width:auto;padding-left: 0;">
+                    </div>
+                    <div class="form-group" >
+                        <input type="password"  class="form-control" placeholder="确认新密码" required="" id="renewpwd" name="renewpwd" style="width:auto;padding-left: 0;">
+                    </div>
+                    <div class="text-center"><button type="submit" class="btn btn-success btn-block" id="btn" style="margin-top:0">保存新密码</button></div>
+                </form>
+                <else/>
+                <form role="form" action="javascript:;" method="post" id="form" name="form">
+                    <div class="form-group mobile">
+                        <input type="tel"  class="form-control mobile" placeholder="请输入您的手机号" required="" id="mobile" name="mobile">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="验证码" required name="code" id="code">
+                            </div>
+                            <div class="col-md-6">
+                                <a href="javascript:;" title="更换验证码" style="width: 140px;height: 40px;" class="pull-right">
+                                    <img src="{:U('Verify/load')}" onclick="this.src='{:U('Verify/load')}/?rnd='+Math.random()">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control" placeholder="短信验证码" required="" id="smscode" name="smscode" style="left:0">
+                        <a type="submit" class="btn btn-white" id="getCode">发送验证码</a>
+                        <input type="hidden" value="60" name="mz" id="mz">
+                    </div>
+                    <button type="submit" class="btn btn-success full-width m-b" id="btn1">下一步</button>
+                    <input type="hidden" name="token" value="{$token}" id="token">
+                </form>
+                </if>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<if condition="$authsms neq ''">
+<script type="text/javascript">
+$("#btn").click(function(){
+	var newpwd = $.trim($("#newpwd").val());
+	var renewpwd = $.trim($("#renewpwd").val());
+	if(newpwd==''){
+		alt('新密码不能为空');
+		return false;
+	}
+	else if(newpwd.length<6){
+		alt('密码至少6位');
+		return false;
+	}
+	else if(renewpwd!=newpwd){
+		alt('2次密码不一致');
+		return false;
+	}
+	else{
+		$.post("__ACTION__",{newpwd:newpwd},function(ret){
+			if(ret.status==1){
+				alt(ret.data,function(){
+					window.location.href="/";
+				});
+			}
+			else{
+				alt(ret.error);
+			}
+		});
+	}
+});
+</script>
+<else/>
+<script type="text/javascript">
+$(function(){
+	$("#btn1").click(function(){
+		var mobile = $.trim($("#mobile").val());
+		var code = $.trim($("#code").val());
+		var smscode = $.trim($("#smscode").val());
+		var url = '__URL__/check';
+		var c1 = $.ajax({type:'post',url:url,data:{flag:'mobile',mobile:mobile},async:false}).responseText;
+		c1 = eval('('+c1+')');
+		if(c1.status==0){
+			alt(c1.error);
+			return false
+		}
+		else{
+			var c2 = $.ajax({type:'post',url:url,data:{flag:'code',code:code},async:false}).responseText;
+			c2 = eval('('+c2+')');
+			if(c2.status==0){
+				alt(c2.error);
+				return false
+			}
+			else{
+				//短信验证码
+				var c3 = $.ajax({type:'post',url:url,data:{flag:'sms',code:smscode},async:false}).responseText;
+				c3 = eval('('+c3+')');
+				if(c3.status==0){
+					alt(c3.error);
+					return false
+				}
+				else{
+					window.location.href="__ACTION__?token="+c3.data;
+				}
+			}
+		}
+	})
+
+	$("#getCode").click(function(){
+		var mobile = $.trim($("#mobile").val());
+		var token = $("#token").val();
+		var code = $.trim($("#code").val());
+		var url = '__URL__/check';
+		var c1 = $.ajax({type:'post',url:url,data:{flag:'sendsms',mobile:mobile,token:token,code:code},async:false}).responseText;
+		c1 = eval('('+c1+')');
+		if(c1.status==0){
+			alt(c1.error);
+			return false
+		}
+		else{
+			setJs();
+		}
+	})
+})
+</script>
+</if>
+</block>
+<block name="css">
+    <style>
+        .error{
+            text-align: left;
+            display: block;
+        }
+        .register-bg {
+            background:url(/Public/images/login/bg.png) no-repeat;
+            height: 380px;
+        }
+        .register-bg .middle-box {
+            max-width: 760px;
+            width: 760px;
+            margin-top:110px;
+            padding:50px 170px;
+            background-color: #fff;
+        }
+        .middle-box .reg-title {
+            position: relative;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        .middle-box .reg-title > span > a {color: #337ab7;}
+        .form-group {
+            height: 40px;
+            border:1px solid #e5e5e5;
+            border-radius: 4px;
+            position: relative;
+            margin-bottom: 24px;
+        }
+        .form-group input {
+            position: absolute;
+            border:0;
+            left: 8%;
+            width: 90%;
+            margin
+        }
+        .form-group .divider {
+            position: absolute;
+            height: 15px;
+            width: 1px;
+            background-color: #e5e5e5;
+            left: 8%;
+            top: 32%;
+        }
+        ::-moz-placeholder { font-size:14px;color: #ccc; }
+        ::-webkit-input-placeholder { font-size:14px;color: #ccc;  }
+        :-ms-input-placeholder { font-size:14px;color: #ccc;  }
+
+        .btn-white {
+            position: absolute;
+            border:0;
+            padding:8px 20px;
+            font-size: 14px;
+            color: #337ab7;
+            right: 0;
+        }
+        .btn-white:hover,
+        .btn-white:focus,
+        .btn-white.focus,
+        .btn-white:active,
+        .btn-white.active,
+        .open > .dropdown-toggle.white {
+            background-color: #fff !important;
+            border: 0 !important;
+        }
+        .form-group.username{background: url(/Public/images/login/user.png) no-repeat 2% 50%;}
+        .form-group.mobile{background: url(/Public/images/login/phone.png) no-repeat 2% 50%;}
+        .form-group.password{background: url(/Public/images/login/password.png) no-repeat 2% 50%;}
+        .form-group.repassword{background: url(/Public/images/login/password.png) no-repeat 2% 50%;}
+        .form-group.smscode{background: url(/Public/images/login/yanzhengma.png) no-repeat 2% 50%;}
+
+        .checkbox {margin-top:-8px;}
+        .checkbox span {font-size: 14px;color: #999;}
+        .checkbox span > b {font-weight: normal;color: #fdc230;}
+        .btn-success {
+            color: #fff;
+            background-color: #fdc230;
+            border-color: #fdc230;
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.success {
+            color: #fff;
+            background-color: #fdc230 !important;
+            border-color: #fdc230 !important;
+        }
+        #code{
+            width: 150px;
+        }
+    </style>
+</block>

@@ -1,0 +1,58 @@
+<div class="btn btn-primary" id="feedback">
+    投 <br/>
+    诉 <br/>
+    建 <br/>
+    议 <br/>
+</div>
+<a class="fa fa-arrow-up" href="#" alt="返回顶部"></a>
+
+<style>
+    .btn-primary{
+        color: #fff;
+        background-color: #fdc230;
+        border-color: #fdc230;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary {
+      color: #fff;
+      background-color: #fdc230 !important;
+      border-color: #fdc230 !important;
+  }
+  #feedback{
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+}
+.fa-arrow-up {
+    position: fixed;
+    right: 15px;
+    bottom: 80px;
+    font-size: 14px;
+    color: #fdc230;
+}
+
+
+</style>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<!--bootstrap-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--dialog-->
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<!--validation-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+<script>
+    $("#feedback").click(function () {
+        BootstrapDialog.show({
+            title: '投诉建议',
+            message: $('<div></div>').load('/Index/feedback.html')
+        });
+    });
+/*    $("a").click(function () {
+        $('body,html').animate({ scrollTop: 0 },300);
+        return false;
+    });*/
+</script>

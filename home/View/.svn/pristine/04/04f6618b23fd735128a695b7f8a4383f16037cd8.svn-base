@@ -1,0 +1,576 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<!-- banner -->
+	<div class="bg container"></div>
+	<!--类型-->
+	<div class="pro-box container">
+		<div class="row pro-type">
+			<div id="fundRaise" class="pro-type-title col-md-4 pro-active">仓单融资</div>
+			<div id="assetPledge" class="pro-type-title col-md-4">资产抵押</div>
+			<div id="receivable" class="pro-type-title col-md-4">应收账款</div>
+		</div>	
+	</div>
+	<div class="pro-box container">
+		<div class="row">
+			<div class="notice">融资企业将自有库存货品存放到易电联仓库内作为融资担保品</div>
+		</div>
+	</div>
+	<!--仓单融资-->
+	<div class="container content1 content-box">
+		<div class="row project">
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-able">即将开标</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-countdown">1天12时9分12秒</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-able">即将开标</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-countdown">1天12时9分12秒</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-able">立即投资</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-percent">已完成：80%</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-able">立即投资</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-percent">已完成80%</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-able">立即投资</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-percent">已完成80%</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-sellout" disabled="disabled">已售罄</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-percent"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-done" disabled="disabled">已完成</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-percent">已完成：100%</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success btn-done" disabled="disabled">已完成</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title  p-percent">已完成：100%</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+		</div>
+		<div class="row">
+			<!--分页器-->
+			<nav aria-label="Page navigation" style="text-align: right;">
+				<ul class="pagination">
+					<li>
+						<a href=" " aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>		
+	</div>
+	<div class="container content2 content-box" style="display: none;">
+		<div class="row project">
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success">即将开标</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-countdown">1天12时9分12秒</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success">即将开标</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-countdown">1天12时9分12秒</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>		
+		</div>
+		<div class="row">
+			<!--分页器-->
+			<nav aria-label="Page navigation" style="text-align: right;">
+				<ul class="pagination">
+					<li>
+						<a href=" " aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>	
+	</div>
+	<div class="container content3 content-box" style="display: none;">
+		<div class="row project">
+			<div class="project-border">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="6">项目名称项目名称（DDC201930909090）</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="p-num"><i class="f34">14</i><i class="per">%</i></td>
+							<td class="p-num"><i class="f18">30</i><i class="f14">天</i></td>
+							<td class="p-num"><i class="f18">100</i><i class="f14">元</i></td>
+							<td class="p-num"><i class="f18">按月还息到期还本</i></td>
+							<td class="p-num"><i class="f18">1.85</i><i class="f14">万元</i></td>
+							<td class="p-num"><a href="#" class="btn btn-success">即将开标</a></td>
+
+						</tr>				
+						<tr>
+							<td class="p-title">预期年化收益</td>
+							<td class="p-title">合约期限</td>
+							<td class="p-title">起投金额</td>
+							<td class="p-title">收益方式</td>
+							<td class="p-title">剩余可购金额</td>
+							<td class="p-title p-countdown">1天12时9分12秒</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>		
+		</div>
+		<div class="row">
+			<!--分页器-->
+			<nav aria-label="Page navigation" style="text-align: right;">
+				<ul class="pagination">
+					<li>
+						<a href=" " aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>	
+	</div>
+	<include file="Public:footer" />
+
+</block>
+<block name="css">
+	<style>
+		.bg {
+			background-color: #1b85ee;
+			height: 200px;
+			overflow:hidden;
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+		/*与detail相同的样式*/
+		.pro-box {
+			background-color: #fff;
+			cursor: pointer;
+			text-align: center;
+			border-left:1px solid #e5e5e5;
+			border-right:1px solid #e5e5e5;
+		}
+		.pro-type{
+			font-size: 18px;
+			height: 50px;
+			line-height: 50px;
+			background-color: #fafafa;
+			border-top:1px solid #e5e5e5;
+			border-bottom:1px solid #e5e5e5;
+		}
+		.pro-active{
+			color: #fdc230;
+			background-color: #fff;
+			border-top: 2px solid #fdc230;
+            /*border-left:1px solid #e5e5e5;
+            border-right:1px solid #e5e5e5;*/
+        }
+        .content-box > .project {
+        	background-color: #fff;
+        	border: 1px solid #e5e5e5;
+        	border-top:0;
+        	margin-top:-3px;
+        }
+        .pro-box .notice {
+        	font-size: 14px;
+        	color: #ccc;
+        	background-color: #fff;
+        	height: 50px;
+        	line-height: 50px;
+        }
+        .content-box > .project .project-border {
+        	margin-bottom: 0;
+        	border:0;
+        	border-top:1px solid #e5e5e5;
+        	padding:40px 50px;
+        }
+        .content-box > .project .project-border:hover {
+        	background-color: #fffefa;
+        	border: 1px solid #fdc230;
+        }          
+        .content-box > .project .project-border table th {text-align: left;}
+        .content-box > .project .project-border thead tr th {font-size: 16px;color: #333;}
+        .content-box > .project .project-border tbody tr td a {font-size: 16px;padding:4px 10px;}
+        .project-border i {font-style: normal;}
+        .project-border i.f34 {
+        	font-size: 34px;
+        	color: #fdc230;
+        }
+        .project-border i.per {
+        	font-size: 14px;
+        	color: #fdc230;
+        }        
+        .project-border i.f18 {
+        	font-size: 18px;
+        	color: #666;
+        }  
+        .project-border i.f14 {
+        	font-size: 14px;
+        	color: #999;
+        } 
+        .project-border table tbody td.p-title {
+        	font-size: 14px;
+        	color: #b2b2b2;
+        }
+        .project-border td.p-countdown {color: #fbc230;}
+
+        .btn-success {
+        	color: #fdc230;
+        	background-color: #fff;
+        	border-color: #fdc230;
+        	border-radius: 4px;
+        	width: 112px;
+        	height: 32px;
+        }
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.btn-success {
+        	color: #fff;
+        	background-color: #ffce55;
+        	border-color: #fdc230;
+        }    
+        .btn-success.disabled,
+        .btn-success[disabled],
+        fieldset[disabled] .btn-success,
+        .btn-success.disabled:hover,
+        .btn-success[disabled]:hover,
+        fieldset[disabled] .btn-success:hover,
+        .btn-success.disabled:focus,
+        .btn-success[disabled]:focus,
+        fieldset[disabled] .btn-success:focus,
+        .btn-success.disabled.focus,
+        .btn-success[disabled].focus,
+        fieldset[disabled] .btn-success.focus,
+        .btn-success.disabled:active,
+        .btn-success[disabled]:active,
+        fieldset[disabled] .btn-success:active,
+        .btn-success.disabled.active,
+        .btn-success[disabled].active,
+        fieldset[disabled] .btn-success.active {
+        	background-color: #fff;
+        	border-color: #b2b2b2;
+        }
+        a.btn-sellout,
+        a.btn-done {
+        	color:#b2b2b2;
+        	border-color: #b2b2b2;
+        } 
+        .p-percent {
+        	color: #b2b2b2;
+        }
+
+
+    </style>
+</block>
+<block name="js">
+	<script>
+		$("#fundRaise").click(function () {
+			$(this).addClass("pro-active");
+			$(this).siblings().removeClass("pro-active");
+			$(".content1").show();
+			$(".content2,.content3").hide();
+		});
+		$("#assetPledge").click(function () {
+			$(this).addClass("pro-active");
+			$(this).siblings().removeClass("pro-active");
+			$(".content2").show();
+			$(".content1,.content3").hide();
+		});
+		$("#receivable").click(function () {
+			$(this).addClass("pro-active");
+			$(this).siblings().removeClass("pro-active");
+			$(".content3").show();
+			$(".content1,.content2").hide();
+		});
+
+
+		$(".project-border").mouseover(function(){
+			$(this).find(".btn-able").css({
+				"background-color":"#fdc230",
+				"color":"#fff"
+			});
+		})
+		$(".project-border").mouseout(function(){
+			$(this).find(".btn-able").css({
+				"background-color":"#fff",
+				"color":"#fdc230"
+			});
+		})
+	</script>
+</block>

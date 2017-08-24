@@ -1,0 +1,24 @@
+<!--新手体验-->
+<div class="container project">
+	<h1><span>新手体验区</span></h1>
+	<div class="project-border">
+		<table>
+			<tr>
+				<td rowspan="2" valign="middle" class="text-red">新手手专享</td>
+				<td class="p-title">预期年化收益</td>
+				<td class="p-title">合约期限</td>
+				<td class="p-title">可投金额</td>
+				<td class="p-title">募集进度</td>
+				<td rowspan="2"><a href="#" class="btn btn-primary btn-lg">立即购买</a></td>
+			</tr>
+			<tr>
+				<td class="p-num">14%</td>
+				<td class="p-num">30天</td>
+				<td class="p-num">0.5万元</td>
+				<td class="p-num">
+					<div class="ind-1 text-center"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,153 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    企业开户资料
+                </div>
+                <div class="ibox-content">
+                    <form action="__ACTION__" id="form" class="company-form form-horizontal">
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">负责人姓名：</label>
+                            <div class="col-sm-4">
+                                {$data.realname}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">负责人身份证号码：</label>
+                            <div class="col-sm-4">
+                                {$data.idcard}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">法人手机号码：</label>
+                            <div class="col-sm-4">
+                                {$data.mobile}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业全称：</label>
+                            <div class="col-sm-4">
+                                {$data.fullname}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">组织机构代码：</label>
+                            <div class="col-sm-4">
+                                {$data.organization_code}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">营业执照编号：</label>
+                            <div class="col-sm-4">
+                                {$data.business_no}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">税务登记号：</label>
+                            <div class="col-sm-4">
+                                {$data.tax_no}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">企业信用代码：</label>
+                            <div class="col-sm-4">
+                                {$data.credit_code}
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">存管账户类型：</label>
+                            <div class="col-sm-4">
+                                <switch name="data.com_type">
+                                <case value="1">企业</case>
+                                <case value="2">担保公司</case>
+                                </switch>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">是否三证合一：</label>
+                            <div class="col-sm-4">
+                                <switch name="data.three_cert_unit">
+                                <case value="0">否</case>
+                                <case value="1">是</case>
+                                </switch>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">开户状态：</label>
+                            <div class="col-sm-4">
+                                <switch name="data.account_status">
+                                <case value="0">未开户</case>
+                                <case value="1">已开户</case>
+                                </switch>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">审核状态：</label>
+                            <div class="col-sm-4">
+                                <switch name="data.check_status">
+                                <case value="1">新建</case>
+                                <case value="2">审核中</case>
+                                <case value="3">审核通过</case>
+                                <case value="4">审核不通过</case>
+                                </switch>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-3">
+                            	<input type="hidden" name="uid" value="{$data.uid}">
+                                <button type="submit" class="btn btn-primary" id="btnSend">提交申请开户</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<script>
+$("#btnSend").click(function(){
+    $(this).attr('disabled',true).text('开户资料提交中，需要耐心等待...');
+    $.post("__ACTION__",{uid:{$data.uid}},function(ret){
+        if(ret.status==0){
+            toastr.error(ret.error);
+            $(this).attr('disabled',false);
+        }
+        else{
+            toastr.success(ret.data);
+            setTimeout(function(){
+                window.location.href="__URL__/companylist";
+            },1000);
+            
+        }
+    });
+});
+</script>
+</block>

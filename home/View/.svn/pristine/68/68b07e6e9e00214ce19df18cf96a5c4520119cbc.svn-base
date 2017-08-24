@@ -1,0 +1,119 @@
+<extend name="Public:base">
+<block name="content">
+<include file="Public:top"/>
+<include file="Public:banner" />
+<!--仓单融资-->
+<div class="container project">
+	<h1><span>仓单融资</span></h1>
+	<div class="project-border">
+		<table>
+			<tr>
+				<td class="p-title">项目编号</td>
+				<td class="p-title">预期年化收益</td>
+				<td class="p-title">合约期限</td>
+				<td class="p-title">可投金额</td>
+				<td class="p-title">募集进度</td>
+				<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+			</tr>
+			<tr>
+				<td class="p-num p-bno">CDD2017071201</td>
+				<td class="p-num">14%</td>
+				<td class="p-num">30天</td>
+				<td class="p-num">0.5万元</td>
+				<td class="p-num">
+					<div class="ind-2 text-center"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+<!--/1-->
+	<div class="project-border">
+		<table>
+			<tr>
+				<td class="p-title">项目编号</td>
+				<td class="p-title">预期年化收益</td>
+				<td class="p-title">合约期限</td>
+				<td class="p-title">可投金额</td>
+				<td class="p-title">募集进度</td>
+				<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+			</tr>
+			<tr>
+				<td class="p-num p-bno">CDD2017071208</td>
+				<td class="p-num">14%</td>
+				<td class="p-num">30天</td>
+				<td class="p-num">0.5万元</td>
+				<td class="p-num">
+					<div class="ind-3 text-center"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+<!--/2-->
+	<div class="project-border">
+		<table>
+			<tr>
+				<td class="p-title">项目编号</td>
+				<td class="p-title">预期年化收益</td>
+				<td class="p-title">合约期限</td>
+				<td class="p-title">可投金额</td>
+				<td class="p-title">募集进度</td>
+				<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+			</tr>
+			<tr>
+				<td class="p-num p-bno">CDD2017071203</td>
+				<td class="p-num">14%</td>
+				<td class="p-num">30天</td>
+				<td class="p-num">0.5万元</td>
+				<td class="p-num">
+					<div class="ind-4 text-center"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+<!--/3-->
+	<div class="project-border">
+		<table>
+			<tr>
+				<td class="p-title">项目编号</td>
+				<td class="p-title">预期年化收益</td>
+				<td class="p-title">合约期限</td>
+				<td class="p-title">可投金额</td>
+				<td class="p-title">募集进度</td>
+				<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+			</tr>
+			<tr>
+				<td class="p-num p-bno">CDD2017071206</td>
+				<td class="p-num">14%</td>
+				<td class="p-num">30天</td>
+				<td class="p-num">0.5万元</td>
+				<td class="p-num">
+					<div class="ind-5 text-center"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+<!--/4-->
+	<div class="project-border">
+		<table>
+			<tr>
+				<td class="p-title">项目编号</td>
+				<td class="p-title">预期年化收益</td>
+				<td class="p-title">合约期限</td>
+				<td class="p-title">可投金额</td>
+				<td class="p-title">募集进度</td>
+				<td rowspan="2"><a href="#" class="btn btn-success btn-lg">立即购买</a></td>
+			</tr>
+			<tr>
+				<td class="p-num p-bno">CDD2017071205</td>
+				<td class="p-num">14%</td>
+				<td class="p-num">30天</td>
+				<td class="p-num">0.5万元</td>
+				<td class="p-num">
+					<div class="ind-6 text-center"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+<!--/5-->
+</div>
+</block>

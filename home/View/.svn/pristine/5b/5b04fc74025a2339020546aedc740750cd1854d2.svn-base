@@ -1,0 +1,108 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    
+    <div class="container">
+        <!-- 面包屑导航栏 -->
+        <ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a></li>
+            <li><a href="{:U('Help/feedback')}">投诉建议</a></li>
+        </ul>
+
+        <form class="feedback-form" method="" action="#">
+            <div class="form-group">
+                <label class="feedback-label">一、投诉类型：</label>
+                <ul class="feedback-types list-inline">
+                    <li>信息披露</li>
+                    <li>投诉客服</li>
+                    <li>回款问题</li>
+                    <li>出借问题</li>
+                    <li>意见建议</li>
+                    <li>其他投诉（手动输入）</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="feedback-label" style="display: block;">二、投诉内容描述：</label>
+                <textarea name="remarks" id="remarks" class="remarks" rows="8" placeholder="必填" maxlength="1000"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="feedback-label">三、请填写您的联系方式：</label>
+            </div>
+            <div class="form-group">
+                <label class="feedback-label">姓名:</label>
+                <input type="text" placeholder="必填" id="name" class="form-control" maxlength="50">
+            </div>
+            <div class="form-group">
+                <label class="feedback-label">联系方式:</label>
+                <input type="text" placeholder="必填" id="phone" class="form-control" maxlength="11">
+            </div>
+            <div class="clearfix mb20">
+                <button type="submit" class="btn btn-primary btn-submit">提交</button>
+            </div>
+            <p class="note">以上投诉只限于注册用户，含未充值用户。</p>
+        </form>
+    </div>       
+</div>
+
+</block>
+<block name="css">
+    <style>
+        .mt20 {margin-top:20px;}
+        .mb20 {margin-bottom: 20px;}
+        label {margin-right: 10px;}
+        .feedback-form .feedback-types li {
+            float: left;
+            display: inline;
+            position: relative;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            padding: 0 10px;
+            line-height: 30px;
+            height: 30px;
+            overflow: visible;
+            cursor: pointer;
+        }
+        .active {border:1px solid #4b92ff;color: #4b92ff;}
+
+        .feedback-form textarea {
+            width: 621px;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+        }
+        .feedback-form .input {
+            border: 1px solid #ddd;
+            width: 225px;
+            height: 30px;
+            padding-left: 5px;
+        }
+        .btn-submit {
+
+        }
+        .btn-primary {
+          color: #fff;
+          background-color: #4b92ff;
+          border-color: 0;
+          outline: 0 !important;
+      }
+      .btn-primary:hover,
+      .btn-primary:focus,
+      .btn-primary.focus,
+      .btn-primary:active,
+      .btn-primary.active,
+      .open > .dropdown-toggle.btn-primary {
+          color: #fff;
+          background-color: #4b92ff;
+          border-color: 0 !important;
+      }
+  </style>
+</block>
+<block name="js">
+    <script>
+$(".feedback-types li").click(function () {
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+});
+
+    </script>
+</block>

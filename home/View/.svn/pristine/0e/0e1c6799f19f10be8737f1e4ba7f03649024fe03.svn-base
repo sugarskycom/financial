@@ -1,0 +1,85 @@
+<form method="post" action="#" id="form" class="form-horizontal">
+	<div class="form-group">
+		<label class="label-control">当前手机号：</label>
+		{$mobile}
+		<button type="button" class="btn btn-success btn-xs" id="getCode">发送验证码</button>
+		<input type="hidden" value="60" id="mz" name="mz">
+	</div>
+	<div class="form-group">
+		<label class="label-control">短信验证码：</label>
+		<input type="number" name="code" id="code" class="form-control" placeholder="6位数字">
+	</div>
+	<div class="form-group">
+		<label class="label-control">新的交易密码：</label>
+		<input type="password" name="password" id="password" class="form-control" placeholder="交易密码至少6位">
+	</div>
+	<div class="form-group">
+		<label class="label-control">确定新的交易密码：</label>
+		<input type="password" name="repassword" id="repassword" class="form-control" placeholder="同上面一致">
+	</div>
+	<div class="form-group">
+		<label class="text-success" id="msg"></label>
+		<button type="button" class="btn btn-success btn-block" id="savePassword">确定保存</button>
+	</div>
+</form>
+<script type="text/javascript">
+$(function(){
+	$("#savePassword").click(function(){
+		var code = $.trim($("#code").val());
+		var password = $.trim($("#password").val());
+		var repassword = $.trim($("#repassword").val());
+		if(code==''){
+			error('code','验证不能为空');
+			return false;
+		}
+		else if(code.length!=6){
+			error('code','验证码为6位数字');
+			return false;
+		}
+		else if(password==''){
+			error('password','交易密码不能为空');
+			return false;
+		}
+		else if(password.length<6){
+			error('password','交易密码至少6位');
+			return false;
+		}
+		else if(repassword!=password){
+			error('repassword','两次交易密码不一致');
+			return false;
+		}
+		else{
+
+			$.post("__URL__/setpaymentpwd",{flag:'save',code:code,password:password,repassword:repassword},function(ret){
+				if(ret.status==0){
+					error("savePassword",ret.error);
+				}
+				else{
+					$("#msg").text(ret.data);
+					setTimeout(function(){
+						window.location.href='/Account/index.html'
+					},1000);
+				}
+			});
+		}
+	});
+	$("#getCode").click(function(){
+		$(this).attr('disabled',true);
+		setJs("getCode","mz");
+		$.ajax({
+			type:"post",
+			url:"__URL__/setpaymentpwd",
+			data:{flag:'sendSms'},
+			success:function(ret){
+				//todo
+			}
+		})
+	});
+})
+function error(id,err){
+	$("#"+id).tooltip({title:err,placement:'bottom'}).tooltip('show');
+	setTimeout(function(){
+		$("#"+id).tooltip('destroy');
+	},1000);
+}
+</script>

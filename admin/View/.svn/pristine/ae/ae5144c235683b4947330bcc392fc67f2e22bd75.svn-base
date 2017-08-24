@@ -1,0 +1,149 @@
+<extend name="Public:base" />
+<block name="title">新增员工</block>
+<block name="content">
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox">
+<div class="ibox-title">
+    <form id="form" method="post" action="__URL__/add" class="form-horizontal">
+        <include file="form" />
+    </form>
+</div>
+</div>
+</div>
+</div>    
+</block>
+<block name="js">
+    <script type="text/javascript">
+    function modifyStatus(id) {
+        $.ajax({
+            url: "__URL__/open",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function(ret) {
+                if (ret.status == 1) {
+                    if (ret.data == 1) {
+                        $("#statusLabel").parent("div").find('label').text('开启');
+                        $("#statusLabel").parent("div").find('a').text('关闭');
+                    } else {
+                        $("#statusLabel").parent("div").find('label').text('关闭');
+                        $("#statusLabel").parent("div").find('a').text('开启');
+                    }
+                    $('#dataTables-dataList').dataTable().fnPageChange(0);
+                }
+            }
+        });
+    }
+    $(function() {
+        $("#form").validate({
+            rules: {
+                department_id: {
+                    required: true,
+                },
+                realname: {
+                    required: true,
+                },
+                username_show: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                mobile: {
+                    required: true,
+                    isMobile: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                repassword: {
+                    equalTo: "#password"
+                },
+                role_id: {
+                    required: true
+                }
+            },
+            messages: {
+                department_id: {
+                    required: "请选择一个部门",
+                },
+                realname: {
+                    required: "真实姓名不能为空"
+                },
+                username_show: {
+                    required: "用户名不能为空"
+                },
+                email: {
+                    required: "邮箱不能为空",
+                    email: "邮箱格式无效"
+                },
+                mobile: {
+                    required: "手机号不能为空",
+                    isMobile: "手机号格式无效"
+                },
+                password: {
+                    required: "密码不能为空",
+                    minlength: "密码至少6位"
+                },
+                repassword: {
+                    equalTo: "两次密码不一致"
+                },
+                role_id: {
+                    required: "请选择一个角色"
+                }
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent('div').next('div'));
+            },
+            submitHandler: function(form) {
+                    form.submit()
+                }
+                /*
+                var data = new Object();
+                $.each(form,function(i,e)
+                {
+                	var key = $(e).attr('name');
+                	var value = $.trim(e.value);
+                	if(key == 'is_show')
+                	{
+                		value = $("#"+key).prop("checked")?1:0;
+                	}
+                	$(data).attr(key,value);
+                })
+                */
+
+        });
+        //中文转拼音
+        $("#realname").change(function() {
+            var v = $(this).val();
+            if (v != "") {
+                $.ajax({
+                    url: "__URL__/zw2py",
+                    type: "post",
+                    data: {
+                        hanzi: v
+                    },
+                    success: function(ret) {
+                        $("#username").val(ret.data);
+                        $("#username_show").val(ret.data);
+                        $("#email").val(ret.data + "@edianlian.com");
+                    }
+                })
+            }
+        });
+    });
+    //验证手机号
+    $.validator.addMethod("isMobile", function(value, element, params) {
+        var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+        if (!reg.test(value)) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+    </script>
+</block>

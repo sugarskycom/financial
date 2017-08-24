@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="jakim">
+    <title>{$title}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="__PUBLIC__/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--dialog css-->
+    <link href="{$Think.config.RESOURCE_URL}/components/dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/animate/animatecss/animate.v2013.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/icheck/custom.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{$Think.config.RESOURCE_URL}/components/toastr/toastr.min.css"/>
+    <block name="before-css"></block>
+    <link href="{$Think.config.RESOURCE_URL}/finance/skin/main.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            font-family: "Microsoft YaHei";
+        }
+        form label{
+        	font-weight: 500;
+        }
+    </style>
+    <block name="css"></block>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="fixed-sidebar">
+<div id="wrapper">
+<nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header" style="padding-left:10px;padding-right: 5px">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="my-avatar" src="__PUBLIC__/images/logo-wide.png" height="45">
+                             </span>
+                            <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{$Think.session.username}</strong>
+                             </span> <span class="text-muted text-xs block">账户 <b class="caret"></b></span></span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="javascript:;" class="ucChangeAvatar">更换头像</a></li>
+                                <li><a href="javascript:;" id="ucChangePwd">修改密码</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:U('Login/out')}">安全退出</a></li>
+                            </ul> -->
+                        </div>
+                        <div class="logo-element">
+                            易电联
+                        </div>
+                    </li>
+                    <!--/top menu-->
+                    <li <eq name="group" value="home">class="active"</eq>>
+                        <a href="#"><i class="fa fa-home fa-fw"></i><span class="nav-label">返回首页</span></a>
+                    </li>
+                    <!--/home menu-->
+                    <volist name="Think.session.menus" id="r">
+                    <li <if condition="strtolower($r['name']) eq $c">class="active"</if>>
+                            <a href="#">
+                            <if condition="$r['name'] eq 'Log'">
+                            <i class="fa fa-wrench fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'Sms'" />
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'User'" />
+                            <i class="fa fa-lock fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'Customer'" />
+                            <i class="fa fa-user fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'Capital'" />
+                            <i class="fa fa-retweet fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'LoanAfter'" />
+                            <i class="fa  fa-tag fa-fw"></i> 
+                            <elseif condition="$r['name'] eq 'Rate'" />
+                            <i class="fa fa-tasks fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'Finance'" />
+                            <i class="fa fa-credit-card fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'Contract'" />  
+                            <i class="fa fa-file-text fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'Article'" />  
+                            <i class="fa fa-file-word-o fa-fw"></i>
+                            <elseif condition="$r['name'] eq 'CpsVendor'" />  
+                            <i class="fa fa-chain fa-fw"></i>
+                            <else/>
+                            <i class="fa fa-leaf fa-fw"></i>
+                            </if>
+                            <span class="nav-label">{$r.title}</span><span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <volist name="r[subs]" id="rr">
+                                <li <if condition="strtolower($rr['name']) eq $a">class="active"</if>>
+                                    <a href="/{$r.name}/{$rr.name}">{$rr.title}</a>
+                                </li>
+                                </volist>
+                            </ul>
+                    </li>
+                   </volist>
+                </ul>
+            </div>
+</nav>
+  <div id="page-wrapper" class="gray-bg dashbard-1">
+ <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+<!--                 <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning" id="msgquantity">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                       
+                    </ul>
+                </li> -->
+                <li>
+                    <a href="#"><i class="fa fa-line-chart fa-fw"></i>数据统计</a>
+                </li>
+                <li>
+                    <a href="{:U('Capital/stepFirst')}"><i class="fa fa-pencil fa-fw"></i>新建借款</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-user fa-fw"></i>新建用户 <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{:U('Customer/adda')}">新增个人用户</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{:U('Customer/addb')}">新增企业用户</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"  href="#">
+                    <i class="fa fa-cogs fa-spin fa-fw"></i>系统设置 <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:;" onclick="modifyPwd()"><i class="fa fa-lock fa-fw"></i> 修改密码</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{:U('Login/out')}">
+                        <i class="fa fa-sign-out fa-fw"></i> 安全退出
+                    </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        </div>
+
+<!--当前位置-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-5">
+        <h2>{$title}</h2>
+        <ol class="breadcrumb">
+            <li><a href="{:U('ucenter/index')}">首页</a></li>
+            <li>{$model}</li>
+            <li class="active"><strong>{$title}</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-7">
+        <div class="title-action">
+        <block name="buttons"></block>
+        </div>
+    </div>
+</div>
+<!--正文内容-->
+<div class="wrapper wrapper-content animated fadeIn">
+<block name="content"></block>
+</div>
+<!--版权信息-->
+<div class="footer">
+    <div>
+        <strong>Copyright</strong> 汇通资产管理 &copy; <php>echo date('Y');</php>
+    </div>
+</div>
+<!--/copyright-->
+</div>
+<!--public js-->
+<!--jquery-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<!--时间处理插件-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<!--bootstrap-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--metisMenu-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/metisMenu/jquery.metisMenu.js"></script>
+<!--slimscroll-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/slimscroll/jquery.slimscroll.min.js"></script>
+<!--dialog-->
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<!--validation-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/toastr/toastr.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/icheck/icheck.min.js"></script>
+<!--导出table2excel-->
+<script src="{$Think.config.RESOURCE_URL}/components/table2excel/jquery.table2excel.min.js"></script>
+<!--base-->
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<!--public-->
+<script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+<script type="text/javascript">
+    var ph = $(window).height()-51;
+    //左侧菜单滚动条,解决右侧内容太长，bg无法撑大的问题
+    $('#side-menu').slimScroll({
+        height: '100%',//ph+'px',
+        railOpacity: 0.4,
+        alwaysVisible:false,
+    });
+    //修改密码
+    function modifyPwd()
+    {
+        BootstrapDialog.show({
+                type:BootstrapDialog.TYPE_DEFAULT,
+                title:"修改密码",
+                message: function(dialog){
+                    return $('<div></div>').load('/user/modifypwd');
+                },
+        });
+    }
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "progressBar": false,
+  "preventDuplicates": false,
+  "positionClass": "toast-top-center",
+  "onclick": null,
+  "showDuration": "400",
+  "hideDuration": "1000",
+  "timeOut": "2000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+</script>
+<!--customer-->
+<block name="js"></block>
+</body>
+<!--page loading-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/pace/pace.min.js"></script>
+</html>    
+

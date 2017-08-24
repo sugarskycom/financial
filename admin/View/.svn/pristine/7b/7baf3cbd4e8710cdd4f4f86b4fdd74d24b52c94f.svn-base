@@ -1,0 +1,222 @@
+<form action="" method="post" class="form-inline add-loan">
+<table>
+<tr>
+	<th>借款用户：</th>
+	<td colspan="4">
+	<span class="text-primary">
+		{$data.pname}/{$data.pidcard}/{$data.pmobile}
+	</span>
+	</td>
+
+</tr>
+<tr>
+	<th>关联用户：</th>
+	<td colspan="4">
+	<span class="text-primary">
+		<if condition="$data.cname neq ''">
+		{$data.cname}/{$data.cidcard}/{$data.cmobile}
+		<else/>
+		-
+		</if>
+	</span>
+	</td>
+</tr>
+<tr>
+	<th>借款标题：</th>
+	<td>
+	<input type="text" class="form-control" name="title" id="title" value="{$data.title}">
+	</td>
+	<th>借款唯一号：</th>
+	<td><input type="text" class="form-control" name="bno" id="bno" value="{$data.bno}"></td>
+</tr>
+<tr>
+	<th>借款金额：</th>
+	<td><input type="number" class="form-control" name="amount" id="amount" value="{$data.amount}"></td>
+	<th>合同编号：</th>
+	<td><input type="text" class="form-control" name="contract_no" id="contract_no" value="{$data.contract_no}"></td>
+</tr>
+<tr>
+	<th>借款日期：</th>
+	<td><input type="text" class="form-control date" name="borrowing_date" id="borrowing_date" readonly value="{$data.borrowing_date|date='Y-m-d',###}"></td>
+	<th>借款期限：</th>
+	<td>
+	<div class="input-group" style="width: 100px;" id="t">
+		<span class="input-group-addon">月</span>
+		<input type="number" class="form-control" placeholder="0" id="month" value="{$data.month}" onchange="checknum(this,'m')" onkeyup="checknum(this,'m')" >
+	</div>
+	<div class="input-group" style="width: 100px;">
+		<span class="input-group-addon">日</span>
+		<input type="number" class="form-control" placeholder="0" id="day" value="{$data.day}" onchange="checknum(this,'d')" onkeyup="checknum(this,'d')">
+	</div>
+
+	</td>
+</tr>
+<tr>
+	<th>还款方式：</th>
+	<td>
+		<select class="form-control" id="repay_type">
+			<option value="1" <eq name="data.repay_type" value="1">selected</eq> >一次性还本付息</option>
+			<option value="2" <eq name="data.repay_type" value="2">selected</eq> >按月付息到期还本</option>
+			<option value="3" <eq name="data.repay_type" value="3">selected</eq> >按日计息</option>
+		</select>
+	</td>
+	<th>年化利率：</th>
+	<td>
+	<div class="input-group" style="width: 100px;">
+		<input type="text" class="form-control" placeholder="0" id="year_rate" value="{$data.year_rate}">
+		<span class="input-group-addon">%</span>
+	</div>
+
+	</td>
+</tr>
+<tr>
+	<th>借款服务费：</th>
+	<td>
+	<div class="input-group" style="width: 100px;">
+		<input type="text" class="form-control" placeholder="0" id="service_rate" value="{$data.service_rate}">
+		<span class="input-group-addon">%</span>
+	</div>
+	</td>
+	<th>借款管理费：</th>
+	<td>
+	<div class="input-group" style="width: 100px;">
+		<input type="text" class="form-control" placeholder="0" id="manage_rate" value="{$data.manage_rate}">
+		<span class="input-group-addon">%</span>
+	</div>
+	</td>
+</tr>
+<tr>
+	<th>资金渠道：</th>
+	<td>
+		<select class="form-control" id="asset_from">
+			<option value="1" <eq name="data.asset_from" value="1">selected</eq> >安润</option>
+			<option value="2" <eq name="data.asset_from" value="2">selected</eq> >钱包</option>
+		</select>
+	</td>
+	<th>备注：</th>
+	<td rowspan="2">
+		<textarea class="form-control" style="width:100%;" id="remark">{$data.remark}</textarea>
+	</td>
+</tr>
+<tr>
+	<th>产品类型：</th>
+	<td style="padding-bottom: 15px;">
+		<select class="form-control" id="product_type">
+			<option value="1" <eq name="data.product_type" value="1">selected</eq> >仓单贷</option>
+			<option value="2" <eq name="data.product_type" value="2">selected</eq> >配资单</option>
+			<option value="3" <eq name="data.product_type" value="3">selected</eq> >其他</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="center" style="padding-top:15px;border-top:1px solid #ddd;">
+		<input type="hidden" name="lid" value="{$data.lid}">
+		<button type="button" class="btn btn-primary" onclick="save(this,0)">保存修改</button>
+		<button type="button" class="btn btn-info" onclick="save(this,1)">保存修改并通过</button>
+	</td>
+</tr>
+
+</table>
+</form>
+<script type="text/javascript">
+ 	$('.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            language: 'zh-CN',
+            pickerPosition: "bottom-left",
+    });
+function save(o,flag){
+	var data={
+		title:$.trim($("#title").val()),
+		bno:$.trim($("#bno").val()),
+		borrowing_date:$.trim($("#borrowing_date").val()),
+		contract_no:$.trim($("#contract_no").val()),
+		borrowing_date:$.trim($("#borrowing_date").val()),
+		month:$.trim($("#month").val()),
+		day:$.trim($("#day").val()),
+		repay_type:$.trim($("#repay_type").val()),
+		year_rate:$.trim($("#year_rate").val()),
+		asset_from:$.trim($("#asset_from").val()),
+		product_type:$.trim($("#product_type").val()),
+		remark:$.trim($("#remark").val()),
+		amount:$.trim($("#amount").val()),
+		status:flag,
+		lid:$("input[name=lid]").val(),
+		manage_rate:$.trim($("#manage_rate").val()),
+		service_rate:$.trim($("#service_rate").val()),
+	};
+	if(data.title==''){
+		error($("#title"),'借款标题不能为空');
+		return false;
+	}
+	else if(data.bno==''){
+		error($("#bno"),'借款唯一号不能为空');
+		return false;
+	}
+	else if(data.amount=='' || parseFloat(data.amount)<=0){
+		error($("#amount"),'借款金额必须大于0');
+		return false;
+	}
+	else if(data.contact_no==''){
+		error($("#contact_no"),'合同编号不能为空');
+		return false;
+	}
+
+	else if(data.borrowing_date==''){
+		error($("#borrowing_date"),'借款日期不能为空');
+		return false;
+	}
+	else if((data.month=='' && data.day=='' ) || (parseInt(data.month)==0 && parseInt(data.day)==0)  ){
+		error($("#t"),'借款期限必须大于0');
+		return false;
+	}
+	else if(data.year_rate=='' || parseFloat(data.year_rate)<=0){
+		error($("#year_rate"),'年化利率必须大于0');
+		return false;
+	}
+	var s = $.ajax({type:"post",url:'__ACTION__',async:false,data:{flag:'checkbno',bno:data.bno,lid:data.lid}}).responseText;
+	if(s!='1'){
+		error($("#bno"),'借款唯一号已经存在');
+		return false;
+	}
+	$.post("__ACTION__",data,function(ret){
+		if(ret.status==1){
+			alt(ret.data,function(){
+				closeDialog();
+				$("#table").bootstrapTable('refresh');
+			})
+			
+		}
+		else{
+			error($(o),ret.error);
+		}
+	});
+
+}
+function checknum(o,f){
+	var v = $(o).val();
+	if(v=='') v=0;
+	v = parseInt(v);
+	if(v>0 && f=='m'){
+		$("#day").val(0);
+		var t = $("#repay_type").val();
+		if(t=='3'){
+			$("#repay_type").find('option:eq(0)').prop('selected',true).siblings('option').prop('selected',false);
+		}
+	}
+	else{
+		$("#month").val(0);
+		$("#repay_type").find('option:eq(2)').prop('selected',true).siblings('option').prop('selected',false);
+	}
+}
+function formatamount(o){
+	var v = $(o).val();
+	if(v=='') v=0;
+	if(v>0){
+	}
+}
+</script>

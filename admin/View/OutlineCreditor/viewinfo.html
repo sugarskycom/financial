@@ -1,0 +1,96 @@
+<table class="table table-striped table-info">
+<tr>
+	<th>借款用户：</th>
+	<td>
+	<span class="text-primary">
+		{$data.pname}/{$data.pidcard}/{$data.pmobile}
+	</span>
+	</td>
+	<th>关联用户：</th>
+	<td>
+	<span class="text-primary">
+		<if condition="$data.cname neq ''">
+		{$data.cname}/{$data.cidcard}/{$data.cmobile}
+		<else/>
+		-
+		</if>
+	</span>
+	</td>
+</tr>
+<tr>
+	<th>借款标题：</th>
+	<td>
+	{$data.title}
+	</td>
+	<th>借款唯一号：</th>
+	<td>{$data.bno}</td>
+</tr>
+<tr>
+	<th>借款金额：</th>
+	<td>{$data.amount}</td>
+	<th>合同编号：</th>
+	<td>{$data.contract_no}</td>
+</tr>
+<tr>
+	<th>借款日期：</th>
+	<td>{$data.borrowing_date|date='Y-m-d',###}</td>
+	<th>借款期限：</th>
+	<td>
+	{$data.time_long}<eq name="data.fee_type" value="1">个月<else/>天</eq>
+	</td>
+</tr>
+<tr>
+	<th>还款方式：</th>
+	<td>
+	<switch name="data.repay_type">
+	<case value="1">一次性还本付息</case>
+	<case value="2">按月付息到期还本</case>
+	<case value="3">按日计息</case>
+	</switch>
+	</td>
+	<th>年化利率：</th>
+	<td>
+	{$data.year_rate}%
+	</td>
+</tr>
+<tr>
+	<th>借款服务费：</th>
+	<td>
+	{$data.service_rate}%
+	</td>
+	<th>借款管理费：</th>
+	<td>
+	{$data.manage_rate}%
+	</td>
+</tr>
+<tr>
+	<th>资金渠道：</th>
+	<td>
+	<switch name="data.asset_from">
+	<case value="1">安润</case>
+	<case value="2">钱包</case>
+	</switch>
+	</td>
+	<th>备注：</th>
+	<td>
+	{$data.remark}
+	</td>
+</tr>
+<tr>
+	<th>产品类型：</th>
+	<td colspan="3">
+	<switch name="data.product_type">
+	<case value="1">仓单贷</case>
+	<case value="2">配资单</case>
+	<case value="3">其他</case>
+	</switch>
+	</td>
+</tr>
+</table>
+<style type="text/css">
+.table-info th{
+	width: 120px;
+	text-align: right;
+	font-weight: normal;
+}
+</style>

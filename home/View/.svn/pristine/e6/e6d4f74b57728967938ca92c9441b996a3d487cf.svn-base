@@ -1,0 +1,413 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<!-- 面包屑导航栏 -->
+	<div class="container">
+		<ol class="breadcrumb" style="background-color:#f5f5f5;font-size: 14px;color: #999;height: 50px;line-height: 50px;">
+			<li><a href="{:U('Index/index')}">首页</a></li>
+			<li><a href="{:U('Help/disclosure')}">信息披露</a></li>
+			<li>法律法规</li>
+		</ol>
+	</div>
+	<div class="container law-title-box">
+		<ul class="law list-unstyled">
+			<div class="law-title-left law-title">
+				<li><a href="#" id="law5" class="on">《中华人民共和国担保法》</a></li>
+			</div>
+			<div class="law-title-right law-title">
+				<li><a href="#" id="law7">《网络借贷信息中介机构备案管理登记指引》</a></li>
+				<li><a href="#" id="law9">《中国银监会办公厅关于印发网络借贷资金存管业务指引》</a></li>
+			</div>
+		</ul>
+	</div>
+	<div class="container law-content-box law-index0 law-index">
+		<!-- 《中华人民共和国担保法》 -->
+		<div>
+			<div class="law-content">
+				<h3 class="law-content-title"><b>目录</b></h3>
+				<div class="law-content-list">
+					<ul class="list-unstyled">
+						<div class="line-left line">
+							<li><a href="#">第一章 总 则</a></li>
+							<li><a href="#">第二章 保 证</a></li>
+							<li><a href="#">第三章 抵押</a></li>
+						</div>
+					</ul>
+				</div>
+			</div>
+			<!-- 内容 -->
+			<div class="law-item-content law-content-index0 law-content-index">
+				<h3 class="chapter"><b class="num">第一章</b><b class="title">总 则</b></h3>	
+				<div class="law-chapter-content">
+					<p>
+						<strong><span style="font-family: 宋体"><span style="font-family:宋体">&nbsp; 第一条</span></span></strong><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　为促进资金融通和商品流通，保障债权的实现，发展社会主义市场经济，制定本法。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二条</span></span></strong><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　在借贷、买卖、货物运输、加工承揽等经济活动中，债权人需要以担保方式保障其债权实现的，可以依照本法规定设定担保。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　　本法规定的担保方式为保证、抵押、质押、留置和定金。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三条</span></span></strong><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　担保活动应当遵循平等、自愿、公平、诚实信用的原则。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四条</span></span></strong><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　第三人为债务人向债权人提供担保时，可以要求债务人提供反担保。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　　反担保适用本法担保的规定。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五条</span></span></strong><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　担保合同是主合同的从合同，主合同无效，担保合同无效。担保合同另有约定的，按照约定。</span></span><span style="font-family: 宋体;font-size: 14px"><br/></span><span style="font-family: 宋体;font-size: 14px"><span style="font-family:宋体">　　担保合同被确认无效后，债务人、担保人、债权人有过错的，应当根据其过错各自承担相应的民事责任。</span></span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+			<div class="law-item-content law-content-index1 law-content-index">
+				<h3 class="chapter"><b class="num">第二章</b><b class="title">保 证</b></h3>	
+				<div class="law-chapter-content">
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第一节　保证和保证人</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第六条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　本法所称保证，是指保证人和债权人约定，当债务人不履行债务时，保证人按照约定履行债务或者承担责任的行为。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第七条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　具有代为清偿债务能力的法人、其他组织或者公民，可以作保证人。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第八条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　国家机关不得为保证人，但经国务院批准为使用外国政府或者国际经济组织贷款进行转贷的除外。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第九条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　学校、幼儿园、医院等以公益为目的的事业单位、社会团体不得为保证人。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　企业法人的分支机构、职能部门不得为保证人。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　企业法人的分支机构有法人书面授权的，可以在授权范围内提供保证。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十一条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　任何单位和个人不得强令银行等金融机构或者企业为他人提供保证；银行等金融机构或者企业对强令其为他人提供保证的行为，有权拒绝。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十二条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　同一债务有两个以上保证人的，保证人应当按照保证合同约定的保证份额，承担保证责任。没有约定保证份额的，保证人承担连带责任，债权人可以要求任何一个保证人承担全部保证责任，保证人都负有担保全部债权实现的义务。已经承担保证责任的保证人，有权向债务人追偿，或者要求承担连带责任的其他保证人清偿其应当承担的份额。</span></span>
+					</p>
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第二节　保证合同和保证方式</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十三条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证人与债权人应当以书面形式订立保证合同。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十四条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证人与债权人可以就单个主合同分别订立保证合同，也可以协议在最高债权额限度内就一定期间连续发生的借款合同或者某项商品交易合同订立一个保证合同。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十五条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证合同应当包括以下内容：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）被保证的主债权种类、数额；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）债务人履行债务的期限；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（三）保证的方式；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（四）保证担保的范围；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（五）保证的期间；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（六）双方认为需要约定的其他事项。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　保证合同不完全具备前款规定内容的，可以补正。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十六条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证的方式有：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）一般保证；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）连带责任保证。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十七条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　当事人在保证合同中约定，债务人不能履行债务时，由保证人承担保证责任的，为一般保证。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　一般保证的保证人在主合同纠纷未经审判或者仲裁，并就债务人财产依法强制执行仍不能履行债务前，对债权人可以拒绝承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　有下列情形之一的，保证人不得行使前款规定的权利：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）债务人住所变更，致使债权人要求其履行债务发生重大困难的；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）人民法院受理债务人破产案件，中止执行程序的；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（三）保证人以书面形式放弃前款规定的权利的。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十八条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　当事人在保证合同中约定保证人与债务人对债务承担连带责任的，为连带责任保证。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　连带责任保证的债务人在主合同规定的债务履行期届满没有履行债务的，债权人可以要求债务人履行债务，也可以要求保证人在其保证范围内承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第十九条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　当事人对保证方式没有约定或者约定不明确的，按照连带责任保证承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　一般保证和连带责任保证的保证人享有债务人的抗辩权。债务人放弃对债务的抗辩权的，保证人仍有权抗辩。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　抗辩权是指债权人行使债权时，债务人根据法定事由，对抗债权人行使请求权的权利。</span></span>
+					</p>
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第三节　保证责任</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十一条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证担保的范围包括主债权及利息、违约金、损害赔偿金和实现债权的费用。保证合同另有约定的，按照约定。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　当事人对保证担保的范围没有约定或者约定不明确的，保证人应当对全部债务承担责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十二条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证期间，债权人依法将主债权转让给第三人的，保证人在原保证担保的范围内继续承担保证责任。保证合同另有约定的，按照约定。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十三条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证期间，债权人许可债务人转让债务的，应当取得保证人书面同意，保证人对未经其同意转让的债务，不再承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十四条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　债权人与债务人协议变更主合同的，应当取得保证人书面同意，未经保证人书面同意的，保证人不再承担保证责任。保证合同另有约定的，按照约定。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十五条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　一般保证的保证人与债权人未约定保证期间的，保证期间为主债务履行期届满之日起六个月。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　在合同约定的保证期间和前款规定的保证期间，债权人未对债务人提起诉讼或者申请仲裁的，保证人免除保证责任；债权人已提起诉讼或者申请仲裁的，保证期间适用诉讼时效中断的规定。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十六条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　连带责任保证的保证人与债权人未约定保证期间的，债权人有权自主债务履行期届满之日起六个月内要求保证人承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　在合同约定的保证期间和前款规定的保证期间，债权人未要求保证人承担保证责任的，保证人免除保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十七条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证人依照本法第十四条规定就连续发生的债权作保证，未约定保证期间的，保证人可以随时书面通知债权人终止保证合同，但保证人对于通知到债权人前所发生的债权，承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十八条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　同一债权既有保证又有物的担保的，保证人对物的担保以外的债权承担保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　债权人放弃物的担保的，保证人在债权人放弃权利的范围内免除保证责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第二十九条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　企业法人的分支机构未经法人书面授权或者超出授权范围与债权人订立保证合同的，该合同无效或者超出授权范围的部分无效，债权人和企业法人有过错的，应当根据其过错各自承担相应的民事责任；债权人无过错的，由企业法人承担民事责任。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　有下列情形之一的，保证人不承担民事责任：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）主合同当事人双方串通，骗取保证人提供保证的；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）主合同债权人采取欺诈、胁迫等手段，使保证人在违背真实意思的情况下提供保证的。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十一条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　保证人承担保证责任后，有权向债务人追偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十二条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　人民法院受理债务人破产案件后，债权人未申报债权的，保证人可以参加破产财产分配，预先行使追偿权。</span></span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+			<div class="law-item-content law-content-index2 law-content-index">
+				<h3 class="chapter"><b class="num">第三章</b><b class="title">抵押</b></h3>	
+				<div class="law-chapter-content">
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第一节　抵押和抵押物</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十三条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　本法所称抵押，是指债务人或者第三人不转移对本法第三十四条所列财产的占有，将该财产作为债权的担保。债务人不履行债务时，债权人有权依照本法规定以该财产折价或者以拍卖、变卖该财产的价款优先受偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　前款规定的债务人或者第三人为抵押人，债权人为抵押权人，提供担保的财产为抵押物。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十四条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　下列财产可以抵押：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）抵押人所有的房屋和其他地上定着物；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）抵押人所有的机器、交通运输工具和其他财产；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（三）抵押人依法有权处分的国有的土地使用权、房屋和其他地上定着物；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（四）抵押人依法有权处分的国有的机器、交通运输工具和其他财产；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（五）抵押人依法承包并经发包方同意抵押的荒山、荒沟、荒丘、荒滩等荒地的土地使用权；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（六）依法可以抵押的其他财产。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　抵押人可以将前款所列财产一并抵押。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十五条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押人所担保的债权不得超出其抵押物的价值。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　财产抵押后，该财产的价值大于所担保债权的余额部分，可以再次抵押，但不得超出其余额部分。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十六条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　以依法取得的国有土地上的房屋抵押的，该房屋占用范围内的国有土地使用权同时抵押。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　以出让方式取得的国有土地使用权抵押的，应当将抵押时该国有土地上的房屋同时抵押。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　乡（镇）、村企业的土地使用权不得单独抵押。以乡（镇）、村企业的厂房等建筑物抵押的，其占用范围内的土地使用权同时抵押。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十七条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　下列财产不得抵押：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）土地所有权；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）耕地、宅基地、自留地、自留山等集体所有的土地使用权，但本法第三十四条第（五）项、第三十六条第三款规定的除外；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（三）学校、幼儿园、医院等以公益为目的的事业单位、社会团体的教育设施、医疗卫生设施和其他社会公益设施；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（四）所有权、使用权不明或者有争议的财产；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（五）依法被查封、扣押、监管的财产；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（六）依法不得抵押的其他财产。</span></span>
+					</p>
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第二节　抵押合同和抵押物登记</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十八条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押人和抵押权人应当以书面形式订立抵押合同。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第三十九条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押合同应当包括以下内容：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）被担保的主债权种类、数额；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）债务人履行债务的期限；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（三）抵押物的名称、数量、质量、状况、所在地、所有权权属或者使用权权属；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（四）抵押担保的范围；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（五）当事人认为需要约定的其他事项。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　抵押合同不完全具备前款规定内容的，可以补正。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　订立抵押合同时，抵押权人和抵押人在合同中不得约定在债务履行期届满抵押权人未受清偿时，抵押物的所有权转移为债权人所有。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十一条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　当事人以本法第四十二条规定的财产抵押的，应当办理抵押物登记，抵押合同自登记之日起生效。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十二条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　办理抵押物登记的部门如下：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）以无地上定着物的土地使用权抵押的，为核发土地使用权证书的土地管理部门；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）以城市房地产或者乡（镇）、村企业的厂房等建筑物抵押的，为县级以上地方人民政府规定的部门；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（三）以林木抵押的，为县级以上林木主管部门；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（四）以航空器、船舶、车辆抵押的，为运输工具的登记部门；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（五）以企业的设备和其他动产抵押的，为财产所在地的工商行政管理部门。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十三条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　当事人以其他财产抵押的，可以自愿办理抵押物登记，抵押合同自签订之日起生效。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　当事人未办理抵押物登记的，不得对抗第三人。当事人办理抵押物登记的，登记部门为抵押人所在地的公证部门。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十四条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　办理抵押物登记，应当向登记部门提供下列文件或者其复印件：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）主合同和抵押合同；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）抵押物的所有权或者使用权证书。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十五条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　登记部门登记的资料，应当允许查阅、抄录或者复印。</span></span>
+					</p>
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第三节　抵押的效力</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十六条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押担保的范围包括主债权及利息、违约金、损害赔偿金和实现抵押权的费用。抵押合同另有约定的，按照约定。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十七条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　债务履行期届满，债务人不履行债务致使抵押物被人民法院依法扣押的，自扣押之日起抵押权人有权收取由抵押物分离的天然孳息以及抵押人就抵押物可以收取的法定孳息。抵押权人未将扣押抵押物的事实通知应当清偿法定孳息的义务人的，抵押权的效力不及于该孳息。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　前款孳息应当先充抵收取孳息的费用。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十八条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押人将已出租的财产抵押的，应当书面告知承租人，原租赁合同继续有效。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第四十九条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押期间，抵押人转让已办理登记的抵押物的，应当通知抵押权人并告知受让人转让物已经抵押的情况；抵押人未通知抵押权人或者未告知受让人的，转让行为无效。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　转让抵押物的价款明显低于其价值的，抵押权人可以要求抵押人提供相应的担保；抵押人不提供的，不得转让抵押物。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　抵押人转让抵押物所得的价款，应当向抵押权人提前清偿所担保的债权或者向与抵押权人约定的第三人提存。超过债权数额的部分，归抵押人所有，不足部分由债务人清偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押权不得与债权分离而单独转让或者作为其他债权的担保。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十一条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押人的行为足以使抵押物价值减少的，抵押权人有权要求抵押人停止其行为。抵押物价值减少时，抵押权人有权要求抵押人恢复抵押物的价值，或者提供与减少的价值相当的担保。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　抵押人对抵押物价值减少无过错的，抵押权人只能在抵押人因损害而得到的赔偿范围内要求提供担保。抵押物价值未减少的部分，仍作为债权的担保。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十二条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押权与其担保的债权同时存在，债权消灭的，抵押权也消灭。</span></span>
+					</p>
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第四节　抵押权的实现</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十三条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　债务履行期届满抵押权人未受清偿的，可以与抵押人协议以抵押物折价或者以拍卖、变卖该抵押物所得的价款受偿；协议不成的，抵押权人可以向人民法院提起诉讼。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　抵押物折价或者拍卖、变卖后，其价款超过债权数额的部分归抵押人所有，不足部分由债务人清偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十四条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　同一财产向两个以上债权人抵押的，拍卖、变卖抵押物所得的价款按照以下规定清偿：</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（一）抵押合同以登记生效的，按照抵押物登记的先后顺序清偿；顺序相同的，按照债权比例清偿；</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　（二）抵押合同自签订之日起生效的，该抵押物已登记的，按照本条第（一）项规定清偿；未登记的，按照合同生效时间的先后顺序清偿，顺序相同的，按照债权比例清偿。抵押物已登记的先于未登记的受偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十五条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　城市房地产抵押合同签订后，土地上新增的房屋不属于抵押物。需要拍卖该抵押的房地产时，可以依法将该土地上新增的房屋与抵押物一同拍卖，但对拍卖新增房屋所得，抵押权人无权优先受偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　依照本法规定以承包的荒地的土地使用权抵押的，或者以乡（镇）、村企业的厂房等建筑物占用范围内的土地使用权抵押的，在实现抵押权后，未经法定程序不得改变土地集体所有和土地用途。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十六条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　拍卖划拨的国有土地使用权所得的价款，在依法缴纳相当于应缴纳的土地使用权出让金的款额后，抵押权人有优先受偿权。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十七条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　为债务人抵押担保的第三人，在抵押权人实现抵押权后，有权向债务人追偿。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十八条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　抵押权因抵押物灭失而消灭。因灭失所得的赔偿金，应当作为抵押财产。</span></span>
+					</p>
+					<p style="text-align:center">
+						<span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">第五节　最高额抵押</span></span>
+					</p>
+					<p>
+						<span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第五十九条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　本法所称最高额抵押，是指抵押人与抵押权人协议，在最高债权额限度内，以抵押物对一定期间内连续发生的债权作担保。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第六十条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　借款合同可以附最高额抵押合同。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　　债权人与债务人就某项商品在一定期间内连续发生交易而签订的合同，可以附最高额抵押合同。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第六十一条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　最高额抵押的主合同债权不得转让。</span></span><span style="font-family: 宋体;font-size: 16px"><br/></span><span style="font-family: 宋体;font-size: 16px">　　</span><strong><span style="font-family: 宋体"><span style="font-family:宋体">第六十二条</span></span></strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">　最高额抵押除适用本节规定外，适用本章其他规定。</span></span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class="container law-content-box law-index1 law-index">
+		<!-- 《网络借贷信息中介机构备案管理登记指引》 -->
+		<div>
+			<div class="law-content">
+				<h3 class="law-content-title"><b>目录</b></h3>
+				<div class="law-content-list">
+					<ul class="list-unstyled">
+						<div class="line-left line">
+							<li><a href="#">第一章 总 则</a></li>
+							<li><a href="#">第二章 新设机构备案登记申请</a></li>
+						</div>
+					</ul>
+				</div>
+			</div>
+			<!-- 内容 -->
+			<div class="law-item-content law-content-index0 law-content-index">
+				<h3 class="chapter"><b class="num">第一章</b><b class="title">总 则</b></h3>	
+				<div class="law-chapter-content">
+					<p>
+						<span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><span style="font-family:仿宋">&nbsp; &nbsp; 第一条为建立健全网络借贷信息中介机构备案登记管理制度，加强网络借贷信息</span> <span style="font-family:仿宋">中介机构事中事后监管，完善网络借贷信息中介机构基本统计信息，根据《网络借贷</span> <span style="font-family:仿宋">信息中介机构业务活动管理暂行办法》等规定，制定本指引。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><span style="font-family:仿宋">　　第二条本指引所称网络借贷信息中介机构是指在中华人民共和国境内依法设立，</span> <span style="font-family:仿宋">专门从事网络借贷信息中介业务活动的金融信息中介公司。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><span style="font-family:仿宋">　　本指引所称备案登记是指地方金融监管部门依申请对管辖内网络借贷信息中介机</span> <span style="font-family:仿宋">构的基本信息进行登记、公示并建立相关机构档案的行为。备案登记不构成对机构经</span> <span style="font-family:仿宋">营能力、合规程度、资信状况的认可和评价。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><span style="font-family:仿宋">　　第三条新设立的网络借贷信息中介机构在依法完成工商登记注册、领取企业法人</span> <span style="font-family:仿宋">营业执照后，应当于１０个工作日内向工商登记注册地地方金融监管部门申请备案登</span> <span style="font-family:仿宋">记。网络借贷信息中介机构设立的分支机构无需办理备案登记。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><span style="font-family:仿宋">　　本指引发布前，已经设立并开展经营的网络借贷信息中介机构，应当依据Ｐ２Ｐ</span> <span style="font-family:仿宋">网络借贷风险专项整治工作有关安排，在各地完成分类处置后再行申请备案登记。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:16px"><span style="font-family:仿宋">　　第四条</span> <span style="font-family:仿宋">地方金融监管部门应当结合监管工作实际，按照依法、准确、公开、高</span> <span style="font-family:仿宋">效的原则为本辖区内网络借贷信息中介机构办理备案登记。</span></span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+			<div class="law-item-content law-content-index1 law-content-index">
+				<h3 class="chapter"><b class="num">第二章</b><b class="title">新设机构备案登记申请</b></h3>	
+				<div class="law-chapter-content">
+					<p>
+						<span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">第五条新设的网络借贷信息中介机构备案登记包括下列程序：</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（一）网络借贷信息中介机构办理工商登记注册并取得企业法人营业执照，并在</span> <span style="font-family:仿宋">经营范围中明确网络借贷信息中介机构等相关内容；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（二）网络借贷信息中介机构项工商登记住的地金融监管部门提出备案登记申请</span> <span style="font-family:仿宋">；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（三）地方金融监管部门应当在文件资料齐备、形式合规的情况下，办理备案登</span> <span style="font-family:仿宋">记，并向申请备案登记的网络借贷信息中介机构出具备案登记证明文件；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　备案登记证明文件由地方金融监管部门自行设计、印制，其中应当包括网络借贷</span> <span style="font-family:仿宋">信息中介机构的基本信息、地方金融监管部门公章等要素。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　第六条新设的网络借贷信息中介机构申请办理备案登记是应当向金融监管部门提</span> <span style="font-family:仿宋">供以下资料：</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（一）网络借贷信息中介机构的基本信息，包括名称、住所地、组织形式等；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（二）股东或出资人名册及其出资额、股权结构；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（三）经营发展战略和规划；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（四）合规经营承诺；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（五）企业法人营业执照正副本复印件；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（六）法定代表人及董事、监事、高级管理人员基本信息资料；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（七）分支机构名称及其所在地；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（八）网络借贷信息中介机构官方网站网址及相关ＡＰＰ名称；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（九）地方金融监管部门要求提交的其他文件、资料。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　第七条新设的网络借贷信息中介机构申请备案时应当以书面形式提交合规经营承</span> <span style="font-family:仿宋">诺书，对下列事项进行承诺：</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（一）在经营期间严格遵守《网络借贷信息中介机构业务活动管理暂行办法》有</span> <span style="font-family:仿宋">关规定，依法合规自经营；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（二）依法配合地方金融监管部门、银监局的监管工作；</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　（三）确保及时向地方金融监管部门、银监局报送真实、准确的相关数据、资料</span> <span style="font-family:仿宋">。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　第八条地方金融监管部门应当在收到新设的网络借贷信息中介机构提交的备案材</span> <span style="font-family:仿宋">料后，采取多方数据对比、网上核验、实地认证、现场勘查。高管约谈等方式对备案</span> <span style="font-family:仿宋">材料进行审核，要求网络借贷信息中介机构法定代表人或经法定代表人授权的高级管</span> <span style="font-family:仿宋">理人员对核实后的备案信息进行签字确认。</span></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><br/></span><span style=";font-family:仿宋;color:rgb(61,61,61);font-size:14px"><span style="font-family:仿宋">　　第九条新设的网络借贷信息中介机构办理备案登记的具体时限由地方金融监管部</span> <span style="font-family:仿宋">门根据本辖区情况具体规定，但不得超过４０各工作日。</span></span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+		</div>
+
+    </div>
+    <div class="container law-content-box law-index2 law-index">
+		<!-- 《中国银监会办公厅关于印发网络借贷资金存管业务指引》 -->
+		<div>
+			<div class="law-content">
+				<h3 class="law-content-title"><b>目录</b></h3>
+				<div class="law-content-list">
+					<ul class="list-unstyled">
+						<div class="line-left line">
+							<li><a href="#">第一章 总 则</a></li>
+							<li><a href="#">第二章 委托人</a></li>
+						</div>
+					</ul>
+				</div>
+			</div>
+			<!-- 内容 -->
+			<div class="law-item-content law-content-index0 law-content-index">
+				<div class="law-intro">
+					<p style=";margin-bottom:0;text-align: center;line-height:28px">
+						<span style="font-family: FangSong">中国银监会办公厅关于</span>
+					</p>
+					<p style=";margin-bottom:0;text-align: center;line-height:28px">
+						<span style="font-family: FangSong">印发网络借贷资金存管业务指引的通知</span>
+					</p>
+					<p style=";margin-bottom:0;text-align: center;line-height:28px">
+						<span style="font-family: FangSong">银监办发〔2017〕21号</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">&nbsp;</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;line-height:28px">
+						<span style="font-family: FangSong">各银监局，各省、自治区、直辖市人民政府金融办（局），各大型银行、股份制银行，邮储银行，外资银行：</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">为贯彻落实人民银行等十部门《关于促进互联网金融健康发展的指导意见》和中国银监会等四部门《网络借贷信息中介机构业务活动管理暂行办法》关于建立客户资金第三方存管制度的工作部署和要求，实现客户资金与网络借贷信息中介机构自有资金分账管理，防范网络借贷资金挪用风险，银监会研究制定了网络借贷资金存管业务指引，现印发给你们，请结合实际贯彻执行。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:40px;line-height:28px">
+						<span style="font-family: FangSong">&nbsp;</span>
+					</p>
+					<p style=";margin-bottom:0;text-align: right;line-height:28px">
+						<span style="font-family: FangSong">&nbsp;2017</span><span style="font-family: FangSong">年2月22日</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;line-height:28px">
+						<span style="font-family: FangSong">（此件发至银监分局和地方法人银行业金融机构）</span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+				<h3 class="chapter"><b class="num">第一章</b><b class="title">总 则</b></h3>	
+				<div class="law-chapter-content">
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第一条&nbsp;</span></strong><span style="font-family: FangSong">为规范网络借贷资金存管业务活动，促进网络借贷行业健康发展，根据《中华人民共和国合同法》、《中华人民共和国商业银行法》和</span><span style="font-family:FangSong;color:#333333">《</span><span style="font-family: FangSong">关于促进互联网金融健康发展的指导意见》、《网络借贷信息中介机构业务活动管理暂行办法》及其他有关法律法规，制定本指引。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第二条&nbsp;</span></strong><span style="font-family: FangSong">本指引所称网络借贷资金存管业务，是指商业银行作为存管人接受委托人的委托，按照法律法规规定和合同约定，履行网络借贷资金存管专用账户的开立与销户、资金保管、资金清算、账务核对、提供信息报告等职责的业务。存管人开展网络借贷资金存管业务，不对网络借贷交易行为提供保证或担保，不承担借贷违约责任。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第三条&nbsp;</span></strong><span style="font-family: FangSong">本指引所称网络借贷资金，是指网络借贷信息中介机构作为委托人，委托存管人保管的，由借款人、出借人和担保人等进行投融资活动形成的专项借贷资金及相关资金。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第四条&nbsp;</span></strong><span style="font-family: FangSong">本指引所称委托人，即网络借贷信息中介机构，是指依法设立，专门从事网络借贷信息中介业务活动的金融信息中介公司。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第五条&nbsp;</span></strong><span style="font-family: FangSong">本指引所称存管人，是指为网络借贷业务提供资金存管服务的商业银行。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第六条&nbsp;</span></strong><span style="font-family: FangSong">本指引所称网络借贷资金存管专用账户，是指委托人在存管人处开立的资金存管汇总账户，包括为出借人、借款人及担保人等在资金存管汇总账户下所开立的子账户。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第七条&nbsp;</span></strong><span style="font-family: FangSong">网络借贷业务有关当事机构开展网络借贷资金存管业务应当遵循“诚实履约、勤勉尽责、平等自愿、有偿服务”的原则。</span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+			<div class="law-item-content law-content-index1 law-content-index">
+				<h3 class="chapter"><b class="num">第二章</b><b class="title">委托人</b></h3>	
+				<div class="law-chapter-content">
+					<p style="margin-top:0;margin-right:0;margin-bottom:0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第八条&nbsp;</span></strong><span style="font-family: FangSong">网络借贷信息中介机构作为委托人，委托存管人开展网络借贷资金存管业务应符合《网络借贷信息中介机构业务活动管理暂行办法》及《网络借贷信息中介机构备案登记管理指引》的有关规定，包括但不限于在工商管理部门完成注册登记并领取营业执照、在工商登记注册地地方金融监管部门完成备案登记、按照通信主管部门的相关规定申请获得相应的增值电信业务经营许可等。</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<strong><span style="font-family: FangSong">第九条&nbsp;</span></strong><span style="font-family: FangSong">在网络借贷资金存管业务中，委托人应履行以</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:28px;line-height:28px">
+						<span style="font-family: FangSong">下职责：</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（一）负责网络借贷平台技术系统的持续开发及安全运营；</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（二）组织实施网络借贷信息中介机构信息披露工作，包括但不限于委托人基本信息、借贷项目信息、借款人基本信息及经营情况、各参与方信息等应向存管人充分披露的信息；</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（三）每日与存管人进行账务核对，确保系统数据的准确性；</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（四）妥善保管网络借贷资金存管业务活动的记录、账册、报表等相关资料，相关纸质或电子介质信息应当自借贷合同到期后保存5年以上；</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（五）组织对客户资金存管账户的独立审计并向客户公开审计结果；</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（六）履行并配合存管人履行反洗钱义务；</span>
+					</p>
+					<p style=";margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:28px">
+						<span style="font-family: FangSong">（七）法律、行政法规、规章及其他规范性文件和网络借贷资金存管合同（以下简称存管合同）约定的其他职责。</span>
+					</p>
+					<p>
+						<br/>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<include file="Public:footer"/>
+</block>
+<block name="css">
+	<style>
+		.mt20 {margin-top:20px;}
+		.mb20 {margin-bottom: 20px;}
+		.law-item-content {
+			border: 1px solid #e5e5e5;
+			/*height: 400px;*/
+			width:90%;
+			overflow: scroll;
+			overflow-x: auto;
+			margin-left: 50px;
+		}
+		.line {
+			float: left;
+			padding:47px 20px;
+			width: 520px;
+			line-height: 2;
+			letter-spacing: 1px;
+		}
+		.line a {
+			font-size: 14px;
+			color: #178aec;
+		}
+		.line-left {
+			padding-left: 100px;
+		}
+		.law-title {
+			float: left;
+			width: 520px;
+			height: 350px;
+			line-height: 3;
+			padding-top: 60px;
+		}
+		.law-title-left {
+			padding-left: 100px;
+			padding-bottom: 60px;
+		}
+		.law-content-box .law-index,.law-content-index {display: none;}
+		.law-content-box .law-index0,.law-content-index0 {display: block;}
+		.law-title-box,
+		.law-content-box {
+			background-color: #fff;
+		}
+		.law-content-box {
+			margin-top: 40px;
+		}
+		.law-title-box a {
+			font-size: 16px;
+			color: #666;
+		}
+		.law-title-box a.on {
+			color: #509eff;
+		}
+		.law-content-title {
+			height: 48px;
+			width: 101px;
+			line-height: 48px;
+			background:url(/Public/images/mulu.png) 0 center;
+			margin-left: -15px;
+			margin-top: -15px;
+			position: relative;
+		}
+		.law-content-title > b {
+			font-weight: normal;
+			font-size: 18px;
+			letter-spacing: 6px;
+			color: #fff;
+			position: absolute;
+			top: 12%;
+			left: 34%;
+		}
+		.chapter {
+			font-size: 18px;
+			color: #509eff;
+			height: 60px;
+			line-height: 60px;
+			background-color: #f5f5f5;
+			margin-left: 18px;
+			margin-right: 18px;
+		}
+		.chapter b {
+			font-weight: normal;
+		}
+		.chapter b.num {
+			margin-left: 20px;
+			border-left: 4px solid #509eff;
+			padding-right: 7px;
+			padding-left: 10px;
+		}
+		.law-intro,
+		.law-chapter-content {
+			padding-left: 38px;
+			font-size: 14px;
+			color: #808080;
+			line-height: 32px;
+		}
+		.law-intro {
+			padding-top: 40px;
+			padding-bottom: 30px;
+		}
+		.law-chapter-content {
+			padding-top: 30px;
+			padding-bottom: 60px;
+		}
+		.law-chapter-content p {
+			margin-top: 20px;
+			text-indent: 32px;
+			line-height: 30px;
+		}
+		
+
+
+	</style>
+</block>
+<block name="js">
+	<script>
+		$(document).ready(function(){
+			//切换文章
+            var order1;
+			$(".law .law-title li a").click(function(){
+				// var inx = $(this).parent("li").index();
+				// $(".law .law-title li").find("a").removeClass("on");
+				// $(".law .law-title li").eq(inx).find("a").addClass("on");
+				order1 = $(".law .law-title li a").index(this);
+				$(".law-index" + order1).show().siblings("div.law-index").hide();
+			});
+
+            //切换目录
+            $(".line li a").click(function(){
+				var order2 = $( order1 + ".line li a").index(this);
+				console.log(order2);
+				$(".law-content-index" + order2).show().siblings("div.law-content-index").hide();
+				// document.querySelector(".law-content-index").scrollIntoView(true);								
+			});
+
+
+        })
+    </script>
+</block>

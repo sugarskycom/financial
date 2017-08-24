@@ -1,0 +1,98 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="font-size: 14px;">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li><a href="{:U('Help/disclosure')}">信息披露</a></li>
+                    <li class="active"><strong>网站公告</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!--公告列表-->
+    <div class="container">
+        <div class="noticelist">
+            <h3>平台公告</h3>
+        </div>
+        <ul class="list-group" style="font-size: 16px;">
+            <!-- <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">【平台公告】</div>
+                    <div class="col-md-8"><a href="{:U('Help/noticedetail')}">汇通网上线公告汇通网上线公告汇通网上线公告</a></div>
+                    <div class="col-md-2"><span>2017-07-11</span></div>
+                </div>
+            </li> -->
+            <volist name = "artclelist" id = "a" empty="暂时没有公告">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-2">【平台公告】</div>
+                        <div class="col-md-8"><a href="noticedetail?aid={$a.article_id}">{$a.title}</a></div>
+                        <div class="col-md-2"><span>{:date("Y-m-d", $a['create_time'])}</span></div>
+                    </div>
+                </li>
+            </volist>
+        </ul>
+        <nav aria-label="Page navigation" class="text-center">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <include file="Index:float"/>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .breadcrumb{
+            background-color: #f5f5f5;
+            height: 60px;
+            line-height: 60px;
+        }
+        .noticelist{
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            background-color: #ffffff;
+            height: 70px;
+        }
+        .noticelist h3{
+            padding-left: 20px;
+            font-size: 18px;
+            color: #666666;
+            margin-top: 15px;
+        }
+        .list-group{
+            background-color: #ffffff;
+            padding: 0 50px 30px;
+        }
+        .list-group-item{
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 1px dashed #e5e5e5;
+            margin-bottom: 0;
+        }
+    </style>
+</block>
+<block name="js">
+    <script>
+        $(".one-menu:eq(3)").addClass("active");
+    </script>
+</block>

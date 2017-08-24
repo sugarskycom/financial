@@ -1,0 +1,88 @@
+<form action="" method="post" id="form" class="form-horizontal">
+		<table class="table table-bordered" id="table">
+			<thead>
+				<tr>
+					<th>期数</th>
+					<th>应还本金</th>
+					<th>应还利息</th>
+					<th>借款管理费</th>
+					<th>逾期罚息</th>
+					<th>逾期管理费</th>
+					<th>提前还款违约金</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>第{$data.issue}期</td>
+					<td>￥{$data.repay_principal}</td>
+					<td>￥{$data.repay_interest}</td>
+					<td>￥{$data.manage_fees}</td>
+					<td>￥{$data.overdue_penalty}</td>
+					<td>￥{$data.overdue_fees}</td>
+					<td>￥{$data.prepayment}</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr><td colspan="7">总还款：<strong class="text-red">￥{$data.total}</strong></td></tr>
+			</tfoot>
+		</table>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">
+				账户余额：
+			</label>
+			<div class="col-sm-9"><strong class="text-red">￥{$data.user.useable_amount}</strong></div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">
+				<span class="text-red">*</span>备注信息：
+			</label>
+			<div class="col-sm-9">
+				<textarea class="form-control" id="remark" name="remark"></textarea>
+				<span class="text-red"></span>
+			</div>
+		</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-success" id="btnPay">确定还款</button>
+			<span class="text-info success"></span>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+$(function(){
+	var useable_amount = '{$data.user.useable_amount}';
+	var total = '{$data.total}';
+	$("#btnPay").click(function(){
+		var remark = $.trim($("#remark").val());
+		if(remark==''){
+			$("#remark").parent('div').find('span.text-red').text('备注信息不能为空');
+			setTimeout(function(){
+				$("span.text-red").text('');
+			},1000);
+			return false;
+		}
+		if(parseFloat(useable_amount)<parseFloat(total)){
+			$("#remark").parent('div').find('span.text-red').text('账户余额不足');
+			setTimeout(function(){
+				$("span.text-red").text('');
+			},1000)
+			return false;
+		}
+		$(this).attr('disabled',true);
+		$.post("__URL__/payment",{id:'{$data.id}',remark:remark},function(ret){
+			if(ret.status==1){
+				$("span.success").text(ret.data);
+				setTimeout(function(){
+					closeDialog();
+					window.location.href=document.URL;
+				},1000);
+			}
+			else{
+				alt(ret.error);
+				$("#btnPay").attr("disabled",false);
+			}
+		});
+		return false;
+	});
+})
+</script>

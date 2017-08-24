@@ -1,0 +1,100 @@
+<extend name="Public:base" />
+<block name="content">
+    <include file="Public:nav"/>
+    <div class="container white-bg">
+        <!-- 面包屑导航栏 -->
+        <ol class="breadcrumb">
+            <li><a href="#">汇通资产</a></li>
+            <li><a href="#">我的账户</a></li>
+            <li style="color: #666;">还款</li>
+        </ol>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h1>还款</h1>
+                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">标的名称：</label>
+                        <div class="col-sm-6 h44">
+                            <span class="">标的名称标的名称</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">标的编号：</label>
+                        <div class="col-sm-6 h44">
+                            <span class="">DDC00010010010101</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">本期还款本金：</label>
+                        <div class="col-sm-6 h44">
+                            <span class="">10000.00元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">本期还款利息：</label>
+                        <div class="col-sm-6 h44">
+                            <span class="">120.00元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">违约金：</label>
+                        <div class="col-sm-6 h44">
+                            <span class="">120.00元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">本期合计还款：</label>
+                        <div class="col-sm-6 h44">
+                            <span class="rp-sum">10240.00元</span>
+                            <span class="ac-balance">账户余额 <i id="balance">10000.00</i>元</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-success btn-repay" id="btnRepay">去还款</button>
+                            <p class="notice">将进入富滇银行存管界面操作</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="reminder">
+            <ol class="list-unstyled">温馨提示：
+                <li>1、开通银行存管账户、设置交易密码后，才能进行还款操作。</li>
+                <li>2、为保证您的资金安全，您充值的资金将进入富滇银行的银行管存账号。</li>
+                <li>3、本操作需要在富滇银行平台完成。</li>
+                <li>4、如还款过程出现异常，请联系客服：010-xxxxx  解决。</li>
+            </ol>
+        </div>
+    </div>
+
+    <include file="Public:copyright"/>
+</block>
+<block name="css">
+    <link href="__PUBLIC__/css/account.css" rel="stylesheet" type="text/css">
+    <style>
+
+        .ibox .ibox-title .form-group .h44 span {
+            font-size: 16px;
+            color: #666;
+        }
+        .ibox .ibox-title .form-group .h44 > .rp-sum {
+            padding-right: 15px;
+            color:#ff2b14;
+        }
+        .ibox .ibox-title .form-group .h44 > .ac-balance {
+            font-size: 14px;
+            color: #3090fd;
+           /* border-bottom: 1px solid #3090fd;*/
+        }
+        .h44 { line-height: 3;}
+        
+    </style>
+</block>
+<block name="js">
+    <script>
+
+    </script>
+</block>

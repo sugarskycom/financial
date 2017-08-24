@@ -1,0 +1,481 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+
+	<!-- 背景banner -->
+	<div class="bg"></div>
+	<!-- 借款流程 -->
+	<div class="pro-content container" style="margin-top: 30px;">
+		<div class="loan-flow">
+			<h2 class="pro-title">借款流程</h2>
+			<div class="flow-list row">
+				<div class="col-md-3">
+					<div class="flow-box">					
+						<div class="flow-title flow1">						
+							<b>申请融资</b>
+						</div>					
+						<div class="flow-desc flow-one">
+							<b>融资企业将融资申请通过平台提交，汇通网在12小时之内电话回复，沟通融资事项。</b>
+						</div>	
+						<div class="arrow">
+							<img src="/Public/images/loan/arrow.png" alt="arrow" />
+						</div>					
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="flow-box">
+						<div class="flow-title flow2">
+							<b>资质审核</b>
+						</div>
+						<div class="flow-desc flow-two">
+							<b>融资企业提交材料后，风控人员对借款企业和质押物等进行审核，必要是实地调查。</b>
+						</div>	
+						<div class="arrow">
+							<img src="/Public/images/loan/arrow.png" alt="arrow" />
+						</div>												
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="flow-box">
+						<div class="flow-title flow3">
+							<b>签订合同</b>
+						</div>
+						<div class="flow-desc flow-three">
+							<b>邀请融资企业到易电联公司进行洽谈，约定各方权利义务，并签署相关合同。</b>
+						</div>
+						<div class="arrow">
+							<img src="/Public/images/loan/arrow.png" alt="arrow" />
+						</div>													
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="flow-box">
+						<div class="flow-title flow4">
+							<b>资金放款</b>
+						</div>				 	
+						<div class="flow-desc flow-four">
+							<b>签署合同后，将融资需求发布于汇通网募集、放款，企业按照约定的方式按期还款。</b>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>                
+	</div>
+	<!--借款产品-->
+	<div class="pro-content container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="project-box project1">
+					<div class="project-desc">
+						<h3>仓单抵押借款</h3>
+						<p>专属电子类仓储货物的抵押融资，利率低，方便快捷！</p>
+						<button type="button" class="btn btn-success btn-apply">立即申请</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="project-box project2">
+					<div class="project-desc">
+						<h3>采购垫资借款</h3>
+						<p>电子货物采购融资，配比资金最高70%。</p>
+						<button type="button" class="btn btn-success btn-apply">立即申请</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="project-box project3">
+					<div class="project-desc">
+						<h3>其他资产抵押借款</h3>
+						<p>含各类资产抵押，包括房产、车产、应收帐款等资产抵押融资，针对融资项目可量身设计，灵活度高！</p>
+						<button type="button" class="btn btn-success btn-apply">立即申请</button>
+					</div>
+				</div>
+			</div>
+		</div>               
+	</div>
+	<!-- 申请借款表单 -->
+	<div class="container i-loan pro-content">
+		<h1><span>申请借款</span></h1>
+		<div class="row">
+			<form action="#" method="" class="form-horizontal loan-form" id="loanForm" novalidate="novalidate">
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">借款人姓名</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="name" name="name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="address" class="col-md-3 control-label">常住地址</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="address" name="address">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="mobile" class="col-md-3 control-label">联系方式</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="mobile" name="mobile" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sum" class="col-md-3 control-label">借款额度</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="sum" name="sum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="purpose" class="col-md-3 control-label">借款用途</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="purpose" name="purpose">
+					</div>
+				</div>
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-success btn-submit" id="btnSubmit">提交申请</button>
+					<p class="notice">仅认证通过用户能申请借款</p>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<style type="text/css">
+		.bg {
+			background-image: url(__PUBLIC__/images/banner.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 100%;
+			height: 400px;
+			overflow:hidden;
+		}
+
+		input.form-control:focus {
+			border-color: #fdc230!important;
+		}
+
+
+		.input-group input {
+			display: inline-block;
+			width: 130%;
+			text-align: center;
+			border-color: #fdc230;
+			margin-top:30px;
+			box-shadow: 0 0 3px #fdc230;
+		}
+
+		.pro-content {
+			padding-left:50px;
+			padding-right: 50px;
+			margin-bottom: 10px;
+			background-color: #fff;
+			border:1px solid #e5e5e5;
+			border-top:0;
+		}
+
+		.pro-content .pro-title {
+			font-size: 18px;
+			border-left:3px solid #fdc230;
+			padding-left:10px;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+
+		.pro-content .loan-flow .flow-list .flow-box {
+			width: 136px;
+			height: 400px;
+			background-color: #fff;
+			position: relative;
+		}
+		.flow-box .arrow {
+			position: absolute;
+			top: 25%;
+			left:120%;
+		}
+		.flow-box .flow-title {
+			margin-top: 30px;
+			font-size: 16px;
+			color: #666;	
+			width:136px;
+			height: 200px;
+			position: relative; 
+			/*display: none;	*/		
+		}
+		.flow-box .flow-title > b {
+			font-weight: normal;
+			position: absolute;
+			left: 25%;
+			bottom: 0;
+		}
+		.flow-box .flow1 {
+			background:url(__PUBLIC__/images/loan/shenqingrongzi.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow2 {
+			background:url(__PUBLIC__/images/loan/zizhishenhe.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow3 {
+			background:url(__PUBLIC__/images/loan/qiandinghetong.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow4 {
+			background:url(__PUBLIC__/images/loan/zijinfangkuan.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow-one {
+			background:url(__PUBLIC__/images/loan/zizhishenhe.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow-two {
+			background:url(__PUBLIC__/images/loan/shenqingrongzi.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow-three {
+			background:url(__PUBLIC__/images/loan/zijinfangkuan.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow-four {
+			background:url(__PUBLIC__/images/loan/qiandinghetong.png) no-repeat center 10%;
+			background-size: contain;            
+		}
+		.flow-box .flow-desc {
+			margin-top: 30px;
+			height: 200px;
+			font-size: 14px;
+			color: #feb80c;
+			position: relative;	
+			margin-bottom: 50px;
+			display: none;					
+		}
+		.flow-box .flow-desc > b {
+			background: url(__PUBLIC__/images/loan/border.png) no-repeat center center;
+			background-size: contain;
+			font-weight: normal;
+			position: absolute;
+			width: 200px;
+			height: 125px;
+			top: 75%;
+			left: -20%;
+			padding:20px 14px;
+		}
+
+		.pro-content .project-box {
+			margin-top: 60px;
+			margin-bottom: 60px;
+			height: 360px;
+			border:1px solid #e5e5e5;
+			border-radius: 4px;
+		}
+		.pro-content .project-box:hover {box-shadow: 0 0 10px #e5e5e5;}
+		.pro-content .project-box h3 {
+			border: 0;
+			padding-bottom: 20px;
+		}
+		.pro-content .project-desc {
+			margin-top: 130px;
+		}
+
+		.project1 {
+			background: url(__PUBLIC__/images/loan/cangdandiya.png) no-repeat center 10%;	
+		}
+		.project2 {
+			background: url(__PUBLIC__/images/loan/caigoudianzi.png) no-repeat center 10%;
+		}
+		.project3 {
+			background: url(__PUBLIC__/images/loan/qitazichan.png) no-repeat center 10%;	
+		}
+
+		.loan-form {margin-top:40px;margin-bottom: 60px;}
+		.loan-form .form-group .control-label {
+			font-size: 14px;
+			font-weight: 500;
+			color: #999;
+			letter-spacing: 1.5px;
+			height: 44px;
+			line-height: 1.5;			
+		}
+		.loan-form .form-group .form-control {display: inline-block;width:500px;border:1px solid #ccc;border-radius: 2px;}
+	.loan-form .form-group .form-control.error {border: 1px solid #ff2b14;/*box-shadow: 0 0 10px #ff877a;*/}
+	.loan-form .form-group .form-control:focus {border: #fdc230 !important;box-shadow: 0 0 10px #ffdb81;}
+
+	.btn-submit,
+	.btn-primary {
+		color: #fff;
+		background-color: #4b92ff;
+		border-color: 0 !important;
+		outline: 0 !important;
+	}
+	.btn-primary:hover,
+	.btn-primary:focus,
+	.btn-primary.focus,
+	.btn-primary:active,
+	.btn-primary.active,
+	.open > .dropdown-toggle.btn-primary {
+		color: #fff;
+		background-color: #4b92ff;
+		border-color: 0 !important;
+	}
+	/*按钮样式*/
+	.btn-success {
+		color: #fff;
+		background-color: #fdc230;
+		border-color: #fdc230;
+		border-radius: 4px;
+		width: 346px;
+		height: 50px;
+		margin-top: 30px;
+		margin-bottom: 14px;
+	}
+
+	.btn-success:hover,
+	.btn-success:focus,
+	.btn-success.focus,
+	.btn-success:active,
+	.btn-success.active,
+	.open > .dropdown-toggle.btn-success {
+		color: #fff;
+		background-color: #fdc230 !important;
+		border-color: #fdc230 !important;
+	}		
+	.btn-apply {
+		width: 200px;
+		height: 44px;
+		font-size: 16px;    
+		color: #fdc230;
+		background-color: #fff;
+		border-color: #fdc230;
+		border-radius: 50px;
+		margin-top:0;
+	}		
+	p.notice {font-size:14px;color:#999;}
+
+
+</style>
+<include file="Public:footer"/>
+</block>
+<block name="js">
+	<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	//鼠标滑过状态
+	$(function(){
+		$(".pro-content .project-box").mouseover(function(){
+			$(this).find(".btn-apply").css({
+				"background-color":"#fdc230",
+				"color":"#fff"				
+			});
+		});
+		$(".pro-content .project-box").mouseout(function(){
+			$(this).find(".btn-apply").css({
+				"background-color":"#fff",
+				"color":"#fdc230"
+			});
+		});
+
+		$(".flow-box").mouseover(function(){
+            $(this).find(".flow-desc").show();
+            $(this).find(".flow-title").hide();
+		});
+		$(".flow-box").mouseover(function(){
+            console.log($(this)[0]);
+            console.log($(this).find(".flow-title"));
+            console.log($(this).find(".flow-desc"));
+			$(this).find(".flow-desc").hide();
+			$(this).find(".flow-title").show();
+		});		
+	});
+
+
+	$(function(){
+		$("#loanForm").validate({
+			rules:{
+				name:{
+					required:true,
+					minlength:2
+				},
+				address:{
+					required:true
+				},					
+				mobile:{
+					required:true,
+					isValidMobile:true
+				},
+				sum:{
+					required:true					
+				},	
+				purpose:{
+					required:true
+				}				
+			},
+			messages:{
+				name:{
+					required:"用户名不能为空",
+					minlength:"用户名至少2个字符",
+				},
+				address:{
+					required:"常住地址不能为空"
+				},
+				mobile:{
+					required:"手机号不能为空",
+					isValidMobile:"手机号格式无效"
+				},
+				sum:{
+					required:"借款额度不能为空"
+				},
+				purpose:{
+					required:"借款用途不能为空"
+				}
+			},
+
+			submitHandler: function (form) {
+
+				$("#btnSubmit").attr("disabled", true).text("提交中···");
+				$.ajax({
+					url: " ",
+					data: {
+						name: $("#name").val().trim(), 
+						address: $("#address").val().trim(),
+						mobile: $("#mobile").val().trim(),
+						sum: $("#sum").val().trim(),
+						purpuse: $("#purpuse").val().trim()						
+					},
+					type: "post",
+					success: function (ret) {
+						if (ret.status == 1) {
+							$("#btnSubmit").text("提交成功，跳转中...");
+							var url = "跳转页面";
+							if (backUrl != "") url = backUrl;
+							setTimeout(function () {
+								window.location.href = url;
+							}, 1000);
+						}
+						else {
+							$("#btnSubmit").text("错误提示");
+							setTimeout(function () {
+								window.location.reload ();
+							}, 1000);								
+						}
+					}
+				})
+			}
+		})
+
+			// 手机号码验证
+			$.validator.addMethod("isValidMobile",function(value,element,params){
+
+				var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+
+				if(!reg.test(value)){
+
+					return false;
+
+				}
+
+				else{
+
+					return true;
+
+				}
+
+			});
+		})
+
+
+	</script>
+</block>

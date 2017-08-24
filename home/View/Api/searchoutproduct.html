@@ -1,0 +1,38 @@
+<table class="table  table-striped table-hover" id="searchIn">
+    <thead>
+        <tr>
+            <th data-field="product_id">编号</th>
+            <th data-field="product_name">商品名称</th>
+            <th data-field="product_no">型号</th>
+            <th data-field="quantity">数量</th>
+            <th data-field="id">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <volist name="rows" id="r">
+            <tr>
+                <td>{$r.product_id}</td>
+                <td>{$r.product_name}</td>
+                <td>{$r.product_no}</td>
+                <td>{$r.quantity}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="addOut({$r.product_id},this)">加入换出清单</button>
+                </td>
+            </tr>
+        </volist>
+    </tbody>
+</table>
+<script type="text/javascript">
+function addOut(pid, o) {
+    $(o).parent('td').parent('tr').remove();
+    $.post('__URL__/searchoutproduct', {
+        product_id: pid,
+        osn: osn
+    }, function(ret) {
+        if (ret.status == 1) {
+            toastr.success(ret.data);
+            $("#outTableList").bootstrapTable('refresh');
+        }
+    });
+}
+</script>

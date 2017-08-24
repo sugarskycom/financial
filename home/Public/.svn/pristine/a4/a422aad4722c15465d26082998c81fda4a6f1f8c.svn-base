@@ -1,0 +1,15 @@
+$(function(){
+	$(".menu li").hover(function(){
+		var i = $(this).index();
+		if(i==1 || i==3){
+			$(this).find('.one-menu').addClass('active');
+			$(this).find('ul').show();
+		}
+	},function(){
+		var i = $(this).index();
+		if(i==1 || i==3){
+			$(this).find('.one-menu').removeClass('active');
+			$(this).find('ul').hide();
+		}
+	});
+})

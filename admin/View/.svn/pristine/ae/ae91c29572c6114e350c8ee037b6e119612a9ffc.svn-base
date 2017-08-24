@@ -1,0 +1,95 @@
+<!--资产信息-->
+<div id="tab-2" class="tab-pane">
+    <div class="panel-body">
+        <form action="" method="post" id="assetform" class="form-horizontal">
+            <h5>房产信息</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">房产数量：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="number" class="form-control" name="house" id="house" value="{$userinfo.house}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">是否有房贷：</label>
+                <div class="col-md-4 col-sm-4">
+                    <div class="radio-inline radio">
+                        <input type="radio" value="1" name="housing_loan" id="housing_loan_1" <eq name="userinfo.housing_loan" value="1">checked</eq>>
+                        <label for="housing_loan_1">有</label>
+                    </div>
+                    <div class="radio-inline radio">
+                        <input type="radio" value="0" name="housing_loan" id="housing_loan_2" <eq name="userinfo.housing_loan" value="0">checked</eq>>
+                        <label for="housing_loan_2">无</label>
+                    </div>
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>车辆信息</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">车辆数量：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="number" class="form-control" name="car" id="car" value="{$userinfo.car}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">是否有车贷：</label>
+                <div class="col-md-4 col-sm-4">
+                    <div class="radio-inline radio">
+                        <input type="radio" value="1" name="car_loan" id="car_loan_1" <eq name="userinfo.car_loan" value="1">checked</eq>>
+                        <label for="car_loan_1">有</label>
+                    </div>
+                    <div class="radio-inline radio">
+                        <input type="radio" value="0" name="car_loan" id="car_loan_2" <eq name="userinfo.car_loan" value="0">checked</eq>>
+                        <label for="car_loan_2">无</label>
+                    </div>
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>货物信息</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">货物类型：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="goods_type" id="goods_type">
+                        <option value="0" <eq name="userinfo.goods_type" value="1">selected</eq>>无</option>
+                        <option value="1" <eq name="userinfo.goods_type" value="1">selected</eq>>电视</option>
+                        <option value="2" <eq name="userinfo.goods_type" value="2">selected</eq>>空调</option>
+                        <option value="3" <eq name="userinfo.goods_type" value="3">selected</eq>>冰箱</option>
+                        <option value="4" <eq name="userinfo.goods_type" value="4">selected</eq>>洗衣机</option>
+                        <option value="5" <eq name="userinfo.goods_type" value="5">selected</eq>>烟机灶具</option>
+                        <option value="6" <eq name="userinfo.goods_type" value="6">selected</eq>>热水器</option>
+                        <option value="7" <eq name="userinfo.goods_type" value="7">selected</eq>>冰箱冷柜</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">货物数量：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="number" class="form-control" name="goods" id="goods" value="{$userinfo.goods}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>其他资产信息</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">资产类型：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="other_type" id="other_type" value="{$userinfo.other_type}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">资产数量：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="number" class="form-control" name="other" id="other" value="{$userinfo.other}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <div class="col-md-offset-3 col-sm-offset-4 col-md-3">
+                    <button type="submit" class="btn btn-success" id="btn2" data-id="">保存修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,240 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="ibox-content">
+        <div id="toolbar">
+            <form class="form-inline" method="post">
+                <input type="text" class="form-control" placeholder="借款唯一号" id="key">
+                <button class="btn btn-primary" id="searchBtn">查询</button>
+                <button class="btn btn-default" id="addLoan" type="button">新增</button>
+            </form>
+        </div>
+        <table class="table table-striped table-hover" id="table" data-toggle="table" data-url="__ACTION__" data-method="get" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[10,20,30,50,100,200]" data-sort-order="desc" data-query-params="params" data-show-pagination-switch="false" data-search="false" data-search-on-enter-key="true" data-trim-on-search="false" data-show-columns="true" data-toolbar="#toolbar" data-show-export="true" data-export-types="['excel']">
+            <thead>
+                <tr>
+                    <th data-field="title">借款标题</th>
+                    <th data-field="bno">借款唯一号</th>
+                    <th data-field="project_name">借款人</th>
+                    <th data-field="relation_name">关联用户</th>
+                    <th data-field="amount" data-formatter="formatCny">借款金额</th>
+                    <th data-field="time_long" data-formatter="formatQx">借款期限</th>
+                    <th data-field="borrowing_date" data-formatter="formatDate">借款日期</th>
+                    <th data-field="year_rate" data-formatter="formatRate">年化利率</th>
+                    <th data-field="repay_type" data-formatter="formatRtype">还款方式</th>
+                    <th data-field="product_type" data-formatter="formatPtype">产品类型</th>
+                    <th data-field="asset_from" data-formatter="formatAtype">渠道</th>
+                    <th data-field="add_time" data-formatter="formatTime">提交时间</th>
+                    <th data-field="status" data-formatter="formatStatus">状态</th>
+                    <th data-field="lid" data-formatter="formatAction">操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</block>
+<block name="js">
+    <include file="Public:bootstrap-table" />
+    <script src="{$Think.config.RESOURCE_URL}/components/export/bootstrap-table-export.js"></script>
+    <script src="{$Think.config.RESOURCE_URL}/components/export/table-export.js"></script>
+    <link href="{$Think.config.RESOURCE_URL}/components/datepicker/datepicker3.css" rel="stylesheet">
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/datepicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/datepicker/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#addLoan").click(function() {
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_DEFAULT,
+                title: '新增借贷信息',
+                size: BootstrapDialog.SIZE_WIDE,
+                draggable:true,
+                closable:false,
+                message: function() {
+                    return $("<div></div>").load('__URL__/addloan');
+                }
+            })
+        });
+        $("#searchBtn").click(function() {
+            var v = $.trim($('#key').val());
+            var params = {
+                bno: v,
+            };
+            $('#table').bootstrapTable('refresh', {
+                query: params
+            });
+            return false;
+        });
+    });
+
+    function params(params) {
+        params.flag = 'load';
+        return params;
+    }
+
+    function formatRtype(v, r, i) {
+        if (v == '1')
+            return '一次性还本付息';
+        else if (v == '2') {
+            return '按月付息到期还本';
+        } else if (v == '3') {
+            return '按日计息';
+        }
+    }
+
+    function formatPtype(v, r, i) {
+        if (v == '1')
+            return '仓单贷';
+        else if (v == '2') {
+            return '配资单';
+        } else if (v == '3') {
+            return '其他';
+        }
+    }
+
+    function formatQx(v, r, i) {
+        if (r.fee_type == '1') {
+            return v + '个月';
+        } else if (r.fee_type == '2') {
+            return v + '天';
+        }
+    }
+
+    function formatRate(v, r, i) {
+        return v.replace('.00', '') + "%";
+    }
+
+    function formatAtype(v, r, i) {
+        if (v == '1') {
+            return '安润';
+        } else if (v == '2') {
+            return '钱包';
+        }
+    }
+
+    function formatStatus(v, r, i) {
+        if (v == '0') {
+            return '待审核';
+        } else if (v == '1') {
+            return '已审核';
+        } else if (v == '2') {
+            return '已逾期';
+        }
+    }
+
+    function formatAction(v, r, i) {
+        var html = ''
+        if (r.status == '0' && r.is_full == '0') {
+            html += '<a href="javascript:;" onclick="editLoan(' + r.lid + ')" class="btn btn-success btn-xs">修改借款信息</a>';
+            html += '<br>';
+            html += '<a href="javascript:;" onclick="delLoan(\'' + r.lid + '\')" class="btn btn-danger btn-xs">删除借款信息</a>';
+        } else if (r.status == '1' && r.is_full == '0') {
+            html += '<a href="javascript:;" onclick="addInvest(' + r.lid + ')" class="btn btn-info btn-xs">添加投资信息</a>';
+            html += '<br>';
+            html += '<a href="javascript:;" onclick="delLoan(\'' + r.lid + '\')" class="btn btn-danger btn-xs">删除借款信息</a>';
+        } else {
+            html += '<a href="javascript:;" onclick="viewInfo(\'' + r.lid + '\')" class="btn btn-primary btn-xs">查看借款信息</a>';
+            html += '<br>';
+            html += '<a href="javascript:;" onclick="viewRepay(' + r.lid + ')" class="btn btn-default btn-xs">查看还款计划</a>';
+            html += '<br>';
+            html += '<a href="javascript:;" onclick="viewInvest(' + r.lid + ')" class="btn btn-success btn-xs">查看投资列表</a>'
+        }
+        return html;
+    }
+
+    function delLoan(lid) {
+        cfm('您确定删除吗？删除后将不可以恢复', function(res) {
+            if (res) {
+                $.post("__URL__/delloan", {
+                    lid: lid
+                }, function(ret) {
+                    if (ret.status == 1) {
+                        $("#table").bootstrapTable("refresh");
+                    } else {
+                        alt(ret.error);
+                    }
+                });
+            } else {
+                return false;
+            }
+        });
+    }
+
+    function viewInfo(lid) {
+        BootstrapDialog.show({
+            title: '查看借贷信息',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            size: BootstrapDialog.SIZE_WIDE,
+            message: function() {
+                return $("<div></div>").load("__URL__/viewinfo?lid=" + lid);
+            }
+        })
+    }
+
+    function viewInvest(lid) {
+
+        BootstrapDialog.show({
+            title: '投资列表',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            size: BootstrapDialog.SIZE_WIDE,
+            message: function() {
+                return $('<div></div>').load('__URL__/investlist?lid=' + lid);
+            },
+            cssClass: 'bounceInDown animated',
+            onshown: vertical
+        })
+    }
+
+    function viewRepay(lid) {
+
+        BootstrapDialog.show({
+            title: '还款计划',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            size: BootstrapDialog.SIZE_WIDE,
+            message: function() {
+                return $('<div></div>').load('__URL__/repayplan?lid=' + lid);
+            },
+            cssClass: 'bounceInDown animated',
+            onshown: vertical
+        })
+    }
+
+    function editLoan(lid) {
+        BootstrapDialog.show({
+            title: '修改借款信息',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            size: BootstrapDialog.SIZE_WIDE,
+            message: function() {
+                return $('<div></div>').load('__URL__/editloan?lid=' + lid);
+            },
+            cssClass: 'bounceInDown animated',
+            onshown: vertical
+        });
+    }
+
+    function addInvest(lid) {
+        BootstrapDialog.show({
+            title: '添加投资信息',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            size: BootstrapDialog.SIZE_WIDE,
+            message: function() {
+                return $('<div></div>').load('__URL__/addinvest?lid=' + lid);
+            }
+        });
+    }
+    </script>
+</block>
+<block name="css">
+    <style>
+    .add-loan table {
+        width: 100%;
+    }
+    
+    .add-loan table th {
+        max-width: 160px;
+        font-weight: normal;
+        text-align: right;
+    }
+    
+    .add-loan table td {
+        padding: 7px 0;
+    }
+    </style>
+</block>

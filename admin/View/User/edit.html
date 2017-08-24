@@ -1,0 +1,55 @@
+<extend name="Public:base" />
+<block name="title">编辑员工信息</block>
+<block name="content">
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox">
+<div class="ibox-title">
+    <form id="form" action="/User/edit" method="post" class="form-horizontal" novalidate="novalidate">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">编号：</label>
+            <div class="col-sm-3 help-block">
+                {$data.user_id}
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">姓名：</label>
+            <div class="col-sm-3">
+                {$data.realname}
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">权限角色：</label>
+            <div class="col-sm-3">
+                <select class="form-control" name="role_id" id="role_id">
+                    <volist name="roles" id="r">
+                        <option value="{$r.id}" <eq name="r.id" value="$data.role_id">selected="selected"</eq>>{$r.name}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">是否开启：</label>
+            <div class="col-sm-3">
+                <div class="checkbox checkbox-success">
+                    
+                        <input type="checkbox" name="is_show" id="is_show" <eq name="data.is_show" value="1">checked="checked"</eq> value="1"> <label for="is_show">是</label>
+                </div>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <input type="hidden" value="{$data.user_id}" name="user_id" id="user_id">
+                <button type="submit" class="btn btn-primary" id="btn" data-id="">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>    
+</div>    
+</block>

@@ -1,0 +1,35 @@
+$(function(){
+	// 帮助中心下拉菜单
+	$(".top-right li").hover(function(){
+		$(this).find('.one-level').addClass('active');
+		$(this).find('.two-level').show();
+	},function(){
+		$(this).find('.one-level').removeClass('active');
+		$(this).find('.two-level').hide();		
+	});
+
+    // 头部导航下拉菜单
+	$(".menu li").hover(function(){
+		var i = $(this).index();
+		if(i==1 || i==3){
+			$(this).find('.one-menu').addClass('active');
+			$(this).find('ul').show();
+		}
+	},function(){
+		var i = $(this).index();
+		if(i==1 || i==3){
+			$(this).find('.one-menu').removeClass('active');
+			$(this).find('ul').hide();
+		}
+	});
+
+    $(function () {
+        if($(".loginusername")){
+            $(".daily-recommendation").show();
+            $(".suggestion").hide();
+        }else{
+            $(".daily-recommendation").hide();
+            $(".suggestion").show();
+        }
+    })
+})

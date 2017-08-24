@@ -1,0 +1,51 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>公告栏目</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                <a class="close-link"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <include file="form" />
+        </div>
+    </div>
+</block>
+<block name="js">
+    <!--Baidu Editor-->
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{$Think.config.RESOURCE_URL}/components/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script>
+    $(function() {
+        $("#cat_id").find('option').attr('disabled',false);
+        $("#form").validate({
+            rules: {
+                cat_id:{
+                    required:true,
+                },
+                title: {
+                    required: true
+                }
+            }
+            ,
+            messages: {
+                cat_id:{
+                    required:"选择一个分类",
+                },
+                title: {
+                    required: "文章标题不能为空"
+                }
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent('div').next('div'));
+            },
+            errorClass: "error"
+        });
+        //文章编辑器
+        UE.getEditor('content');
+    });
+    </script>
+</block>

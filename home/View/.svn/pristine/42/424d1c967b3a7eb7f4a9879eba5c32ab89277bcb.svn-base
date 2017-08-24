@@ -1,0 +1,131 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="loginColumns animated fadeInDown">
+        <div class="ibox-content">
+            <div class="row" style="margin-bottom: 24px;">
+                <div class="col-md-6" style="font-size: 18px;color: #4c4c4c;">登录账号</div>
+                <div class="col-md-6">
+                    <p class="text-muted text-center">
+                        <small>还没有账号?</small><a href="{:U('Register/index')}" class="pull-right">创建账号</a>
+                    </p>
+                </div>
+            </div>
+            <form class="m-t" role="form" action="javascript:;">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="用户名/邮箱/手机号" required name="username" id="username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="密码" required name="password" id="password">
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="验证码" required name="code" id="code">
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="javascript:;" title="更换验证码" style="width: 140px;height: 40px;">
+                                        <img src="{:U('Verify/load')}" onclick="this.src='{:U('Verify/load')}/?rnd='+Math.random()">
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <a href="{:U('Forget/index')}" class="pull-right" style="margin-top: 12px;">
+                            <small>忘记密码?</small>
+                        </a>
+                        <button type="submit" class="btn btn-primary block full-width m-b" id="btn">登录</button>
+
+
+
+                    </form>
+        </div>
+ </div>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .loginColumns{
+            background: url("/Public/images/login/loginbg.png") no-repeat 100% 100%;
+            position: relative;
+            height: 556px;
+            box-sizing: border-box;
+            margin-bottom: -30px;
+        }
+        .ibox-content{
+            width: 410px;
+            height: 420px;
+            position: absolute;
+            left: 55%;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 60px;
+        }
+        .loginColumns{
+            max-width: 1920px;
+        }
+        .form-group .form-control{
+            width: 310px;
+            height: 40px;
+            border-radius: 4px;
+        }
+        #code{
+            width: 150px;
+        }
+        #btn{
+            font-size: 16px;
+            color: #ffffff;
+            width: 310px;
+            height: 40px;
+            border-radius: 4px;
+            margin-top: 80px;
+        }
+        .form-group{
+            margin-bottom: 24px;
+        }
+        .foot-wrapper{
+            margin-top: 0;
+        }
+    </style>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        $(function(){
+            $("#btn").click(function(){
+                var username = $.trim($("#username").val());
+                var password = $.trim($("#password").val());
+                var code = $.trim($("#code").val());
+                if(username.length<5){
+                    alt('用户名至少5位');
+                    return false;
+                }
+                else if(password.length<6){
+                    alt('密码至少6位');
+                    return false;
+                }
+                else if(code.length==0){
+                    alt('验证不能为空');
+                    return false;
+                }
+                else{
+                    $("#btn").prop('disabled',true);
+                    $.post("__URL__/index",{username:username,password:password,code:code},function(ret){
+                        if(ret.status==0){
+                            alt(ret.error,function(){
+                                $("#btn").prop('disabled',false);
+                            });
+
+                        }
+                        else{
+                            $("#btn").text(ret.data);
+                            setTimeout(function(){
+                                window.location.href = $("#backurl").val();
+                            },500);
+                        }
+                    });
+                    return false;
+                }
+            });
+        })
+    </script>
+</block>

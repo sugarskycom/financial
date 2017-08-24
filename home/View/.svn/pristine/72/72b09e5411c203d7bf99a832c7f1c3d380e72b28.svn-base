@@ -1,0 +1,128 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    
+    <div class="container">
+        <!-- 面包屑导航栏 -->
+        <ul class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a></li>
+            <li><a href="{:U('Help/feedback')}">投诉建议</a></li>
+        </ul>
+<!--         <div class="mb20 mt20">
+            <label for="">一、投诉类型</label>
+            <div class="radio">
+                <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />信息披露</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />投诉客服</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" />回款问题</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" />出借问题</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" />意见建议</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optionsRadios" id="optionsRadios6" value="option6" />其他投诉（手动输入）
+                       <input type="text" value="" />
+                </label>
+            </div>
+        </div>
+        <div class="mb20">
+            <label for="" style="vertical-align: top;">二、投诉内容描述:</label><textarea name="Remarks" id="" cols="40" rows="5"></textarea>
+        </div>
+        <div class="mb20">
+            <label for="">三、您的姓名:</label><input type="text" />
+        </div>
+        <div class="mb20">
+            <label for="">四、联系方式:</label><input type="text" />
+        </div>
+        <p class="note">以上投诉只限于注册用户，含未充值用户。</p> -->
+
+<form class="advise-form J_advise-form">
+                        <div class="advise-form-item">
+                            <p class="advise-label">选择反馈类型：</p>
+                            <ul class="advise-types clearfix J_types">
+                                <li>
+                                    <span class="advise-txt">信息披露</span>
+                                </li>
+                                <li>
+                                    <span class="advise-txt">投诉客服</span>
+                                </li>
+                                <li>
+                                    <span class="advise-txt">回款问题</span>
+                                </li>
+                                <li class="current">
+                                    <span class="advise-txt">出借问题</span>
+                                </li>
+                                <li>
+                                    <span class="advise-txt">意见建议</span>
+                                </li>
+                                <li>
+                                    <span class="advise-txt">其他投诉（手动输入）</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="advise-form-item">
+                            <p class="advise-label">二、请详细描述您的建议、意见、问题等：</p>
+                            <textarea name="J_detail" id="J_detail" class="J_detail form-default" rows="8" data-field="co_advantage" placeholder="必填" maxlength="1000"></textarea>
+                             <span class="tip"><i class="icon"></i><span class="tip-txt"></span></span>
+                        </div>
+                        <div class="advise-form-item">
+                            <p class="advise-label screenshot-label">三、请填写您的联系方式</p>
+                        </div>
+                        <div class="advise-form-item">
+                            <span class="advise-label">姓名:</span>
+                            <input type="text" placeholder="必填" id="J_email" class="J_input input form-default" data-field="email" maxlength="50">
+                            <span class="tip"><i class="icon"></i><span class="tip-txt"></span></span>
+                        </div>
+                        <div class="advise-form-item">
+                            <span class="advise-label">联系方式:</span>
+                            <input type="text" placeholder="必填" id="J_phone" class="J_input input form-default" data-field="phone" maxlength="11">
+                            <span class="tip"><i class="icon"></i><span class="tip-txt"></span></span>
+                        </div>
+                        <div class="btn btn-default btn-block clearfix">
+                            <a href="javascript:;" class="form-btn positive-form-btn J_submit">提交</a>
+                        </div>
+                    </form>
+</div>       
+</div>
+
+</block>
+<block name="css">
+    <style>
+        .mt20 {margin-top:20px;}
+        .mb20 {margin-bottom: 20px;}
+        label {margin-right: 10px;}
+.advise-form .advise-types li {
+    float: left;
+    display: inline;
+    position: relative;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 30px;
+    height: 30px;
+    overflow: visible;
+    cursor: pointer;
+}
+.current {background-color: #3f80e8;}
+
+.advise-form textarea {
+    width: 621px;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+}
+.advise-form .input {
+    border: 1px solid #ddd;
+    width: 225px;
+    height: 30px;
+    padding-left: 5px;
+}
+
+    </style>
+</block>

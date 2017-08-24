@@ -1,0 +1,25 @@
+<!--绑定银行卡-->
+<div id="tab-5" class="tab-pane">
+    <div class="panel-body">
+        <div class="card-list clearfix">
+            <volist name="bkc_list" id="bkc">
+            <div class="item">
+                <span class="name">{$bkc.bank}</span>
+                <span class="no">{$bkc.number}</span>
+                <span class="full-name">{$bkc.bank_name}</span>
+                <span class="time">{$bkc.add_time|date="Y/m/d H:i",###}</span>
+            </div>
+            </volist>
+            <div class="add-item" id="btnBank">
+                <div><i class="fa fa-plus fa-3x"></i></div>
+                <span>添加银行卡</span>
+            </div>
+            <if condition="$userinfo.pay_password eq ''">
+            <div class="clearfix"></div>
+            <div class="alert alert-warning" style="margin-top:25px;">
+                <a href="javascript:;" onclick="setPayPassword()">设定交易密码</a>
+            </div>
+            </if>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <include file="Public:banner" />
+    <!--面包屑导航-->
+    <div class="container">
+
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+
+</block>

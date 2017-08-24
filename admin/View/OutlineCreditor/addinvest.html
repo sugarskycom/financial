@@ -1,0 +1,162 @@
+<table class="table table-striped" id="addinvesttable">
+<thead>
+<tr>
+	<th>投资人</th>
+	<th>投资金额</th>
+	<th>投资日期</th>
+	<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>
+	<div class="input-group">
+	<input type="text" class="form-control" placeholder="投资人账户" name="username">
+	<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="search(this)">查询</button>
+	<input type="hidden" name="uid" value="0">
+	</div>
+	</div>
+	</td>
+	<td>
+		<input type="number" class="form-control" name="amount" value="0" onkeyup="total(this,this.value)">
+	</td>
+	<td>
+		<input type="text" class="form-control date" name="date" value="{:date('Y-m-d')}" readonly> 
+	</td>
+	<td>
+		<button type="button" class="btn btn-danger" onclick="$(this).parent('td').parent('tr').remove()">移除</button>
+	</td>
+</tr>
+</tbody>
+<tfoot>
+	<tr>
+		<td colspan="3">
+			借款总额：<span class="ltotal">{$data.amount|number_format=0}</span>
+			投资总额：<span class="total">0</span>
+			完成比率：<span class="scale">0</span>%
+			
+		</td>
+		<td class="text-right">
+			<a href="javascript:;" onclick="addrow()">+ 新增一行投资</a>
+		</td>
+	</tr>
+</tfoot>
+</table>
+<div class="text-right">
+<button type="button" class="btn btn-primary" disabled onclick="saveBtn()" id="saveBtn">
+	保存投资信息
+</button>
+</div>
+<style type="text/css">
+.total,.scale,.ltotal{
+	display: inline-block;
+	color: red;
+	padding: 0 10px;
+}
+</style>
+<script type="text/javascript">
+function search(o){
+	var obj = $(o).parent('div').parent('div').find('input[name=username]');
+	var input = $.trim(obj.val());
+	if(input=='') return ''
+	$.post("__ACTION__",{keyword:input,flag:'search'},function(ret){
+		if(ret.status==1){
+			if(ret.data==null){
+				$(o).parent('div').parent('div').find('input[name=uid]').val(0);
+				error(obj,'此用户不存在');
+			}
+			else{
+				obj.val(ret.data.realname+"/"+ret.data.mobile);
+				$(o).parent('div').parent('div').find('input[name=uid]').val(ret.data.uid);
+			}
+		}
+	});
+}
+function addrow(){
+	var obj = $("#addinvesttable tbody");
+	var html =  '<tr>'+
+	'<td><div class="input-group"><input type="text" class="form-control" placeholder="投资人账户" name="username"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="search(this)">查询</button><input type="hidden" name="uid" value="0"></div></div></td>'+
+	'<td><input type="number" class="form-control" name="amount" value="0" onkeyup="total(this,this.value)"></td>'+
+	'<td><input type="text" class="form-control date" name="date" value="{:date(\'Y-m-d\')}" readonly></td>'+
+	'<td><button type="button" class="btn btn-danger" onclick="$(this).parent(\'td\').parent(\'tr\').remove()" >移除</button></td>'
+	'</tr>';
+	obj.append(html)
+	//加载时间控件
+	dateControl();
+}
+function total(o,v){
+	var tr = $("#addinvesttable tbody tr");
+	var amount = parseFloat('{$data.amount}');
+	var total = 0;
+	$.each(tr,function(){
+		var uid = $.trim($(this).find('input[name=uid]').val());
+		var ao = $(this).find('input[name=amount]');
+		var vv = ao.val();
+		if(uid!='0'){
+			if(total<=amount){
+				total += parseFloat(vv);
+			}
+		}
+	});
+	if(isNaN(total)) total = 0;
+	if(total<=amount){
+		$(".total").text(total);
+		var x = (total/amount)*100;
+		$(".scale").text(x.toFixed(1));
+		if(total==amount)
+			$("#saveBtn").attr('disabled',false);
+		else
+			$("#saveBtn").attr('disabled',true);
+	}
+	else{
+		alt("投资金额已经超出借款金额");
+	}
+}
+function saveBtn(){
+	var amount = parseFloat('{$data.amount}');
+	var total = 0;
+	var data = '';
+	var tr = $("#addinvesttable tbody tr");
+	$.each(tr,function(){
+		var uid = $.trim($(this).find('input[name=uid]').val());
+		var ao = $(this).find('input[name=amount]');
+		var vv = ao.val();
+		var date = $(this).find('input[name=date]').val();
+		total += parseFloat(vv);
+		data += uid+":"+vv+":"+date+",";
+	});
+	//console.info(total+",,"+amount)
+	if(total!=amount){
+		alt("错误！投资总额应等于借款总额");
+		return false;
+	}
+	else{
+		$.post("__ACTION__",{data:data,flag:'save',lid:'{$data.lid}'},function(ret){
+			if(ret.status==1){
+				alt(ret.data,function(){
+					closeDialog();
+					$("#table").bootstrapTable('refresh');
+				})
+			}	
+			else{
+				alt(ret.error);
+			}
+		})
+	}
+}
+
+function dateControl(){
+	$('.date').datepicker({
+	    startView: 1,
+	    todayBtn: "linked",
+	    keyboardNavigation: false,
+	    forceParse: false,
+	    autoclose: true,
+	    format: "yyyy-mm-dd",
+	    language: 'zh-CN',
+	    pickerPosition: "bottom-left",
+	});
+}
+//加载时间控件
+dateControl();
+</script>

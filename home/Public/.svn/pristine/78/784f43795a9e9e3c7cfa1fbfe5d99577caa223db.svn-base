@@ -1,0 +1,137 @@
+/****我的账户页****/
+.white-bg {
+	background-color: #fff;
+	margin-top: 70px;
+	margin-bottom: 30px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.white-bg .breadcrumb {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding:0;        /*重置样式*/
+	padding-left: 50px; 
+	border-bottom: 1px solid #e5e5e5;
+	font-size: 16px;
+	color: #999;
+	height: 60px;
+	line-height: 60px;
+}
+
+.ibox .ibox-title {
+	padding: 0;
+	border: 0;
+}
+
+.ibox-title h1 {
+	height: 50px;
+	line-height: 50px;
+	background-color: #fffcf5;
+	color: #d38129;
+	font-size: 18px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.ibox .ibox-title form {
+	margin-top: 50px;
+}
+
+.ibox .ibox-title form .form-group {
+	margin-bottom: 40px;
+}
+
+.ibox .ibox-title .form-group > .control-label {
+	font-size: 14px;
+	font-weight: 500;
+	color: #999;
+/*	padding-right: 20px;*/
+	letter-spacing: 1.5px;
+	height: 44px;
+	line-height: 1.8;
+}
+
+.h44 {
+	height: 44px;
+	line-height: 2.5;
+}
+.h44 span, .h44 input {font-size: 16px;color: #666;} 
+.ibox .ibox-title .form-group .origin {padding-right: 10px;}
+
+.ibox .ibox-title .form-group .new a {
+	font-size: 14px;
+	color: #3090fd;
+}
+
+.ibox .ibox-title .form-control {
+	width: 346px;
+	height: 44px;
+	display: inline-block;
+	margin-right: 25px;
+}
+
+.ibox .ibox-title .form-control.error {
+	border: 1px solid #ff2b14;
+	box-shadow: 0 0 10px #ff877a;
+}
+
+.ibox .ibox-title .form-control:focus {
+	border: #fdc230 !important;
+	box-shadow: 0 0 10px #ffdb81;
+}
+p.notice {
+text-align: center;
+margin-bottom: 50px;
+font-size: 14px;
+color: #999;
+}
+/*按钮样式*/
+.btn-success {
+	color: #fff;
+	background-color: #fdc230;
+	border-color: #fdc230;
+	border-radius: 4px;
+	width: 346px;
+	height: 50px;
+	margin-top: 30px;
+	margin-bottom: 14px;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success.focus,
+.btn-success:active,
+.btn-success.active,
+.open > .dropdown-toggle.btn-success {
+	color: #fff;
+	background-color: #ffce55 !important;
+	border-color: #fdc230 !important;
+}
+
+.reminder {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 50px;
+	font-size: 12px;
+	border-top: 1px solid #e5e5e5;
+}
+
+.reminder ol {
+	color: #666;
+}
+
+.reminder ol li {
+	color: #b2b2b2;
+	padding-top: 20px;
+}
+
+label.fa-exclamation-circle {
+	font-size: 16px;
+	color: #ff2b14;
+	margin-left: 10px;
+	position: absolute;
+	left: 60%;
+	bottom: 20%;
+	display: none !important;
+}

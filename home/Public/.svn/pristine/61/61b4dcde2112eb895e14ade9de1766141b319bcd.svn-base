@@ -1,0 +1,169 @@
+.tooltip-inner{
+	max-width: 300px;
+}
+body{
+	font-family: "Microsoft YaHei";
+}
+.header{
+	width: 100%;
+	background-color: #fff;
+	height: 80px;
+}
+#wrapper{
+	max-width: 1200px;
+	margin:0 auto;
+	overflow: visible;
+}
+.logo img{
+	/*height: 80px;*/
+}
+.logo {
+	height: 80px;
+	line-height: 80px;
+}
+.main-nav .nav>li.active{
+	border-left-color: transparent;
+	background-color: transparent;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.main-nav ul.nav{
+	margin-top: 17px;
+}
+.breadcrumb{
+	margin-bottom: 30px;
+}
+.project-detail{
+	border:1px solid #ccc;
+	padding: 30px;
+}
+.text-red{
+	color: red;
+}
+.form-group label{
+	font-weight: 500;
+}
+.check-dl dt{
+    padding-right: 10px;
+}
+.check-dl .even{
+    background-color: #f7f7f7;
+}
+.check-dl dt,.check-dl dd{
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ededed;
+    line-height: 40px;
+}
+.check-dl dt{
+    color:#666;
+}
+.check-dl dd{
+  margin-left: 0;
+}
+.nav>li>a{
+	color:#333;
+}
+.copyright{
+	text-align: center;
+}
+.breadcrumb{
+	/*background-color: transparent;*/
+	margin-top: 30px;
+	padding: 15px;
+	border-radius: 0;
+}
+.card-list{
+}
+.card-list .item{
+	float:left;
+	margin-right: 20px;
+	width:300px;
+	background-color: rgb(198,82,85);
+	border-radius: 5px;
+	color: #fff;
+	padding:0;
+	/*cursor: pointer;*/
+	position: relative;
+}
+
+.card-list .item:hover{
+	/*background-color: rgba(198,82,85,0.8);*/
+}
+
+.card-list .item span{
+	display: block;
+}
+.card-list .item span.name{
+	text-align: left;
+	padding-left: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+.card-list .item span.no{
+	background-color: #333;
+	line-height: 36px;
+	font-size: 20px;
+	font-family: arial;
+	font-weight: 600;
+	text-align: right;
+	padding-right: 15px;
+}
+.card-list .item span.full-name{
+	padding: 10px 15px 10px 0;
+	text-align: center;
+	font-size: 14px;
+}
+.card-list .item span.time{
+	text-align: right;
+	line-height: 180%;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+.card-list .add-item{
+	float:left;
+	margin-right: 20px;
+	width:296px;
+	background-color: #fff;
+	border-radius: 5px;
+	border:2px dashed #ccc;
+	height: 151px;
+	position: relative;
+	cursor: pointer;
+}
+.card-list .add-item div{
+	position: absolute;
+	left:80px;
+	top:50px;
+}
+.card-list .add-item div i{
+	color: #ccc;
+}
+.card-list .add-item span{
+	color: #ccc;
+	position: absolute;
+	left:125px;
+	top:60px;
+}
+@media (min-width: 1200px){
+	.modal-lg {
+	    width: 1100px;
+	}
+}
+.text-gray{
+	color:#ccc;
+}
+.text-middle,
+.table>tbody>tr>td.text-middle,
+.table>tbody>tr>th.text-middle{
+	vertical-align: middle;
+}
+.project-table h3{
+	font-weight: 500;
+}
+.error{
+	color:red;
+}

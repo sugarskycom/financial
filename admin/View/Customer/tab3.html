@@ -1,0 +1,160 @@
+<!--工作信息-->
+<div id="tab-3" class="tab-pane">
+    <div class="panel-body">
+        <form action="" method="post" id="companyform" class="form-horizontal">
+            <h5>公司信息</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">公司名称：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="company" id="company" value="{$userinfo.company}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">公司类别：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="company_cat" id="company_cat">
+                        <option value="">未选择</option>
+                        <option value="1" <eq name="userinfo.company_cat" value="1">selected</eq>>国家及地方政府行政机构</option>
+                        <option value="2" <eq name="userinfo.company_cat" value="2">selected</eq>>事业单位</option>
+                        <option value="3" <eq name="userinfo.company_cat" value="3">selected</eq>>学校及科研单位 </option>
+                        <option value="4" <eq name="userinfo.company_cat" value="4">selected</eq>>央企（包括下级单位）</option>
+                        <option value="5" <eq name="userinfo.company_cat" value="5">selected</eq>>一般国企（包括下级单位）</option>
+                        <option value="6" <eq name="userinfo.company_cat" value="6">selected</eq>>外资企业</option>
+                        <option value="7" <eq name="userinfo.company_cat" value="7">selected</eq>>台港澳企业</option>
+                        <option value="8" <eq name="userinfo.company_cat" value="8">selected</eq>>合资企业</option>
+                        <option value="9" <eq name="userinfo.company_cat" value="9">selected</eq>>民营企业</option>
+                        <option value="10" <eq name="userinfo.company_cat" value="10">selected</eq>>个体经营</option>
+                        <option value="11" <eq name="userinfo.company_cat" value="11">selected</eq>>其他</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">所属行业：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="industry" id="industry">
+                        <option value="">未选择</option>
+                        <option value="1" <eq name="userinfo.industry" value="1">selected</eq>>采掘业</option>
+                        <option value="2" <eq name="userinfo.industry" value="2">selected</eq>>地质勘查业</option>
+                        <option value="3" <eq name="userinfo.industry" value="3">selected</eq>>科学研究/技术服务</option>
+                        <option value="4" <eq name="userinfo.industry" value="4">selected</eq>>水利/环境/公共设施管理</option>
+                        <option value="5" <eq name="userinfo.industry" value="5">selected</eq>>租赁/商务服务</option>
+                        <option value="6" <eq name="userinfo.industry" value="6">selected</eq>>军队/武警</option>
+                        <option value="7" <eq name="userinfo.industry" value="7">selected</eq>>国际组织</option>
+                        <option value="8" <eq name="userinfo.industry" value="8">selected</eq>>制造业</option>
+                        <option value="9" <eq name="userinfo.industry" value="9">selected</eq>>电信/通信/计算机/软件/互联网</option>
+                        <option value="10" <eq name="userinfo.industry" value="10">selected</eq>>国家机关/党政机关/社会团体</option>
+                        <option value="11" <eq name="userinfo.industry" value="11">selected</eq>>媒体/广告/广播/电影/电视</option>
+                        <option value="12" <eq name="userinfo.industry" value="12">selected</eq>>零售/批发</option>
+                        <option value="13" <eq name="userinfo.industry" value="13">selected</eq>>教育/培训</option>
+                        <option value="14" <eq name="userinfo.industry" value="14">selected</eq>>社会服务业</option>
+                        <option value="15" <eq name="userinfo.industry" value="15">selected</eq>>金融/保险/法律</option>
+                        <option value="16" <eq name="userinfo.industry" value="16">selected</eq>>交通运输/仓储/邮政房地产业</option>
+                        <option value="17" <eq name="userinfo.industry" value="17">selected</eq>>水/电/煤/气/能源生产供应</option>
+                        <option value="18" <eq name="userinfo.industry" value="18">selected</eq>>住宿/餐饮</option>
+                        <option value="19" <eq name="userinfo.industry" value="19">selected</eq>>医疗/卫生/保健</option>
+                        <option value="20" <eq name="userinfo.industry" value="20">selected</eq>>建筑/工程</option>
+                        <option value="21" <eq name="userinfo.industry" value="21">selected</eq>>农/林/牧/渔</option>
+                        <option value="22" <eq name="userinfo.industry" value="22">selected</eq>>文化/娱乐服务业</option>
+                        <option value="23" <eq name="userinfo.industry" value="23">selected</eq>>体育/艺术</option>
+                        <option value="24" <eq name="userinfo.industry" value="24">selected</eq>>社会福利/公益事业</option>
+                        <option value="25" <eq name="userinfo.industry" value="25">selected</eq>>其他</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">公司规模：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="scale" id="scale">
+                        <option value="">未选择</option>
+                        <option value="1" <eq name="userinfo.scale" value="1">selected</eq>>10人以下</option>
+                        <option value="2" <eq name="userinfo.scale" value="2">selected</eq>>11-100人</option>
+                        <option value="3" <eq name="userinfo.scale" value="3">selected</eq>>101-500人</option>
+                        <option value="4" <eq name="userinfo.scale" value="4">selected</eq>>501-2000人</option>
+                        <option value="5" <eq name="userinfo.scale" value="5">selected</eq>>2001-10000人</option>
+                        <option value="6" <eq name="userinfo.scale" value="6">selected</eq>>10000人以上</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">公司电话：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="tel" id="company_tel" value="{$userinfo.tel}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">公司地址：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="address" id="address" value="{$userinfo.address}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <h5>工作状态</h5>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">职业状态：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="postion" id="postion">
+                        <option value="1" <eq name="userinfo.postion" value="1">selected</eq>>未选择</option>
+                        <option value="2" <eq name="userinfo.postion" value="2">selected</eq>>普通员工</option>
+                        <option value="3" <eq name="userinfo.postion" value="3">selected</eq>>管理人员</option>
+                        <option value="4" <eq name="userinfo.postion" value="4">selected</eq>>股东</option>
+                        <option value="5" <eq name="userinfo.postion" value="5">selected</eq>>私营企业主</option>
+                        <option value="6" <eq name="userinfo.postion" value="6">selected</eq>>其他</option>
+                    </select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">具体职位：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="jobs" id="jobs" value="{$userinfo.jobs}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">月收入：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="number" class="form-control" name="salary" id="salary" value="{$userinfo.salary}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">工作年限：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="number" class="form-control" name="work_length" id="work_length" value="{$userinfo.work_length}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">工作省份：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="work_p" id="work_p"></select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">工作城市：</label>
+                <div class="col-md-4 col-sm-4">
+                    <select class="form-control" name="work_c" id="work_c"></select>
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label">工作邮箱：</label>
+                <div class="col-md-4 col-sm-4">
+                    <input type="email" class="form-control" name="work_mail" id="work_mail" value="{$userinfo.work_mail}">
+                </div>
+            </div>
+            <!---/form-group-->
+            <div class="form-group">
+                <div class="col-md-offset-3 col-sm-offset-4 col-sm-4">
+                    <button type="submit" class="btn btn-success" id="btn3" data-id="">保存修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

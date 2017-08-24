@@ -1,0 +1,534 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">借款信息</a></li>
+                        <li><a data-toggle="tab" href="#tab-2">投标记录</a></li>
+                        <li><a data-toggle="tab" href="#tab-3">项目图片</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <div class="info-btns text-right">
+                                    <button type="button" class="btn btn-primary" onclick="rebuildPact('{$loan.hid}',{$loan.product_type})">重新生成合同</button>
+                                    <button type="button" class="btn btn-success" onclick="downloadAllPact('{$loan.hid}')">下载全部合同</button>
+                                </div>
+                                <div class="info-title">
+                                    <span>借款人：{$loan.username}</span>
+                                    <span>借款申请：<a href="__URL__/detail?hid={$loan.hid}">{$loan.title}</a></span>
+                                    <span>最小投资额：<strong>￥{$loan.min_amount|number_format=0}元</strong></span>
+                                    <span>最大投资额：<strong>￥{$loan.max_amount|number_format=0}元</strong></span>
+                                    <span>投资增量：<strong>￥{$loan.step_amount|number_format=0}元</strong></span>
+                                </div>
+                                <table class="table info-detail">
+                                    <tr>
+                                        <th>借款标题：</th>
+                                        <td>{$loan.title}&nbsp;&nbsp;<a href="javascript:;" class="btn btn-primary btn-xs" id="modifyTitle" onclick="modifyTitle()">修改</a></td>
+                                        <th>借款状态：</th>
+                                        <td>开放投标</td>
+                                    </tr>
+                                    <tr>
+                                        <th>产品大纲：</th>
+                                        <td>{$loan.product_type_str}</td>
+                                        <th>投标进度：</th>
+                                        <td>
+                                            <div class="progress progress-small my-progress">
+                                                <div style="width: {$loan.invest_percentage}%;" class="progress-bar"><span>{$loan.invest_percentage}%</span></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>后台标：</th>
+                                        <td>
+                                            <if condition="$loan.is_background eq 1">是
+                                                <else/>否</if>
+                                        </td>
+                                        <th>剩余额度：</th>
+                                        <td>￥{$loan.invest_balance|number_format}元 </td>
+                                    </tr>
+                                    <tr>
+                                        <th>借款金额：</th>
+                                        <td>￥{$loan.amount|number_format=0}元 （{$loan.amount_upper}）</td>
+                                        <th>投标数：</th>
+                                        <td>{$loan.pcount}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>借款期限：</th>
+                                        <td>
+                                            <switch name="loan.duration_type">
+                                                <case value="1">{$loan.duration}年</case>
+                                                <case value="2">{$loan.duration}个月</case>
+                                                <case value="3">{$loan.duration}天</case>
+                                            </switch>
+                                        </td>
+                                        <th>开标时间：</th>
+                                        <td>
+                                            <if condition="!empty($loan[open_time])">
+                                                {$loan.open_time|date='Y/m/d H:i',###}
+                                                <else/> -
+                                            </if>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>年化利率：</th>
+                                        <td>{$loan.year_rate|number_format=1}%</td>
+                                        <th>满标时间：</th>
+                                        <td>
+                                            <if condition="!empty($loan[full_time])">
+                                                {$loan.full_time|date='Y/m/d H:i',###}
+                                                <else/> -
+                                            </if>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>还款方式：</th>
+                                        <td>
+                                            <switch name="loan.pay_type">
+                                                <case value="1">按月付息到期还本</case>
+                                                <case value="2">一次性还本付息</case>
+                                            </switch>
+                                        </td>
+                                        <th>结标时间：</th>
+                                        <td>
+                                            <if condition="!empty($loan[end_time])">
+                                                {$loan.end_time|date='Y/m/d H:i',###}
+                                                <else/> -
+                                            </if>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--/content-->
+                                <h4 class="schedule-title"><i class="fa fa-clock-o text-success"></i> 还款计划</h4>
+                                <table class="table table-border table-hover schedule">
+                                    <thead>
+                                        <tr>
+                                            <th>应还日期</th>
+                                            <th>应还本金</th>
+                                            <th>应还利息</th>
+                                            <th>借款管理费</th>
+                                            <th>逾期罚息</th>
+                                            <th>逾期管理费</th>
+                                            <th>提前还款违约金</th>
+                                            <th>应还总额</th>
+                                            <th>实还日期</th>
+                                            <th>偿还状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <volist name="plan" id="p">
+                                            <tr>
+                                                <td>{$p.repay_time|date="Y/m/d",###}</td>
+                                                <td>￥{$p.repay_principal|number_format="2"}元</td>
+                                                <td>￥{$p.repay_interest|number_format="2"}元</td>
+                                                <td>￥{$p.manage_fees|number_format="2"}元</td>
+                                                <td>￥{$p.overdue_penalty}元</td>
+                                                <td>￥{$p.overdue_fees}元</td>
+                                                <td>￥{$p.prepayment}元</td>
+                                                <td>￥{$p.repay_total|number_format="2"}元</td>
+                                                <td>
+                                                    <eq name="p.pay_time" value="0">-
+                                                        <else />{$p.pay_time|date="Y/m/d H:i:s",###}</eq>
+                                                </td>
+                                                <td>
+                                                    <switch name="p.pay_status">
+                                                        <case value="0">预计算</case>
+                                                        <case value="1">已还清</case>
+                                                        <case value="2">部分还清</case>
+                                                        <case value="3">未还清</case>
+                                                        <case value="4">逾期</case>
+                                                        <case value="5">违约</case>
+                                                    </switch>
+                                                </td>
+                                                <assign name="total" value="$total + $p.repay_total" />
+                                                <assign name="principal" value="$principal + $p.repay_principal" />
+                                                <assign name="interest" value="$interest + $p.repay_interest" />
+                                                <assign name="manage" value="$manage + $p.manage_fees" />
+                                            </tr>
+                                        </volist>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="10" class="text-right">
+                                                <span>合计应还总额：<em>￥{$total|number_format="2"}元</em></span>
+                                                <span>合计应还本金：<em>￥{$principal|number_format="2"}元</em></span>
+                                                <span>合计应还利息：<em>￥{$interest|number_format="2"}元</em></span>
+                                                <span>合计管理费：<em>￥{$manage|number_format="2"}元</em></span>
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <table class="table table-border table-hover" id="investList" data-toggle="table" data-url="__URL__/paySchedule" data-query-params="investParams" data-pagination="true" data-side-pagination="server" data-page-list="[5,10,20,30]" data-method="get" data-page-size="10" data-cache="false" data-sort-order="desc" data-sort-name="id">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="username">投资用户</th>
+                                            <th data-field="amount" data-formatter="formatCny">投资金额</th>
+                                            <th data-field="status" data-formatter="formatStatus">状态</th>
+                                            <th data-field="amount" data-formatter="formatAmount">金额大写</th>
+                                            <th data-field="duration" data-formatter="formatDur">期限</th>
+                                            <th data-field="year_rate" data-formatter="formatRate">年化利率</th>
+                                            <th data-field="award_rate" data-formatter="formatRate">奖励利率</th>
+                                            <th data-field="pay_type" data-formatter="formatRepay">还款方式</th>
+                                            <th data-field="invest_time" data-formatter="formatTime">投资时间</th>
+                                            <th data-field="id" data-formatter="formatAction">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <!--/content-->
+                            </div>
+                        </div>
+                        <!--项目资料图片-->
+                        <div id="tab-3" class="tab-pane">
+                            <div class="panel-body">
+                                <div class="pic-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ibox-->
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script src="{$Think.config.RESOURCE_URL}/components/viewimage/jquery.imageView.js"></script>
+<script type="text/javascript">
+jQuery.extend({  
+    browser: function()   
+    {  
+        var  
+        rwebkit = /(webkit)\/([\w.]+)/,  
+        ropera = /(opera)(?:.*version)?[ \/]([\w.]+)/,  
+        rmsie = /(msie) ([\w.]+)/,  
+        rmozilla = /(mozilla)(?:.*? rv:([\w.]+))?/,      
+        browser = {},  
+        ua = window.navigator.userAgent,  
+        browserMatch = uaMatch(ua);  
+  
+        if (browserMatch.browser) {  
+            browser[browserMatch.browser] = true;  
+            browser.version = browserMatch.version;  
+        }  
+        return { browser: browser };  
+    },  
+});  
+  
+function uaMatch(ua)   
+{  
+        ua = ua.toLowerCase();  
+  
+        var match = rwebkit.exec(ua)  
+                    || ropera.exec(ua)  
+                    || rmsie.exec(ua)  
+                    || ua.indexOf("compatible") < 0 && rmozilla.exec(ua)  
+                    || [];  
+  
+        return {  
+            browser : match[1] || "",  
+            version : match[2] || "0"  
+        };  
+} 
+var title = '{$loan.title}';
+var hid = '{$loan.hid}';
+var mid;
+function viewImage(o){
+    var url = $(o).attr('data-img');
+    url = '__URL__/loadpic?flag=img&src='+url+'&lid={$loan.id}';
+    BootstrapDialog.show({
+        title:'浏览大图',
+        type:BootstrapDialog.TYPE_DEFAULT,
+        size:BootstrapDialog.SIZE_WIDE,
+        message:function(){
+            return $("<div id='viewContainer'><img src='"+url+"' width='800' rel='"+url+"'></div>");
+        },
+        onshown:function(){
+            $("#viewContainer").imageView({width: 830, height:400});
+        }
+    })
+}
+function modifyTitle() {
+    BootstrapDialog.show({
+        title: '修改标题',
+        type: BootstrapDialog.TYPE_DEFAULT,
+        message: function() {
+            var msg = '<div class="form-group"><input type="text" class="form-control" name="title" id="title" value="' + title + '"></div><div class="form-group"><button type="button" class="btn btn-primary" onclick="saveTitle()">保存修改</button></div>';
+            return msg;
+        },
+        cssClass: 'bounceInDown animated',
+        onshown: function() {
+            var dialog_h = $(".modal-content").height();
+            var window_h = $(window).height();
+            var top = (window_h - dialog_h) / 2;
+            $(".modal-content").css('top', top);
+        }
+    });
+}
+
+function saveTitle() {
+    var title = $("#title").val().trim();
+    if (title == '') {
+        alt('标题不能为空');
+    } else {
+        $.post("__URL__/modifyTitle", {
+            title: title,
+            hid: hid
+        }, function(ret) {
+            if (ret.status == 1) {
+                alt(ret.data, function() {
+                    window.location.href = document.URL;
+                })
+            } else {
+                alt(ret.error);
+            }
+        });
+    }
+}
+//退出资金
+function returnMoney(id) {
+    BootstrapDialog.show({
+        title: "确定退出资金",
+        type: BootstrapDialog.TYPE_DEFAULT,
+        message: function() {
+            return '<div class="form-group"><a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src=\'{:U(\'Verify/load\')}/?rnd=\'+Math.random()" style=""></a></div><div class="form-group"><input type="text" class="form-control" name="code" id="code" placeholder="请输入验证码"></div><div class="form-group"><button class="btn btn-primary" onclick="confirmAgree(' + id + ')" id="confirmBtn">确定</button></div>'
+        },
+        cssClass: 'bounceInDown animated',
+        onshown: vertical,
+    });
+    return false;
+}
+//重新生成合同
+function rebuildPact(hid,product_type) {
+    BootstrapDialog.show({
+        title: "重新选择大纲",
+        type: BootstrapDialog.TYPE_DEFAULT,
+        message: function(dialogRef) {
+            return '<form class="form-horizontal"><div class="form-group"><label for="product_type" class="col-sm-3 control-label">产品大纲：</label><div class="col-sm-9"><select class="form-control"></select></div></div></form>';
+        },
+        buttons: [
+        {
+            label: '保存',
+            cssClass: 'btn-primary',
+            action: function(dialogRef) {
+                var pt = dialogRef.getModalBody().find('select').val();
+                $.post('__URL__/rebuildPact', {hid: hid, pt: pt}, function(data, textStatus, xhr) {
+                    if (data.status == 1) {
+                        alt(data.data, function(){
+                            dialogRef.close();
+                            window.location.reload();
+                        });
+                    } else {
+                        alt(data.error);
+                    }
+                });
+            }
+        }, {
+            label: '取消',
+            action: function(dialogRef) {
+                dialogRef.close();
+            }
+        }
+        ],
+        onshow: function(dialogRef) {
+            var select = dialogRef.getModalBody().find('select');
+            $.getJSON('__URL__/getProductType', function(json){
+                $.each(json, function(index, val) {
+                    var selected = product_type == index ? 'selected' : '';
+                    select.append('<option value="'+index+'" '+selected+'>'+val+'</option>');
+                });
+            });
+        }
+    });
+}
+
+//现在全部合同
+function downloadAllPact(hid) {
+    window.open('__URL__/downloadAllPact?hid='+hid);
+}
+
+function investParams(params) {
+    params.flag = 'loadInvest';
+    params.lid = '{$loan.id}';
+    return params;
+}
+
+function formatAmount(v) {
+    return DX(v);
+}
+
+function formatDur(v, r, i) {
+    switch (r.duration_type) {
+        case '1':
+            return v + '个月'
+        case '2':
+            return v + '个月'
+        case '3':
+            return v + '天'
+    }
+}
+
+function formatRate(v, r, i) {
+    return v + '%'
+}
+
+function formatRepay(v, r, i) {
+    switch (r.pay_type) {
+        case '1':
+            return '按月付息到期还本'
+        case '2':
+            return '一次性还本付息'
+    }
+}
+
+function formatAction(v, r, i) {
+    var flag = '{$loan.status}';
+    if (flag == '1' && v.status==0)
+        return '<button type="button" data-id="' + r.id + '" class="btn btn-danger" onclick="returnMoney(' + r.id + ')">退出资金</button>';
+    else
+        return '-';
+}
+
+function confirmAgree(id) {
+    $("#confirmBtn").attr('disabled', true);
+    $.post("__URL__/backMoney", {
+        id: id,
+        lid: '{$loan.id}',
+        code: $("#code").val()
+    }, function(ret) {
+        if (ret.status == 1) {
+            alt(ret.data, function() {
+                closeDialog();
+                $("#investList").bootstrapTable('refresh');
+            })
+        } else {
+            alt(ret.error, function() {
+                $("#confirmBtn").attr('disabled', false);
+            });
+        }
+    });
+}
+
+function formatStatus(v,r,i){
+    if(v===undefined || isNaN(v) || v=='')return '-';
+    v = parseInt(v);
+    switch (v){
+        case 0:
+            return '资金冻结中';
+            break;
+        case 1:
+            return '还款中'
+            break;
+        case 2:
+            return '还款完成'
+            break;
+        case 3:
+            return '逾期'
+            break;
+        case 4:
+            return '违约'
+            break;
+        case 5:
+            return '主动退款'
+            break;
+    }
+}
+//加载图片
+loadpic();
+function loadpic(){
+    $.get("__URL__/loadpic",{lid:'{$loan.id}',flag:'list'},function(ret){
+        var obj = $(".pic-list");
+        if(ret.status==1){
+            obj.html('');
+            $.each(ret.data,function(){
+                obj.append('<div class="view-big-pic" title="浏览大图" data-img="'+this.url+'" onclick="viewImage(this)"><span><img src="__URL__/loadpic?flag=img&src='+this.url+'&lid='+this.loan_id+'"></span><p>'+this.title+'</p></div>')
+            })
+        }
+    });
+}
+</script>
+</block>
+<block name="css">
+    <style>
+    #viewContainer{
+        width: 800px;
+        height: 600px;
+        overflow: hidden;
+    }
+    .view-big-pic{
+        cursor: pointer;
+    }
+    .view-big-pic p{
+        text-align: center;
+    }
+    .info-title {
+        padding-bottom: 15px;
+        padding-left: 8px;
+        font-size: 15px;
+    }
+    
+    .info-title span {
+        display: inline-block;
+        padding-right: 15px;
+    }
+    
+    .info-title span strong {
+        color: red;
+    }
+    
+    .info-detail th {
+        font-weight: 500;
+        text-align: right;
+    }
+    
+    .schedule tfoot span {
+        display: inline-block;
+        padding-right: 15px;
+    }
+    
+    .schedule tfoot em {
+        font-style: normal;
+        color: red;
+    }
+    
+    .schedule-title {
+        padding-left: 8px;
+        border-bottom: 2px solid #ddd;
+        line-height: 180%;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .my-progress {
+        position: relative;
+        overflow: visible;
+        margin-bottom: 0;
+    }
+    
+    .my-progress span {
+        position: absolute;
+        color: #333;
+        text-align: center;
+        top: -5px;
+        z-index: 1000;
+        display: block;
+        font-size: 12px;
+        text-align: center;
+        width: 100%;
+    }
+    #totalAmount,#totalNum{
+        font-weight: bold;
+        font-size: 18px;
+        color: red;
+        display: inline-block;
+        padding: 0 5px;
+    }
+    </style>
+</block>

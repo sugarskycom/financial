@@ -1,0 +1,131 @@
+<!--绑定邮箱-->
+<div id="emailHtml">
+	<form method="post" action="#" class="email-wraper">
+		<div class="form-group">
+			<label class="label-control">新的邮箱地址：</label>
+				<div class="input-group">
+				<input type="email" class="form-control" placeholder="输入新的邮箱，点击发送验证码" name="email" id="email">
+			      <span class="input-group-btn">
+			        <button class="btn btn-success" type="button" data-container="body" data-toggle="popover" data-placement="left" data-content=""  id="sbtn">发送验证码</button>
+			      </span>  
+	    		</div>
+		</div>
+		<div class="form-group">
+			<label class="label-control">邮箱验证码：</label>
+			<input type="text" name="code" id="code" class="form-control" placeholder="邮件6位验证码"/>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary" id="btnSavePassword">提交</button>
+			<span class="" id="msgEmail"></span>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+$(function() {
+		$(".email-wraper").validate({
+		rules:{
+			email:{required:true,email:true,checkEmail:true},
+			code:{required:true,minlength:6},
+		},
+		messages:{
+			email:{
+				required:"新的邮箱地址不能为空",
+				email:"邮箱格式无效",
+				checkEmail:"该邮箱已经存在",
+			},
+			code:{
+				required:"邮箱验证码不能为空",
+				minlength:"邮箱验证码为6位",
+			}
+		},
+		errorPlacement:function(error,element,params){
+			if($(element).attr('name')=='email'){
+				error.appendTo($(element).parent('div').parent('div'))
+			}
+			else
+			{
+				error.appendTo($(element).parent('div'))
+			}
+		},
+		submitHandler:function(form){
+			$.ajax({
+				type:"post",
+				data:{email:$("#email").val().trim(),code:$("#code").val().trim(),flag:'save'},
+				url:"__URL__/bemail",
+				success:function(ret){
+					if(ret.status==1){
+						$("#msgEmail").text(ret.data).addClass('text-success');
+						setTimeout(function(){
+							$("#msgEmail").text('');
+							closeDialog();
+							window.location.reload();
+						},1000);
+					}
+					else
+					{
+						$("#msgEmail").text(ret.error).addClass('text-warning');
+						setTimeout(function(){
+							$("#msgEmail").text('');
+						},1000);
+					}
+				}
+			});
+		}
+	});
+	$.validator.addMethod('checkEmail',function(value,element,params){
+		var v = $.ajax({
+			url:"__URL__/bemail",
+			type:"post",
+			async:false,
+			data:{flag:'check',email:value}
+		}).responseText;
+		if(v=='1')
+			return true;
+		else
+			return false;
+	});
+
+	$("#sbtn").click(function(){
+		var reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+		var email = $("#email").val().trim();
+		if(!reg.test(email)){
+			$("[data-toggle=errorEmail]").tooltip('show');
+			BootstrapDialog.alert({
+				title:"错误提示",
+				type:BootstrapDialog.TYPE_WARNING,
+				message:"邮箱格式错误"
+			});
+			return false;
+		}
+
+		$.ajax({
+			type:"post",
+			url:"__URL__/smail",
+			data:{email:email},
+			beforeSend:function(XMLHttpRequest){
+				$("#sbtn").attr('disabled',true);
+			},
+			success:function(ret){
+				if(ret == 'yes'){
+					BootstrapDialog.alert({
+						title:"温馨提示",
+						type:BootstrapDialog.TYPE_SUCCESS,
+						message:"验证邮件已经成功发送，请前往邮箱中查看收到的验证码，2小时内有效！"
+					});
+				}
+				else if(ret=='no')
+				{
+					BootstrapDialog.alert({
+						title:"错误提示",
+						type:BootstrapDialog.TYPE_WARNING,
+						message:"此邮箱已被绑定"
+					});
+				}
+			}
+		});
+	});
+})
+</script>
+<style>
+.popover-content{font-weight:600;}
+</style>

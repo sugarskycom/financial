@@ -1,0 +1,282 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox">
+			<div class="ibox-title">满标审核</div>
+			<div class="ibox-content">
+				<div class="row">
+				<volist name="list1" id="l1">
+					<div class="col-sm-4">
+						<div class="thumbnail">
+							<h4>{$l1.title}</h4>
+							<p class="help-block">{$l1.bno}</p>
+							<p class="info">
+								<span>用户姓名：{$l1.name1}</span>&nbsp;&nbsp;
+								<span>用户账号：{$l1.username1}</span>
+							</p>
+							<dl class="dl-horizontal">
+								<dt>关联用户：</dt><dd>{$l1.name2}</dd>
+								<dt>金额：</dt><dd><span class="text-danger">￥ {$l1.amount|number_format="2"}</span></dd>
+								<dt>金额大写：</dt><dd><span class="text-danger">{$l1.amount_upper}</span></dd>
+								<dt>期限：</dt>
+								<dd>
+									{$l1.duration}
+									<switch name="l1.duration_type">
+										<case value="1">年</case>
+										<case value="2">月</case>
+										<case value="3">天</case>
+									</switch>
+								</dd>
+								<dt>年化利率：</dt><dd><span class="text-danger">{$l1.year_rate}%</span></dd>
+								<dt>后台项目确认：</dt>
+								<dd>
+									<span class="badge badge-success">
+										<switch name="l1.is_background">
+											<case value="1">是</case>
+											<case value="0">否</case>
+											<default>否</default>
+										</switch>
+									</span>
+								</dd>
+								<dt>还款方式：</dt>
+								<dd>
+									<switch name="l1.pay_type">
+										<case value="1">按月付息到期还本</case>
+										<case value="2">一次性还本付息</case>
+									</switch>
+								</dd>
+								<dt>满标时间：</dt>
+								<dd>
+									<notempty name="l1.full_time">
+										{$l1.full_time|date="Y/m/d H:i",###}
+										<else />
+										-
+									</notempty>
+								</dd>
+							</dl>
+							<p class="text-center">
+								<button class="btn btn-primary" onclick="viewSchedule({$l1.id});">预览还款计划</button>
+								<button class="btn btn-danger btn-finish" data-hid="{$l1.hid}">结标并通过</button>
+							</p>
+						</div>
+					</div>
+				</volist>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="ibox">
+			<div class="ibox-title">流标处理</div>
+			<div class="ibox-content">
+				<div class="row">
+				<volist name="list2" id="l2">
+					<div class="col-sm-4">
+						<div class="thumbnail">
+							<h4>{$l2.title}</h4>
+							<p class="help-block">{$l2.bno}</p>
+							<p class="info">
+								<span>用户姓名：{$l2.name1}</span>&nbsp;&nbsp;
+								<span>用户账号：{$l2.username1}</span>
+							</p>
+							<dl class="dl-horizontal">
+								<dt>关联用户：</dt><dd>{$l2.name2}</dd>
+								<dt>金额：</dt><dd><span class="text-danger">￥ {$l2.amount|number_format="2"}</span></dd>
+								<dt>金额大写：</dt><dd><span class="text-danger">{$l2.amount_upper}</span></dd>
+								<dt>期限：</dt>
+								<dd>
+									{$l2.duration}
+									<switch name="l2.duration_type">
+										<case value="1">年</case>
+										<case value="2">月</case>
+										<case value="3">天</case>
+									</switch>
+								</dd>
+								<dt>年化利率：</dt><dd><span class="text-danger">{$l2.year_rate}%</span></dd>
+								<dt>后台项目确认：</dt>
+								<dd>
+									<span class="badge badge-success">
+										<switch name="l2.is_background">
+											<case value="1">是</case>
+											<case value="0">否</case>
+											<default>否</default>
+										</switch>
+									</span>
+								</dd>
+								<dt>还款方式：</dt>
+								<dd>
+									<switch name="l2.pay_type">
+										<case value="1">按月付息到期还本</case>
+										<case value="2">一次性还本付息</case>
+									</switch>
+								</dd>
+								<dt>满标时间：</dt>
+								<dd>
+									<notempty name="l2.full_time">
+										{$l1.full_time|date="Y/m/d H:i",###}
+										<else />
+										-
+									</notempty>
+								</dd>
+							</dl>
+							<p class="text-center">
+								<button class="btn btn-warning" data-hid="{$l2.hid}">拒绝并退回</button>
+								<button class="btn btn-danger btn-finish" data-hid="{$l2.hid}">结标并通过</button>
+							</p>
+						</div>
+					</div>
+				</volist>
+					<!-- <div class="col-sm-4">
+						<div class="thumbnail">
+							<h4>仓单贷-北京-张宝成第一期</h4>
+							<p class="help-block">BJ-CDD-2016101801</p>
+							<p class="info">
+								<span>用户姓名：刘强</span>&nbsp;&nbsp;
+								<span>用户账号：13800138000</span>
+							</p>
+							<dl class="dl-horizontal">
+								<dt>关联用户：</dt><dd>张宝成</dd>
+								<dt>金额：</dt><dd><span class="text-danger">￥ 2000000</span></dd>
+								<dt>金额大写：</dt><dd><span class="text-danger">贰佰万</span></dd>
+								<dt>期限：</dt><dd>3个月</dd>
+								<dt>年化利率：</dt><dd><span class="text-danger">18%</span></dd>
+								<dt>后台项目确认：</dt><dd><span class="badge badge-success">是</span></dd>
+								<dt>还款方式：</dt><dd>按月付息到期还本</dd>
+								<dt>满标时间：</dt><dd>2016/10/27  17:50:23</dd>
+							</dl>
+							<p class="text-center">
+								<button class="btn btn-warning" data-hid="d5a7663274dcab1318356803a8f0ebce">拒绝并退回</button>
+								<button class="btn btn-danger btn-finish" data-hid="d5a7663274dcab1318356803a8f0ebcf">结标并通过</button>
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="thumbnail">
+							<h4>仓单贷-北京-张宝成第一期</h4>
+							<p class="help-block">BJ-CDD-2016101801</p>
+							<p class="info">
+								<span>用户姓名：刘强</span>&nbsp;&nbsp;
+								<span>用户账号：13800138000</span>
+							</p>
+							<dl class="dl-horizontal">
+								<dt>关联用户：</dt><dd>张宝成</dd>
+								<dt>金额：</dt><dd><span class="text-danger">￥ 2000000</span></dd>
+								<dt>金额大写：</dt><dd><span class="text-danger">贰佰万</span></dd>
+								<dt>期限：</dt><dd>3个月</dd>
+								<dt>年化利率：</dt><dd><span class="text-danger">18%</span></dd>
+								<dt>后台项目确认：</dt><dd><span class="badge badge-success">是</span></dd>
+								<dt>还款方式：</dt><dd>按月付息到期还本</dd>
+								<dt>满标时间：</dt><dd>2016/10/27  17:50:23</dd>
+							</dl>
+							<p class="text-center">
+								<button class="btn btn-warning" data-hid="d5a7663274dcab1318356803a8f0ebcg">拒绝并退回</button>
+								<button class="btn btn-danger btn-finish" data-hid="d5a7663274dcab1318356803a8f0ebch">结标并通过</button>
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="thumbnail">
+							<h4>仓单贷-北京-张宝成第一期</h4>
+							<p class="help-block">BJ-CDD-2016101801</p>
+							<p class="info">
+								<span>用户姓名：刘强</span>&nbsp;&nbsp;
+								<span>用户账号：13800138000</span>
+							</p>
+							<dl class="dl-horizontal">
+								<dt>关联用户：</dt><dd>张宝成</dd>
+								<dt>金额：</dt><dd><span class="text-danger">￥ 2000000</span></dd>
+								<dt>金额大写：</dt><dd><span class="text-danger">贰佰万</span></dd>
+								<dt>期限：</dt><dd>3个月</dd>
+								<dt>年化利率：</dt><dd><span class="text-danger">18%</span></dd>
+								<dt>后台项目确认：</dt><dd><span class="badge badge-success">是</span></dd>
+								<dt>还款方式：</dt><dd>按月付息到期还本</dd>
+								<dt>满标时间：</dt><dd>2016/10/27  17:50:23</dd>
+							</dl>
+							<p class="text-center">
+								<button class="btn btn-warning" data-hid="d5a7663274dcab1318356803a8f0ebci">拒绝并退回</button>
+								<button class="btn btn-danger btn-finish" data-hid="d5a7663274dcab1318356803a8f0ebcj">结标并通过</button>
+							</p>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</block>
+<block name="js">
+<script type="text/javascript">
+var hid = '';
+$(".btn-warning").click(function(){
+	var btn = $(this);
+	BootstrapDialog.show({
+		title:"确定拒绝并退回",
+		type:BootstrapDialog.TYPE_DEFAULT,
+		message:function(){
+			return '<div class="form-group"><a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src=\'{:U(\'Verify/load\')}/?rnd=\'+Math.random()" style=""></a></div><div class="form-group"><input type="text" class="form-control" name="code" id="code" placeholder="请输入验证码"></div><div class="form-group"><button class="btn btn-primary" onclick="confirmBack()">确定</button></div>'
+		},
+		onshow:function(){
+			hid = btn.attr('data-hid');
+		}
+	})
+});
+$(".btn-finish").click(function(){
+	var hid = $(this).attr('data-hid');
+	$.post('__URL__/finish',{hid:hid},function(ret){
+		if(ret.status==1){
+			alt(ret.data,function(){
+				window.location.href = document.URL;
+			});
+		}
+		else{
+			alt(ret.error);
+		}
+	});
+});
+function confirmBack(){
+	var code = $("#code").val().trim();
+	if(code=='' || code.length!=4) return false;
+	$.post('__URL__/refuse',{hid:hid,code:code},function(ret){
+		if(ret.status==1){
+			alt(ret.data,function(){
+				window.location.href = document.URL;
+			});
+		}
+		else{
+			alt(ret.error);
+		}
+	})
+}
+function viewSchedule(id){
+	BootstrapDialog.show({
+		type:BootstrapDialog.TYPE_DEFAULT,
+		title:'还款计划',
+		size:BootstrapDialog.SIZE_WIDE,
+		message:$('<div></div>').load('__URL__/viewSchedule?id='+id)
+	})
+}
+</script>
+</block>
+<block name="css">
+<style>
+.dl-horizontal{
+	margin-top: 10px;
+}
+.dl-horizontal dt{
+	font-weight: 500;
+}
+.thumbnail{
+	padding: 15px;
+	border-radius: 0;
+}
+.thumbnail p{
+	margin-bottom: 0;
+	line-height: 150%;
+}
+.info{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+</block>

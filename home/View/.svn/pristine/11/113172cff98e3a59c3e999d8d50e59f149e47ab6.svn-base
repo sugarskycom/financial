@@ -1,0 +1,45 @@
+<div id="myCarousel" class="carousel slide">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="item active b1"></div>
+		<div class="item b2"></div>
+	</div>
+	<div class="login-box">
+		<div class="login-box-content">
+			<h5>预期年华收益</h5>
+			<h1>最高13%</h1>
+			<div class="login-box-desc">新用户注册送1000元红包</div>
+			<a class="btn btn-success btn-index-reg">立即注册</a>
+			<div class="text-right">已有账户，<a href="#">现在登录</a></div>
+		</div>
+	</div>
+	<div class="daily-recommendation login-box" style="display: none;">
+		<div class="login-box-content">
+			<h5>今日推荐</h5>
+			<h1 style="border-bottom: 0;">8.8%</h1>
+			<div class="login-box-desc">预计年化收益</div>
+			<a class="btn btn-success btn-index-reg" href="invest.html">立即投资</a>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.b1{
+		background-image: url(__PUBLIC__/images/banner.jpg);
+		background-repeat: no-repeat;
+		background-position: center;s
+		width: 100%;
+		height: 450px;
+		overflow:hidden;
+	}
+	.b2{
+		background-image: url(__PUBLIC__/images/b2.jpg);
+		background-repeat: no-repeat;
+		background-position: center;s
+		width: 100%;
+		height: 450px;
+		overflow:hidden;
+	}
+</style>

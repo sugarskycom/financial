@@ -1,0 +1,57 @@
+<div class="top clearfix">
+	<div class="container clearfix">
+		<i class="fa fa-phone"></i>
+		<span class="top-tel">010-67706199&nbsp;&nbsp;(09:00-18:00)</span>
+		<div class="pull-right">
+			<ul class="list-inline top-right">
+				<if condition="$Think.session.username neq ''">
+				中电金服，欢迎您！<font color="red"><a class="loginusername" href="{:U('Dashboard/index')}" style="color: red;">{$Think.session.username}</a></font>
+
+				<a href="{:U('Index/logout')}">安全退出</a>
+				<else/>
+				<li><a href="{:U('Login/index')}" class="on">登录</a></li>
+				<span class="divider"></span>
+				<li><a href="{:U('Register/index')}">注册</a></li>
+				<span class="divider"></span>
+				</if>
+				<li><a href="#" class="one-level">帮助中心 <i class="fa fa-angle-down"></i></a>
+					<ul class="list-unstyled two-level">
+						<li><a href="#">新手指南</a></li>
+						<li><a href="#">安全中心</a></li>
+						<li><a href="#">投资建议</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+<!--菜单-->
+<div style="background-color: #fff;">
+	<div class="container clearfix menu-logo">
+		<a href="{:U('Index/index')}" class="logo"><img src="__PUBLIC__/images/logo-wide.png"></a>
+		<ul class="list-inline menu">
+			<li><a href="{:U('Index/index')}" class="one-menu" style="border:0">首页</a></li>
+			<li><a href="#" class="one-menu">我要投资 <i class="fa fa-angle-down"></i></a>
+				<ul class="list-unstyled two-menu">
+					<li><a href="{:U('Project/invest')}?tid=1">仓单融资</a></li>
+					<li><a href="{:U('Project/invest')}?tid=2">资产抵押</a></li>
+					<li><a href="{:U('Project/invest')}?tid=3">应收帐款</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="{:U('Index/loan')}" class="one-menu" style="border:0">我要借款</a>
+			</li>
+			<li><a href="#" class="one-menu">信息披露 <i class="fa fa-angle-down"></i></a>
+				<ul class="list-unstyled two-menu">
+					<li><a href="{:U('Help/disclosure')}">平台信息</a></li>
+					<li><a href="{:U('Help/noticelist')}">信息公告</a></li>
+					<li><a href="#">关于我们</a></li>
+				</ul>
+			</li>
+			<li><a href="{:U('Dashboard/index')}" class="one-menu my-account"><i class="fa fa-user"></i>我的账户</a></li>
+		</ul>
+	</div>
+</div>
+
+

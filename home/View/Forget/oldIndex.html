@@ -1,0 +1,46 @@
+<extend name="Public:base"/>
+<block name="content">
+<div class="passwordBox animated fadeInDown">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox-content">
+                    <h2 class="font-bold">找回密码</h2>
+                    <p>
+                        请在下面输入您注册时绑定的手机号，将进行重置密码。
+                    </p>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form class="m-t" role="form" action="index.html">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="手机号" required="">
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="验证码" required="">
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <a href="javascript:;" title="更换验证码">
+                                            <img src="{:U('Verify/load')}" onclick="this.src='{:U('Verify/load')}/?rnd='+Math.random()">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary block full-width m-b">点击发送短信验证码，下一步</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+                Copyright {:C('WEB_NAME')}
+            </div>
+            <div class="col-md-6 text-right">
+               <small>© {:date('Y')}</small>
+            </div>
+        </div>
+    </div>
+</block>

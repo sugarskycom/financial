@@ -1,0 +1,665 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <ol class="breadcrumb" style="background-color:#f5f5f5;font-size: 14px;color: #999;height: 50px;line-height: 50px;">
+            <li><a href="{:U('Index/index')}">首页</a></li>
+            <switch name = "data.product_type">
+            <case value = "1">
+                <li><a href="{:U('Project/invest')}?tid=1">仓单融资</a></li>
+            </case>
+            <case value = "4">
+                <li><a href="{:U('Project/invest')}?tid=2">资产抵押</a></li>
+            </case>
+            <case value = "5">
+                <li><a href="{:U('Project/invest')}?tid=3">应收账款</a></li>
+            </case>
+            </switch>
+            <li style="color: #333;">项目详情</li>
+        </ol>
+    </div>
+
+    <!-- 项目详情 -->
+    <div class="pro-intro container">
+        <div class="row">
+            <div class="pro-intro-l col-md-8">
+                <div class="project-border">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="3">{$data.title}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td class="p-num"><i class="f52" style="position: relative;">{$data.year_rate}<a class="fa fa-question-circle" href="#" title="满标后次日生息"></a></i><i class="per">%</i></td>
+                                <td class="p-num"><i class="f38">{$data.raise_time}</i><i class="f16">天</i></td>
+                                <switch name = "data.pay_type">
+                                        <case value = "1">
+                                            <td>按月还息到期还本</td>
+                                        </case>
+                                        <case value = "2">
+                                            <td>一次性还本付息</td>
+                                        </case>
+                                </switch>
+                            </tr>               
+                            <tr class="text-center">
+                                <td class="p-title">预期年化收益</td>
+                                <td class="p-title">合同期限</td>
+                                <td class="p-title">收益方式</td>
+                            </tr>
+                            <tr>
+                                <td class="f14" colspan="3">
+                                    <div class="pro-raise-progress">
+                                        <span style="padding-right: 10px;">募集进度 </span>
+                                        <span class="progress my-progress">
+                                            <span class="progress-bar" style="width:{$data.schedule}%;background-color: #fdc230;"></span>
+                                        </span>
+                                        <span class="per"></span>
+                                    </div>                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pro-intro-r col-md-4">
+                <div class="available-sum">
+                    <i>可用余额</i>
+                    <span class="sum">2000.00元</span>
+                    <span class="login-entrance"><a href="{:U('Login/index')}">登录</a></span>
+                </div>                    
+                <div class="investment-sum">
+                    <i>可投金额</i>
+                    <span><b>{:number_format($data['usable_amount_num'])}</b>元</span>
+                </div>
+                <div class="input-control">
+                    <div class="input-group">
+                        <input type="text" value="" class="form-control" placeholder="投资金额不少于100" style="width: 280px;"  />
+                    </div>
+                    <div class="income">
+                        预计收益：<span id="income">0.00</span>元
+                    </div>
+                </div>
+
+                <div class="">
+                    <button type="button" class="btn btn-success btn-invest" id="btnInvest">立即投资</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--类型-->
+    <div class="pro-box container">
+        <div class="row text-center pro-type">
+            <div id="projectDetail" class="pro-type-title col-md-4 pro-active">项目详情</div>
+            <div id="refundPlan" class="pro-type-title col-md-4">还款计划</div>
+            <div id="lendList" class="pro-type-title col-md-4" status="<empty name='ranking'>0<else />1</empty>">出借达人榜</div>
+        </div>
+    </div>
+    <!--内容-->
+    <div class="pro-content container content1">
+        <div class="index1-box">
+            <div class="pro-detail">
+                <div class="product">
+                    <h2 class="pro-title">产品详情</h2>
+                    <div class="product-detail">
+                        <table class="table table-bordered project-table">
+                            <tbody>
+                                <tr>
+                                    <th>产品名称</th>
+                                    <td colspan="3" class="">{$data.title}</td>
+                                </tr>                                     
+                                <tr>
+                                    <th>产品编号</th>
+                                    <td>{$data.bno}</td>
+                                    <th>金额</th>
+                                    <td>{:number_format($data['loan_amount'])}元</td>
+                                </tr>
+                                <tr>
+                                    <th>产品利率</th>
+                                    <td>{$data.year_rate}%</td>
+                                    <th>起投金额</th>
+                                    <td>{$data.min_amount}</td>
+                                </tr>
+                                <tr>
+                                    <th>产品期限</th>
+                                    <td>{$data.duration}{$data.duration_type}</td>
+                                    <th>还款方式</th>
+                                    <switch name = "data.pay_type">
+                                        <case value = "1">
+                                            <td>按月还息到期还本</td>
+                                        </case>
+                                        <case value = "2">
+                                            <td>一次性还本付息</td>
+                                        </case>
+                                    </switch>
+                                </tr>
+                                <tr>
+                                    <th>开标时间</th>
+                                    <td>{:date("Y-m-d", $data[open_time])}</td>
+                                    <th>产品起息日</th>
+                                    <switch name = "data.status">
+                                        <case value = "1|9|11">
+                                            <td>认证结束后1个工作日内</td>
+                                        </case>
+                                        <case value = "2|4">
+                                            <td>起息日期</td>
+                                        </case>
+                                        <case value = "3">
+                                            <td>融资失败</td>
+                                        </case>
+                                    </switch>
+                                </tr>
+                                <tr>
+                                    <th>募集期</th>
+                                    <td>{$data.raise_time}天</td>
+                                    <th>产品到期日</th>
+                                    <switch name = "data.status">
+                                        <case value = "1|9|11">
+                                            <td>起息后详见电子合同</td>
+                                        </case>
+                                        <case value = "2|4">
+                                            <td>最后募集期</td>
+                                        </case>
+                                        <case value = "3">
+                                            <td>融资失败</td>
+                                        </case>
+                                    </switch>
+                                </tr>
+                                <tr>
+                                    <th>资金用途</th>
+                                    <td colspan="3">{$data.fund_use}</td>
+                                </tr>
+                                <tr>
+                                    <th>还款来源</th>
+                                    <td colspan="3">{$data.repay_source}</td>
+                                </tr>
+                                <tr>
+                                    <th>抵押物信息</th>
+                                    <td colspan="3">{$data.mortgage_info}</td>
+                                </tr>                                                                                
+                            </tbody>
+                        </table>                                
+                    </div>
+                </div>
+                <div class="lend">
+                    <h2 class="pro-title">借款方信息</h2>
+                    <div class="lend-detail">
+                        <table class="table table-bordered project-table">
+                            <tbody>
+                                <tr>
+                                    <th>企业全称</th>
+                                    <td>某某网络科技有限公司</td>
+                                    <th>营业执照编号</th>
+                                    <td>36655f4555</td>
+                                </tr>                                     
+                                <tr>
+                                    <th>公司类型</th>
+                                    <td>有限责任公司</td>
+                                    <th>注册资本</th>
+                                    <td>最小投资额度100元</td>
+                                </tr>
+                                <tr>
+                                    <th>公司类别</th>
+                                    <td>年化利率</td>
+                                    <th>企业负责人</th>
+                                    <td>李冠（110261198801062115）</td>
+                                </tr>
+                                <tr>
+                                    <th>企业地址</th>
+                                    <td colspan="3">北京市朝阳区高碑店源创空间大厦</td>
+                                </tr>                                        
+                            </tbody>
+                        </table>                                 
+                    </div>
+                </div>
+                <div class="item">
+                    <h2 class="pro-title">项目资料</h2>
+                    <div class="item-detail">
+                        <volist name="imgsrc" id = "i">
+                            <div class="col-md-3">
+                                <a href="#"><img src="/project/loadpic?flag=img&src={$i.url}&lid={$data.loan_id}" alt="{$i.title}"/></a>
+                                <a href="#" class="fa fa-search-plus"></a>
+                                <div class="layer"><p>{$i.title}}</p></div>                               
+                            </div>
+                        </volist>
+
+                        <!-- <div class="col-md-3">
+                            <a href="#"><img src="__PUBLIC__/images/2.jpg" alt="房产证" /></a>
+                            <a href="#" class="fa fa-search-plus"></a>
+                            <div class="layer"><p>房产证</p></div>                               
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#"><img src="{$img}" alt="抵押合同" /></a>
+                            <a href="#" class="fa fa-search-plus"></a>
+                            <div class="layer"><p>抵押合同</p></div>                               
+                        </div>       
+                        <div class="col-md-3">
+                            <a href="#"><img src="__PUBLIC__/images/2.jpg" alt="全权委托协议" /></a>
+                            <a href="#" class="fa fa-search-plus"></a>
+                            <div class="layer"><p>全权委托协议</p></div>                               
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#"><img src="__PUBLIC__/images/2.jpg" alt="全权委托协议" /></a>
+                            <a href="#" class="fa fa-search-plus"></a>
+                            <div class="layer"><p>全权委托协议</p></div>                               
+                        </div>                          -->                 
+
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+    <div class="pro-content container content2" style="display: none;">
+        <div class="index2-box">
+            <div class="refund-plan">
+                <h2 class="pro-title">还款计划</h2>
+                <div class="">
+                    <table class="table table-bordered project-table">
+                        <tbody>
+                            <tr>
+                                <th>起息日</th>
+                                <th>付息日</th>                                    
+                                <th>应还金额</th>
+                                <th>还款状态</th>
+                            </tr>                                     
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td class="overdue">逾期</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>
+                            <tr>
+                                <td>2017-05-10</td>
+                                <td>2017-06-12</td>
+                                <td>8,222.22元</td>
+                                <td>未还款</td>
+                            </tr>                                                                                
+                        </tbody>
+                    </table>                            
+                </div>
+            </div>
+        </div>               
+    </div>        
+    <div class="pro-content container content3" style="margin-bottom: 40px;padding-bottom: 70px;display: none;">
+        <div class="index3-box">
+            <div class="lend-list">
+                <h2 class="pro-title">出借达人榜</h2>
+                <div class="rank-list">
+                    <div class="rank-intro">
+                        <span>投资人数：<i>{$data.invest_count}</i>人<span><span> 总投资额：<i>{:number_format($data['amount_count'],2)}元</i></span>
+                    </div>
+                    <div class="rank-leader row">
+                        <volist name = "ranking" id = "r"> 
+                            <div class="rank-{$r.imgsrcnumb} rank col-md-4">
+                              <div class="rank-detail">
+                                  <p>第一名<i>{$r.username}</i></p>
+                                  <p class="sum">{:number_format($r['amount'])}元</p>
+                              </div>
+                            </div>
+                        </volist>
+                  </div>
+
+                </div>
+            </div>
+        </div>                 
+    </div>
+
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .fa-question-circle {
+            color: #ccc;
+            font-size: 20px;
+            position: absolute;
+            left: 135%;
+            top: 6%;            
+        }
+        .pro-box {
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .pro-type{
+            font-size: 18px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #fafafa;
+            border: 1px solid #e5e5e5;
+        }
+        .pro-type .pro-type-title {height: 47px;border-bottom: 1px solid #e5e5e5;}
+
+        input.form-control:focus {
+            border-color: #fdc230!important;
+        }
+        .pro-active{
+            color: #fdc230;
+            background-color: #fff;
+            border-top: 2px solid #fdc230;
+            border-left:1px solid #e5e5e5;
+            border-right:1px solid #e5e5e5;
+            border-bottom: 0 !important;
+        }
+        .pro-intro {margin-bottom: 30px;height: 300px;}
+        .pro-intro .pro-intro-l {
+            background-color: #fff;
+            padding:40px 80px 40px 50px;
+            height: 300px;
+        }
+        .pro-intro .pro-intro-r {
+            background-color: #fafafa;
+            padding:50px;
+            height: 300px;
+        }
+        .pro-intro-l table th {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            padding-bottom: 20px;
+        }
+        .pro-intro-l table td {width:10%;}
+        .pro-intro-l table td i {font-style: normal;}
+        .pro-intro-l table td i.f52 {font-size: 42px; color: #fdc230;}
+        .pro-intro-l table td i.per {font-size: 26px; color: #fdc230;}
+        .pro-intro-l table td i.f38 {font-size: 32px; color: #333;}
+        .pro-intro-l table td i.f16 {font-size: 16px; color: #333;}
+        .pro-intro-l table td i.f16 {font-size: 14px; color: #666;}
+        .pro-intro-l table td.p-title {
+            font-size: 14px;
+            color: #999;
+        }
+        .pro-intro-l > .pro-num {
+            /*padding-bottom: 49px;*/
+        }
+        .pro-intro-r > .available-sum i,
+        .pro-intro-r > .investment-sum i {
+            font-style: normal;
+            font-size: 14px;
+            color: #999;
+            padding-right: 30px;
+        }
+        .pro-intro-r > .investment-sum > span {display: inline-block;margin-top: 15px;}
+        .pro-intro-r > .available-sum > .sum {
+            font-size: 16px;
+            color: #666;
+            padding-right: 16px;
+        }
+        .pro-intro-r > .available-sum > .login-entrance {font-size: 14px;color: #fdc230;}
+        .pro-intro-r > .investment-sum b {
+            font-weight: normal;
+            font-size: 30px;
+            color: #fdc230;
+            margin-top: 18px;
+        }
+        .input-group input {
+            display: inline-block;
+            width: 130%;
+            text-align: center;
+            border-color: #fdc230;
+            margin-top:30px;
+            box-shadow: 0 0 3px #fdc230;
+        }
+        .income {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+        .income > span {font-size: 16px;color: #fdc230;}    
+        /*进度条   */
+        .pro-raise-progress {padding-top: 40px;position: relative;}
+        .pro-raise-progress > span {font-size: 14px;color: #666;}
+        .pro-raise-progress > .my-progress {display: inline-block;width: 500px;margin-bottom: 0;height: 8px;}
+        .pro-raise-progress > .per {
+            display: inline-block;
+            background: url(/Public/images/loan/baifenbi.png) no-repeat center;
+            height: 26px;
+            width: 27px;
+            position: absolute;
+            top: 31%;
+            left: 2%;
+            padding-left: 1px;
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+
+        .btn-invest {
+            margin-top: 20px;
+            width: 280px;
+            background-color: #fdc230 !important;
+            border-color: #fdc230 !important;
+            font-size: 16px;
+        }
+
+        .pro-content {
+            padding-left:50px;
+            padding-right: 50px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border-top:0;
+            margin-top:-3px;
+        }
+        .pro-content .pro-title {
+            font-size: 20px;
+            color: #333;
+            font-weight: 500;
+            border-left:3px solid #fdc230;
+            padding-left:10px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .pro-content .item { margin-bottom: 70px; }
+        .pro-content .overdue {color: red;}
+        
+        /*表格样式*/
+        .table-bordered > tbody > tr > th,
+        .table-bordered > tbody > tr > td{
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+            border: 2px solid #fff;
+            height: 50px;
+            line-height: 2;
+        }
+        .table-bordered > tbody > tr > th {background-color: #eff7ff;text-align: center;}
+        .table-bordered > tbody > tr > td {background-color: #f7fafc;text-align: left;padding-left:25px;}
+        .refund-plan .table-bordered > tbody > tr > td {text-align: center;padding-left:0;}
+
+        .item-detail .col-md-3 {
+            width: 24%;
+            position: relative;
+            margin-bottom: 70px;
+            padding-right: 0;
+            padding-left: 0;
+            margin-right: 10px;
+            text-align: center;    
+            background-color: #fafafa;        
+        }
+        .item-detail img { 
+            display:inline-block;           
+            cursor: pointer;    
+        }
+        .layer {
+            position: absolute;
+            width: 100%;
+            background-color: #000;
+            top:74%;
+            opacity: 0.4;
+            font-size: 18px;
+            color: #fff;
+            height: 35px;
+            line-height: 35px;
+            z-index:100;
+        }
+        .item-detail .fa-search-plus {
+            position: absolute;
+            font-size: 26px;
+            color: #fdc230;
+            opacity: 0.6;
+            top: 0;
+            right: 0;            
+        }
+        .item-detail img:hover {
+            -webkit-transform:scale(1.5);
+            -moz-transform:scale(1,5);
+            -ms-transform:scale(1.5);
+            transition: .3s transform;
+            z-index:10000;
+        }
+
+        .rank-list > .rank-intro span {
+            font-size: 16px;
+            color: #666;
+        }
+        .rank-list > .rank-intro span i {font-style: normal;}
+        .rank-leader {margin-top:30px;}
+        .rank-leader .rank {
+            position: relative;
+            background-repeat: no-repeat;
+            background-position: 20% center;
+            height: 102px;
+        }
+        .rank-leader .rank-1 {
+            background-image:url(/Public/images/index/rank1.png);
+        }
+        .rank-leader .rank-2 {
+            background-image:url(/Public/images/index/rank2.png);
+        }
+        .rank-leader .rank-3 {
+            background-image:url(/Public/images/index/rank3.png);
+        }
+        .rank-leader .rank-detail {
+            position: absolute;
+            top: 20%;
+            left: 45%;
+        }
+        .rank-leader .rank-detail p {
+            font-size: 16px;
+            color: #666;
+        }
+        .rank-leader .rank-detail p i {
+            font-style: normal;
+            color: #1583fe;
+            padding-left: 10px;
+        }
+        .rank-leader .rank-detail p.sum {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+
+    </style>
+</block>
+<block name="js">
+    <script>
+        $(function () {
+           // 根据是否登录来判断是否显示可用余额
+           if(!$(".loginusername").html()){
+             $(".available-sum .sum").text("******");
+             $("#btnInvest").click(function () {
+              window.location.href = "https://t.dsyht.com.cn/Login/index.html";
+          });
+         }else{
+             $(".login-entrance").hide();
+         }
+
+           /*获取百分比*/
+           var per = $(".progress-bar").width() *100 / $(".my-progress").width();
+           console.log(per);
+           $(".pro-raise-progress .per").text(per + "%");
+
+           /*根据达人榜是否有内容来让该模块显示或者隐藏*/
+           if($("#lendList").attr("status") == 0){
+               $("#lendList").hide();
+               $("#projectDetail,#refundPlan").addClass("col-md-6").removeClass("col-md-4");
+           }
+       });
+
+        /*三栏布局选项卡*/
+        $("#projectDetail").css("border-left-color","transparent");
+        $("#lendList").css("border-right-color","transparent");
+        $("#projectDetail").click(function () {
+            $(this).addClass("pro-active");
+            $(this).siblings().removeClass("pro-active");
+            $(".content1").show();
+            $(".content2,.content3").hide();
+        });
+        $("#refundPlan").click(function () {
+            $(this).addClass("pro-active");
+            $(this).siblings().removeClass("pro-active");
+            $(".content2").show();
+            $(".content1,.content3").hide();
+        });
+        $("#lendList").click(function () {
+            $(this).addClass("pro-active");
+            $(this).siblings().removeClass("pro-active");
+            $(".content3").show();
+            $(".content1,.content2").hide();
+        });
+        $("#btnInvest").click(function () {
+            if(parseFloat($(".form-control").val()) > parseFloat($(".investment-sum b").text())){
+                BootstrapDialog.show({
+                    title: '提示',
+                    type: BootstrapDialog.TYPE_DANGER,
+                    message: "投资金额超出可投金额！"
+                });
+            }else if(!$(".form-control").val()){
+                BootstrapDialog.show({
+                    title: '提示',
+                    type: BootstrapDialog.TYPE_DANGER,
+                    message: "请输入投资金额！"
+                });
+            }else{
+                /*            BootstrapDialog.show({
+                 title: '确定投资',
+                 type: BootstrapDialog.TYPE_WARNING,
+                 message: $('<div></div>').load('/Index/confirm.html')
+             });*/
+             BootstrapDialog.show({
+                title: '提示',
+                type: BootstrapDialog.TYPE_WARNING,
+                message: $('<div></div>').load('/Index/riskconfirm.html')
+            });
+         }
+     });
+ </script>
+</block>

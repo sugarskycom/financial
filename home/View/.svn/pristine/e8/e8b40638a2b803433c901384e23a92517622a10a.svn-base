@@ -1,0 +1,72 @@
+<extend name="Public:base"/>
+<block name="content">
+    <include file="Public:nav"/>
+    <div id="wrapper">
+        <div class="current-nav">
+            <ol class="breadcrumb">
+                <li>中电金服</li>
+                <li><a href="{:U('Dashboard/index')}">管理首页</a></li>
+                <li class="active">账号安全</li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <dl class="dl-horizontal check-dl">
+                            <dt>登录名：</dt>
+                            <dd>
+                                <label class="text-info">{$user.username}</label>
+                            </dd>
+                            <dt class="even">修改密码：</dt>
+                            <dd class="even">
+                                <label class="text-info">******</label>
+                                <button class="btn btn-info btnPassword" id="btnPassword">修改密码</button>
+                            </dd>
+                            <dt>绑定手机：</dt>
+                            <dd>
+                                <label class="text-info">{$user.mobile}</label>
+                                <button class="btn btn-info btnMobile" id="btnMobile">更换手机</button>
+                            </dd>
+                            <dt class="even">邮箱认证：</dt>
+                            <dd class="even">
+                                <if condition="$user.email eq ''">
+                                    <label class="text-danger">未绑定</label>
+                                    <button class="btn btn-info btnEmail1" id="btnEmail1">绑定邮箱</button>
+                                    <elseif condition="$user.email neq ''"/>
+                                    <label class="text-info">{$user.email}</label>
+                                    <button class="btn btn-info btnEmail2" id="btnEmail2">更换邮箱</button>
+                                </if>
+                            </dd>
+                            <dt>实名认证：</dt>
+                            <dd>
+                                <eq name="user.is_auth" value="0">
+                                    <label class="text-danger">未认证</label>
+                                    <a class="btn btn-info btnRealname2" href="{:U('Account/verifyrealname')}">立即认证</a>
+                                </eq>
+                                <eq name="user.is_auth" value="1">
+                                    <label class="text-info">{$user.realname}&nbsp;/&nbsp;{$user.idcard}</label>
+                                </eq>
+                                <eq name="user.is_auth" value="3">
+                                    <label class="text-danger">审核中</label>
+                                </eq>
+
+                            </dd>
+                            <dt class="even">交易密码：</dt>
+                            <dd class="even">
+                                <eq name="user.is_paywd" value="">
+                                    <label class="text-danger">未设置</label>
+                                    <button class="btn btn-info btnPassword1" id="btnPassword1">立即设置</button>
+                                    <else/>
+                                    <label class="text-info">******</label>
+                                    <a class="btn btn-info btnPassword1" href="{:U('Account/changepsd')}">修改交易密码</a>
+                                </eq>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public:copyright"/>
+</block>

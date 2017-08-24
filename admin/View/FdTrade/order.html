@@ -1,0 +1,80 @@
+<extend name="Public:base"/>
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <form action="javascript:;" class="form-inline" method="get">
+                <select class="form-control" id="queryType" name="queryType" placeholder="交易类型">
+                <option value="">交易类型</option>
+                <option value="01">充值</option>
+                <option value="02">提现</option>
+                <option value="03">投标</option>
+                <option value="04">借款人还款</option>
+                <option value="05">投资人回款</option>
+                <option value="06">债权认购</option>
+                <option value="07">满标放款</option>
+                </select>
+                <input type="text" class="form-control" id="queryOrderDate" name="queryOrderDate"  placeholder="订单日期" readonly>
+                <input type="text" class="form-control" id="queryOrderNo" name="queryOrderNo"  placeholder="订单流水号" style="min-width: 250px;">
+                <button type="submit" class="btn btn-success" id="btnSearch">查询</button>
+            </form>
+        </div>
+        <div class="ibox-content">
+        <dl class="dl-horizontal" id="result">
+        </dl>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:datejs"/>
+<script type="text/javascript">
+var lang = {$lang};
+$("#queryOrderDate").datetimepicker({
+	language:'zh-CN',
+	format:'yyyy-mm-dd',
+	minView:'month',
+});
+$("#btnSearch").click(function(){
+	var obj = {};
+	obj.queryType = $("#queryType").val();
+	obj.queryOrderDate = $("#queryOrderDate").val();
+	obj.queryOrderNo = $.trim($("#queryOrderNo").val());
+	if(obj.queryType==''){
+		toastr.error('请选择交易类型');
+		return false;
+	}
+	if(obj.queryOrderDate==''){
+		toastr.error('订单日期必须选择');
+		return false;
+	}
+	if(obj.queryOrderNo==''){
+		toastr.error('订单流水号必须填写');
+		return false;
+	}
+	if(obj.queryOrderNo.length!=18){
+		toastr.error('订单流水号应为18位,请检查');
+		return false;
+	}
+	$(this).attr('disabled',true);
+	$.post("__ACTION__",obj,function(ret){
+		$("#btnSearch").attr('disabled',false);
+		if(ret.status==1){
+			$("#result").html('');
+			$.each(ret.data,function(k,v){
+				$("#result").append('<dt>'+lang[k]+'</dt>');
+				$("#result").append('<dd>'+v+'</dd>');
+			});
+		}
+		else{
+			toastr.error(ret.error);
+		}
+	});
+});
+</script>
+</block>
+<block name="css">
+<style>
+#result dt,#result dd{
+	padding: 5px 0;
+}
+</style>
+</block>

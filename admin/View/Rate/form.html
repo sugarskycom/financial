@@ -1,0 +1,38 @@
+<form class="form-inline" action="javascript:;">
+	<table class="table table-bordered table-max">
+		<tbody>
+			<tr>
+				<td colspan="3">
+					<neq name="project" value="4">
+					期限 
+					<select id="month" id="month" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+					</neq>
+					基础年化
+					<input type="number" value="{$data.year_rate}"  class="form-control" id="year_rate" name="year_rate">
+					<button type="submit" class="btn btn-success" id="saveProject">保存</button>
+					<button type="button" class="btn btn-white" id="view" data-toggle="popover" data-placement="bottom">预览所有期限大纲</button>
+					<input type="hidden" value="{$project}" name="project">
+					<input type="hidden" value="{$data.pid}" name="pid">
+				</td>
+			</tr>
+			<tr>
+				<td>借款服务费 <input type="number" class="form-control" id="service_rate" name="service_rate" value="{$data.service_rate}" <eq name="project" value="4">disabled</eq>  ></td>
+				<td>借款管理费 <input type="number" class="form-control" id="manage_rate" name="manage_rate" value="{$data.manage_rate}"  <eq name="project" value="4">disabled</eq>></td>
+				<td>逾期管理费 <input type="number" class="form-control" id="overdue_rate" name="overdue_rate" value="{$data.overdue_rate}"  <eq name="project" value="4">disabled</eq>></td>
+			</tr>
+			<tr>
+				<td>风险管理金 <input type="number" class="form-control" id="risk_rate" name="risk_rate" value="{$data.risk_rate}"  <eq name="project" value="4">disabled</eq>></td>
+				<td>逾期罚息 <input type="number" class="form-control" id="overdue_punish" name="overdue_punish" value="{$data.overdue_punish}"  <eq name="project" value="4">disabled</eq>></td>
+				<td>违约罚息 <input type="number" class="form-control" id="break_punish" name="break_punish"  value="{$data.break_punish}" <eq name="project" value="4">disabled</eq>></td>
+			</tr>
+		</tbody>
+
+	</table>
+</form>

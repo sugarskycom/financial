@@ -1,0 +1,411 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox relative">
+                <include file="userbar" />
+                <div class="user-box">
+                    <!--内容-->
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">详细信息</a></li>
+                            <li><a data-toggle="tab" href="#tab-2">资产信息</a></li>
+                            <li><a data-toggle="tab" href="#tab-3">工作信息</a></li>
+                            <li><a data-toggle="tab" href="#tab-4">联系人信息</a></li>
+                            <li><a data-toggle="tab" href="#tab-5">绑定银行卡</a></li>
+                            <li><a data-toggle="tab" href="#tab-6">实名认证</a></li>
+                        </ul>
+                        <div class="tab-content">
+                           <include file="tab1"/>
+                            <!--/tab-1-->
+                            <include file="tab2"/>
+                            <!--/tab-2-->
+                            <include file="tab3"/>
+                            <!--/tab-3-->
+                            <include file="tab4"/>
+                            <!--/tab-4-->
+                            <include file="tab5"/>
+                            <!--/tab-5-->
+                            <include file="tab6"/>
+                            <!--/tab-6-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <include file="Public:date2" />
+    <!--详细信息-->
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/area/areaData.js"></script>
+    <script type="text/javascript">
+    var uid = '{$userinfo.uid}';
+    //详细信息JS
+    var native_pid = '{$userinfo.native_pid}';
+    var native_cid = '{$userinfo.native_cid}';
+    var opt = '<option value="">未选择</option>';
+    $(function() {
+        var citys = [];
+        //初始化籍贯省数据
+        $.each(zhArea, function(i, item) {
+            //console.log(item);
+            var pId = '';
+            var tmp = '';
+            $.each(item, function(k, v) {
+                if (k != "n") {
+                    pId = k;
+                    return;
+                }
+            });
+            if (native_pid == pId) {
+                tmp += '<option value="' + pId + '" selected>' + item.n + '</option>';
+                citys = zhArea[i][pId];
+            } else {
+                tmp += '<option value="' + pId + '" >' + item.n + '</option>'
+            }
+            $("#native_pid").append(tmp);
+        });
+        //console.log(citys);
+        $.each(citys, function(i, item) {
+            var cid = '';
+            var tmp = '';
+            $.each(item, function(k, v) {
+                if (k != "n") {
+                    cid = k;
+                    return;
+                }
+            });
+            if (native_cid == cid) {
+                tmp += '<option value="' + cid + '" selected>' + item.n + '</option>';
+            } else {
+                tmp += '<option value="' + cid + '">' + item.n + '</option>';
+            }
+            $("#native_cid").append(tmp);
+        });
+        //console.log(citys);
+        //加载籍贯市数据
+        $("#native_pid").on("change", function() {
+            var pid = $(this).val();
+            if (pid != '') {
+                var arr = [];
+                for (var i in zhArea) {
+                    //console.log(zhArea[i]);
+                    var t = 0;
+                    for (var j in zhArea[i]) {
+                        if (j == parseInt(pid)) {
+                            arr = zhArea[i][j];
+                            t = j;
+                            break;
+                        }
+                    }
+                    if (t == parseInt(pid)) {
+                        break;
+                    }
+                }
+                //console.log(arr);
+                $("#native_cid").html('').append(opt);
+                for (var i in arr) {
+                    var id, text;
+                    for (var j in arr[i]) {
+                        if (j != 'n') id = j
+                    }
+                    text = arr[i].n;
+                    var str = '<option value="' + id + '">' + text + '</option>'
+                    $("#native_cid").append(str);
+
+                }
+            }
+        });
+
+        //生日选择器
+        $('.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "yyyy/mm/dd",
+            language: 'zh-CN',
+            pickerPosition: "bottom-left",
+        });
+    });
+
+    //工作信息JS
+    var work_p = '{$userinfo.work_p}';
+    var work_c = '{$userinfo.work_c}';
+    var opt = '<option value="">未选择</option>';
+    $(function() {
+        var citys = [];
+        //初始化籍贯省数据
+        $.each(zhArea, function(i, item) {
+            //console.log(item);
+            var pId = '';
+            var tmp = '';
+            $.each(item, function(k, v) {
+                if (k != "n") {
+                    pId = k;
+                    return;
+                }
+            });
+            if (work_p == pId) {
+                tmp += '<option value="' + pId + '" selected>' + item.n + '</option>';
+                citys = zhArea[i][pId];
+            } else {
+                tmp += '<option value="' + pId + '" >' + item.n + '</option>'
+            }
+            $("#work_p").append(tmp);
+        });
+        //console.log(citys);
+        $.each(citys, function(i, item) {
+            var cid = '';
+            var tmp = '';
+            $.each(item, function(k, v) {
+                if (k != "n") {
+                    cid = k;
+                    return;
+                }
+            });
+            if (work_c == cid) {
+                tmp += '<option value="' + cid + '" selected>' + item.n + '</option>';
+            } else {
+                tmp += '<option value="' + cid + '">' + item.n + '</option>';
+            }
+            $("#work_c").append(tmp);
+        });
+        //console.log(citys);
+        //加载籍贯市数据
+        $("#work_p").on("change", function() {
+            var pid = $(this).val();
+            if (pid != '') {
+                var arr = [];
+                for (var i in zhArea) {
+                    var t = 0;
+                    for (var j in zhArea[i]) {
+                        if (j == parseInt(pid)) {
+                            arr = zhArea[i][j];
+                            t = j;
+                            break;
+                        }
+                    }
+                    if (t == parseInt(pid)) {
+                        break;
+                    }
+                }
+                $("#work_c").html('').append(opt);
+                for (var i in arr) {
+                    var id, text;
+                    for (var j in arr[i]) {
+                        if (j != 'n') id = j
+                    }
+                    text = arr[i].n;
+                    var str = '<option value="' + id + '">' + text + '</option>'
+                    $("#work_c").append(str);
+
+                }
+            }
+        });
+    });
+
+    //添加银行卡窗口
+    $("#btnBank").on("click", function() {
+        BootstrapDialog.show({
+            title: "添加银行卡",
+            message: $("<div></div>").load("__URL__/addbank"),
+            type: BootstrapDialog.TYPE_DEFAULT,
+            draggable: true,
+
+        });
+    });
+
+    //提交详细信息
+    $("#btn1").click(function() {
+        var obj = {};
+        obj.uid = uid;
+        $.each($("#detailform input[type=text]"), function() {
+            var key = $(this).attr('name').trim();
+            var val = $(this).val().trim();
+            obj[key] = val;
+        });
+        obj.nation = $("#nation option:selected").val();
+        obj.diploma = $("#diploma").val();
+        obj.native_pid = $("#native_pid option:selected").val();
+        obj.native_p = $("#native_pid option:selected").text();
+        obj.native_cid = $("#native_cid option:selected").val();
+        obj.native_c = $("#native_cid option:selected").text();
+        obj.sex = $("input[name=sex]:checked").val();
+        obj.marital = $("input[name=marital]:checked").val();
+        obj.bear = $("input[name=bear]:checked").val();
+        $.post('__URL__/editDetail', obj, function(ret){
+        	if (ret.status == 0) {
+        		alt(ret.error);
+        	} else {
+        		alt(ret.data);
+        	}
+        });
+        return false;
+    });
+
+    //资产信息提交
+    $("#btn2").click(function() {
+        var obj = {
+        	uid: uid,
+            house:$("#house").val(),
+            housing_loan: $("input[name=housing_loan]:checked").val(),
+            car: $("#car").val(),
+            car_loan: $("input[name=car_loan]:checked").val(),
+            goods_type: $("#goods_type").val(),
+            goods: $("#goods").val(),
+            other_type: $("#other_type").val(),
+            other: $("#other").val(),
+        }
+        $.post('__URL__/editAsset', obj, function(ret) {
+        	if (ret.status == 0) {
+        		alt(ret.error);
+        	} else {
+        		alt(ret.data);
+        	}
+        });
+        return false;
+    });
+
+    //工作信息提交
+    $("#btn3").click(function() {
+        var obj = {};
+    	obj.uid = uid,
+    	obj.company = $('#company').val().trim(),
+    	obj.company_cat = $('#company_cat option:selected').val(),
+    	obj.industry = $('#industry option:selected').val(),
+    	obj.scale = $('#scale option:selected').val(),
+    	obj.work_tel = $('#company_tel').val().trim(),
+    	obj.address = $('#address').val().trim(),
+    	obj.postion = $('#postion option:selected').val(),
+    	obj.jobs = $('#jobs').val().trim(),
+    	obj.salary = $('#salary').val().trim(),
+    	obj.work_length = $('#work_length').val().trim(),
+    	obj.work_p = $('#work_p option:selected').val(),
+    	obj.work_c = $('#work_c option:selected').val(),
+    	obj.work_mail = $('#work_mail').val().trim()
+        // console.log(obj);return false;
+        $.post('__URL__/editWork', obj, function(ret) {
+        	if (ret.status == 0) {
+        		alt(ret.error);
+        	} else {
+        		alt(ret.data);
+        	}
+        });
+        return false;
+    });
+
+    //联系人提交
+    $("#btn4").click(function() {
+        var obj = {
+        	uid: uid,
+        	main: $('#main').val().trim(),
+        	main_rela: $('#main_rela option:selected').val(),
+        	main_tel: $('#main_tel').val(),
+        	workmate: $('#workmate').val().trim(),
+        	workmate_rela: $('#workmate_rela option:selected').val(),
+        	workmate_tel: $('#workmate_tel').val(),
+        	backup: $('#backup').val().trim(),
+        	backup_rela: $('#backup_rela option:selected').val(),
+        	backup_tel: $('#backup_tel').val(),
+        	recommend: $('#recommend').val().trim(),
+        	recommend_rela: $('#recommend_rela option:selected').val(),
+        	recommend_tel: $('#recommend_tel').val(),
+        };
+        // console.log(obj);return false;
+        $.post('__URL__/editContacts', obj, function(ret) {
+        	if (ret.status == 0) {
+        		alt(ret.error);
+        	} else {
+        		alt(ret.data);
+        	}
+        });
+        return false;
+    });
+    //设置交易密码
+    function setPayPassword(){
+        BootstrapDialog.show({
+            title:'设置交易密码',
+            type:BootstrapDialog.TYPE_DEFAULT,
+            size:BootstrapDialog.SIZE_SMALL,
+            message:function(ret){
+                var html =  '<div class="form-group"><input type="password" value="" name="payPassword" id="payPassword" class="form-control"></div>';
+                    html +=  '<div class="form-group"><input type="password" value="" name="repayPassword" id="repayPassword" class="form-control"></div>';
+                    html += '<div class="form-group"><button type="button" class="btn btn-success" onclick="savePayPassword(this)">保存</button></div>';
+                    return html;
+            }
+        });
+    }
+    function savePayPassword(o){
+        var payPassword = $.trim($("#payPassword").val());
+        var repayPassword = $.trim($("#repayPassword").val());
+        if(payPassword.length<6){
+            error($("#payPassword"),'交易密码至少6位');
+            return false;
+        }
+        else if(payPassword!=repayPassword){
+            error($("#repayPassword"),'两次密码不一致');
+            return false;
+        }
+        else{
+            $.post("__URL__/setpaypassword",{user_id:'{$Think.get.uid}',password:payPassword,repassword:repayPassword},function(ret){
+                if(ret.status==1){
+                    alt(ret.data,function(){
+                        window.location.href="__URL__/detail?uid={$Think.get.uid}";
+                    });
+                }
+                else{
+                    error($(o),ret.error);
+                }
+            })
+        }
+    }
+    //实名认证
+    function successBatch(){
+        batchAuth(1);
+    }
+    //认证失败
+    function failBatch(){
+        BootstrapDialog.show({
+            type:BootstrapDialog.TYPE_DEFAULT,
+            title:'原因',
+            size:BootstrapDialog.SIZE_SMALL,
+            message:function(){
+                var h = '<textarea placeholder="说明原因" class="form-control" id="reason"></textarea>'
+                h += '<button type="button" class="btn btn-success btn-block btn-sure" style="margin-top:15px;" onclick="batchAuth(2,$(\'#reason\').val())" id="sureBtn">确定</button>';
+                return h;
+            },
+            cssClass:'bounceInDown animated',
+            onshown:vertical
+        })
+    }
+    function batchAuth(flag,reason){
+        if(flag==2){
+            if($.trim(reason)==''){
+                error($("#reason"),'请填写认证失败原因');
+                return false;
+            }
+        }
+        $.ajax({
+            url:'__URL__/batchauth',
+            data:{uid:'{$userinfo.uid}',reason:reason,flag:flag},
+            type:"post",
+            success:function(ret){
+                if(ret.status==1){
+                    alt(ret.data,function(){
+                        window.location.href='__URL__/detail?uid={$userinfo.uid}';
+                    })
+                }
+                else{
+                    error($(".btn-sure"),ret.error);
+                }
+            }
+        });
+    }
+    </script>
+</block>
+<block name="buttons">
+   <include file="topmenu"/>
+</block>

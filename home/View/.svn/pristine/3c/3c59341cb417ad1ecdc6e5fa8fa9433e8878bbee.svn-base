@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div>
+            <div class="col-md-4">标的标题</div>
+            <div class="col-md-8">U计划-新1月-20180801期</div>
+        </div>
+        <div>
+            <div class="col-md-4">预计年利率</div>
+            <div class="col-md-8">7.8%</div>
+        </div>
+        <div>
+            <div class="col-md-4">预计收益金额</div>
+            <div class="col-md-8">8.00元</div>
+        </div>
+        <div>
+            <div class="col-md-4">投资期限</div>
+            <div class="col-md-8">12个月</div>
+        </div>
+        <div>
+            <div class="col-md-4">收益方式</div>
+            <div class="col-md-8">按月付息，到期还本</div>
+        </div>
+        <div>
+            <div class="col-md-4">投资额度</div>
+            <div class="col-md-8">10000.00元</div>
+            <div class="col-md-8" style="display: none">1000.00元&nbsp;&nbsp;&nbsp;您的余额不足&nbsp;&nbsp;&nbsp;<a
+                    href="{:U('Index/recharge')}">去充值</a></div>
+        </div>
+    </div>
+</div>

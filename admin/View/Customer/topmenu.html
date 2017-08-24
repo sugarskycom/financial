@@ -1,0 +1,10 @@
+<!--顶部导航-->
+<div class="pull-right clearfix">
+	<div class="btn-group">
+		<a href="__URL__/detail?uid={$Think.get.uid}" class="btn <eq name='a' value='detail'>btn-primary<else/>btn-white</eq>">个人信息</a>
+		<a href="__URL__/loanlist?uid={$Think.get.uid}" class="btn <eq name='a' value='loanlist'>btn-primary<else/>btn-white</eq>">借款记录</a>
+		<a href="__URL__/lendlist?uid={$Think.get.uid}" class="btn <eq name='a' value='lendlist'>btn-primary<else/>btn-white</eq>">出借记录</a>
+		<a href="__URL__/moneylist?uid={$Think.get.uid}" class="btn <eq name='a' value='moneylist'>btn-primary<else/>btn-white</eq>">资金记录</a>
+		<a href="__URL__/other?uid={$Think.get.uid}" class="btn <eq name='a' value='other'>btn-primary<else/>btn-white</eq>">其他</a>
+	</div>
+</div>

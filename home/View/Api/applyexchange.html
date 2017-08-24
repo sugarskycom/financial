@@ -1,0 +1,249 @@
+<extend name="base" />
+<block name="content">
+    <if condition="$step eq 'first'">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h3>置换申请</h3>
+            </div>
+            <div class="ibox-content">
+                <form action="" method="post" id="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-2 control-label">借款唯一号：</label>
+                        <div class="col-sm-4 col-md-3">
+                            <input type="text" class="form-control" name="bno" id="bno" value="">
+                        </div>
+                        <div class="col-sm-5 col-md-7"></div>
+                    </div>
+                    <!--/form-->
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-2 control-label">备注：</label>
+                        <div class="col-sm-4 col-md-3">
+                            <textarea class="form-control" name="remark" id="remark"></textarea>
+                        </div>
+                        <div class="col-sm-5 col-md-7"></div>
+                    </div>
+                    <!--/form-->
+                    <div class="form-group">
+                        <div class="col-sm-offset-3  col-md-offset-2  col-sm-5">
+                            <button type="button" class="btn btn-success" id="btnStep">下一步、置换商品</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </if>
+    <if condition="$step eq 'second'">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>换进商品</h5>
+            </div>
+            <div class="ibox-content">
+                <table class="table  table-striped " style="margin-bottom: 0;" id="inTableList" data-toggle="table" data-url="__ACTION__?step=loadIn" data-query-params="paramsa" data-pagination="true" data-side-pagination="server" data-page-list="[5,10,20,30,50,100]" data-method="post" data-page-size="5" data-cache="false" data-sort-order="desc" data-sort-name="id" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                    <thead>
+                        <tr>
+                            <th data-field="product_id">编号</th>
+                            <th data-field="product_name">商品名称</th>
+                            <th data-field="product_no">型号</th>
+                            <th data-field="quantity" data-formatter="formatQ">数量</th>
+                            <th data-field="id" data-formatter="formatAction">移除</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="10">
+                                <form class="form-inline" action="javascript:;">
+                                    <select class="form-control" name="order_sn" id="order_sn">
+                                        <option value="">选择押品仓</option>
+                                        <volist name="dlist" id="r">
+                                            <option value="{$r.OrderID}" data-depot-id="{$r.Storage_Id}">{$r.Storage_Name} {$r.CreateDate}</option>
+                                        </volist>
+                                    </select>
+                                    <input type="text" class="form-control" name="keyword_in" id="keyword_in" placeholder="商品(押品)关键词"> &nbsp;
+                                    <button type="button" class="btn btn-success" id="btnSearchIn">搜索</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>换出商品</h5>
+            </div>
+            <div class="ibox-content">
+                <table class="table  table-striped " id="outTableList" data-toggle="table" data-url="__ACTION__?step=loadOut" data-query-params="paramsb" data-pagination="true" data-side-pagination="server" data-page-list="[5,10,20,30,50,100]" data-method="post" data-page-size="5" data-cache="false" data-sort-order="desc" data-sort-name="id" data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+                    <thead>
+                        <tr>
+                            <th data-field="product_id">编号</th>
+                            <th data-field="product_name">商品名称</th>
+                            <th data-field="product_no">型号</th>
+                            <th data-field="quantity" data-formatter="formatQout">数量</th>
+                            <th data-field="assess_price" data-formatter="formatCny">评估价</th>
+                            <th data-field="id" data-formatter="formatTotal">小计</th>
+                            <th data-field="id" data-formatter="formatActionOut">移除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                <form class="form-inline" action="javascript:;">
+                                    <input type="text" class="form-control" name="keyword_out" id="keyword_out" placeholder="商品(押品)关键词"> &nbsp;
+                                    <button type="button" class="btn btn-success" id="btnSearchOut">搜索</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </if>
+</block>
+<block name="js">
+    <if condition="$step eq 'first'">
+        <script type="text/javascript">
+        $("#btnStep").click(function() {
+            var bno = $.trim($("#bno").val());
+            var remark = $("#remark").val();
+            var order_sn = $("#order_sn");
+            if (bno == '') {
+                alt($("#bno"), '借款标唯一号不能为空');
+                $("#bno").focus();
+                return false;
+            } else {
+                var res = $.ajax({
+                    url: "__URL__/checkbno",
+                    data: {
+                        bno: bno
+                    },
+                    async: false,
+                    type: 'post'
+                }).responseText;
+                if (res != '1') {
+                    alt($("#bno"), '该借款标唯一号不存在');
+                    $("#bno").focus();
+                    return false;
+                } else {
+                    $(this).attr('disabled', true).text('保存中...');
+                    $.post("__ACTION__?step=add", {
+                        bno: bno,
+                        remark: remark
+                    }, function(ret) {
+                        if (ret.status == 1) {
+                            window.location.href = "__ACTION__?step=second&osn=" + ret.data;
+                        } else {
+                            alt($("#btnStep"), ret.error);
+                            setTimeout(function() {
+                                $("#btnStep").attr('disabled', false).text('下一步、置换押品');
+                            }, 2000);
+                        }
+                    });
+                }
+            }
+        });
+        </script>
+    </if>
+    <if condition="$step eq 'second'">
+        <include file="table" />
+        <script type="text/javascript">
+        var osn = '{$osn}';
+        $("#btnSearchIn").click(function() {
+            var keyword_in = encodeURI($.trim($("#keyword_in").val()));
+            var order_sn = $.trim($("#order_sn").val());
+            if (keyword_in != '') {
+                BootstrapDialog.show({
+                    title: '库存商品',
+                    type: BootstrapDialog.TYPE_DEFAULT,
+                    size: BootstrapDialog.SIZE_WIDE,
+                    message: $("<div></div>").load('__URL__/searchinproduct?order_sn=' + order_sn + "&keyword=" + keyword_in),
+                });
+            }
+        });
+
+        $("#btnSearchOut").click(function() {
+            var keyword = encodeURI($.trim($("#keyword_out").val()));
+            if (keyword != '') {
+                BootstrapDialog.show({
+                    title: '押品搜索',
+                    type: BootstrapDialog.TYPE_DEFAULT,
+                    size: BootstrapDialog.SIZE_WIDE,
+                    message: $("<div></div>").load('__URL__/searchoutproduct?osn={$osn}&' + "keyword=" + keyword),
+                });
+            }
+        });
+
+        function paramsa(params) {
+            params.osn = '{$osn}';
+            return params;
+        }
+
+        function paramsb(params) {
+            params.osn = '{$osn}';
+            return params;
+        }
+
+        function formatQ(v, r, i) {
+            return '<input type="number" value="' + v + '" name="inQuantity" class="form-control" style="width:200px;" onchange="update(' + r.id + ',this)">';
+        }
+
+        function formatAction(v, r, i) {
+            return '<button type="button" class="btn btn-warning" onclick="deleteIn(' + v + ',this)">移除</button>';
+        }
+
+        function formatTotal(v, r, i) {
+            var t = parseInt(r.quantity) * parseFloat(r.assess_price);
+            return t.toLocaleString();
+        }
+
+        function formatActionOut(v, r, i) {
+            return '<button type="button" class="btn btn-warning" onclick="deleteOut(' + v + ',this)">移除</button>';
+        }
+
+        function formatQout(v, r, i) {
+            return '<input type="number" value="' + v + '" name="outQuantity" class="form-control" style="width:200px;" onchange="update(' + r.id + ',this)">';
+        }
+
+        function deleteOut(id, o) {
+            $.post("__URL__/removeexchange", {
+                flag: 'out',
+                osn: '{$osn}',
+                id: id
+            }, function(ret) {
+                if (ret.status == 1) {
+                    $("#outTableList").bootstrapTable('refresh');
+                    toastr.success(ret.data);
+                }
+            });
+        }
+
+        function deleteIn(id, o) {
+            $.post("__URL__/removeexchange", {
+                flag: 'in',
+                osn: '{$osn}',
+                id: id
+            }, function(ret) {
+                if (ret.status == 1) {
+                    $("#inTableList").bootstrapTable('refresh');
+                    toastr.success(ret.data);
+                }
+            });
+        }
+
+        function update(id, o) {
+            var quantity = $(o).val();
+            $.post('__URL__/updateexchangequantity', {
+                id: id,
+                quantity: quantity,
+                osn: '{$osn}'
+            }, function(ret) {
+                if (ret.status == 1) {
+                    toastr.success(ret.data);
+                }
+            });
+        }
+        </script>
+    </if>
+</block>

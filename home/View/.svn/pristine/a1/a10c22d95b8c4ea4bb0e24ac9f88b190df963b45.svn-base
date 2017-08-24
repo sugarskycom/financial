@@ -1,0 +1,55 @@
+<!--修改密码-->
+<div class="" id="mobileHtml">
+<if condition="$is_open eq 1">
+<form method="post" action="javascript:;" class="mobile-wraper">
+	<div class="form-group">
+		<label class="label-control">新手机号：</label>
+		<input type="number" name="mobile" id="mobile" class="form-control" onkeyup="this.value=this.value.replace(/^[\D]/g,'')" />
+	</div>
+	<div class="form-group">
+		<label class="label-control">原手机号是否可用：</label>
+		<select id="type" name="type" class="form-control">
+			<option value="1">可用</option>
+			<option value="2">不可用</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-block" id="btnSavePassword">下一步</button>
+		<span class="" id="msgMobile"></span>
+	</div>
+</form>
+<else/>
+<div class="alert alert-warning">暂未开户，请先开户</div>
+</if>
+</div>
+<if condition="$is_open eq 1">
+<script type="text/javascript">
+$(function() {
+		$("#btnSavePassword").click(function(){
+			var mobile = $.trim($("#mobile").val());
+			var type = $("#type").val();
+			var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+			if(!reg.test(mobile)){
+				error($("#mobile"),'无效手机号');
+				return false;
+			}
+			//手机号是否存在
+			var v = $.ajax({
+					type:"post",
+					url:"__URL__/bmobile",
+					data:{flag:'checkExists',mobile:mobile},
+					async:false
+				}).responseText;
+			if(v!='1'){
+				error($("#mobile"),'此手机号已使用不可以绑定');
+				return false;
+			}
+			$.post("__URL__/bmobile",{flag:'save',mobile:mobile,type:type},function(ret){
+				if(ret.status==1){
+					window.location.href="__URL__/smd?token="+ret.data;
+				}
+			});
+		});
+})
+</script>
+</if>

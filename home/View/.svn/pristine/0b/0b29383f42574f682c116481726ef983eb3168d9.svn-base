@@ -1,0 +1,9 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container">
+
+    </div>
+    <include file="Index:float"/>
+    <include file="Public:footer"/>
+</block>

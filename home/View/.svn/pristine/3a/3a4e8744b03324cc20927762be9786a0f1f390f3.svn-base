@@ -1,0 +1,125 @@
+<extend name="Public:theme"/>
+<block name="content">
+	<include file="Public:top"/>
+	<div class="foot foot-wrapper">
+		<div class="container clearfix">
+			<div class="row">
+				<div class="foot-about col-md-2">
+					<h1>关于我们</h1>
+					<ul class="list-unstyled">
+						<li><a href="#">平台实力</a></li>
+						<li><a href="#">社会荣誉</a></li>
+						<li><a href="#">媒体报道</a></li>
+						<li><a href="#">联系我们</a></li>
+					</ul>
+				</div>
+				<div class="foot-about col-md-2">
+					<h1>关于我们</h1>
+					<ul class="list-unstyled">
+						<li><a href="#">平台实力</a></li>
+						<li><a href="#">社会荣誉</a></li>
+						<li><a href="#">媒体报道</a></li>
+						<li><a href="#">联系我们</a></li>
+					</ul>
+				</div>
+				<div class="foot-about col-md-4">
+					<h1>关于我们</h1>
+					<ul class="list-unstyled">
+						<li><a href="#">平台实力</a></li>
+						<li><a href="#">社会荣誉</a></li>
+						<li><a href="#">媒体报道</a></li>
+						<li><a href="#">联系我们</a></li>
+					</ul>
+				</div>
+
+				<div class="foot-qrcode col-md-4">
+					<dl class="clearfix">
+						<dd>
+							<img src="__PUBLIC__/images/qr.jpg"><br />
+							微信公众号
+						</dd>
+						<dd>
+							<img src="__PUBLIC__/images/qr.jpg"><br />
+							微信公众号
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="container foot-partner">
+			<div class="row">
+				<div class="col-md-2" style="font-size: 18px ;color: #666;margin-right: -70px;">合作伙伴：</div>
+				<div class="col-md-10">
+					<ul class="list-inline">
+						<li><img src="__PUBLIC__/images/u0.png"></li>
+						<li><img src="__PUBLIC__/images/u0.png"></li>
+						<li><img src="__PUBLIC__/images/u0.png"></li>
+						<li><img src="__PUBLIC__/images/u0.png"></li>
+						<li><img src="__PUBLIC__/images/u0.png"></li>
+						<li><img src="__PUBLIC__/images/u0.png"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 	<div class="">
+		<div class="container">
+			<div class="row copyright-wrapper">大视野汇通（北京）资产管理有限公司 京ICP备000000号 公安备案号：000000号</div>
+		</div>
+	</div> -->
+
+
+	<include file="Index:float"/>
+</block>
+<block name="css">
+	<style>
+		.foot.foot-wrapper {
+			border-top: 1px solid #e5e5e5;
+			border-bottom: 1px solid #e5e5e5;
+			background-color: #fff;
+			padding:0;
+		}
+	    /*.foot-wrapper .foot-about {width: 20%;}
+	    .foot-wrapper .foot-qrcode {width: 40%;}*/
+	    .foot-wrapper .foot-about,
+	    .foot-wrapper .foot-qrcode {
+	    	margin-bottom: 40px;
+	    	margin-top:40px;
+	    }
+	    .foot-wrapper .foot-about > h1,
+	    .foot-wrapper .foot-partner > h1{
+	    	font-size: 18px;
+	    	color: #666;
+	    	font-weight: 500;
+	    }
+	    .foot-wrapper .foot-about > h1 {margin-bottom: 20px;}
+	    .foot-wrapper .foot-about ul li {
+	    	margin-bottom: 10px;
+	    }
+	    .foot-wrapper .foot-about ul li a {
+	    	font-size: 14px;
+	    	color: #999;
+	    }
+	    .foot-partner {
+	    	height: 88px;
+	    	line-height: 88px;
+	    	border-top: 1px solid #e5e5e5;
+	    }
+	    .foot-partner ul li {
+	    	padding-left: 0;
+	    	padding-right: 30px;
+	    }
+	    .wrapper {
+	    	height: 76px;
+	    	line-height: 76px;
+	    }
+	    .wrapper p {
+	    	font-size: 12px;
+	    	color: #999;
+	    }
+	</style>
+</block>
+<block name="js">
+
+</script>
+</block>

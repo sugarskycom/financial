@@ -1,0 +1,61 @@
+<extend name="base"/>
+<block name="content">
+	<div class="ibox">
+		<div class="ibox-title">
+			<h3>我的贷款</h3>
+		</div>
+		<div class="ibox-content">
+			<table 
+			class="table"
+			id="table"
+			data-toggle="table"
+			data-url="__ACTION__"
+			data-method="post"
+			data-page-size="5"
+			data-pagination="true"
+			data-side-pagination="server"
+			data-page-list="[5,10,20,30,50]"
+			data-sort-order="desc"
+			data-show-pagination-switch="false"
+			data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+			>
+			<thead>
+				<tr>
+					<th data-field="title">标题</th>
+					<th data-field="bno">贷款唯一号</th>
+					<th data-field="amount" data-formatter="formatCny">贷款金额</th>
+					<th data-field="end_time" data-formatter="formatTime">结标时间</th>
+					<th data-field="duration" data-formatter="formatDuration">期限</th>
+					<th data-field="pay_type" data-formatter="payType">还款方式</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="table"/>
+<script type="text/javascript">
+function payType(v,r,i){
+	if(v==1)
+		return '按月付息到期还本';
+	else
+		return '一次性还本付息';
+}
+function formatDuration(v,r,i){
+	var str = '';
+	if(r.duration_type==1){
+		str = '年';
+	}
+	else if(r.duration_type==2){
+		str = '个月';
+	}
+	else if(r.duration_type==3){
+		str = '天';
+	}
+	return v+str;
+}
+</script>
+</block>

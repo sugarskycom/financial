@@ -1,0 +1,259 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container white-bg">
+        <!-- 面包屑导航栏 -->
+        <ol class="breadcrumb">
+            <li><a href="#">汇通资产</a></li>
+            <li><a href="#">我的账户</a></li>
+            <li style="color: #666;">还款</li>
+        </ol>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h1>还款</h1>
+                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">标的名称：</label>
+                        <div class="col-sm-4 rp">
+                            <span class="">标的名称标的名称</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">标的编号：</label>
+                        <div class="col-sm-4 rp">
+                            <span class="">DDC00010010010101</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">本期还款本金：</label>
+                        <div class="col-sm-4 rp">
+                            <span class="">10000.00元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">本期还款利息：</label>
+                        <div class="col-sm-4 rp">
+                            <span class="">120.00元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">违约金：</label>
+                        <div class="col-sm-4 rp">
+                            <span class="">120.00元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">本期合计还款：</label>
+                        <div class="col-sm-4 rp">
+                            <span class="rp-sum">10240.00元</span>
+                            <span class="ac-balance"><a href="#">账户余额10000.00元</a></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success btn-repay" id="btnRepay">去还款</button>
+                            <p style="text-align: center;margin-bottom: 50px;">将进入富滇银行存管界面操作</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="reminder">
+            <ol class="list-unstyled">温馨提示：
+                <li>1、开通银行存管账户、设置交易密码后，才能进行还款操作。</li>
+                <li>2、为保证您的资金安全，您充值的资金将进入富滇银行的银行管存账号。</li>
+                <li>3、本操作需要在富滇银行平台完成。</li>
+                <li>4、如还款过程出现异常，请联系客服：010-xxxxx  解决。</li>
+            </ol>
+        </div>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .white-bg {
+            background-color: #fff;
+            margin-top:70px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .white-bg .breadcrumb {
+            padding-left:50px;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 16px;
+            color: #999;
+            height: 60px;
+            line-height: 60px;
+        }
+        .ibox .ibox-title {
+            padding:0;
+            border:0;
+        }
+        .ibox-title h1 {
+            height: 50px;
+            line-height: 50px;
+            background-color: #fffcf5;
+            color: #d38129;
+            font-size: 18px;
+            margin:0 auto;
+            text-align: center;
+        }
+        .ibox .ibox-title form {
+            margin-top: 50px;
+        }
+        .ibox .ibox-title form .form-group {margin-bottom: 40px;}
+        .ibox .ibox-title .form-group > .control-label {
+            font-size: 14px;
+            color: #999;
+            padding-right: 20px;
+            letter-spacing: 1.5px;
+            height: 44px;
+            line-height: 1.8;
+        }
+        .ibox .ibox-title .form-group .rp{            
+            height: 44px; 
+            line-height: 2.5;
+        }
+        .ibox .ibox-title .form-group .rp span {
+            font-size: 16px;
+            color: #666;
+        }
+        .ibox .ibox-title .form-group .rp > .rp-sum {
+            padding-right: 15px;
+            color:#ff2b14;
+        }
+        .ibox .ibox-title .form-group .ac-balance {
+            font-size: 14px;
+            color: #3090fd;
+            border-bottom: 1px solid #3090fd;
+        }
+        .ibox .ibox-title .form-control {
+            width:346px;
+            height: 44px;
+            display: inline-block;
+            margin-right:25px;
+        }
+        .btn-success {
+            color: #fff;
+            background-color: #fdc230;
+            border-color: #fdc230;
+            border-radius: 4px;
+            width: 346px;
+            height: 50px;
+            margin-top:30px;
+            margin-bottom: 14px;
+        }
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.btn-success {
+            color: #fff;
+            background-color: #ffce55 !important;
+            border-color: #fdc230 !important;
+        }  
+
+        .reminder {
+            padding-top:30px;
+            padding-bottom: 30px;
+            padding-left: 50px;
+            font-size: 12px;
+            border-top:1px solid #e5e5e5;
+        }
+        .reminder ol {color:#666;}
+        .reminder ol li {color:#b2b2b2;padding-top:20px;}
+        label.fa-exclamation-circle {
+            font-size: 16px; 
+            color: #ff2b14;
+            margin-left: 10px;
+            position: absolute;
+            left: 60%;
+            bottom: 20%;
+            display: none !important;
+        }
+    </style>
+</block>
+<block name="js">
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+    <!--bootstrap dialog-->
+
+    <script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+    <script>
+        $(function(){
+            $("#form").validate({
+                rules:{
+                    realname:{
+                        required:true,
+                        isValidRealName:true
+                    },
+                    idcard:{
+                        required:true,
+                        isValidIdCard:true
+                    }
+
+                },
+                messages:{
+                    realname:{
+                        required:"真实姓名不能为空",
+                        isValidRealName:"请输入正确的姓名"
+                    },
+                    idcard:{
+                        required:"身份证号不能为空",
+                        isValidIdCard:"请输入正确的身份证号"
+                    }
+                },
+                /*错误提示位置*/
+                errorPlacement:function(error,element){
+                    error.insertAfter(element);
+                }
+                // submitHandler: function (form) {
+
+                // 	$("#btnSubmit").attr("disabled", true).text("提交中···");
+                // 	$.ajax({
+                // 		url: "",
+                // 		data: {
+                // 			feedbackType: $("#feedbackType").text().trim(),
+                // 			remarks: $("#remarks").val().trim(),
+                // 			name: $("#name").val().trim(),
+                // 			mobile: $("#mobile").val().trim()
+                // 		},
+                // 		type: "post",
+                // 		success: function (ret) {
+                // 			if (ret.status == 1) {
+                // 				$("#btnSubmit").text("提交成功，跳转中...");
+                // 				var url = "";
+                // 				if (backUrl != "") url = backUrl;
+                // 				setTimeout(function () {
+                // 					window.location.href = url;
+                // 				}, 1000);
+                // 			}
+                // 			else {
+
+                // 			}
+                // 		}
+                // 	})
+                // }
+            })
+
+
+// 验证中文名称
+            $.validator.addMethod("isValidRealName",function(value,element,params){
+                var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+                return pattern.test(realname);
+
+
+            });
+            // 验证身份证
+
+            $.validator.addMethod("isValidIdCard",function(value,element,params){
+                var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                return pattern.test(idcard);
+
+
+            });
+        })
+    </script>
+</block>

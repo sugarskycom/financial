@@ -1,0 +1,56 @@
+<extend name="Public:temp" />
+<block name="content">
+<div class="ibox">
+<div class="ibox-content">
+<include file="form" />
+</div>
+</div>
+</block>
+<block name="css">
+<!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
+</block>
+<block name="js">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
+<link href="{$Think.config.RESOURCE_URL}/components/summernote/dist/summernote.css" rel="stylesheet">
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/summernote/dist/summernote.min.js"></script>
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/summernote/dist/lang/summernote-zh-CN.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#content").summernote({
+		height:450,
+		lang:'zh-CN',
+		fontNames: ['宋体','微软雅黑','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+		toolbar: [
+			['view', ['fullscreen','codeview']],
+		    ['style', ['bold', 'italic', 'underline', 'clear']],
+		    ['fontname', ['fontname']],
+		    ['font', ['strikethrough', 'superscript', 'subscript']],
+		    ['fontsize', ['fontsize']],
+		    ['color', ['color']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']]
+  		],
+		codemirror: { // codemirror options
+    		theme: 'monokai'
+  		}
+	});
+
+	$("#btn").click(function(){
+		var title = $.trim($("#title").val());
+		var content = $("#content").summernote('code');
+		if(title==''){
+			alt('合同不能为空');
+			return false;
+		}
+		else{
+			return true;
+		}
+		return false;
+	});
+});
+</script>
+</block>

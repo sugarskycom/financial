@@ -1,0 +1,202 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+<div class="ibox-title">
+<h5>押品申请单</h5>
+<div class="ibox-tools">
+<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+<a class="close-link"><i class="fa fa-times"></i></a>
+</div>
+</div>
+<div class="ibox-content">
+	<table class="table table-hover"
+        data-toggle="table"
+        data-url="__ACTION__"
+        data-pagination="true"
+        data-query-params="paramsa"
+        data-side-pagination="server"
+        data-page-list="[3,10,20,30,50]"
+        data-method="post"
+        data-page-size="3"
+        data-cache="false"
+        data-sort-order="desc"
+        data-sort-name="id"
+        data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+	>
+		<thead>
+			<tr>
+				<th data-field="osn" data-formatter="formatSna">申请单号</th>
+				<th data-field="bno">借款标唯一号</th>
+				<th data-field="company">客户名称</th>
+				<th data-field="amount" data-formatter="formatCny">贷款金额</th>
+				<th data-field="total_price" data-formatter="formatCny">评估总值</th>
+				<th data-field="check_status" data-formatter="formatStatus">审核状态</th>
+				<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+				<th data-field="applier">申请人</th>
+				<th data-field="checker">审核人</th>
+				<th data-field="check_time" data-formatter="formatTime">审核时间</th>
+				<th data-field="remark">备注</th>
+				<th data-field="osn" data-formatter="actionApply">操作</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</div>
+</div>
+<!--置换申请单-->
+<div class="ibox">
+	<div class="ibox-title">
+	<h5>置换申请单</h5>
+	<div class="ibox-tools">
+	<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+	<a class="close-link"><i class="fa fa-times"></i></a>
+	</div>
+	</div>
+	<div class="ibox-content">
+	<table class="table table-hover"
+        data-toggle="table"
+        data-url="__ACTION__"
+        data-pagination="true"
+        data-query-params="paramsb"
+        data-side-pagination="server"
+        data-page-list="[3,10,20,30,50]"
+        data-method="post"
+        data-page-size="3"
+        data-cache="false"
+        data-sort-order="desc"
+        data-sort-name="id"
+        data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+	>
+		<thead>
+			<tr>
+				<th data-field="osn" data-formatter="formatSnb">申请单号</th>
+				<th data-field="bno">借款标唯一号</th>
+				<th data-field="company">客户名称</th>
+				<th data-field="before_amount" data-formatter="formatCny">换进评估总值</th>
+				<th data-field="after_amount" data-formatter="formatCny">换出评估总值</th>
+				<th data-field="check_status" data-formatter="formatStatus">审核状态</th>
+				<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+				<th data-field="applier">申请人</th>
+				<th data-field="checker">审核人</th>
+				<th data-field="check_time" data-formatter="formatTime">审核时间</th>
+				<th data-field="remark">备注</th>
+				<th data-field="osn" data-formatter="actionExchange">操作</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	</div>	
+</div>
+<!--解冻申请单-->
+<div class="ibox">
+	<div class="ibox-title">
+	<h5>解冻申请单</h5>
+	<div class="ibox-tools">
+	<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+	<a class="close-link"><i class="fa fa-times"></i></a>
+	</div>
+	</div>
+	<div class="ibox-content">
+	<table class="table table-hover"
+        data-toggle="table"
+        data-url="__ACTION__"
+        data-pagination="true"
+        data-query-params="paramsc"
+        data-side-pagination="server"
+        data-page-list="[3,10,20,30,50]"
+        data-method="post"
+        data-page-size="3"
+        data-cache="false"
+        data-sort-order="desc"
+        data-sort-name="id"
+        data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+	>
+		<thead>
+			<tr>
+				<th data-field="osn" data-formatter="formatSnc">申请单号</th>
+				<th data-field="bno">借款标唯一号</th>
+				<th data-field="company">客户名称</th>
+				<th data-field="total_price" data-formatter="formatCny">解冻评估值</th>
+				<th data-field="check_status" data-formatter="formatStatus">审核状态</th>
+				<th data-field="apply_time" data-formatter="formatTime">申请时间</th>
+				<th data-field="applier">申请人</th>
+				<th data-field="checker">审核人</th>
+				<th data-field="check_time" data-formatter="formatTime">审核时间</th>
+				<th data-field="remark">备注</th>
+				<th data-field="osn" data-formatter="actionUnfreeze">操作</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+function formatStatus(v,r,i){
+	if(v==1){
+		return '<span class="label label-primary">批准</span>';
+	}
+	else if(v==0){
+		return '<span class="label label-default">编辑中</span>';
+	}
+	else if(v==2){
+		return '<span class="label label-warning">拒绝</span>';
+	}
+	else if(v==3){
+		return '<span class="label label-default">审批中</span>';
+	}
+}
+function formatSna(v,r,i){
+	return '<a href="__URL__/applydetail?osn='+v+'">'+v+'</a>';
+}
+function formatSnb(v,r,i){
+	return '<a href="__URL__/exchangedetail?osn='+v+'">'+v+'</a>';
+}
+function formatSnc(v,r,i){
+	return '<a href="__URL__/unfeezedetail?osn='+v+'">'+v+'</a>';
+}
+function paramsa(params){
+	params.flag='a';
+	return params;
+}
+function paramsb(params){
+	params.flag='b';
+	return params;
+}
+function paramsc(params){
+	params.flag='c';
+	return params;
+}
+function actionApply(v,r,i){
+	if(r.check_status=='0' || r.check_status=='2'){
+		return '<a href="__URL__/applyadd?step=second&osn='+r.osn+'" class="btn btn-info">编辑</a>'
+	}
+	else{
+		return '-';
+	}
+}
+function actionExchange(v,r,i){
+	if(r.check_status=='0' || r.check_status=='2'){
+		return '<a href="__URL__/applyexchange?step=second&osn='+r.osn+'" class="btn btn-info">编辑</a>'
+	}
+	else{
+		return '-';
+	}
+}
+function actionUnfreeze(v,r,i){
+	if(r.check_status=='0' || r.check_status=='2'){
+		return '<a href="__URL__/applyfreeze?step=second&osn='+r.osn+'" class="btn btn-info">编辑</a>'
+	}
+	else{
+		return '-';
+	}
+}
+</script>
+</block>
+<block name="buttons">
+	<a href="__URL__/applyadd" class="btn btn-info">建立押品表单</a>
+	<a href="__URL__/applyexchange" class="btn btn-success">申请置换押品</a>
+	<a href="__URL__/applyfreeze" class="btn btn-primary">申请解冻押品</a>
+</block>

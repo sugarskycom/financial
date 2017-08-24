@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="jakim">
+    <title>{$title}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="__PUBLIC__/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--dialog css-->
+    <link href="{$Think.config.RESOURCE_URL}/components/dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/icheck/custom.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="{$Think.config.RESOURCE_URL}/finance/skin/main.min.css" rel="stylesheet" type="text/css">
+    <block name="css"></block>
+    <link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            font-family: "Microsoft YaHei";
+        }
+        form label{
+        	font-weight: 500;
+        }
+    </style>
+</head>
+<body class="fixed-sidebar">
+<div id="wrapper">
+<block name="content"></block>
+</div>
+</body>
+</html>
+<!--jquery-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<!--bootstrap-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--dialog-->
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<!--validation-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+<!--public-->
+<script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+<block name="js"></block>

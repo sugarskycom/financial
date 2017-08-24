@@ -1,0 +1,50 @@
+<extend name="base"/>
+<block name="content">
+	<div class="ibox">
+		<div class="ibox-title">
+			<h3>置换详情</h3>
+		</div>
+		<div class="ibox-content">
+			<table class="table table-hover"
+			id="table"
+			data-toggle="table"
+			data-url="__ACTION__"
+	        data-query-params="params"
+	        data-pagination="true"
+	        data-side-pagination="server"
+	        data-page-list="[10,20,30,50,100]"
+	        data-method="post"
+	        data-page-size="10"
+	        data-cache="false"
+	        data-sort-order="desc"
+	        data-sort-name="id"
+	        data-content-type="application/x-www-form-urlencoded; charset=UTF-8"
+			>
+				<thead>
+			        <tr>
+			        	<th data-field="product_id">编号</th>
+			            <th data-field="product_name">商品名称</th>
+			            <th data-field="product_no">型号</th>
+			            <th data-field="quantity">质押数</th>
+			            <th data-field="assess_price" data-formatter="formatCny">评估价</th>
+			            <th data-formatter="formatTotal">小计</th>
+			        </tr>
+        		</thead>
+			</table>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="table"/>
+<script type="text/javascript">
+function params(params){
+	params.osn='{$Think.get.osn}'
+	return params;
+}
+function formatTotal(v,r,i){
+	var t = r.assess_price*r.quantity;
+	return formatCny(t);
+}
+
+</script>
+</block>

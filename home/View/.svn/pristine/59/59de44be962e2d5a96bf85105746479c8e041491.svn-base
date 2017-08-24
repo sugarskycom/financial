@@ -1,0 +1,75 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>>>
+                    <li><a href="#">信息披露</a></li>>>
+                    <li><a href="{:U('Notice/sitenotice')}">网站公告</a></li>>>
+                    <li class="active"><strong>网站公告</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--平台公告-->
+    <div class="container">
+        <div class="pull-left"><span>平台公告</span></div>
+    </div>
+
+    <!--公告信息-->
+    <div class="container">
+        <ul class="row">
+            <li>
+                <span class="col-md-3">【平台公告】</span>
+                <a href="" class="col-md-6">汇通网上线公告汇通网上线公告汇通网上线公告汇通网上线公告</a>
+                <span class="col-md-3">2017 -07 - 11</span>
+            </li>
+            <li>
+                <span class="col-md-3">【平台公告】</span>
+                <a href="" class="col-md-6">汇通网上线公告汇通网上线公告汇通网上线公告汇通网上线公告</a>
+                <span class="col-md-3">2017 -07 - 11</span>
+            </li>
+            <li>
+                <span class="col-md-3">【平台公告】</span>
+                <a href="" class="col-md-6">汇通网上线公告汇通网上线公告汇通网上线公告汇通网上线公告</a>
+                <span class="col-md-3">2017 -07 - 11</span>
+            </li>
+            <li>
+                <span class="col-md-3">【平台公告】</span>
+                <a href="" class="col-md-6">汇通网上线公告汇通网上线公告汇通网上线公告汇通网上线公告</a>
+                <span class="col-md-3">2017 -07 - 11</span>
+            </li>
+            <li>
+                <span class="col-md-3">【平台公告】</span>
+                <a href="" class="col-md-6">汇通网上线公告汇通网上线公告汇通网上线公告汇通网上线公告</a>
+                <span class="col-md-3">2017 -07 - 11</span>
+            </li>
+        </ul>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+    <script type="text/javascript">
+        $('#myCarousel').carousel({
+            interval: 3000
+        });
+        var num = [0,55,63,80,70,68,18,54,34,79];
+        for(var i=1;i<=9;i++){
+            var ind = $('.ind-'+i).radialIndicator({
+                barColor: '#ff0000',
+                barWidth: 6,
+                initValue: 0,
+                roundCorner : true,
+                percentage: true,
+                radius:25,
+            }).data('radialIndicator');
+            ind.animate(num[i]);
+        }
+    </script>
+    <script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</block>

@@ -1,0 +1,45 @@
+<div class="btn btn-primary" id="feedback">
+    投 <br/>
+    诉 <br/>
+    建 <br/>
+    议 <br/>
+</div>
+<a class="fa fa-arrow-up" href="#" alt="返回顶部"></a>
+
+<style>
+    .bootstrap-dialog.type-primary .modal-header {
+        background-color: #fdc230;
+    }
+    .btn-primary{
+        color: #fff;
+        background-color: #fdc230;
+        border-color: #fdc230;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary {
+      color: #fff;
+      background-color: #fdc230 !important;
+      border-color: #fdc230 !important;
+  }
+    #feedback{
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+    }
+    .fa-arrow-up {
+        position: fixed;
+        right: 15px;
+        bottom: 80px;
+        font-size: 14px;
+        color: #fdc230;
+    }
+    .fa-arrow-up:hover{
+        color: #fdc230;
+    }
+</style>
+
+

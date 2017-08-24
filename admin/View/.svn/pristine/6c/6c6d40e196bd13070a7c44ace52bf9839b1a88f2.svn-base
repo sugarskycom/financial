@@ -1,0 +1,121 @@
+<form id="modifyPwdForm" method="post" class="form-horizontal" action="javascript:;">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">当前用户：</label>
+        <div class="col-sm-9">
+            <p class="help-block">{$Think.session.username_admin}</p>
+        </div>
+    </div>
+    <!--/current username-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">原密码：</label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" id="oldPassword" name="oldPassword" value="" placeholder="由6-20位,注意区分大小写" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/old password-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">新密码：</label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" id="password" name="password" value="" placeholder="由6-20位长度，尽量复杂一些" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/new password-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">确认密码：</label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" id="repassword" name="repassword" value="" placeholder="和上面一致" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/old password-->
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-4">
+            <button type="submit" class="btn btn-primary" id="btnEditBrand" data-id="">确认更改密码</button>
+        </div>
+        <div class="col-sm-5">
+            <span id="success" id="text-success hide"></span>
+            <span id="fail" id="text-warning hide"></span>
+        </div>
+    </div>
+    <!--/save button-->
+</form>
+<script type="text/javascript">
+$(function() {
+    $("#modifyPwdForm").validate({
+        rules: {
+            oldPassword: {
+                required: true,
+                rangelength: [6, 20],
+                checkOldPwd: true
+            },
+            password: {
+                required: true,
+                rangelength: [6, 20]
+            },
+            repassword: {
+                equalTo: "#password"
+            }
+        },
+        errorClass: "error",
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parent('div').next('div'));
+        },
+        messages: {
+            oldPassword: {
+                required: "原密码不能为空",
+                rangelength: "密码长度应为6-20位",
+                checkOldPwd: "原密码错误"
+            },
+            password: {
+                required: "新密码不能为空",
+                rangelength: "新密码长度应为6-20位"
+            },
+            repassword: {
+                equalTo: "两次密码不一致"
+            }
+        },
+        //onsubmit:false,
+        submitHandler: function(form) {
+            var data = {
+                password: $("#password").val().trim(),
+                repassword: $("#repassword").val().trim(),
+                oldPassword: $("#oldPassword").val().trim(),
+                flag: 2
+            };
+            $.ajax({
+                url: "{:U('User/modifyPwd')}",
+                data: data,
+                type: "post",
+                success: function(ret) {
+                    if (ret.status == '1') {
+                        $("#success").removeClass('hide').text(ret.data);
+                        setTimeout(function() {
+                            $("#success").addClass('hide');
+                            closeDialog();
+                        }, 800);
+                    } else {
+                        $("#fail").removeClass('hide').text(ret.error);
+                        setTimeout(function() {
+                            $("#fail").addClass("hide");
+                        }, 800);
+                    }
+                }
+            });
+        }
+    });
+});
+$.validator.addMethod("checkOldPwd", function(value, element, params) {
+    var ret = $.ajax({
+        url: "{:U('User/modifyPwd')}",
+        data: "flag=1&oldPassword=" + value,
+        async: false,
+        type: "post"
+    }).responseText;
+    if (ret == 'yes')
+        return true;
+    else
+        return false;
+});
+</script>

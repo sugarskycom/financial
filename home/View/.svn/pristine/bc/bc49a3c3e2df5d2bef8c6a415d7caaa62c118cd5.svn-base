@@ -1,0 +1,324 @@
+<extend name="Public:base" />
+<block name="content">
+<include file="Public:nav"/>
+<div id="wrapper">
+<ol class="breadcrumb">
+  <li>汇通资产</li>
+  <li>我的账户</li>
+  <li class="active">账号总览</li>
+</ol>
+<div class="ibox">
+<div class="ibox-title">
+	<div class="row">
+		<div class="col-md-7">
+			<div class="user-info">
+				<div class="user-avatar col-md-2">
+					<span class="fa-stack fa-3x text-gray">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-user fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="user-account-info col-md-5">
+					<span><strong>{$Think.session.username}</strong></span>
+					<div>
+						<strong>安全等级： 中 </strong>&nbsp;&nbsp;
+						<span class="progress progress-small my-progress">
+							<span class="progress-bar" style="width:50%;">&nbsp;</span>
+						</span>&nbsp;&nbsp;
+						<a href="#"><strong>[提升]</strong></a>
+					</div>
+				</div>
+				<div class="user-auth-list col-md-5">
+					<eq name="userInfo.mobile" value="">
+					<span class="fa-stack fa-lg text-gray" title="未绑定手机，点击图标绑定" data-toggle="tooltip" data-placement="top" data-container="body">
+					<else/>
+					<span class="fa-stack fa-lg text-success" title="已绑定手机，点击图标可以修改" data-toggle="tooltip" data-placement="top" data-container="body">
+					</eq>
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-mobile fa-stack-1x fa-inverse"></i>
+					</span>
+					<eq name="userInfo.email" value="">
+					<span class="fa-stack fa-lg text-gray" title="未认证邮箱，点击图标认证" data-toggle="tooltip" data-placement="top" data-container="body">
+					<else/>
+					<span class="fa-stack fa-lg text-success" title="已认证邮箱，点击图标修改" data-toggle="tooltip" data-placement="top" data-container="body">
+					</eq>
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+					</span>
+					<if condition="$userInfo.is_auth eq 0 or $userInfo.is_auth eq 3">
+					<span class="fa-stack fa-lg text-gray" data-toggle="tooltip" data-placement="top" title="未实名认证，点击图标认证" data-container="body">
+					</eq>
+					<eq name="userInfo.is_auth" value="1">
+					<span class="fa-stack fa-lg text-success" data-toggle="tooltip" data-placement="top" title="已实名认证" data-container="body">
+					</eq>
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-user fa-stack-1x fa-inverse"></i>
+					</span>
+					<eq name="userInfo.pay_password" value="">
+					<span class="fa-stack fa-lg text-gray" data-toggle="tooltip" data-placement="top" title="未设置交易密码，点击图标设置" data-container="body">
+					<else/>
+					<span class="fa-stack fa-lg text-success" data-toggle="tooltip" data-placement="top" title="已设置交易密码，点击图标修改" data-container="body">
+					</eq>
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5 text-center"><span class="help-block last-login">上次登录时间：{$lastlogin}</span></div>
+	</div>
+</div>
+</div>
+<!--账号状况-->
+<div class="row">
+	<div class="col-md-4">
+		<div class="ibox">
+			<div class="ibox-title">
+			<h3>账户余额(￥)</h3>
+			</div>
+			<div class="ibox-content">
+				<div class="amount">
+				<p>可用余额：<span class="fadeInDown animated">{$userInfo.useable_amount}</span></p>
+				<p>冻结余额：<span class="fadeInDown animated">{$userInfo.freeze_amount}</span></p>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 text-right"><a href="/My/withdraw" class="btn btn-info">提现</a></div>
+					<div class="col-sm-6 text-left"><a href="/My/transfer" class="btn btn-info">转账</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="ibox">
+			<div class="ibox-title">
+			<h3>收款统计</h3>
+			</div>
+			<div class="ibox-content">
+				<div style="height: 115px;">
+				<p>本月应收：<span class="text-red">￥0.00</span></p>
+				<p>本月待收：<span class="text-red">￥0.00</span></p>
+				<p>今日待收：<span class="text-red">￥0.00</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="ibox">
+			<div class="ibox-title">
+			<h3>收益统计</h3>
+			</div>
+			<div class="ibox-content text-center">
+				 <canvas id="doughnutChart" width="111" height="111"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+<!--出借项目概况-->
+<div class="ibox">
+	<div class="ibox-title">
+	<h3>出借项目概况</h3>
+	</div>
+	<div class="ibox-content">
+		<div class="row list-item bg-blue">
+			<div class="col-md-7" style="border-right: 1px dashed #ccc;">
+				<h2>收益权转让</h2>
+				<p class="toin">
+					累计出借总额¥<br>
+					<span>{$t1.invest_amount|number_format=2}</span>
+				</p>
+				<p class="toin">
+					累计收益¥<br>
+					<span>{$t1.income_amount|number_format=2}</span>
+				</p>
+				<p class="toin3">
+					待收总额¥<br>
+					<span>{$t1.repaying_amount|number_format=2}</span>
+				</p>
+			</div>
+			<div class="col-sm-5">
+				<div class="row">
+				<span class="col-sm-3 text-center line-height-50">冻结中 {$t1.feeze_count} 笔<i class="explain expla"></i></span>
+				<p style="display: none;">
+					冻结中的项目尚在募集期间，且享受资金不站岗的贴息活动奖励
+				</p>
+				<div class="col-sm-6 text-center pay-count">
+					<p class="clearfix">正常还款中 {$t1.repaying_count} 笔</p>
+					<p class="clearfix">逾期还款中 {$t1.overdue_repaied_count} 笔</p>
+				</div>
+				<span class="col-sm-3 text-center line-height-50">已结清 {$t1.repaied_count} 笔</span>
+				</div>
+			</div>
+		</div>
+		<div class="row list-item bg-gray">
+		<div class="col-md-7" style="border-right: 1px dashed #ccc;">
+				<h2>借贷项目</h2>
+				<p class="toin">
+					累计出借总额¥<br>
+					<span>{$t2.invest_amount|number_format=2}</span>
+				</p>
+				<p class="toin">
+					累计收益¥<br>
+					<span>{$t2.income_amount|number_format=2}</span>
+				</p>
+				<p class="toin3">
+					待收总额¥<br>
+					<span>{$t2.repaying_amount|number_format=2}</span>
+				</p>
+			</div>
+			<div class="col-sm-5">
+				<div class="row">
+				<span class="col-sm-3 text-center line-height-50">冻结中 {$t2.feeze_count} 笔<i class="explain expla"></i></span>
+				<p style="display: none;">
+					冻结中的项目尚在募集期间，且享受资金不站岗的贴息活动奖励
+				</p>
+				<div class="col-sm-6 text-center pay-count">
+					<p class="clearfix">正常还款中 {$t2.repaying_count} 笔</p>
+					<p class="clearfix">逾期还款中 {$t2.overdue_repaied_count} 笔</p>
+				</div>
+				<span class="col-sm-3 text-center line-height-50">已结清 {$t2.repaied_count} 笔</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<include file="Public:copyright"/>
+</block>
+<block name="js">
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/chart/chart.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("span[data-toggle=tooltip]").tooltip();
+	$(".user-auth-list span").click(function(){
+		window.location.href = "{:U('Account/index')}";
+	});
+});
+
+//统计图
+var doughnutData = [
+{
+    value: 0,
+    color: "#a3e1d4",
+    highlight: "#1ab394",
+    label: "奖励"
+},
+{
+    value: {$t1.income_amount},
+    color: "#dedede",
+    highlight: "#1ab394",
+    label: "收益权转让"
+},
+{
+    value: {$t2.income_amount},
+    color: "#A4CEE8",
+    highlight: "#1ab394",
+    label: "借贷项目"
+}
+];
+
+var doughnutOptions = {
+    segmentShowStroke: true,
+    segmentStrokeColor: "#fff",
+    segmentStrokeWidth: 2,
+    percentageInnerCutout: 45, // This is 0 for Pie charts
+    animationSteps: 100,
+    animationEasing: "easeOutBounce",
+    animateRotate: true,
+    animateScale: false
+};
+var ctx = document.getElementById("doughnutChart").getContext("2d");
+var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+
+</script>
+</block>
+<block name="css">
+<style>
+.user-avatar{
+}
+.user-account-info{
+	padding-top: 10px;
+	line-height: 180%;
+}
+.user-auth-list{
+	padding-top: 20px;
+	line-height: 180%;
+	text-align: center;
+}
+.user-auth-list span{
+	cursor: pointer;
+}
+.progress{
+	margin-bottom: 0;
+}
+.my-progress{
+	display: inline-block;
+	width:100px;
+}
+.my-progress .progress-bar{
+	display: inline-block;
+}
+.last-login{
+	padding-top: 20px;
+}
+.list-item{
+	margin:25px 0;
+	padding: 15px 0;
+}
+.list-item h2,.list-item p{
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.list-item h2{
+	line-height: 65px;
+	font-weight: 400;
+	color: #1c84c6;
+	margin: 0;
+	padding: 0;
+}
+.list-item p{
+	padding-top: 15px;
+	line-height: 20px;
+}
+.bg-gray{
+	background-color: #f5f5f5;
+}
+.bg-blue{
+	background-color: #f1f6fa;
+}
+.line-height-50{
+	line-height: 65px;
+}
+div.pay-count{
+	position: relative;
+	background: url(/Public/images/line.png) no-repeat center center;
+}
+div.pay-count p{
+	clear: both;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	height: 32px;
+	line-height: 32px;
+}
+.amount{
+	display: block;
+	text-align: center;
+	border-bottom:1px solid #ddd;
+	margin-bottom: 10px;
+	
+}
+.amount span{
+	padding: 0;
+	display: inline-block;
+	border-radius: 0%;
+	font-weight: 700;
+	font-size:20px;
+	color:#fd6d37;
+}
+.amount p:first-of-type{
+	margin-bottom: 4px;
+}
+</style>
+</block>

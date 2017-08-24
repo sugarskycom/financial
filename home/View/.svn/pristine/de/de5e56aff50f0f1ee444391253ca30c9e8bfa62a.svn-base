@@ -1,0 +1,169 @@
+<extend name="Public:base" />
+<block name="content">
+    <include file="Public:nav"/>
+    <div class="container white-bg">
+        <!-- 面包屑导航栏 -->
+        <ol class="breadcrumb">
+            <li><a href="#">汇通资产</a></li>
+            <li><a href="#">我的账户</a></li>
+            <li style="color: #666;">提现</li>
+        </ol>
+
+        <div class="ibox">
+            <div class="ibox-title">
+                <h1>余额提现</h1>
+                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data" id="ableform">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">真实姓名</label>
+                        <div class="col-sm-6 h44 real-name">
+                            <span class="origin-name">游秀芝</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">银行卡</label>
+                        <div class="col-sm-6 h44 change">        <!-- 已绑定银行卡 -->
+                            <span class="origin-bank origin">6214 0000 0000 4735（光大银行）</span>
+                            <span class="new-bank new"><a href="{:U('Index/bindbank')}">更换银行卡&gt;&gt;</a></span>
+                        </div>
+                        <div class="col-sm-6 h44 gobind" style="display: none;">        <!-- 未绑定银行卡 -->
+                            <span class="bink-bank"><a href="{:U('Index/bindbank')}">没绑银行卡，去绑定&gt;&gt;</a></span>
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">余额</label>
+                        <div class="col-sm-6 h44">
+                            <span class="wd-balance"><a href="#">10000.00元</a></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">提现金额</label>
+                        <div class="col-sm-6 h44 wd-sum">
+                            <input type="text" class="form-control" style="width: 300px;" name="sum" id="sum" placeholder="提现额度不得大于余额">元
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success btn-post" id="btnPost">提交提现申请</button>
+                            <p class="notice">将进入富滇银行存管界面操作</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="reminder">
+            <ol class="list-unstyled">温馨提示：
+                <li>1、开通银行存管账户、设置交易密码、<a href="{:U('Index/bindbank')}" style="text-decoration: underline;">绑定银行卡</a>，才能进行提现操作。</li>
+                <li>2、为保证您的资金安全，您充值的资金将进入富滇银行的银行管存账号。</li>
+                <li>3、本操作需要在富滇银行平台完成。</li>
+                <li>4、如提现过程出现异常，请联系客服：010-xxxxx  解决。</li>
+            </ol>
+        </div>
+    </div>
+
+    <include file="Public:copyright"/>
+
+</block>
+
+<block name="css">
+    <link href="__PUBLIC__/css/account.css" rel="stylesheet" type="text/css">
+    <style>
+      
+        .wd-balance {color:#ff2b14;}
+        .bind-card a {border-bottom: 1px solid #ccc;}
+        .h44 { line-height: 3;}
+    </style>
+</block>
+
+<block name="js">
+    <script>
+        $(function() {
+            if(!$(".origin-bank").text()){
+                $(".change").hide();
+                $(".gobind").show();
+            }else{
+                var name = $('.origin-name').html();
+                var bank = $('.origin-bank').html();
+                var mbank = bank.substr(0, 4) + '********' + bank.substr(14);
+                var mname = '*' + name.substr(1);
+                $('.origin-name').text(mname);
+                $('.origin-bank').text(mbank);
+            }
+        });
+        $(function(){
+            $("#ableform").validate({
+                rules:{
+                    realname:{
+                        required:true,
+                        isValidRealName:true
+                    },
+                    idcard:{
+                        required:true,
+                        isValidIdCard:true
+                    }
+
+                },
+                messages:{
+                    realname:{
+                        required:"真实姓名不能为空",
+                        isValidRealName:"请输入正确的姓名"
+                    },
+                    idcard:{
+                        required:"身份证号不能为空",
+                        isValidIdCard:"请输入正确的身份证号"
+                    }
+                },
+                /*错误提示位置*/
+                errorPlacement:function(error,element){
+                    error.insertAfter(element);
+                }
+                // submitHandler: function (form) {
+
+                // 	$("#btnSubmit").attr("disabled", true).text("提交中···");
+                // 	$.ajax({
+                // 		url: "",
+                // 		data: {
+                // 			feedbackType: $("#feedbackType").text().trim(),
+                // 			remarks: $("#remarks").val().trim(),
+                // 			name: $("#name").val().trim(),
+                // 			mobile: $("#mobile").val().trim()
+                // 		},
+                // 		type: "post",
+                // 		success: function (ret) {
+                // 			if (ret.status == 1) {
+                // 				$("#btnSubmit").text("提交成功，跳转中...");
+                // 				var url = "";
+                // 				if (backUrl != "") url = backUrl;
+                // 				setTimeout(function () {
+                // 					window.location.href = url;
+                // 				}, 1000);
+                // 			}
+                // 			else {
+
+                // 			}
+                // 		}
+                // 	})
+                // }
+            })
+
+
+// 验证中文名称
+$.validator.addMethod("isValidRealName",function(value,element,params){
+    var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+    return pattern.test(realname);
+
+
+});
+            // 验证身份证
+
+            $.validator.addMethod("isValidIdCard",function(value,element,params){
+                var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                return pattern.test(idcard);
+
+
+            });
+        })
+    </script>
+</block>

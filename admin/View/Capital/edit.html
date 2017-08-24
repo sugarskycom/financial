@@ -1,0 +1,620 @@
+<extend name="Public:base" />
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox">
+				<div class="ibox-title">贷款申请调整</div>
+				<div class="ibox-content">
+					<form action="" method="post" id="form" class="form-horizontal capital-edit">
+                     <h4>基本信息</h4>
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">借款唯一号：</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="bno" id="bno" value="{$data.bno}" >
+                            </div>
+                            <div class="col-sm-5"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">借款标题：</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="title" id="title" value="{$data.title}" >
+                            </div>
+                            <div class="col-sm-5"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">借款副标题：</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="sub_title" id="sub_title" value="{$data.sub_title}" >
+                            </div>
+                            <div class="col-sm-5"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">业务来源：</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" id="buss_from" name="buss_from">
+                                    <volist name="bussFromList" id="v">
+                                	   <option value="{$key}" <eq name="key" value="$data[buss_from]">selected</eq>>{$v}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">资金类型：</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="fund_type" id="fund_type">
+                                    <volist name="fundTypeList" id="v">
+                                       <option value="{$key}" <eq name="key" value="$data[fund_type]">selected</eq>>{$v}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">借款金额：</label>
+                            <div class="col-sm-3">
+                            	<div class="input-group">
+                            		<span class="input-group-addon">￥</span>
+                            		<input type="number" class="form-control" min="0" placeholder="1~100,000,000,000" name="amount" id="amount" value="{$data.amount}">
+                            	</div>
+                            </div>
+                            <div class="col-sm-7">
+                                <p class="help-block show-amount"></p>
+                            </div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+							<label class="col-sm-2 control-label">借款期限：</label>
+							<div class="col-sm-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">年</span>
+                                    <input type="number" class="form-control" min="0" placeholder="数字" name="year" id="year" value="<eq name='data.duration_type' value='1'>{$data.duration}<else />0</eq>">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">月</span>
+                                    <input type="number" class="form-control" min="0" placeholder="数字" name="month" id="month" value="<eq name='data.duration_type' value='2'>{$data.duration}<else />0</eq>">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">    
+                                <div class="input-group">
+                                    <span class="input-group-addon">日</span>
+                                    <input type="number" class="form-control" min="0" placeholder="数字" name="day" id="day" value="<eq name='data.duration_type' value='3'>{$data.duration}<else />0</eq>">
+                                </div>
+							</div>
+							<div class="col-sm-4"></div>
+						</div>
+						<!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">年化利率：</label>
+                            <div class="col-sm-2">
+                            	<div class="input-group">
+                            		<input type="number" class="form-control" min="1" step="0.1" placeholder="1~100" name="year_rate" id="year_rate" value="{$data.year_rate}">
+                            		<span class="input-group-addon">%</span>
+                            	</div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">奖励利率：</label>
+                            <div class="col-sm-2">
+                            	<div class="input-group">
+                            		<input type="number"  value="{$data.award_rate}" min="0" step="0.1" class="form-control" name="award_rate" id="award_rate">
+                            		<span class="input-group-addon">%</span>
+                            	</div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">抵押品：</label>
+                            <div class="col-sm-4">
+									<div class="radio radio-success radio-inline">
+                                            <input type="radio" id="is_pledge_1" value="0" name="is_pledge" <eq name="data.is_pledge" value="0">checked</eq>>
+                                            <label for="is_pledge_1">无抵押(信用贷款)</label>
+                                    </div>
+									<div class="radio radio-success radio-inline">
+                                            <input type="radio" id="is_pledge_2" value="1" name="is_pledge" <eq name="data.is_pledge" value="1">checked</eq>>
+                                            <label for="is_pledge_2">有抵押</label>
+                                    </div>
+                                    <div class="row product-type <eq name="data.is_pledge" value="0">hide</eq>">
+                                    	<div class="col-lg-12">
+	                                    	<select class="form-control" id="pledage_type" name="pledage_type">
+	                                    		<option value="0">选择抵押品类型</option>
+                                       <volist name="pledageTypeList" id="v">
+                                       <option value="{$key}" <eq name="key" value="$data[pledage_type]">selected</eq>>{$v}</option>
+                                       </volist>
+	                                    	</select>
+                                    	</div>
+                                    </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">还款方式：</label>
+                            <div class="col-sm-4">
+									<div class="radio radio-success radio-inline">
+                                            <input type="radio" id="pay_type_1" value="1" name="pay_type" <eq name="data.pay_type" value="1">checked</eq>  <eq name="data.duration_type" value="3">disabled</eq>>
+                                            <label for="pay_type_1">按月付息到期还本</label>
+                                    </div>
+									<div class="radio radio-success radio-inline">
+                                            <input type="radio" id="pay_type_2" value="2" name="pay_type" <eq name="data.pay_type" value="2">checked</eq>  <if condition="$data.duration_type eq 1 or $data.duration_type eq 2">disabled</if>  >
+                                            <label for="pay_type_2">一次性还本付息</label>
+                                    </div>
+
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">产品大纲：</label>
+                            <div class="col-sm-4">
+                            <select name="product_type" id="product_type" class="form-control" >
+                               <volist name="productTypeList" id="v">
+                               <option value="{$key}" <eq name="key" value="$data[product_type]">selected</eq>>{$v}</option>
+                               </volist>
+                            </select>
+                            </div>
+                            <!-- <div class="col-sm-6"><a href="javascript:;" onclick="viewPayment()">预览还款计划</a></div> -->
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">促销标：</label>
+                            <div class="col-sm-2">
+                            	<div class="checkbox checkbox-success">
+                            		<input type="checkbox" id="is_promotion" name="is_promotion" value="1" <eq name="data.is_promotion" value="1">checked</eq>>
+                            		<label for="is_promotion">是</label>
+                            	</div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">后台标：</label>
+                            <div class="col-sm-2">
+                            	<div class="input-group">
+                            	<div class="checkbox checkbox-success">
+                            		<input type="checkbox" id="is_background" name="is_background" value="1" <eq name="data.is_background" value="1">checked</eq>>
+                            		<label for="is_background">是</label>
+                            	</div>
+                            	</div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">理财金项目：</label>
+                            <div class="col-sm-2">
+                            	<div class="input-group">
+                            	<div class="checkbox checkbox-success">
+                            		<input type="checkbox" id="is_manage" name="is_manage" value="1" <eq name="data.is_manage" value="1">checked</eq>>
+                            		<label for="is_manage">是</label>
+                            	</div>
+                            	</div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">APP专享特惠：</label>
+                            <div class="col-sm-2">
+                            	<div class="input-group">
+                            	<div class="checkbox checkbox-success">
+                            		<input type="checkbox" id="is_app" name="is_app" <eq name="data.is_app" value="1">checked</eq> value="1">
+                            		<label for="is_app">是</label>
+                            	</div>
+                            	</div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">借款主体说明：</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="desc_info">{$data.desc_info}</textarea>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">担保信息：</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="guarantee_info">{$data.guarantee_info}</textarea>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">抵押信息：</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="mortgage_info">{$data.mortgage_info}</textarea>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">风险管控措施：</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="risk_info">{$data.risk_info}</textarea>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">资金用途：</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="fund_use">{$data.fund_use}</textarea>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">还款来源：</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="repay_source">{$data.repay_source}</textarea>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <!---/form-group-->
+
+                        <h4>合同模板设置</h4>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">合同模板：</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="contract_temp">
+                                <volist name="clist" id="r">
+                                    <option value="{$r.id}" <eq name="r['id']" value="$data['contract_temp']">selected</eq>>
+                                    {$r.title}
+                                    </option>
+                                </volist>
+                                </select>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <h4>投资规则设置</h4>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">最小投资额：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">￥</span>
+                                    <input type="number" min="0" value="{$data.min_amount}" class="form-control" name="min_amount" id="min_amount">
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">最大投资额：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">￥</span>
+                                    <input type="number" min="0"  value="{$data.max_amount}" class="form-control" name="max_amount" id="max_amount">
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">投资增量：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">￥</span>
+                                    <input type="number" min="0" value="{$data.step_amount}" class="form-control" name="step_amount" id="step_amount">
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">担保费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.guarantee_rate}" class="form-control" name="guarantee_rate" id="guarantee_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">借款管理费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.manage_rate}" class="form-control" name="manage_rate" id="manage_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">风险管理费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.risk_rate}" class="form-control" name="risk_rate" id="risk_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">借款服务费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.service_rate}" class="form-control" name="service_rate" id="service_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">逾期罚息费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.overdue_penalty_rate}" class="form-control" name="overdue_penalty_rate" id="overdue_penalty_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">逾期管理费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.overdue_manage_rate}" class="form-control" name="overdue_manage_rate" id="overdue_manage_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">违约罚息费率：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" min="0" step="0.01" value="{$data.break_penalty_rate}" class="form-control" name="break_penalty_rate" id="break_penalty_rate">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        <!---/form-group-->
+ <h4>项目资料</h4>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="alert alert-warning">支持多个文件上传，最多10个图片，单个文件最大5M,支持:jpg,gif,png,bmp格式图片</div>
+                        <div class="pic-list hide"></div>
+                        <input type="file" name="upload" id="upload" multiple>
+                    </div>
+                </div>
+
+						<div class="form-group">
+                            <div class="col-lg-offset-2 col-sm-10">
+                             <input type="hidden" value="{$data.hid}" name="hid">
+                             <input type="hidden" value="{$data.id}" name="id">
+                           	 <button class="btn btn-primary" type="submit" id="btn">保存修改</button>
+                             <button class="btn btn-default" type="submit" id="btn1">取消修改</button>
+                            </div>
+                        </div>
+                        <!---/form-group-->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="js">
+<include file="picjs"/>
+<include file="Public:date2"/>
+<script type="text/javascript">
+function viewPayment(){
+    BootstrapDialog.show({
+        type:BootstrapDialog.TYPE_DEFAULT,
+        size:BootstrapDialog.SIZE_WIDE,
+        title:'还款计划',
+        message:$("<div></div>").load('__URL__/viewSchedule')
+    });
+}
+$('.date').datepicker({
+    keyboardNavigation: false,
+    forceParse: false,
+    autoclose: true,
+    format: "yyyy/mm/dd",
+    language: 'zh-CN',
+    pickerPosition: "bottom-left",
+});
+$("input[name=is_pledge]").click(function(){
+	var v = $(this).val();
+	if(v==0)
+		$(".product-type").addClass('hide');
+	else
+		$(".product-type").removeClass('hide');
+});
+$(function(){
+    var ptList = null;
+    $.extend({
+        pt: function(v){
+            if (ptList == null || v == false) {
+                $.getJSON('/Rate/get', function(json, textStatus) {ptList = json});
+            } else {
+                var service_rate = $('#service_rate').val(0.00);
+                var risk_rate = $('#risk_rate').val(0.00);
+                var manage_rate = $('#manage_rate').val(0.00);
+                var overdue_penalty_rate = $('#overdue_penalty_rate').val(0.00);
+                var overdue_manage_rate = $('#overdue_manage_rate').val(0.00);
+                var break_penalty_rate = $('#break_penalty_rate').val(0.00);
+
+                var project = $('#product_type').val();
+                if (project < 1 || project > 4) {return false};
+                var month = 1;
+                var y = $('#year').val();
+                var m = $('#month').val();
+                var d = $('#day').val();
+                if (y > 0) {month = 6} else if (m > 0) {month = m > 6 ? 6 : m;} else if (d > 0) {month = Math.ceil(d/30)} else {return false};
+                if (project == 4) {month = 0};
+                service_rate.val(ptList[project][month].service_rate);
+                risk_rate.val(ptList[project][month].risk_rate);
+                manage_rate.val(ptList[project][month].manage_rate);
+                overdue_penalty_rate.val(ptList[project][month].overdue_punish);
+                overdue_manage_rate.val(ptList[project][month].overdue_rate);
+                break_penalty_rate.val(ptList[project][month].break_punish);
+            }
+        }
+    });
+    $("#year,#month,#day").change(function(){
+        var attrName = $(this).attr('name');
+        switch(attrName){
+            case 'year':
+                $("#pay_type_1").prop('disabled',false).prop('checked',true);
+                $("#pay_type_2").prop('disabled',true).prop('checked',false);
+                $("#month,#day").val('0');
+            break;
+            case 'month':
+                $("#pay_type_1").prop('disabled',false).prop('checked',true);
+                $("#pay_type_2").prop('disabled',true).prop('checked',false);
+                $("#year,#day").val('0');
+            break;
+             case 'day':
+                $("#pay_type_2").prop('disabled',false).prop('checked',true);
+                $("#pay_type_1").prop('disabled',true).prop('checked',false);
+                $("#year,#month").val('0');
+            break;
+        }
+        $.pt(true);
+    });
+    $.pt(false);
+    $("#product_type").change(function(){$.pt(true)});
+
+    $("#form").validate({
+        rules:{
+            bno:{
+                required:true,
+            },
+            title:{
+                required:true,
+            },
+            amount:{
+                required:true,
+            },
+            step_amount:{
+                required:true,
+            },
+            year_rate:{
+                required:true,
+            },
+            // end_time:{
+            //     required:true,
+            // },
+            year:{
+                duration:true,
+            },
+            month:{
+                duration:true,
+            },
+            day:{
+                duration:true,
+            },
+            is_pledge:{
+                required:true,
+                validateType:true,
+            },
+            pay_type:{
+                required:true,
+            }
+        },
+        messages:{
+            bno:{
+                required:'借款唯一号不能为空',
+            },
+            title:{
+                required:'借款标题不能为空',
+            },
+            amount:{
+                required:'借款金额不能为空',
+            },
+            step_amount:{
+                required:'请填写投资增量',
+            },
+            year_rate:{
+                required:'请填写年化利率',
+            },
+            year:{
+                duration:'请选择借款期限',
+            },
+            month:{
+                duration:'请选择借款期限',
+            },
+            day:{
+                duration:'请选择借款期限',
+            },
+            is_pledge:{
+                required:'选择是否有押品',
+                validateType:'请选择抵押品类型',
+            },
+            pay_type:{
+                required:'请选择还款方式',
+            }
+        },
+        errorPlacement:function(error,element){
+            var name = $(element).attr('name');
+            console.log(name);
+            if (name=='amount' || name=='step_amount' || name=='end_time' || name=='is_pledge' || name=='pay_type'){
+                error.appendTo(element.parent('div').parent('div').next('div'));
+            } else if (name=='year' || name=='month' || name=='day') {
+                error.appendTo(element.parent('div').parent('div').nextAll('div').last('div').empty());
+            } else {
+                error.appendTo(element.parent('div').next('div'));
+            }
+            
+        },
+        submitHandler:function(form){
+            form.submit();
+        }
+
+    });
+    //格式化借款数字
+    $("#amount").on('keyup',function(){
+        var v = $(this).val();
+        if(v>0){
+            var n = new Number(v);
+            $(".show-amount").text(n.toLocaleString());
+        }
+    });
+});
+$.validator.addMethod('validateType',function(value,element,params){
+    var va = $("input[name=is_pledge]:checked").val();
+    if(va=='1'){
+        var v = $("#pledage_type").val();
+        if(v=='0'){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    else{
+        return true;
+    }
+});
+$.validator.addMethod('duration',function(value,element,params){
+    var yearVal = parseInt($('#year').val());
+    var monthVal = parseInt($('#month').val());
+    var dayVal = parseInt($('#day').val());
+    if (yearVal <= 0 && monthVal <= 0 && dayVal <= 0) {
+        return false;
+    }
+    return true;
+});
+</script>
+</block>

@@ -1,0 +1,58 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+
+    <!--面包屑导航-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="font-size: 18px;">
+                <ol class="breadcrumb">
+                    <li><a href="{:U('Index/index')}">首页</a></li>
+                    <li><a href="{:U('Help/disclosure')}">信息披露</a></li>
+                    <li><a href="{:U('Help/noticelist')}">网站公告</a></li>
+                    <li class="active"><strong>文章名称</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--文章标题-->
+    <div class="container text-center" style="font-size: 18px;margin-top: 20px;">
+        <span>汇通网上线公告汇通网上线公告汇通网上线公告汇通网上线公告</span>
+    </div>
+    <div class="container" style="font-size: 18px;border-bottom: 1px grey dashed;padding-bottom: 20px;margin-bottom: 20px;">
+        <div class="pull-right">
+            <div style="display: inline-block">
+                <span>编辑：</span>
+                <span>xxx</span>
+            </div>
+            <div style="display: inline-block">
+                <span>2017-07-11</span>
+            </div>
+        </div>
+    </div>
+
+    <!--文章内容-->
+    <div class="container content">
+        <p>亲爱的用户朋友们：</p>
+        <p>现接到富友支付通知如下：</p>
+        <p>浦发银行计划于5月28日（周日）00:00-5月30日（周二）24:00进行系统维护；届时使用浦发银行办理基金申购、验证等业务都将受影响；</p>
+        <p>浦发银行计划于5月27日（周六）21:30-5月30日（周二）24:00进行系统维护，届时使用浦发银行办理基金申购、验证等业务都将受影响；</p>
+        <p>平安银行计划于5月27日（周六）00:30-05:00进行系统维护，届时使用平安银行办理基金申购、验证等业务都将受影响；</p>
+        <p>中国银行计划于5月27日（周六）00:30-02:30进行系统维护，届时使用中国银行办理基金申购、验证等业务都将受影响；</p>
+        <p>中信银行计划于5月28日（周日）01:00-02:00进行系统维护，届时使用中信银行办理基金申购、验证等业务都将受影响；</p>
+        <p> 建设银行计划于5月28日（周日）03:30-06:00进行系统维护，届时使用建设银行办理基金申购、验证等业务都将受影响；</p>
+    </div>
+
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .content{
+            font-size: 16px;
+        }
+    </style>
+</block>
+<block name="js">
+
+</block>

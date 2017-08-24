@@ -1,0 +1,161 @@
+<div class="prepayment">
+    <dl class="dl-horizontal dl-prepayment">
+        <dt>利息管理费：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" name="mange_fees" value="0.00" class="form-control">
+            </div>
+        </dd>
+        <dt>违约金（对商户）：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" name="peanlty_credit" value="0.00" class="form-control">
+            </div>
+        </dd>
+        <dt>违约金（对用户）：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" name="peanlty_debit" value="0.00" class="form-control">
+            </div>
+        </dd>
+        <dt>还款类型：</dt>
+        <dd>
+            <select class="form-control" name="pay_type">
+                <option value="1">本金+当期利息</option>
+                <option value="2">本金+剩余全部利息</option>
+                <option value="3">本金</option>
+            </select>
+        </dd>
+    </dl>
+</div>
+<div class="prepayment">
+    <dl class="dl-horizontal dl-prepayment">
+        <dt>还款期数：</dt>
+        <dd class="text-success">第{$data.issue}期</dd>
+        <dt>本金：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="amt" name="amt" value="{$data.amount}" class="form-control" readonly>
+            </div>
+        </dd>
+        <dt>利息：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="ri" name="ri" value="{$data.repay_interest}" class="form-control" readonly>
+            </div>
+        </dd>
+        <dt>借款管理费：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="mfs" name="mfs" value="{$data.manage_fees}" class="form-control" readonly>
+            </div>
+        </dd>
+        <dt>利息管理费：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="mf" name="mf" value="0.00" class="form-control" readonly>
+            </div>
+        </dd>
+        <dt>违约金（对商户）：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="pc" name="pc" value="0.00" class="form-control" readonly>
+            </div>
+        </dd>
+        <dt>违约金（对用户）：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="pd" name="pd" value="0.00" class="form-control" readonly>
+            </div>
+        </dd>
+        <dt>总计：</dt>
+        <dd>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-cny"></i></span>
+                <input type="number" id="sum" name="sum" value="0" class="form-control" readonly>
+            </div>
+        </dd>
+    </dl>
+    <div class="text-center">
+        <input type="hidden" id="hid" value="{$data.hid}">
+        <input type="hidden" id="hai" value="{$data.after_interest}">
+        <input type="hidden" id="hri" value="{$data.repay_interest}">
+        <button type="button" id="save" class="btn btn-primary">确认还款</button>
+        <!-- <button type="button" class="btn btn-info" id="setting" onclick="openSet()">更改提前还款违约金</button> -->
+        <button type="button" class="btn btn-default" onclick="closeDialog()">取消</button>
+    </div>
+</div>
+<style>
+.text-red {
+    color: red;
+}
+.dl-prepayment dt {
+    font-weight: 500;
+}
+.dl-prepayment dt,
+.dl-prepayment dd {
+    margin-bottom: 5px;
+}
+</style>
+<script>
+    $('input[name=mange_fees],input[name=peanlty_credit],input[name=peanlty_debit]').change(function(event) {
+        var self = $(event.target);
+        switch (self.attr('name')) {
+            case 'mange_fees':
+                $('#mf').val(self.val());
+                break;
+            case 'peanlty_credit':
+                $('#pc').val(self.val());
+                break;
+            case 'peanlty_debit':
+                $('#pd').val(self.val());
+                break;
+        }
+        total();
+    });
+    $('select[name=pay_type]').change(function(event) {
+        var v = $(this).children('option:selected').val();
+        var ri = $('#ri');
+        switch (v) {
+            case '1':
+                ri.val($('#hri').val());
+                break;
+            case '2':
+                ri.val($('#hai').val());
+                break;
+            case '3':
+                ri.val(0);
+                break;
+        }
+        total();
+    });
+    $('#save').click(function() {
+        var data = {
+            'hid': $('#hid').val(),
+            'mange_fees': $('input[name=mange_fees]').val(),
+            'peanlty_credit': $('input[name=peanlty_credit]').val(),
+            'peanlty_debit': $('input[name=peanlty_debit]').val(),
+            'pay_type': $('select[name=pay_type] option:selected').val(),
+        };
+        $.post('__URL__/viewPrepayment', data, function(ret) {
+            if (ret.status == 1) {
+                closeDialog();
+            } else {
+                alt(ret.error);
+            }
+        });
+    });
+    function total() {
+        $('#sum').val(parseFloat($('#amt').val())+parseFloat($('#ri').val())+parseFloat($('#mfs').val())+parseFloat($('#mf').val())+parseFloat($('#pc').val())+parseFloat($('#pd').val()));
+    }    
+    total();
+</script>

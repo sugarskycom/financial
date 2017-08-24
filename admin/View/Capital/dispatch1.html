@@ -1,0 +1,220 @@
+<extend name="Public:base" />
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox">
+				<div class="ibox-title">项目发布调度</div>
+				<div class="ibox-content">
+					<div class="row">
+					<div class="col-lg-10 col-md-8">
+                        <div id='loading'>loading...</div>
+						<div id="calendar"></div>
+					</div>
+					<div class="col-lg-2 col-md-4">
+						<h3>待发布借款标（拖动到日历上）</h3>
+
+							<div id='external-events'>
+                            <volist name="waitList" id="r">
+	                        <div class='external-event lazur-bg' data-id='{$r.id}' data-hid="{$r.hid}" data-title="{$r.title}" data-bno='{$r.bno}' data-day='30'>{$r.realname}&nbsp;&nbsp;{$r.bno}</div>
+                            </volist>
+                            <if condition="count($waitList) eq 0">
+                                <div class="text-warning" style="padding-left:15px;border:1px solid #f1f1f1;line-height: 35px;">暂无待发布借款标</div>
+                            </if>
+                    	</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="before-css">
+<link href="{$Think.config.RESOURCE_URL}/components/fullcalendar/fullcalendar-1.css" rel="stylesheet" type="text/css">
+<link href="{$Think.config.RESOURCE_URL}/components/fullcalendar/fullcalendar.print-1.css" rel="stylesheet" type="text/css" media='print'>	
+</block>
+<block name="css">
+<style>
+.fc .fc-axis{
+    background-color: aliceblue;
+}
+#loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+</style>
+</block>
+<block name="js">
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/moment.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery-ui.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/fullcalendar/fullcalendar.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/fullcalendar/locale/zh-cn.big.js"></script>
+<script type="text/javascript">
+$('#external-events div.external-event').each(function() {
+
+            // store data so the calendar knows to render an event upon drop
+            $(this).data('event', {
+                title: $(this).attr('data-title')+"#"+$(this).attr('data-bno'), 
+                stick: true, // maintain when user navigates (see docs on the renderEvent method)
+                color: '#ed5565',
+                textColor:'#fff',
+                id:$(this).attr('data-id'),
+                resourceId:$(this).attr('data-id'),
+                bno:$(this).attr('data-bno'),
+                day:30,
+                status:0,
+            });
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 1111999,
+                revert: true,      // will cause the event to go back to its
+                revertDuration: 0,  //  original position after the drag
+                stop:function(event, ui){
+                }
+            });
+
+        });
+var dialog;
+var date = new Date();
+var d = date.getDate();
+var m = date.getMonth();
+var y = date.getFullYear();
+var flag = false;
+var flag2 = false;
+$('#calendar').fullCalendar({
+    defaultView:'agendaWeek',//默认周视图
+    header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+    },
+    displayEventTime:true,
+    minTime:'08:00',
+    slotLabelFormat:'HH:mm',
+    locale:'zh-cn',
+    timeFormat:'HH:mm',
+    slotDuration:'00:15:00',//时间间隔
+    editable: true,
+    droppable: true, // this allows things to be dropped onto the calendar
+    slotEventOverlap:true,//设置视图中的事件显示是否可以重叠覆盖
+    loading: function (bool) {
+        if (bool) $('#loading').show();
+        else $('#loading').hide();
+    },
+    //当日程事件被渲染后触发
+    eventAfterRender:function(event, element, view){
+        //当前时间控件更新
+        if(event.id==1000) $(element).css({'bottom':'auto','left':'0px','right':'auto','cursor':'default'}).find('div').find('div').css('display','inline-block');
+        if(event.id>1000){
+            $(element).attr('data-hid',event.hid).attr('data-id',event.id).attr('data-status',event.id);
+            $(element).find('div.fc-resizer').remove();//删除拖动DIV
+        }
+        //当前时间控件更新
+        if(!flag){
+            flag = true;
+            setInterval(function(){
+                if(event.id==1000){
+                    event.start = moment().format('YYYY-MM-DD HH:mm');
+                    $('#calendar').fullCalendar('updateEvent', event);
+                }
+            },1000);
+        }
+        
+        if(event.id>1000 && event.status==0){
+             var now = moment().unix();
+             var etime = moment(event.start.format('YYYY-MM-DD HH:mm')).format('X');
+             if(parseInt(etime)<=parseInt(now)){
+                event.color='#1c84c6';
+                event.editable=false;
+                event.status=1;
+                $('#calendar').fullCalendar('updateEvent', event);
+            }
+        }
+    },
+    drop: function(date, jsEvent, ui, resourceId) {
+        //移除外面的控件
+    	$(this).remove();
+        $('#calendar').fullCalendar('removeResource',resourceId);
+        //从外面拖进来的控件，保存到服务端
+        var time = date.format('YYYY-MM-DD HH:mm');
+        $.post("__URL__/addEvent",{lid:$(this).attr('data-id'),open_time:time});
+    },
+    eventDrop: function( event, delta, revertFunc, jsEvent, ui, view) {
+        //拖动停止时，更新最新时间
+        var newTime = moment(event.start.format('YYYY-MM-DD HH:mm')).format('X');//拖动后的时间
+        var now = moment().unix();//系统当前时间
+        //如果当前时间大于拖动后的时间，撤销标回原位
+        if (parseInt(now) > parseInt(newTime))
+             revertFunc();
+        else
+            $.post("__URL__/updateEvent",{lid:event.id,open_time:event.start.format('YYYY-MM-DD HH:mm')});
+    },
+    eventClick: function (event) {
+        if(event.id==1000 || event.status=='1') return false;//时间或已开放的投标不可以修改
+        dialog = new BootstrapDialog.show({
+                title:event.title,
+                type:BootstrapDialog.TYPE_DEFAULT,
+                message:function(){
+                    var div = '';
+                    div += '<div class="form-group"><p class="help-block">唯一号：'+event.bno+'</p></div>';
+                    div += '<div class="form-group"><div class="input-group"><span class="input-group-addon">募集期限:</span><input type="number" id="day" name="day" class="form-control" value="'+event.day+'"><span class="input-group-btn"><button class="btn btn-primary" data-hid="'+event.hid+'" onclick="updateTime(this)" data-id="'+event.id+'">修改</button></span></div></div>';
+                    if(event.status=='0') div += '<div class="form-group"><button type="button" class="btn btn-danger" data-hid="" onclick="deleteEvent('+event.id+',\''+event.hid+'\')"><i class="fa fa-remove fa-fw"></i> 取消此标</button></div>'
+                    return div;
+                },
+                cssClass:'bounceInDown animated',
+                onshown:vertical
+            });
+    },
+    events:{
+        type:'get',
+        data:{},
+        url:'__URL__/loadTask'
+    }
+});
+//更新时间
+function updateTime(obj){
+    var day = $("#day").val();
+    var id = $(obj).attr('data-id');
+    $.post('__URL__/updateRaise',{id:id,day:day},function(ret){
+        if(ret.status==1){
+            alt(ret.data,function(){
+                window.location.href = document.URL;
+            });
+        }
+        else{
+            alt(ret.error);
+        }
+    }); 
+}
+//删除日历事件
+function deleteEvent(id,hid){
+    dialog.close();
+    BootstrapDialog.show({
+        title:"确定取消",
+        type:BootstrapDialog.TYPE_DEFAULT,
+        message:function(){
+            return '<div class="form-group"><a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src=\'{:U(\'Verify/load\')}/?rnd=\'+Math.random()" style=""></a></div><div class="form-group"><input type="text" class="form-control" name="code" id="code" placeholder="请输入验证码"></div><div class="form-group"><button class="btn btn-primary" onclick="confirmRefuse(\''+id+'\')">确定</button></div>'
+        },
+        cssClass:'bounceInDown animated',
+        onshown:vertical
+    });
+}
+//确定取消,此处的取消是打回待审核状态，可以修改
+function confirmRefuse(id){
+    var code = $("#code").val().trim();
+    if(code=='' || code.length!=4) return false;
+    $.post('__URL__/cancel',{id:id,code:code},function(ret){
+        if(ret.status==1){
+            alt(ret.data,function(){
+                window.location.href = document.URL;
+            });
+        }
+        else{
+            alt(ret.error);
+        }
+    });
+}
+</script>
+</block>

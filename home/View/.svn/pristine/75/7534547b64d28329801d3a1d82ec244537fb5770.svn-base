@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面跳转至存管银行-{$title}</title>
+</head>
+<body>
+	<form id="postform" action="{$urlData}" method="post" style="display:hidden;">
+		<textarea name="reqData">{$reqData}</textarea>
+		<input type="submit" value="submit">
+	</form>
+	<h1>页面跳转中，请勿刷新。</h1>
+</body>
+<script>window.onload=function(){window.setInterval(function(){document.getElementById('postform').submit();},3000);}</script>
+</html>

@@ -1,0 +1,29 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container">
+    
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+    <script type="text/javascript">
+        $('#myCarousel').carousel({
+            interval: 3000
+        });
+        var num = [0,55,63,80,70,68,18,54,34,79];
+        for(var i=1;i<=9;i++){
+            var ind = $('.ind-'+i).radialIndicator({
+                barColor: '#ff0000',
+                barWidth: 6,
+                initValue: 0,
+                roundCorner : true,
+                percentage: true,
+                radius:25,
+            }).data('radialIndicator');
+            ind.animate(num[i]);
+        }
+    </script>
+    <script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</block>

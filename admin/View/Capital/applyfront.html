@@ -1,0 +1,52 @@
+<extend name="Public:base"/>
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <form class="form-inline" method="get" action="javascript:;" id="toolbar">
+                <input type="text" class="form-control" name="keyword" id="keyword" placeholder="借款人姓名/联系方式">
+                <button type="submit" class="btn btn-primary" id="btnSearch">查询</button>
+            </form>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped" data-url="__ACTION__" data-toggle="table" id="table" data-method="get" data-query-params="params" data-side-pagination="server" data-show-pagination-switch="false" data-classes="table table-striped table-hover" data-page-list="[10,50,100,ALL]" data-page-size="10" data-pagination="true" data-sort-order="desc">
+                <thead>
+                    <tr>
+                        <th data-field="id">系统编号</th>
+                        <th data-field="loan_type" data-formatter="formatType">借款类型</th>
+                        <th data-field="realname">借款人姓名</th>
+                        <th data-field="address">常住地址</th>
+                        <th data-field="contact">联系方式</th>
+                        <th data-field="amount">借款金额(单位：万元)</th>
+                        <th data-field="fund_use">借款用途</th>
+                        <th data-field="add_time" data-formatter="formatTime">申请时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <include file="Public:bootstrap-table" />
+ <script type="text/javascript">
+ function params(params) {
+    params.keyword = $.trim($("#keyword").val());
+    params.flag = 'load';
+    return params;
+}
+function formatType(v,r,i){
+	switch(parseInt(v)) {
+		case 1:
+    		return '仓单抵押借款';
+        case 2:
+            return '采购垫资借款';
+        case 3:
+            return '其他资产抵押借款';
+	}
+}
+$("#btnSearch").click(function(){
+	$("#table").bootstrapTable('refresh');
+})
+ </script>
+</block>

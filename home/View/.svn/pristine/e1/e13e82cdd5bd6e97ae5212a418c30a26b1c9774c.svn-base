@@ -1,0 +1,21 @@
+<!--
+<div id="wrapper" class="copyright">Copyright ©{:date('Y')} www.dsyht.com.cn , All Rights Reserved</div>-->
+<div class="foot-copyright text-center">
+    <p class="notice">
+        投资有风险&nbsp;入市需谨慎<br />
+        大视野汇通（北京）资产管理有限公司&nbsp;&nbsp;&nbsp;&nbsp;京ICP备000000号&nbsp;&nbsp;&nbsp;&nbsp;公安备案号：000000号
+    </p>
+</div>
+<style>
+    .foot-copyright {
+        height: 76px;
+        line-height: 2;
+    }
+    .foot-copyright .notice {
+        font-size: 12px;
+        color: #999;
+        width: 500px;
+        margin:0 auto;
+        padding-top: 10px;
+    }
+</style>

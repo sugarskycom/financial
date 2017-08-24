@@ -1,0 +1,103 @@
+<form id="form" method="post" class="form-horizontal" action="javascript:;">
+    <!--/current username-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*渠道名称：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="full_name" name="full_name" value="" placeholder="渠道完整名称">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*渠道简称：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="short_name" name="short_name" value="" placeholder="默认填充拼音全称">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*联系人：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="linkman" name="linkman" value="" placeholder="渠道联系人">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">联系方式：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="contact" name="contact" value="" placeholder="手机号/电话/QQ等">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">*负责人：</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="manager" name="manager" value="" placeholder="该渠道商务负责人">
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">备注：</label>
+        <div class="col-sm-5">
+            <textarea id="remark" name="remark" class="form-control" placeholder="渠道网址、渠道简介"></textarea>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <!--/form-group-->
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-4">
+            <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+    </div>
+    <!--/save button-->
+</form>
+<script type="text/javascript">
+$(function() {
+    $("#form").validate({
+        rules: {
+            full_name: {
+                required: true,
+            },
+            short_name: {
+                required: true,
+            },
+            linkman: {
+                required: true,
+            },
+            manager: {
+                required: true,
+            }
+        },
+        errorClass: "error",
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parent('div').next('div'));
+        },
+        messages: {
+            full_name: {
+                required: "渠道名称不能为空",
+            },
+            short_name: {
+                required: "渠道简称不能为空",
+            },
+            linkman: {
+                required: "联系人不能为空",
+            },
+            manager: {
+                required: "负责人不能为空",
+            }
+        },
+        submitHandler: function(form) {
+            $.post('__ACTION__/add', $(form).serializeArray(), function(data, textStatus, xhr) {
+                if (data.status == 0) {
+                    alert(data.error);
+                } else if (data.status == 1) {
+                    table.bootstrapTable('refresh');
+                    closeDialog();
+                }
+            });
+        }
+    });
+});
+</script>

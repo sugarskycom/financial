@@ -1,0 +1,37 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container text-center content">
+        <div class="background"></div>
+        <div class="msg">恭喜您，充值成功！</div>
+        <a href="{:U('Index/invest')}" class="backindex"> 投资不等人，立刻去投资</a>
+    </div>
+    <include file="Index:float"/>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <style>
+        .content{
+            width: 870px;
+            height: 416px;
+            background-color: #ffffff;
+            margin-top: 20px;
+        }
+        .background{
+            background: url("/Public/images/success.png") no-repeat;
+            width: 76px;
+            height: 76px;
+            margin:110px auto 20px;
+        }
+        .msg{
+            font-size: 20px;
+            color: #333333;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .backindex{
+            color: #4f9aff;
+            font-size: 16px;
+        }
+    </style>
+</block>

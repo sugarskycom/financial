@@ -1,0 +1,275 @@
+<extend name="Public:theme"/>
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container">
+        <div class="reldiv">
+            <h1 class="alignc h2 text-center">投资人风险承受能力评价</h1>
+            <div class="mtop2 lookdiv">
+                <span class="fL">尊敬的汇通网出借人:<div>&nbsp;您好，根据《网络借贷信息中介机构业务活动管理暂行办法》第四章第二十六条之规定：网络借贷信息中介机构应当对出借人的年龄、财务状况、投资经验、风险偏好、风险承受能力等进行尽职评估，不得向未进行风险评估的出借人提供交易服务。汇通网的以下问题将协助了解自身的风险承受能力，结果仅供参考，我司承诺对您的所有个人资料严格保密。</div></span>
+            </div>
+
+            <!--问卷内容-->
+            <div class="ques">
+                <div class="question">
+                    <div class="title">Q1：您的年龄是？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock1" value="2" id="isShow11">
+                        <label for="isShow11">A．25 岁以下（2 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock1" value="10" id="isShow12">
+                        <label for="isShow12">B．26 岁——45 岁（10 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock1" value="7" id="isShow13">
+                        <label for="isShow13">C．46 岁——55 岁（7 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock1" value="1" id="isShow14">
+                        <label for="isShow14">D．55 岁以上（1 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q2：您个人或家庭最近三年的年均收入？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock2" value="2" id="isShow21">
+                        <label for="isShow21">A.10 万元以下（2 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock2" value="5" id="isShow22">
+                        <label for="isShow22">B.10 万元——20 万元（5 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock2" value="7" id="isShow23">
+                        <label for="isShow23">C.20 万元——50 万元（7 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock2" value="8" id="isShow24">
+                        <label for="isShow24">D.50 万——100 万元（8 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q3：您理财的目的是什么？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock3" value="2" id="isShow31">
+                        <label for="isShow31">A.财产保值，对冲通货膨胀（2 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock3" value="5" id="isShow32">
+                        <label for="isShow32">B.增加收入，获得稳定收益（5 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock3" value="8" id="isShow33">
+                        <label for="isShow33">C.赚取较高回报，使财富快速增值（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock3" value="10" id="isShow34">
+                        <label for="isShow34">D.博得高收益，越高越好（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q4：您的投资经验？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock4" value="3" id="isShow41">
+                        <label for="isShow41">A.基本没有投资知识，只投资过银行存款、国债等金融产品（3 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock4" value="5" id="isShow42">
+                        <label for="isShow42">B.对金融有些许了解，投资过基金、债券，偶尔投资股票（5 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock4" value="8" id="isShow43">
+                        <label for="isShow43">C.对金融产品有一定了解，投资过银行理财、信托产品、股票、基金等产品（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock4" value="10" id="isShow44">
+                        <label for="isShow44">D.对金融产品充分了解，经常投资信托、基金、股票、期货等金融产品（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q5：您对投资风险的态度？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock5" value="2" id="isShow51">
+                        <label for="isShow51">A.厌恶风险，本金不能收到损失，希望有少许回报（2 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock5" value="5" id="isShow52">
+                        <label for="isShow52">B.保守购买，希望本金不收到损失，接受一定的收益浮动（5 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock5" value="8" id="isShow53">
+                        <label for="isShow53">C.希望收益与风险成正比，愿意承受有限的本金损失风险（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock5" value="10" id="isShow54">
+                        <label for="isShow54">D.希望有超高回报，愿意承受较大部分的本金损失（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q6：您希望的投资收益率？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock6" value="3" id="isShow61">
+                        <label for="isShow61">A.5%以下（3 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock6" value="4" id="isShow62">
+                        <label for="isShow62">B.6%——10%（4 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock6" value="6" id="isShow63">
+                        <label for="isShow63">C.11%——15%（6 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock6" value="8" id="isShow64">
+                        <label for="isShow64">D.16%——20%（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock6" value="10" id="isShow65">
+                        <label for="isShow65">E.20%以上（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q7：您个人或家庭除必要开支外，年可支配收入？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock7" value="2" id="isShow71">
+                        <label for="isShow71">A.5 万元以下（2 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock7" value="4" id="isShow72">
+                        <label for="isShow72">B.6 万元——10 万元（4 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock7" value="6" id="isShow73">
+                        <label for="isShow73">C.11 万元——20 万元（6 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock7" value="8" id="isShow74">
+                        <label for="isShow74">D.21 万元——50 万元（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock7" value="10" id="isShow75">
+                        <label for="isShow75">E.50 万元以上（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q8：您的职业？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock8" value="2" id="isShow81">
+                        <label for="isShow81">A.无固定职业（2）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock8" value="4" id="isShow82">
+                        <label for="isShow82">B.专业技术人员（4 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock8" value="6" id="isShow83">
+                        <label for="isShow83">C.一般企事业单位员工（6 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock8" value="8" id="isShow84">
+                        <label for="isShow84">D.公司高管（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock8" value="10" id="isShow85">
+                        <label for="isShow85">E.金融行业从业人员（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q9：您计划的投资期限？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock9" value="3" id="isShow91">
+                        <label for="isShow91">A.1 年以下（3 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock9" value="5" id="isShow92">
+                        <label for="isShow92">B.1 年——3 年（5 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock9" value="8" id="isShow93">
+                        <label for="isShow93">C.3——5 年（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock9" value="10" id="isShow94">
+                        <label for="isShow94">D.5 年以上（10 分）</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="title">Q10：您对互联网金融的了解？</div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock0" value="2" id="isShow01">
+                        <label for="isShow01">A.不了解，没有接触过（2）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock0" value="4" id="isShow02">
+                        <label for="isShow02">B.了解较少，有过接触（4 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock0" value="8" id="isShow03">
+                        <label for="isShow03">C.有一定了解，有过投资（8 分）</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="zero_stock0" value="10" id="isShow04">
+                        <label for="isShow04">D.充分了解，经常投资（10 分）</label>
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 16px;">
+                <span>注：以上评价分为保守型和偏保守型，分值在 79 及以上为偏保守型，分值在 79 以下为保守型。</span>
+            </div>
+            <br>
+            <div class="btn btn-primary text-center">提交</div>
+
+        </div>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <link href="http://static.edianlian.com/components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="http://static.edianlian.com/components/dialog/css/bootstrap-dialog.min.css" rel="stylesheet">
+    <style>
+        .mtop2{
+            font-size: 18px;
+            margin: 50px 0 30px;
+        }
+        .question{
+            font-size: 16px;
+        }
+    </style>
+</block>
+<block name="js">
+    <script src="http://static.edianlian.com/components/dialog/js/bootstrap-dialog.min.js"></script>
+    <script>
+            $(".btn").click(function(){
+                var total = 0;
+                if($(":radio").filter(":checked").length == $(".question").length){
+                    $(":radio").filter(":checked").each(function () {
+                        total += Number(this.value);
+                    });
+                    BootstrapDialog.confirm({
+                        type: BootstrapDialog.TYPE_SUCCESS,
+                        title: '提交成功',
+                        message: '您的得分是：'+ total +'分!',
+                        callback: function () {
+                            window.location.href = "http://test.dsyht.com.cn/Index/index.html"
+                        }
+                    });
+                }else{
+                    BootstrapDialog.show({
+                        type: BootstrapDialog.TYPE_WARNING,
+                        title: '提交错误',
+                        message: '您还有未选择的项目!'
+                    });
+                }
+            });
+    </script>
+</block>

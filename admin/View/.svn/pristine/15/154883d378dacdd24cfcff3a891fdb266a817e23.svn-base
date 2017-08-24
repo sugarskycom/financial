@@ -1,0 +1,101 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+<div class="ibox-title clearfix">
+        <div class="pull-left">
+            <form class="form-inline" method="get" action="__URL__/index" id="toolbar">
+                <div class="form-group">
+                    <select class="form-control" id="department_id" name="department_id">
+                        <option value="">选择部门</option>
+                        <volist name="depLists" id="r">
+                            <if condition="$r.id eq $department_id">
+                                <option value="{$r.id}" selected>{$r.name}</option>
+                                <else/>
+                                <option value="{$r.id}">{$r.name}</option>
+                            </if>
+                        </volist>
+                    </select>
+                    <input type="text" class="form-control" id="keyword" placeholder="姓名关键词" />
+                </div>
+                <button type="button" onclick="search()" class="btn btn-primary">查询</button>
+            </form>
+            <!--/form-->
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-success btn-sm" href="{:U('Node/index')}" role="button">节点管理</a>
+            <a class="btn btn-success btn-sm" href="{:U('Role/index')}" role="button">角色管理</a>
+            <a class="btn btn-success btn-sm" href="{:U('Department/add')}" role="button">新增部门</a>
+            <a class="btn btn-success btn-sm" href="__URL__/add" role="button">新增用户</a>
+        </div>
+    </div>
+
+        <div class="ibox-content">
+                <table class="table table-striped table-hover"
+                id="table"
+                data-url="__ACTION__"
+				data-method="get" 
+				data-pagination="true" 
+				data-side-pagination="server" 
+				data-show-pagination-switch="false" 
+				data-page-list="[10,30,50,100]" 
+				data-page-size="10" 
+				data-pagination="true"
+				data-sort-order="desc"
+				data-toggle="table"
+				data-query-params="params"
+                >
+                    <thead>
+                        <tr>
+                            <th data-field="user_id">编号</th>
+                            <th data-field="realname">姓名</th>
+                            <th data-field="department">部门</th>
+                            <th data-field="post">职位</th>
+                            <th data-field="username">登录名</th>
+                            <th data-field="email">邮箱</th>
+                            <th data-field="mobile">手机号</th>
+                            <th data-field="role">角色</th>
+                            <th data-field="is_show" data-formatter="formatStatus">状态</th>
+                            <th data-field="user_id" data-formatter="formatAction">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+    </div>
+</div>    
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+function repassword(o,user_id){
+	$.post("__URL__/repassword",{user_id:user_id},function(ret){
+		if(ret.status==1){
+			error($(o),ret.data);
+		}
+	});
+}
+function formatAction(v,r,i){
+	return '<a href="__URL__/edit?id='+v+'">编辑</a> | <a href="javascript:;" onclick="repassword(this,'+v+')">重置密码</a>'
+}
+function params(params){
+	params.flag='load';
+	return params;
+}
+function formatStatus(v,r,i){
+	if(v==1)
+		return '开启';
+	else
+		return '关闭';
+}
+function search(){
+	var department_id = $("#department_id").val();
+	var keyword = $.trim($("#keyword").val());
+	$('#table').bootstrapTable('refreshOptions',{queryParams:function(params){
+		params.flag='load';
+		params.department_id = department_id;
+		params.keyword = keyword;
+		return params;
+	}});
+}
+</script>
+</block>

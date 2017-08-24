@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="quote">
+            <div class="col-md-2 title">标的标题</div>
+            <div class="col-md-10 detail">U计划-新1月-20180801期</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">预计年利率</div>
+            <div class="col-md-10 detail">7.8%</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">预计收益金额</div>
+            <div class="col-md-10 detail">8.00元</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">投资期限</div>
+            <div class="col-md-10 detail">12个月</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">收益方式</div>
+            <div class="col-md-10 detail">按月付息，到期还本</div>
+        </div>
+        <div class="quote">
+            <div class="col-md-2 title">投资额度</div>
+            <div class="col-md-10 detail">10000.00元</div>
+            <div class="col-md-10 detail" style="display: none">1000.00元&nbsp;&nbsp;&nbsp;您的余额不足&nbsp;&nbsp;&nbsp;<a
+                    href="{:U('Index/recharge')}">去充值</a></div>
+        </div>
+    </div>
+    <div class="btn btn-warning">立即投资</div>
+</div>
+<style>
+    .title{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #999999;
+    }
+    .detail{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #333333;
+        font-weight: 500;
+    }
+    .btn{
+        width: 290px;
+        height: 40px;
+        font-size: 18px;
+        color: #ffffff;
+        margin-left: 100px;
+        margin-bottom: 40px;
+    }
+</style>

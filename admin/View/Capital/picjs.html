@@ -1,0 +1,71 @@
+<include file="Public:fileinput"/>
+<script type="text/javascript">
+loadpic();
+$("#upload").fileinput({
+	language:'zh',
+	rtl: true,
+	showCaption:false,
+    allowedPreviewTypes : [ 'image' ],
+    allowedFileExtensions : [ 'jpg', 'png', 'gif','bmp'],
+    maxFileSize : 5000,
+    uploadUrl:'__URL__/upload',
+    maxFileCount: 10,
+    uploadExtraData:{bid:'{$data.id}'},
+    showPreview:false,
+}).on('fileuploaded',function(){
+	loadpic();
+});
+$("#btnSave").click(function(){
+	var obj = {};
+	obj.desc_info = $.trim($("#desc_info").val());
+	obj.guarantee_info = $.trim($("#guarantee_info").val());
+	obj.mortgage_info = $.trim($("#mortgage_info").val());
+	obj.risk_info = $.trim($("#risk_info").val());
+	obj.fund_use = $.trim($("#fund_use").val());
+	obj.repay_source = $.trim($("#repay_source").val());
+	$.post("__ACTION__",obj,function(ret){
+		if(ret.status==1){
+			toastr.success(ret.data);
+			setTimeout(function(){
+				window.location.href='__URL__/applyList';
+			},700)
+		}
+	})
+});
+//加载图片
+function loadpic(){
+	$.get("__URL__/loadpic",{lid:'{$data.id}',flag:'list'},function(ret){
+		var obj = $(".pic-list");
+		if(ret.status==1){
+			obj.html('');
+			$.each(ret.data,function(){
+				obj.append('<div><i class="fa fa-close" onclick="del(this,'+this.id+')"></i><span><img src="__URL__/loadpic?flag=img&src='+this.url+'&lid='+this.loan_id+'"></span><p><input type="text" value="'+this.title+'" id="l_'+this.id+'" class="form-control" onchange="changeTitle(this)" data-id="'+this.id+'" title="更改标题"></p></div>')
+			})
+			obj.removeClass('hide');
+		}
+	});
+}
+function changeTitle(o){
+	var v = $(o).val();
+	var id = $(o).attr('data-id');
+	$.post("__URL__/modifypictitle",{id:id,v:v},function(ret){
+		if(ret.status==1){
+			toastr.success(ret.data);
+		}
+		else{
+			toastr.error(ret.error);
+		}
+	})
+}
+function del(o,id){
+	cfm('您确定删除吗？',function(res){
+		if(res){
+			$.post("__URL__/delpic",{id:id},function(ret){
+				if(ret.status==1){
+					$(o).parent('div').remove();
+				}
+			})
+		}
+	})
+}
+</script>

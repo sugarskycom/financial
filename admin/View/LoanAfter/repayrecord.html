@@ -1,0 +1,49 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="ibox">
+	<div class="ibox-title">
+		<table class="table table-hover table-striped"
+				id="table"
+				data-toggle="table"
+				data-url="__ACTION__"
+				data-method="post"
+				data-page-size="5"
+				data-pagination="true"
+				data-side-pagination="server"
+				data-page-list="[5,10,20,30,50]"
+				data-sort-order="desc"
+				data-query-params="params"
+				data-show-pagination-switch="false"
+				data-search="false"
+				data-search-on-enter-key="true"
+				data-trim-on-search="false"
+				data-show-columns="false"
+				data-toolbar=""
+				data-show-export="true"
+				data-content-type="application/x-www-form-urlencoded; charset=UTF-8">
+			<thead>
+				<tr>
+					<th data-field="id" data-formatter="formatOrder">序号</th>
+					<th data-field="bno">唯一号</th>
+					<th data-field="amount">还款金额(￥)</th>
+					<th data-field="operate_time" data-formatter="formatTime">还款时间</th>
+					<th data-field="remark">备注</th>
+					<th data-field="operator">操作人</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+	function params(params){
+		params.id='{$id}';
+		return params;
+	}
+	function formatOrder(v,r,i){
+		return i+1;
+	}
+</script>
+</block>

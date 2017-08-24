@@ -1,0 +1,71 @@
+<!-- <div class="feedback-bg float-bg"><a class="feedback" id="feedback" href="#" alt="投诉建议"></a></div>
+<div class="totop-bg float-bg"><a class="totop" href="#" alt="返回顶部"></a></div> -->
+<div class="float-bg">
+    <div class="feedback-bg"><a class="feedback" id="feedback" href="#" alt="投诉建议"></a></div>
+    <div class="totop-bg"><a class="totop" href="#" alt="返回顶部"></a></div>
+</div>
+<style>
+    .bootstrap-dialog.type-primary .modal-header {
+        background-color: #fdc230;
+    }
+/*    .btn-primary{
+        color: #fff;
+        background-color: #fdc230;
+        border-color: #fdc230;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary {
+      color: #fff;
+      background-color: #fdc230 !important;
+      border-color: #fdc230 !important;
+  }*/
+  .float-bg {
+    position: fixed;
+    right: 0;
+    bottom: 455px;
+}
+.feedback-bg,.totop-bg {
+    height: 70px;
+    width: 70px;
+    border:1px solid #efefef;
+    background-color: #fff;
+}
+.totop-bg {border-top: 0;}
+  .feedback {
+    background-image: url(/Public/images/feedback.png);
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 29px;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+  }
+  .totop {
+    background-image : url(/Public/images/top.png);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;  
+    position: absolute;
+    top: 65%;
+    left: 35%;  
+  }
+/*    #feedback{
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+    }*/
+    .fa-arrow-up {
+        position: fixed;
+        right: 15px;
+        bottom: 80px;
+        font-size: 14px;
+        color: #fdc230;
+    }
+    .fa-arrow-up:hover{
+        color: #fdc230;
+    }
+</style>

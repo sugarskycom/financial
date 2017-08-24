@@ -1,0 +1,46 @@
+<extend name="Public:base" />
+<block name="content">
+<include file="Public:nav"/>
+<div id="wrapper">
+<div class="current-nav">
+<ol class="breadcrumb">
+  <li>汇通资产</li>
+  <li><a href="{:U('Index/main')}">管理首页</a></li>
+  <li class="active">账号安全</li>
+</ol>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox">
+<div class="ibox-title">
+	<dl class="dl-horizontal check-dl">
+		<dt>修改密码：</dt>
+		<dd>
+		<button class="btn btn-info btnPassword" id="btnPassword">修改密码</button>
+		</dd>
+		<dt class="even">绑定手机：</dt>
+		<dd class="even">
+		<label class="text-info">{$data.login_mobile}</label>
+		<button class="btn btn-info btnMobile" id="btnMobile">更换手机</button>
+		</dd>
+		<dt>绑定邮箱：</dt>
+		<dd>
+		<if condition="$data['login_email'] eq ''">
+		<button class="btn btn-info btnEmail1" id="btnEmail1">绑定邮箱</button>
+		<elseif condition="$data['login_email'] neq ''"/>
+		<label class="text-info">{$data['login_email']}</label>
+		<button class="btn btn-info btnEmail2" id="btnEmail2">更换邮箱</button>
+		</if>
+		</dd>
+	</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<include file="Public:copyright"/>
+</block>
+<block name="js">
+<!--validation-->
+<script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+</block>

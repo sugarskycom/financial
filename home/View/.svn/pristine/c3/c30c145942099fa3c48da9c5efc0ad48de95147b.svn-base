@@ -1,0 +1,79 @@
+<extend name="Public:theme" />
+<block name="content">
+    <include file="Public:top"/>
+    <div class="container white-bg">
+        <!-- 面包屑导航栏 -->
+        <ol class="breadcrumb">
+            <li><a href="#">汇通资产</a></li>
+            <li><a href="#">我的账户</a></li>
+            <li style="color: #666;">充值</li>
+        </ol>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h1>投资充值</h1>
+                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data" id="form">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">真实姓名</label><!-- 个人账户 -->
+                        <label class="col-sm-5 control-label" style="display: none;">法人姓名</label><!-- 企业账户 -->
+                        <div class="col-sm-4 h44 real-name">
+                            <span class="origin-name">游秀芝</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">充值金额</label>
+                        <div class="col-sm-4 h44 rc-sum">
+                            <input type="text" class="form-control" name="sum" id="sum" value="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success btn-post" id="btnPost">去充值</button>
+                            <p class="notice">将进入富滇银行存管界面操作</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="reminder">
+            <ol class="list-unstyled">温馨提示：
+                <li>1、开通银行存管账户、设置交易密码后，才能进行充值操作。</li>
+                <li>2、为保证您的资金安全，您充值的资金将进入富滇银行的银行管存账号。</li>
+                <li>3、本操作需要在富滇银行平台完成。</li>
+                <li>4、如充值的金额没有及时到账，请联系客服：010-xxxxx  解决。</li>
+            </ol>
+        </div>
+    </div>
+    <include file="Public:footer"/>
+</block>
+<block name="css">
+    <link href="__PUBLIC__/css/account.css" rel="stylesheet" type="text/css">
+</block>
+<block name="js">
+    <script type="text/javascript" src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+    <script>
+        $(function() {
+            var name = $('.origin-name').html();
+            var mname = '*' + name.substr(1);
+            $('.origin-name').text(mname);
+        });
+        $(function(){
+            $("#form").validate({
+                rules:{
+                    sum:{
+                        required:true,
+                    },
+                },
+                messages:{
+                    sum:{
+                        required:"充值金额不能为空",
+                    },
+                },
+                /*错误提示位置*/
+                errorPlacement:function(error,element){
+                    error.insertAfter(element);
+                }
+            });
+        })
+    </script>
+</block>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="jakim">
+    <title>用户登录</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{$Think.config.RESOURCE_URL}/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{$Think.config.RESOURCE_URL}/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--dialog css-->
+    <link href="{$Think.config.RESOURCE_URL}/components/dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/animate/animatecss/animate.v2013.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/icheck/custom.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.config.RESOURCE_URL}/finance/skin/main.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="gray-bg">
+<div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+            <h1 class="logo-name">
+                <img src="__PUBLIC__/images/logo-wide.png" width="300">
+            </h1>
+            </div>
+            <form class="m-t" role="form" action="" id="loginForm">
+                <div class="alert alert-danger">------测试环境-----------</div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="用户名/手机号" required="" name="username" id="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="密码" required="" name="password" id="password">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="验证码" required="" name="code" id="code" autocomplete="off">
+                </div>
+                <div class="form-group text-left" style="position: relative;">
+                    <label><input type="checkbox" class="i-checks" checked id="autologin"> 下次自动登录 </label>
+                    <div class="code"></div>
+                </div>                        
+                
+                <button type="submit" class="btn btn-primary block full-width m-b" id="btnLogin">登陆</button>
+            </form>
+            <p class="m-t"> <small>copyright &copy; {:date('Y')} edianlian.com.cn</small> </p>
+        </div>
+    </div>
+<script src="{$Think.config.RESOURCE_URL}/components/jquery/dist/jquery.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--dialog-->
+<script src="{$Think.config.RESOURCE_URL}/components/dialog/js/bootstrap-dialog.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/icheck/icheck.min.js"></script>
+<script src="{$Think.config.RESOURCE_URL}/components/validate/jquery.validate.min.js"></script>
+<script type="text/javascript">
+var show = false;
+$(function(){
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+    });
+    $("#code").focus(function(){
+        if(!show){
+            var str = '<a href="javascript:;" title="更换验证码"><img src="{:U(\'Verify/load\')}" onclick="this.src=\'{:U(\'Verify/load\')}/?rnd=\'+Math.random()"></a>';
+            $(".code").html(str);
+            show = true;
+        }
+
+    });
+});
+//验证
+</script>
+<script type="text/javascript">
+    $(function() {
+        $("#loginForm").validate({
+            errorClass: "error",
+            errorElement:"span",
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 4
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                code: {
+                    required: true,
+                    check: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "账户不能为空",
+                    minlength: "无效账户名"
+                },
+                password: {
+                    required: "密码不能为空",
+                    minlength: "密码无效"
+                },
+                code: {
+                    required: "验证码不能为空",
+                    check: "验证码错误"
+                }
+            },
+            //errorLabelContainer:"#alert"
+            submitHandler: function(form) {
+                var autologin = $("#autologin:checked").val();
+                if(typeof autologin == 'undefined'){
+                    autologin = 0;
+                }
+                $.ajax({
+                    url: "__URL__/handler",
+                    data: {
+                        username: $("#username").val().trim(),
+                        password: $("#password").val().trim(),
+                        authcode: $("#code").val().trim(),
+                        autologin:autologin,
+                    },
+                    type: "post",
+                    success: function(ret) {
+                        if (ret.status == 1) {
+                            $("#btnLogin").text('登录成功...').attr('disabled',true);
+                            setTimeout(function(){
+                                window.location.href = "{:U('Index/index')}"
+                            },500);
+                            
+                        } else {
+                            BootstrapDialog.alert({
+                                type:BootstrapDialog.TYPE_WARNING,
+                                title:"提示",
+                                message:ret.error,
+                                draggable:true,
+                                //callback:callback,
+                                buttonLabel:'确定'
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+    $.validator.addMethod("check", function(value, element, params) {
+        if (value.length != 4) {
+            return false;
+        } else {
+            var ret = $.ajax({
+                url: "{:U('Verify/check')}",
+                type: "get",
+                data: {
+                    code: $("#code").val()
+                },
+                async: false
+            }).responseText;
+            return ret == "yes" ? true : false
+        }
+    });
+</script>
+<style>
+.code{
+    position: absolute;
+    right:0;
+    top:-10px;
+    border:1px solid #dcdcdc;
+}
+.form-group{
+    text-align: left;
+}
+.form-group span{
+    color: red;
+    text-align: left;
+}
+</style>
+</body>
+</html>    

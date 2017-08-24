@@ -1,0 +1,76 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+		<form class="form-inline" method="get" action="javascript:;">
+			<select class="form-control" id="api" name="api">
+			<option value="">接口</option>
+				<volist name="apis" id="r">
+				<option value="{$key}">{$r}</option>
+				</volist>
+			</select>
+			<select class="form-control" id="action" name="action">
+			<option value="">日志类型</option>
+			<option value="1">外发</option>
+			<option value="2">回调</option>
+			</select>
+			<input type="text" class="form-control" placeholder="订单号" id="keyword" name="keyword">
+			<button type="submit" class="btn btn-success" id="btnSearch">查询</button>
+		</form>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-hover table-striped"  data-export-types="['excel']" data-method="get" data-page-list="[5,10,20,30,50]" data-page-size="10" data-pagination="true" data-query-params="params" data-search="false" data-search-on-enter-key="true"  data-show-export="true" data-show-pagination-switch="false" data-side-pagination="server" data-sort-order="desc" data-toggle="table"  data-trim-on-search="false" data-url="__ACTION__" id="table">
+                <thead>
+                    <tr>
+                        <th data-field="id">
+                            系统编号
+                        </th>
+                        <th data-field="action" data-formatter="formatAction">
+                            日志类型
+                        </th>
+                        <th data-field="code" data-cell-style="codeCellStyle">
+                            日志内容
+                        </th>
+                        <th data-field="add_time" data-formatter="formatTime">
+                            时间
+                        </th>
+                        <th data-field="api">
+                            接口
+                        </th>
+                        <th data-field="ip">
+                            IP
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+<include file="Public:bootstrap-table" />
+<script type="text/javascript">
+$("#btnSearch").click(function(){
+	$("#table").bootstrapTable('refresh');
+})
+function params(params){
+	params.api = $("#api").val();
+	params.keyword = $.trim($("#keyword").val());
+	params.action = $("#action").val();
+	params.flag = 'load';
+	return params;
+}
+function formatAction(v,r,i){
+	switch(v){
+		case '1':
+		return '外发';
+		case '2':
+		return '回调';
+	}
+}
+function codeCellStyle(v,r,i,f){
+	return {
+		css:{"width":'900px',"word-wrap":"break-word","word-break":"break-all"}
+	}
+}
+</script>
+</block>

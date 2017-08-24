@@ -1,0 +1,114 @@
+<form action="" method="post" id="form" class="form-horizontal">
+<div class="tabs-container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tab-1">部分还款</a></li>
+        <li class=""><a data-toggle="tab" href="#tab-2">终止</a></li>
+    </ul>
+    <div class="tab-content">
+    	<div id="tab-1" class="tab-pane active">
+    		<div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><span class="text-red">*</span>还款金额：</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="amount" id="amount" value="">
+                    </div>
+                </div>
+                <!---/form-group-->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><span class="text-red">*</span>备注：</label>
+                    <div class="col-sm-9">
+                        <textarea name="remark1" id="remark1" class="form-control"></textarea>
+                    </div>
+                </div>
+                <!---/form-group-->
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-3">
+                        <button type="submit" class="btn btn-success"  data-toggle="tooltip" title="" name="btnSurePay">确定</button>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    	<div id="tab-2" class="tab-pane">
+    		<div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><span class="text-red">*</span>备注：</label>
+                    <div class="col-sm-9">
+                        <textarea name="remark2" id="remark2" class="form-control"></textarea>
+                    </div>
+                </div>
+                <!---/form-group-->
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-3">
+                        <button type="submit" class="btn btn-success" name="btnSurePay" data-toggle="tooltip" title="">确定</button>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+       <div class="col-sm-offset-3 col-sm-3"></div>
+
+    </div>
+</div>
+<input type="hidden" value="1" name="flag">    
+</form>
+<script type="text/javascript">
+$(function(){
+    $("button[name=btnSurePay]").click(function(){
+        var amount = $("#amount").val();
+        var remark1 = $("#remark1").val();
+        var remark2 = $("#remark2").val();
+        var flag = $('input[name=flag]').val();
+        var id = '{$data.id}';
+        var o = this;
+        if(flag=='1'){
+            if(amount=='' || parseFloat(amount)<=0){
+                $("#amount").focus();
+                err($("#amount"),'部分还款金额不能为空且必须大于0');
+                return false;
+            }
+            else if(remark1==''){
+                $("#remark1").focus();
+                err($("#remark1"),'备注信息必须填写');
+                return false;
+            }
+        }
+        else{
+            if(remark2==''){
+                $("#remark2").focus();
+                err($("#remark2"),'备注信息必须填写');
+                return false;
+            }
+        }
+        flag = parseInt(flag);
+        $(this).attr('disabled',true).text('数据提交中...')
+        $.post('__ACTION__',{amount:(flag==1?amount:0),flag:flag,remark:(flag==1?remark1:remark2),id:id},function(ret){
+            if(ret.status==1){
+                $(o).text(ret.data);
+                setTimeout(function(){
+                    closeDialog();
+                    $("#table").bootstrapTable('refresh');
+                },1000)
+            }
+            else if(ret.status==0){
+                err(o,ret.error);
+                $(o).attr('disabled',false).text('确定');
+            }
+        });
+        return false;
+    });
+    $("a[data-toggle=tab]").on('shown.bs.tab',function(){
+        var f = $(this).attr('href');
+        if(f=='#tab-1'){
+            $("input[name=flag]").val(1);
+        }
+        else{
+            $("input[name=flag]").val(2);
+        }
+    });
+});
+function err(o,err){
+    $(o).attr('title',err).tooltip('show');
+    setTimeout(function(){
+        $(o).tooltip('destroy');
+    },1000)
+}
+</script>

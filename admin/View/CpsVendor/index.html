@@ -1,0 +1,53 @@
+<extend name="Public:base" />
+<block name="content">
+    <div class="ibox">
+        <div class="ibox-title">
+            <form class="form-inline" method="get" action="javascript:;" id="toolbar">
+                <input type="text" class="form-control" name="keyword" id="keyword" placeholder="渠道名称/渠道编号/简称">
+                <button type="submit" class="btn btn-primary">查询</button>
+                <button type="button" class="btn btn-default" onclick="openwin()">新增渠道</button>
+            </form>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-striped" data-url="__ACTION__" data-toggle="table" id="table" data-method="get" data-query-params="params" data-side-pagination="server" data-show-pagination-switch="false" data-classes="table table-striped table-hover" data-page-list="[10,50,100,ALL]" data-page-size="10" data-pagination="true" data-sort-order="desc">
+                <thead>
+                    <tr>
+                        <th data-field="vid">渠道编号</th>
+                        <th data-field="full_name">渠道名称</th>
+                        <th data-field="short_name">渠道简称</th>
+                        <th data-field="linkman">创建时间</th>
+                        <th data-field="contact">联系人/联系方式</th>
+                        <th data-field="manager">负责人</th>
+                        <th data-field="remark">备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <include file="Public:bootstrap-table" />
+    <script type="text/javascript">
+    var table = $("#table").bootstrapTable();
+    $('#toolbar').submit(function(event) {
+    	table.bootstrapTable('refresh');
+    });
+    function params(params) {
+        params.keyword = $.trim($("#keyword").val());
+        params.flag = 'load';
+        return params;
+    }
+
+    function openwin() {
+        BootstrapDialog.show({
+            title: '新增渠道',
+            type: BootstrapDialog.TYPE_DEFAULT,
+            message: function() {
+                return $('<div></div>').load("__URL__/add");
+            }
+        })
+    }
+    </script>
+</block>

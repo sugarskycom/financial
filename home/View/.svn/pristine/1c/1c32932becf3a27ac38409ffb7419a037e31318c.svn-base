@@ -1,0 +1,152 @@
+<extend name="Public:theme" />
+<block name="content">
+<include file="Public:top"/>
+<include file="Public:banner" />
+<!--业务特色####-->
+<div class="container icon-list">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-cny fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>资金银行存管</h3>
+				<p>平台资金全部由富滇银行存管</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-chain fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>专注电子产业链</h3>
+				<p>贯穿电子产业供应链，绑定上下游</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-recycle fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>多重风控体系</h3>
+				<p>8个维度的风控体系保证项目安全运营</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-3">
+			<div class="bus-des">
+				<div class="icon">
+					<span class="fa-stack fa-lg fa-3x icon-color-1">
+		  			<i class="fa fa-circle fa-stack-2x"></i>
+		  			<i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="icon-text">
+				<h3>完全的信息披露</h3>
+				<p>根据现有法律法规充分披露项目信息</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!---统计数据-->
+<div class="container data-list">
+<div class="data-border">
+<div class="row">
+		<div class="col-sm-3"><span>
+		用户总投资额<br>
+		<strong>2亿3500万元</strong>
+		</span>
+		</div>
+		<div class="col-sm-3"><span>为用户赚取<br>
+		<strong>3500万元</strong>
+		</span>
+		</div>
+		<div class="col-sm-3"><span>交易笔数<br>
+		<strong>4万5000笔</strong>
+		</span>
+		</div>
+		<div class="col-sm-3"><span>注册用户数量<br><strong>3万4562人</strong></span>
+		</div>
+	</div>
+	</div>
+</div>
+<include file="product_1"/>
+<include file="product_2"/>
+<include file="product_3"/>
+<!--信息公开-->
+<div class="container info-public">
+	<h1>信息公开</h1>
+	<div class="info-list clearfix">
+		<!--平台公告-->
+		<div class="info-list-notice">
+			<h5>平台公告</h5>
+			<ul>
+				<li><span>2017-07-29&nbsp;</span><a href="#">平台懒人计划上线</a></li>
+				<li><span>2017-07-21&nbsp;</span><a href="#">平台签订银行存管</a></li>
+				<li><span>2017-07-13&nbsp;</span><a href="#">平台上线</a></li>
+			</ul>
+		</div>
+		<!--员工风采-->
+		<div class="info-list-team">
+			<h5>员工风采</h5>
+			<div class="info-list-img"><img src="__PUBLIC__/images/2.jpg"></div>
+		</div>
+		<!--投资达人排行榜-->
+		<div class="info-list-top">
+			<h5>投资达人排行榜</h5>
+			<dl class="list-unstyled clearfix"><dd><a href="#" class="active">本周</a></dd><dd><a href="#" >本月</a></dd></dl>
+			<ul>
+				<li><span>☆</span> ****sun****&nbsp;&nbsp;&nbsp;2,000,000</li>
+				<li><span>☆</span> ****sun****&nbsp;&nbsp;&nbsp;2,000,000</li>
+				<li><span>☆</span> ****sun****&nbsp;&nbsp;&nbsp;2,000,000</li>
+				<li><span>☆</span> ****sun****&nbsp;&nbsp;&nbsp;2,000,000</li>
+				<li><span>☆</span> ****sun****&nbsp;&nbsp;&nbsp;2,000,000</li>
+				<li><span>☆</span> ****sun****&nbsp;&nbsp;&nbsp;2,000,000</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<include file="Index:float"/>
+<include file="Public:footer"/>
+</block>
+<block name="js">
+<script type="text/javascript" src="__PUBLIC__/js/radialIndicator.js"></script>
+<script type="text/javascript">
+	$('#myCarousel').carousel({
+		interval: 3000
+	});
+	var num = [0,55,63,80,70,68,18,54,34,79];
+	for(var i=1;i<=9;i++){
+		var ind = $('.ind-'+i).radialIndicator({
+	        barColor: '#ff0000',
+	        barWidth: 6,
+	        initValue: 0,
+	        roundCorner : true,
+	        percentage: true,
+	        radius:25,
+	    }).data('radialIndicator');
+	    ind.animate(num[i]);
+	}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+	<script>
+		$(".one-menu:eq(0)").addClass("active");
+	</script>
+</block>

@@ -1,0 +1,37 @@
+<extend name="Public:base" />
+<block name="content">
+<div class="row">
+<div class="col-lg-12">
+<div class="alert alert-warning">
+     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	 <span class="sr-only">Error:</span>
+	 <span class="text-warning">
+	 	<?php if(isset($message)) {?>
+			<?php echo($message); ?>
+			<?php }else{?>
+			<?php echo($error); ?>
+			<?php }?>
+	 </span>
+</div>
+<p class="text-info text-center">页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b></p>
+</div>
+</div>
+</block>
+<block name="js">
+<script type="text/javascript">
+$(function(){
+$(".breadcrumb li:eq(1)").text('温馨提示');
+$(".breadcrumb li:eq(2)").text('发生错误');
+var wait = $('#wait').text(),href = $('#href').attr("href");
+var interval = setInterval(function(){
+	var time = --wait;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+});
+</script>
+</block>
+
+	

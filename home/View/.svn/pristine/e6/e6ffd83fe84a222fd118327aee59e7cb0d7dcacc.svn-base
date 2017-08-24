@@ -1,0 +1,65 @@
+<extend name="Public:theme" />
+<block name="content">
+	<include file="Public:top"/>
+	<!-- 面包屑导航栏 -->
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="{:U('Index/index')}">首页</a></li>
+			<li><a href="{:U('Help/disclosure')}">信息披露</a></li>
+			<li>法律法规</li>
+		</ul>
+	</div>
+	<div class="container">
+		<h1>法律法规</h1>
+		<ul>
+			<li><a href="#">《公司法》</a></li>
+			<li><a href="#">《担保法》</a></li>
+			<li><a href="#">《合同法》</a></li>
+			<li><a href="#">《网络借贷信息中介机构业务活动管理暂行办法》</a></li>
+		</ul>
+		<div class="law-commany law-box">
+			<h1 class="law-title text-center">《公司法》</h1>
+			<div class="law-list">
+				<h3 class="law-list-title">目录</h3>
+				<div class="law-list-item mt20 mb20">
+					<ol class="list-unstyled">
+						<li><a href="#">第一章 总则</a></li>
+						<li><a href="#">第二章 有限责任公司的设立</a></li>
+						<li><a href="#">第三章 有限责任公司的股权转让</a></li>
+						<li><a href="#">第四章 股份有限公司的设立</a></li>
+						<li><a href="#">第五章 股份有限公司的股份发行</a></li>
+						<li><a href="#">第六章 公司的董事、监事、高级管理人员</a></li>
+					</ol>
+				</div>
+				<div class="law-company-intro">
+					(1993年12月29日第八届全国人民代表大会常务委员会第五次会议通过　根据1999年12月25日第九届全国人民代表大会常务委员会第十三次会议《关于修改〈中华人民共和国公司法〉的决定》第一次修正　根据2004年8月28日第十届全国人民代表大会常务委员会第十一次会议《关于修改〈中华人民共和国公司法〉的决定》第二次修正。2005年10月27日第十届全国人民代表大会常务委员会第十八次会议修订。2013年12月28日第十二届全国人民代表大会常务委员会第六次会议通过《关于修改〈中华人民共和国海洋环境保护法〉等七部法律的决定》，2013年12月28日中华人民共和国主席令第八号公布，自2014年3月1日起施行)
+				</div>
+				<div class="law-item-content mt20 mb20"></div>
+			</div>
+			
+		</div>
+	</div>
+</block>
+<block name="css">
+	<style>
+		.law-list-item {
+			padding:10px 15px;
+			border: 1px solid #ccc;
+			height: 200px;
+			width: 100%;
+		}
+		.law-item-content {
+			border: 1px solid #ccc;
+			height: 400px;
+			width:100%;
+			overflow: scroll;
+			overflow-x: auto;
+		}
+		.mt20 {
+			margin-top:20px;
+		}
+		.mb20 {
+			margin-bottom: 20px;
+		}
+	</style>
+</block>
